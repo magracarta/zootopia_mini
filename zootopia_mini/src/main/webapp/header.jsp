@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/header_footer.css">
 <link rel="stylesheet" href="css/common.css">
+
 <script src="script/common.js"></script>
 <script src="script/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -47,7 +48,7 @@
 		<div class="login">
 			<a href="zootopia.do?command=loginform">Login</a>
 		</div>
-		<div class="logout displaynone">
+		<div class="logout">
 			<a href="zootopia.do?command=mypage">닉네임(아이디)님</a>
 			<a href="zootopia.do?command=logout">Logout</a>
 		</div>
