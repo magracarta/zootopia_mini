@@ -18,8 +18,9 @@ header { width:100%; box-shadow: 15px 15px 18px rgba(0, 0, 0, 0.04); }
 
 
 .header-container .login-menu {  }
+.header-container .login-menu > a { font-size:16px; color:#333; margin-left:20px; font-weight:600; }
 .header-container .login-menu > div {  }
-.header-container .login-menu > div a { font-size:16px; color:#333; margin-left:20px; font-weight:600; }
+
 
 
 /* 푸터 */

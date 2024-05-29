@@ -44,14 +44,16 @@
 	</div>
 	
 	<div class="login-menu">
-		<div class="login">
-			<a href="zootopia.do?command=loginform">Login</a>
-		</div>
-		<div class="logout displaynone">
-			<a href="zootopia.do?command=mypage">닉네임(아이디)님</a>
-			<a href="zootopia.do?command=logout">Logout</a>
-		</div>
-	
+		<c:choose>
+			<c:when test="${empty loginUser}">
+				<a href="zootopia.do?command=loginform">Login</a>
+				<a href="zootopia.do?command=joinform">Join</a>
+			</c:when>
+			<c:otherwise>
+				<a href="zootopia.do?command=mypageform">${loginUser.nickname}(${loginUser.userid})</a>
+				<a href="zootopia.do?command=logout">Logout</a>
+			</c:otherwise>
+		</c:choose>
 	</div>
 </div>
 </header>
