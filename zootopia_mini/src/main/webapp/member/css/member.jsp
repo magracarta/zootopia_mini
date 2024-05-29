@@ -1,7 +1,8 @@
 <style>
 
+
 .container{
-   position:absolute;
+ 
    margin:0 auto;
    width:471px;
    height:484px;

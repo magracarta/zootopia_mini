@@ -1,3 +1,4 @@
+
 function loginCheck() {
 	if(document.loginForm.userid.value==""){
 		alert("아이디를 입력하세요");
@@ -11,3 +12,4 @@ function loginCheck() {
 		return true;
 	}
 }
+
