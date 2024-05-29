@@ -12,7 +12,6 @@ INSERT INTO member (nickname, userid, pwd, name, phone, email, petname, petgende
 
 
 select * from member;
-select * from community;
 
 
 INSERT INTO community (vcount, userid, nickname, subject, content, recommands, kind, createdate)				
@@ -32,3 +31,6 @@ VALUES
 (0, 'user8', '일난풍화한', '여덟 번째 글', '여덟 번째 글 내용입니다.', 0, 2, NOW()),				
 (0, 'user9', 'LunaBeam', '아홉 번째 글', '아홉 번째 글 내용입니다.', 0, 1, NOW()),				
 (0, 'user10', 'WiseOwl', '열 번째 글', '열 번째 글 내용입니다.', 0, 2, NOW());				
+
+
+select * from community;

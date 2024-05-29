@@ -36,7 +36,7 @@
 		<nav class="navigation">
 			<ul>
 				<li><a href="zootopia.do?command=contestBoard">콘테스트</a></li>
-				<li><a href="zootopia.do?command=free">자유게시판</a></li>
+				<li><a href="zootopia.do?command=communityBoard">자유게시판</a></li>
 				<li><a href="zootopia.do?command=qna">Q&A</a></li>
 			</ul>
 		</nav>

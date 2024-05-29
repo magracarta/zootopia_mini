@@ -12,15 +12,15 @@ import zootopia_mini.zootopia.util.DB;
 public class CommunityDao {
 
     private CommunityDao() {}
-    private static CommunityDao itc = new CommunityDao();
-    public static CommunityDao getInstance() { return itc; }
+    private static CommunityDao instance = new CommunityDao();
+    public static CommunityDao getInstance() { return instance; }
     
     Connection con = null;
     PreparedStatement pstmt = null;
     ResultSet rs = null;
 
-    public ArrayList<CommunityVO> getAllCommunities() {
-        ArrayList<CommunityVO> communities = new ArrayList<>();
+    public ArrayList<CommunityVO> getAllCommunity() {
+        ArrayList<CommunityVO> community = new ArrayList<>();
         con = DB.getConnection();
         String sql = "SELECT * FROM communities";
         try {
@@ -37,13 +37,13 @@ public class CommunityDao {
                 community.setRecommands(rs.getInt("recommands"));
                 community.setKind(rs.getInt("kind"));
                 community.setCreatedate(rs.getTimestamp("createdate"));
-                communities.add(community);
+                communities.add(community); // 수정된 부분
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             DB.close(con, pstmt, rs);
         }
-        return communities;
+        return communities; // 수정된 부분
     }
 }
