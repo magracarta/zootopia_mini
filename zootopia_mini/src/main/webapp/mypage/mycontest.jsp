@@ -8,7 +8,7 @@
 			<div class="profile-container">
 				<div class="profile-info">
 					<div class="profile_img">
-						<img src="mypage/images/${loginUser.image}.jpg" width="100px"/>
+						<img src="mypage/images/joha1.jpg" width="100px"/>
 					</div>
 					<div class="profile-text">
 						<p class="pet-nickname">${loginUser.petname}</p>
@@ -30,40 +30,40 @@
 		
 	
 		<div class="container">
+			<div class="column">
 			<h2>내 콘테스트(총 콘테스트 수${allcnt})</h2>
-				<div class="mycontestlist">
-					<div>콘테스트 제목${list.subject}</div>
-					<div>콘테스트 내용${list.content}</div>
+				<div class="contestlist">
+					<h3>콘테스트 제목${list.subject}</h3>
+					<p>콘테스트 내용${list.content}</p>
 				</div>
-				<div class="mycontestlist">
-					<div>콘테스트 제목${list.subject}</div>
-					<div>콘테스트 내용${list.content}</div>
+				<div class="contestlist">
+					<h3>콘테스트 제목${list.subject}</h3>
+					<p>콘테스트 내용${list.content}</p>
 				</div>
+			</div>
+			<div class="column">
+			<h2>참가중인 콘테스트(총 콘테스트 수${allcnt})</h2>
+				<div class="contestlist">
+					<h3>콘테스트 제목${list.subject}</h3>
+					<p>콘테스트 내용${list.content}</p>
+				</div>
+				<div class="contestlist">
+					<h3>콘테스트 제목${list.subject}</h3>
+					<p>콘테스트 내용${list.content}</p>
+				</div>
+			</div>
+			<div class="column">
+			<h2>종료된 콘테스트(총 콘테스트 수${allcnt})</h2>
+				<div class="contestlist">
+					<h3>콘테스트 제목${list.subject}</h3>
+					<p>콘테스트 내용${list.content}</p>
+				</div>
+				<div class="contestlist">
+					<h3>콘테스트 제목${list.subject}</h3>
+					<p>콘테스트 내용${list.content}</p>
+				</div>
+			</div>
 		</div>
-		
-		
-		<div class="container">
-			<div class="ingcontestlist">
-				<div>콘테스트 제목${list.subject}</div>
-				<div>콘테스트 내용${list.content}</div>
-			</div>
-			<div class="ingcontestlist">
-				<div>콘테스트 제목${list.subject}</div>
-				<div>콘테스트 내용${list.content}</div>
-			</div>
-		</div>
-		<div class="container">
-			<div class="endcontestlist">
-				<div>콘테스트 제목${list.subject}</div>
-				<div>콘테스트 내용${list.content}</div>
-			</div>
-			<div class="endcontestlist">
-				<div>콘테스트 제목${list.subject}</div>
-				<div>콘테스트 내용${list.content}</div>
-			</div>
-		</div>
-		
-		
 	</form>
 		
 <%@ include file="css/mypage.jsp" %>

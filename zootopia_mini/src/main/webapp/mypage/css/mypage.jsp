@@ -45,25 +45,26 @@
 }
 
 .profile-buttons {
-    display: flex;
-    gap: 10px;
+    margin: 20px;
 }
-
 .btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
+	display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            text-decoration: none;
+            color: white;
+            background-color: #007BFF;
+            border-radius: 5px;
+            font-size: 1em;
+        }
 
 .btn-edit {
     background-color: #000;
     color: #fff;
 }
 
-.btn-delete {
-    background-color: #fff;
+ .btn-delete {
+ 	background-color: #fff;
     color: #000;
     border: 1px solid #000;
 }
