@@ -6,10 +6,10 @@
    <form method="post" action="zootopia.do?command=login" name="loginForm">
       <h2>LOGIN</h2>
       <div class="field">
-         <input name="userid" type="text" value="아이디" />
+         <input name="userid" type="text" placeholder="아이디" />
       </div>
       <div class="field">
-         <input name="pwd" type="password" placehold="비밀번호"/>
+         <input name="pwd" type="password" placeholder="비밀번호"/>
       </div>         
 	  <span style="font-size:80%; font-weight:bold; color:red;">*&nbsp;${message}</span>
       <div class="btn">
