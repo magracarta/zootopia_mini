@@ -17,7 +17,7 @@
 				<span>내용</span>
 				<textarea name="content"></textarea>
 			</div>
-			<div class="lastdate">
+			<div class="lastdate selectcontainer">
 				<span>마감기한</span>
 				<input type="hidden" name="lastdate">
 				<div class="button-wrap"><a href="javascript:">기한 설정 <img src="images/arrow.svg"></a></div>
@@ -32,9 +32,9 @@
 				</div>
 			</div>
 			
-			<div class="paricipant">
+			<div class="paricipant selectcontainer">
 				<span>참가 수</span>
-				<input type="hidden" name="lastdate">
+				<input type="hidden" name="length">
 				<div class="button-wrap"><a href="javascript:">참가 수 설정 <img src="images/arrow.svg"></a></div>
 				<div class="select-container">
 					<ul>
@@ -45,9 +45,13 @@
 					</ul>
 				</div>
 			</div>
-			
-			
+			<div class="button_wrap">
+			<input type="submit" value="등록" onclick="return go_createcontest()">
+			<input type="button" value="취소" onClick="history.back()">
+			</div>
 		</form>
 	</div>
+
 </div>
+<script src="contest/script/contestForm.js"></script>
 <%@ include file ="/footer.jsp" %>

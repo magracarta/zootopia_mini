@@ -54,16 +54,28 @@ margin-top:26px; width:auto; font-size:15px; color:#fff; background:#000; paddin
 .contest_detail .contestform form > div span { display:block; margin-bottom:20px; 
 font-size:15px; color:#333333; font-weight:500; }
 .contest_detail .contestform form > div input { border:1px solid #D9D9D9; }
-.contest_detail .contestform form > div textarea {  }
+.contest_detail .contestform form > div textarea { border:1px solid #D9D9D9; }
 
-.contest_detail .contestform form > div .button-wrap {  }
-.contest_detail .contestform form > div .select-container  {  }
-.contest_detail .contestform form > div .select-container ul {  }
+.contest_detail .contestform form > div .button-wrap { width:362px; }
+.contest_detail .contestform form > div .button-wrap a {  border:1px solid #D9D9D9; border-radius:3px; color:#a6a6a6; font-size:15px; display:flex; padding:15px; 
+    justify-content: space-between; }
+.contest_detail .contestform form > div .button-wrap.addPick a { color:#000; }
+.contest_detail .contestform form > div .button-wrap a img { height:14px; transform: rotate(-90deg); }
+.contest_detail .contestform form > div .button-wrap a.open img { transform: rotate(90deg); } 
+.contest_detail .contestform form > div .select-container  { position:relative; }
+.contest_detail .contestform form > div .select-container ul { 
+display:none;box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.12);
+border:1px solid #D9D9D9; border-radius: 3px; width:362px; position:absolute; background:#fff;  top: 11px; z-index:2; overflow: hidden;}
+.contest_detail .contestform form > div .select-container ul.open {  display:block;}
 .contest_detail .contestform form > div .select-container ul li {  }
-.contest_detail .contestform form > div .select-container ul li a {  }
+.contest_detail .contestform form > div .select-container ul li a { padding:15px; display:block; }
+.contest_detail .contestform form > div .select-container ul li a.addPick ,
+.contest_detail .contestform form > div .select-container ul li a:hover { background:#F8F8F8; }
 
 
-
+.button_wrap {  }
+.button_wrap input { background:#000; color:#fff; padding:15px 80px; border:none; border-radius: 5px; }
+.button_wrap input:last-child { margin-left:20px; background:#fff; color:#000; border:1px solid #000; }
 
 
 
