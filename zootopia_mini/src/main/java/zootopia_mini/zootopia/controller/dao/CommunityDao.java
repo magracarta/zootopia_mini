@@ -46,4 +46,38 @@ public class CommunityDao {
 		return list;
 	}
     
+    public CommunityVO selectCommunity(int gseq) {
+        CommunityVO cvo = null;
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            con = DB.getConnection();
+            String sql = "SELECT * FROM community WHERE gseq = ?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, gseq);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                cvo = new CommunityVO();
+                cvo.setGseq(rs.getInt("gseq"));
+                cvo.setVcount(rs.getInt("vcount"));
+                cvo.setUserid(rs.getString("userid"));
+                cvo.setNickname(rs.getString("nickname"));
+                cvo.setSubject(rs.getString("subject"));
+                cvo.setContent(rs.getString("content"));
+                cvo.setRecommands(rs.getInt("recommands"));
+                cvo.setKind(rs.getInt("kind"));
+                cvo.setCreatedate(rs.getTimestamp("createdate"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DB.close(con, pstmt, rs);
+        }
+
+        return cvo;
+    }
+    
 }
