@@ -4,24 +4,40 @@ public class Paging {
 	//현재페이지
 	private int currentPage = 1;
 	//총 레코드수
-	private int recordAllcount; //12
+	private int recordAllcount; //46
 	//총 페이지 숫자
-	private int pageAllcount;
+	private int pageAllcount; //10
 	//페이지네이션 첫페이지 숫자
-	private int firstnum;
+	private int firstnum; 
 	//페이지네이션 끝 숫자
 	private int lastnum;
 	//보여질 레코드 개수
 	private int recordrow = 5;
 	//화면에 보여질 페이지네이션 개수
 	private int pagecnt = 6;
+	private int offsetnum;
 	
 	private boolean next;
 	private boolean prev;
 	
 	
 	private void pageMethod() {
-		pageAllcount = (int) Math.ceil(12/5);
+		pageAllcount = (int) Math.ceil(recordAllcount/recordrow);
+		offsetnum = (currentPage-1)*recordrow;
+		lastnum = pagecnt;
+		if(firstnum > lastnum) {
+			firstnum = lastnum+1;
+			lastnum = lastnum + pagecnt > pageAllcount ? pageAllcount : lastnum + pagecnt;
+		}
+		
+		if(firstnum <= 1) {
+			next = true;
+			prev = false;
+		}	
+		if(lastnum >= pageAllcount) {
+			next = false;
+			prev = true;
+		}
 		
 	}
 	
@@ -80,6 +96,16 @@ public class Paging {
 	}
 	public void setPrev(boolean prev) {
 		this.prev = prev;
+	}
+
+
+	public int getOffsetnum() {
+		return offsetnum;
+	}
+
+
+	public void setOffsetnum(int offsetnum) {
+		this.offsetnum = offsetnum;
 	}
 	
 	

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import zootopia_mini.zootopia.controller.dto.ContestDTO;
 import zootopia_mini.zootopia.controller.dto.ContestPetDTO;
 import zootopia_mini.zootopia.util.DB;
+import zootopia_mini.zootopia.util.Paging;
 
 public class ContestDao {
 	private static ContestDao itc = new ContestDao();
@@ -17,13 +18,15 @@ public class ContestDao {
 	Connection con = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
-	public ArrayList<ContestDTO> getList() {
+	public ArrayList<ContestDTO> getList(Paging page) {
 		ArrayList<ContestDTO> list = new ArrayList<ContestDTO>();
 		
 		con = DB.getConnection();
-		String sql = "select * from contestpet_view order by cseq desc";
+		String sql = "select * from contestpet_view order by cseq desc limit ? offset ?";
 		try {
 			pstmt =  con.prepareStatement(sql);
+			pstmt.setInt(1, page.getRecordrow());
+			pstmt.setInt(2, page.getOffsetnum());
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				
