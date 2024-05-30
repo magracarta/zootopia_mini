@@ -24,10 +24,10 @@ public class Paging {
 	private void pageMethod() {
 		offsetnum = (currentPage-1)*recordrow;
 		pageAllcount = (int) (Math.ceil((double)recordAllcount/recordrow)); //10
-	
-		firstnum = (int)Math.floor((currentPage/pagecnt)*6);
-										
-		lastnum = firstnum+ (pagecnt-1);
+						
+		 firstnum = ((currentPage - 1) / pagecnt) * pagecnt + 1;
+		 lastnum = firstnum + pagecnt - 1;
+		 if(lastnum > pageAllcount) lastnum = pageAllcount;
 		
 		if(firstnum <= 1) {
 			next = true;
