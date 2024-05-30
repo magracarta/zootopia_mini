@@ -71,7 +71,7 @@ public class ContestDao {
 	public ArrayList<ContestPetDTO> getCpdList(int cseq) {
 		ArrayList<ContestPetDTO> list = new ArrayList<ContestPetDTO>();
 		con = DB.getConnection();
-		String sql = "select * from contest_pet where cseq = ? order by recommends";
+		String sql = "select * from contestpetiv_view where cseq = ? order by recommends";
 		try {
 			pstmt =  con.prepareStatement(sql);
 			pstmt.setInt(1, cseq);
@@ -80,13 +80,17 @@ public class ContestDao {
 			while(rs.next()) {
 				list.add(new ContestPetDTO(
 						rs.getInt("cpseq"),
+						rs.getString("content"),
 						rs.getString("userid"),
 						rs.getString("nickname"),
 						rs.getInt("cseq"),
-						rs.getString("content"),
 						rs.getInt("recommends"),
 						rs.getString("image"),
-						rs.getString("saveimage")
+						rs.getString("saveimage"),
+						rs.getString("petname"),
+						rs.getString("petgender"),
+						rs.getString("kind"),
+						rs.getString("password")
 						));
 			}
 		} catch (SQLException e) {

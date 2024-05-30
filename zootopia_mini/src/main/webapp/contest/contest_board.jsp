@@ -17,17 +17,21 @@
 		<ul>
 			<c:forEach items ="${contestList}" var="list" varStatus="state" >
 				<li>
-					<a href="zootopia.do?command=contestDetail&cseq=${list.cseq}">
 						<div class="date_num">
-							<span class="cseq">${list.cseq}</span>
+							<span class="cseq">NO. ${list.cseq}</span>
 							<c:if test="${list.lastdate > now}">
+								<div class="left-box">
+								<p>조회수(${list.cnt})</p>
 								<span class="lastdate"><fmt:formatDate value="${list.lastdate}" pattern="yy/MM/dd hh:mm:ss" />까지 등록가능</span>
+							
+								</div>
 							</c:if>
 						</div>
 						<div class="title-box">
 							<h1>${list.subject}</h1>
 							<p>${list.content}</p>
 						</div>
+						<div class="bottom-wrap">
 						<div class="listcpist">
 						<c:choose>
 							<c:when test="${list.cpdList.size() > 0}">
@@ -51,16 +55,39 @@
 							</c:otherwise>
 						</c:choose>
 						
-						
 						</div>
-										
-					</a>
+						<div class="button-wrapper">
+						<c:if test="${list.lastdate > now}">
+							<c:choose>
+								<c:when test = "${list.pcnt > list.cpdList.size()}">
+									<p>${list.pcnt - list.cpdList.size()}마리 더 도전할수 있어요!</p>
+								</c:when>
+								<c:otherwise>
+									<p class="complete">${list.pcnt}마리 모두 도전 완료!</p>
+								</c:otherwise>
+							</c:choose>
+							
+							</c:if>
+							<c:if test="${list.lastdate < now}">
+								<span>투표기간이 완료되었습니다.<br>결과를 같이 확인해주세요!</span>
+							</c:if>
+							<a href="zootopia.do?command=contestDetail&cseq=${list.cseq}">
+							자세히 보러가기
+							</a>
+						</div>	
+						</div>		
+					
 				</li>
 			</c:forEach>
 			
 		</ul>
+	</div>
+	
+	<!-- 페이지네이션, 검색 -->
+	<div class="pagenation-container">
 		
 	</div>
+	
 
 </div>
 </div>

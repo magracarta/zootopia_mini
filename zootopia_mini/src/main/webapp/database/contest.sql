@@ -47,6 +47,14 @@ FROM contest AS a, contest_pet AS b , member AS m
 WHERE a.cseq = b.cseq and a.userid = m.userid ;
 
 
+CREATE OR REPLACE VIEW contestpetiv_view AS
+SELECT a.cseq , b.cpseq , b.content , b.recommends , b.image , b.saveimage ,
+m.petgender , m.petname , m.kind , m.userid  , m.nickname , m.pwd as password
+
+FROM contest AS a, contest_pet AS b , member AS m
+WHERE a.cseq = b.cseq and b.userid = m.userid ;
+
+select * from contestpetiv_view;
 
 CREATE OR REPLACE VIEW contestpet_view AS
 SELECT 

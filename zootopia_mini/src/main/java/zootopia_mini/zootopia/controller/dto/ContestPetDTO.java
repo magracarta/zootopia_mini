@@ -2,13 +2,17 @@ package zootopia_mini.zootopia.controller.dto;
 
 public class ContestPetDTO {
 	private int cpseq;
+	private String content;
 	private String userid;
 	private String nickname;
 	private int cseq;
-	private String content;
 	private int recommends;
 	private String image;
 	private String saveimage;
+	private String petname;
+	private String petgender;
+	private String kind;
+	private String password;
 	
 	public ContestPetDTO() {}
 	
@@ -21,18 +25,26 @@ public class ContestPetDTO {
 		this.image = image;
 		this.saveimage = saveimage;
 	}
-	public ContestPetDTO(int cpseq, String userid, String nickname, int cseq, String content, int recommends,
-			String image, String saveimage) {
+	
+	
+	
+	public ContestPetDTO(int cpseq, String content, String userid, String nickname, int cseq, int recommends,
+			String image, String saveimage, String petname, String petgender, String kind, String password) {
 		super();
 		this.cpseq = cpseq;
+		this.content = content;
 		this.userid = userid;
 		this.nickname = nickname;
 		this.cseq = cseq;
-		this.content = content;
 		this.recommends = recommends;
 		this.image = image;
 		this.saveimage = saveimage;
+		this.petname = petname;
+		this.petgender = petgender;
+		this.kind = kind;
+		this.password = password;
 	}
+
 	public int getCpseq() {
 		return cpseq;
 	}
@@ -80,5 +92,36 @@ public class ContestPetDTO {
 	}
 	public void setSaveimage(String saveimage) {
 		this.saveimage = saveimage;
+	}
+
+	public String getPetnickname() {
+		return petname;
+	}
+
+	public void setPetnickname(String petname) {
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getPetgender() {
+		return petgender;
+	}
+
+	public void setPetgender(String petgender) {
+		this.petgender = petgender;
+	}
+
+	public String getKind() {
+		return kind;
+	}
+
+	public void setKind(String kind) {
+		this.kind = kind;
 	}
 }
