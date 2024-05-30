@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file ="../header.jsp" %>
 
-<link rel="stylesheet" href="mypage/css/mypage.css">
 <div>
 	<form method="post" action="zootopia.do?command=mypage" name="mypageForm">
 		<div class="profile-container">
@@ -21,4 +20,6 @@
 		</div>
 	</form>
 </div>
+
+<%@ include file="css/mypage.jsp" %>
 <%@ include file ="../footer.jsp" %>

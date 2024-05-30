@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
-<link rel="stylesheet" href="mypage/css/modify.css">
+
 
 <div class="container">
         <h1 class="title">회원 정보 수정</h1>
@@ -63,9 +63,11 @@
                 <label for="pet-photo">사진</label>
                 <input type="file" id="pet-photo" class="form-control">
             </div>
-            <button type="submit" class="submit-btn">Join</button>
+            <button type="submit" class="submit-btn">수정</button>
         </form>
         <p class="login-link">이미 계정이 있으신가요? <a href="#">로그인</a></p>
     </div>
 
+
+<%@ include file="css/modify.jsp" %>
 <%@ include file="../footer.jsp" %>

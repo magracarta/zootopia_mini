@@ -1,5 +1,5 @@
-@charset "UTF-8";
 
+<style>
 .profile-container {
 	border : 1px solid black;
     background-color: #eee;
@@ -65,3 +65,5 @@
     color: #000;
     border: 1px solid #000;
 }
+
+</style>
