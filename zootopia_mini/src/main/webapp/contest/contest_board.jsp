@@ -85,11 +85,39 @@
 	
 	<!-- 페이지네이션, 검색 -->
 	<div class="pagenation-container">
-		<c:forEach begin="${paging.firstnum}" end="${paging.lastnum}"  var="idx" varStatus="state">
-			<a href="zootopia.do?command=contestBoard&pagenum=${idx}">${idx}</a>
-		</c:forEach>
+		<c:if test="${paging.prev == true}">
+		<a class="prevBtn" href="zootopia.do?command=contestBoard&pagenum=${paging.firstnum-paging.pagecnt}"><img src="images/arrow.svg"></a>
+		</c:if>
+		<div class="pagenation-wrapper">
+			<c:forEach begin="${paging.firstnum}" end="${paging.lastnum}" var="idx" varStatus="state">
+			<c:choose>
+				<c:when test="${idx == paging.currentPage}">
+					<span>${idx}</span>
+				</c:when>
+				<c:otherwise>
+					<a href="zootopia.do?command=contestBoard&pagenum=${idx}">${idx}</a>
+				</c:otherwise>
+			</c:choose>
+			
+			</c:forEach>
+		</div>
+		<c:if test="${paging.next == true}">
+		<a  class="nextBtn"  href="zootopia.do?command=contestBoard&pagenum=${paging.lastnum+1}"><img src="images/arrow.svg"></a>
+		</c:if>
 	</div>
 	
+	<style>
+		.pagenation-container { display:flex; align-items: center; justify-content: center; }
+		.pagenation-container .nextBtn,
+		.pagenation-container .prevBtn { width:9px; position:relative; top:3px; margin:0 10px; }
+		.pagenation-container .prevBtn img { transform: rotate(-180deg); }
+		.pagenation-container img {width:100%;  }
+		.pagenation-container .pagenation-wrapper {   display: flex; font-size: 15px; }
+		.pagenation-container .pagenation-wrapper * { width: 25px; height: 25px; display: flex; justify-content: center;
+    			align-items: center; color:#999999; border-radius:3px;  }
+		.pagenation-container .pagenation-wrapper span { background:#1F1F1F; color:#fff;  }
+	
+	</style>
 
 </div>
 </div>
