@@ -70,11 +70,11 @@
 
 .mytext {
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	justify-content: center;
+	 gap: 100px;
 }
 .mytext a{
-
+	
 }
 
 </style>
