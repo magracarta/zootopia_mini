@@ -18,15 +18,16 @@ public class ContestDao {
 	Connection con = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
-	public ArrayList<ContestDTO> getList(Paging page) {
+	public ArrayList<ContestDTO> getList(Paging page, String search) {
 		ArrayList<ContestDTO> list = new ArrayList<ContestDTO>();
 		
 		con = DB.getConnection();
-		String sql = "select * from contestpet_view order by cseq desc limit ? offset ?";
+		String sql = "select * from contestpet_view  where subject like concat('%',?,'%') order by cseq desc limit ? offset ?";
 		try {
 			pstmt =  con.prepareStatement(sql);
-			pstmt.setInt(1, page.getRecordrow());
-			pstmt.setInt(2, page.getOffsetnum());
+			pstmt.setString(1, search);
+			pstmt.setInt(2, page.getRecordrow());
+			pstmt.setInt(3, page.getOffsetnum());
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				
@@ -54,13 +55,14 @@ public class ContestDao {
 		
 		return list;
 	}
-	public int getAllCount(String string) {
+	public int getAllCount(String table, String search) {
 		int count = 0;
 		con = DB.getConnection();
-		String sql = "select count(*) as cnt from contest";
+		String sql = "select count(*) as cnt from "+table+ " where subject like concat('%',?,'%')";
 		
 		try {
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, search);
 			rs = pstmt.executeQuery();
 			if(rs.next()) count = rs.getInt("cnt");
 		} catch (SQLException e) {

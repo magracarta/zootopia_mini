@@ -44,4 +44,28 @@
 .contest_container .contest_list .button-wrapper a { border-radius:5px;
 margin-top:26px; width:auto; font-size:15px; color:#fff; background:#000; padding:11px 42px; }
 
+
+.contest_detail {  }
+.contest_detail .contestform {  }
+.contest_detail .contestform {  }
+.contest_detail .contestform form {  }
+.contest_detail .contestform form > div { margin-top:65px; }
+
+.contest_detail .contestform form > div span { display:block; margin-bottom:20px; 
+font-size:15px; color:#333333; font-weight:500; }
+.contest_detail .contestform form > div input { border:1px solid #D9D9D9; }
+.contest_detail .contestform form > div textarea {  }
+
+.contest_detail .contestform form > div .button-wrap {  }
+.contest_detail .contestform form > div .select-container  {  }
+.contest_detail .contestform form > div .select-container ul {  }
+.contest_detail .contestform form > div .select-container ul li {  }
+.contest_detail .contestform form > div .select-container ul li a {  }
+
+
+
+
+
+
+
 </style>

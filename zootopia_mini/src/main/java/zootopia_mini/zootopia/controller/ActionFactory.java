@@ -25,6 +25,7 @@ public class ActionFactory {
 		else if(command.equals("joinform")) ac = new JoinFormAction();
 		
 		else if(command.equals("contestBoard")) ac = new ContestBoardAction();
+		else if(command.equals("contestForm")) ac = new ContestFormAction();
 		
 		
 		return ac;
