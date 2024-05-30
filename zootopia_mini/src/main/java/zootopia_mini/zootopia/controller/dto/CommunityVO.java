@@ -2,8 +2,8 @@ package zootopia_mini.zootopia.controller.dto;
 
 import java.sql.Timestamp;
 
-public class CummunityVO {
-	 private int gseq;
+public class CommunityVO {
+	   private int gseq;
 	   private int vcount;
 	   private String userid;
 	   private String nickname;
