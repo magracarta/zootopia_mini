@@ -22,14 +22,17 @@ public class Paging {
 	
 	
 	private void pageMethod() {
-		pageAllcount = (int) Math.ceil(recordAllcount/recordrow);
+		int pageabs = (int)Math.abs((double)currentPage/(pagecnt));
+		pageAllcount = (int) (Math.ceil((double)recordAllcount/recordrow));
 		offsetnum = (currentPage-1)*recordrow;
-		lastnum = pagecnt;
-		if(firstnum > lastnum) {
-			firstnum = lastnum+1;
-			lastnum = lastnum + pagecnt > pageAllcount ? pageAllcount : lastnum + pagecnt;
-		}
 		
+		if(currentPage % pagecnt == 0) {
+			
+		} 
+		firstnum = (pageabs*pagecnt);
+		lastnum = firstnum+pagecnt > pageAllcount ? pageAllcount : firstnum+pagecnt;
+									
+		System.out.println(firstnum	 +" : " + pageabs);		
 		if(firstnum <= 1) {
 			next = true;
 			prev = false;

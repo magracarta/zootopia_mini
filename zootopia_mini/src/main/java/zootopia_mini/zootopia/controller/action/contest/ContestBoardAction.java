@@ -38,6 +38,7 @@ public class ContestBoardAction implements Action {
         
 		
         request.setAttribute("now", timestamp);
+        request.setAttribute("paging", page);
 		request.setAttribute("allcnt", contestAllcount);
 		request.setAttribute("contestList", list);
 		
