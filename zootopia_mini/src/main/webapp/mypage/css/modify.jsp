@@ -7,11 +7,9 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 400px;
     text-align: center;
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    align-items: center;
-    
-    
+    align-items: center; */
 }
 
 .title {
@@ -20,14 +18,14 @@
     margin-bottom: 20px;
 }
 
-.join-form {
+.update-form {
     width: 100%;
 }
 
 .form-group {
     margin-bottom: 20px;
     text-align: left;
-    width: 100%
+    width: 100%;
 }
 
 .form-group label {
@@ -90,5 +88,4 @@
     text-decoration: none;
     font-weight: bold;
 }
-
 </style>

@@ -1,5 +1,6 @@
 
 <style>
+
 .profile-container {
 	border : 1px solid black;
     background-color: #eee;
@@ -9,7 +10,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 700px;
+    width: 900px;
+    margin: auto 0;
 }
 
 .profile-info {
@@ -23,8 +25,8 @@
     height: 100px;
     border-radius: 50%;
     background-color: #ddd;
-    margin-right: 100px; /* 이미지와 텍스트 사이에 간격 추가 */
-    object-fit: cover; /* 이미지를 컨테이너에 맞게 조정 */
+    margin-right: 100px; 
+    object-fit: cover; 
 }
 
 .profile-text {
@@ -64,6 +66,15 @@
     background-color: #fff;
     color: #000;
     border: 1px solid #000;
+}
+
+.mytext {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.mytext a{
+
 }
 
 </style>

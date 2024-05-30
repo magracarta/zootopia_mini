@@ -4,6 +4,7 @@ import zootopia_mini.zootopia.controller.action.Action;
 import zootopia_mini.zootopia.controller.action.contest.ContestBoardAction;
 import zootopia_mini.zootopia.controller.action.main.MainAction;
 import zootopia_mini.zootopia.controller.action.member.LoginFormAction;
+import zootopia_mini.zootopia.controller.action.mypage.ModifyAction;
 import zootopia_mini.zootopia.controller.action.mypage.MypageAction;
 
 public class ActionFactory {
@@ -22,6 +23,7 @@ public class ActionFactory {
 		
 		// mypage
 		else if(command.equals("mypage")) ac = new MypageAction();
+		else if(command.equals("modify")) ac = new ModifyAction();
 		
 		
 		
