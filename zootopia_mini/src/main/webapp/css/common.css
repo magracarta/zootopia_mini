@@ -11,7 +11,7 @@
 
 /* 메인페이지 슬라이드 */
 
-#mainslide { margin-top:-70px; }
+#mainslide { margin-top:0px; }
 #mainslide .mySwiper {  }
 #mainslide .mySwiper .banner { height:648px; }
 #mainslide .mySwiper .banner img { width:100%; }

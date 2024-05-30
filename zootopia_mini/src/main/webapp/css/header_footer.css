@@ -4,7 +4,8 @@
 
 
 /* 헤더 */
-header { width:100%; box-shadow: 15px 15px 18px rgba(0, 0, 0, 0.04); }
+header { width:100%; box-shadow: 15px 15px 18px rgba(0, 0, 0, 0.04);  position: fixed;
+    top: 0; background: #fff; z-index: 10; }
 
 .header-container { display:flex; justify-content: space-between; align-items: center; max-width:1300px; margin:0 auto; height:65px;  }
 .header-container .logo-menu { display:flex; align-items: center; }
