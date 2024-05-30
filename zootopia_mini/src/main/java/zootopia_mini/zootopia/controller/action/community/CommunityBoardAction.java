@@ -15,11 +15,12 @@ public class CommunityBoardAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	
-        ArrayList<CommunityVO> posts = CommunityDao.getInstance().getAllCommunity();
+        CommunityDao dao = CommunityDao.getInstance();
+        ArrayList<CommunityVO> posts = dao.communityBoard();
         request.setAttribute("posts", posts);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/community/community_board.jsp");
         dispatcher.forward(request, response);
     }
+
 }

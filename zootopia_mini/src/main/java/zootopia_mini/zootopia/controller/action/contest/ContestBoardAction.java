@@ -16,9 +16,6 @@ public class ContestBoardAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ContestDao cdao = ContestDao.getInstance();
 		ArrayList<ContestDTO> list = cdao.getList();
-		
-		
-		
 		request.getRequestDispatcher("contest/contest_board.jsp").forward(request, response);
 
 	}

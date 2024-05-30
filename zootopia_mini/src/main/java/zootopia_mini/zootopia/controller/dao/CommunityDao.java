@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import zootopia_mini.zootopia.controller.dto.CommunityVO;
 import zootopia_mini.zootopia.util.DB;
 
@@ -18,32 +17,33 @@ public class CommunityDao {
     Connection con = null;
     PreparedStatement pstmt = null;
     ResultSet rs = null;
-
-    public ArrayList<CommunityVO> getAllCommunity() {
-        ArrayList<CommunityVO> community = new ArrayList<>();
-        con = DB.getConnection();
-        String sql = "SELECT * FROM communities";
-        try {
-            pstmt = con.prepareStatement(sql);
-            rs = pstmt.executeQuery();
-            while (rs.next()) {
-                CommunityVO community = new CommunityVO();
-                community.setGseq(rs.getInt("gseq"));
-                community.setVcount(rs.getInt("vcount"));
-                community.setUserid(rs.getString("userid"));
-                community.setNickname(rs.getString("nickname"));
-                community.setSubject(rs.getString("subject"));
-                community.setContent(rs.getString("content"));
-                community.setRecommands(rs.getInt("recommands"));
-                community.setKind(rs.getInt("kind"));
-                community.setCreatedate(rs.getTimestamp("createdate"));
-                communities.add(community); // 수정된 부분
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            DB.close(con, pstmt, rs);
-        }
-        return communities; // 수정된 부분
-    }
+    
+    public ArrayList<CommunityVO> communityBoard() {
+		ArrayList<CommunityVO> list = new ArrayList<CommunityVO>();
+		con = DB.getConnection();
+		String sql = "SELECT * FROM community";
+		try {
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				CommunityVO cvo = new CommunityVO();
+				cvo.setGseq(rs.getInt("gseq"));
+				cvo.setVcount(rs.getInt("vcount"));
+				cvo.setUserid(rs.getString("userid"));
+				cvo.setNickname(rs.getString("nickname"));
+				cvo.setSubject(rs.getString("subject"));
+				cvo.setContent(rs.getString("content"));
+				cvo.setRecommands(rs.getInt("recommands"));
+				cvo.setKind(rs.getInt("kind"));
+				cvo.setCreatedate(rs.getTimestamp("createdate"));
+				list.add(cvo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DB.close(con, pstmt, rs);
+		}
+		return list;
+	}
+    
 }
