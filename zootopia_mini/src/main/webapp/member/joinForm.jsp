@@ -6,7 +6,7 @@
 	<form method="post" action="zootopia.do?command=join" name="joinForm">
     	<h2>JOIN</h2>
       	<div class="field">
-      		<input type="text" name="userid" size="12"/>
+      		<input type="text" name="userid" size="12" value="아이디"/>
 			<input type="hidden" name="reid"/>
 			<input type="button" value="중복확인" class="dup" onClick="idcheck()"/>
       	</div>

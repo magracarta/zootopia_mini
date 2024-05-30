@@ -9,7 +9,7 @@
          <input name="userid" type="text" value="아이디" />
       </div>
       <div class="field">
-         <input name="pwd" type="password" value="비밀번호"/>
+         <input name="pwd" type="password" placehold="비밀번호"/>
       </div>         
 	  <span style="font-size:80%; font-weight:bold; color:red;">*&nbsp;${message}</span>
       <div class="btn">
