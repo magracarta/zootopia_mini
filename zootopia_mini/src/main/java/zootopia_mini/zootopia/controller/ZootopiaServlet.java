@@ -20,19 +20,20 @@ public class ZootopiaServlet extends HttpServlet {
     }
 
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");	
+		
 		String command = request.getParameter("command");
+		System.out.println("command : " + command);
+		if(command==null) System.out.println("1. command 값 오류");
 		
-		if(command == null) System.out.print("commnad 값오류");
-		ActionFactory af =  ActionFactory.getInstance();
+		ActionFactory af = ActionFactory.getInstance();
 		Action ac = af.getAction(command);
-		if(ac == null) System.out.print("ActionFactory 값오류");
-		ac.execute(request, response);
 		
+		if( ac == null ) System.out.println("2. Action 조립 오류");
+		else ac.execute(request, response);		
 	}
-
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
