@@ -7,6 +7,8 @@ import zootopia_mini.zootopia.controller.action.member.JoinFormAction;
 import zootopia_mini.zootopia.controller.action.member.LoginAction;
 import zootopia_mini.zootopia.controller.action.member.LoginFormAction;
 import zootopia_mini.zootopia.controller.action.member.LogoutAction;
+import zootopia_mini.zootopia.controller.action.mypage.ModifyAction;
+import zootopia_mini.zootopia.controller.action.mypage.MypageAction;
 
 public class ActionFactory {
 	
@@ -25,6 +27,12 @@ public class ActionFactory {
 		else if(command.equals("joinform")) ac = new JoinFormAction();
 		
 		else if(command.equals("contestBoard")) ac = new ContestBoardAction();
+		
+		// mypage
+		else if(command.equals("mypage")) ac = new MypageAction();
+		else if(command.equals("modify")) ac = new ModifyAction();
+		
+		
 		
 		
 		return ac;
