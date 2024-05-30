@@ -85,7 +85,7 @@
 	
 	<!-- 페이지네이션, 검색 -->
 	<div class="pagenation-container">
-		<c:forEach begin="${paging.firstnum+1}" end="${paging.lastnum}"  var="idx" varStatus="state">
+		<c:forEach begin="${paging.firstnum}" end="${paging.lastnum}"  var="idx" varStatus="state">
 			<a href="zootopia.do?command=contestBoard&pagenum=${idx}">${idx}</a>
 		</c:forEach>
 	</div>
