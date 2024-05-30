@@ -48,7 +48,7 @@ public class CommunityDao {
     }
 
     public CommunityVO selectCommunity(int gseq) {
-        CommunityVO cvo = null;
+        CommunityVO community = null;
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -61,16 +61,16 @@ public class CommunityDao {
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                cvo = new CommunityVO();
-                cvo.setGseq(rs.getInt("gseq"));
-                cvo.setVcount(rs.getInt("vcount"));
-                // cvo.setUserid(rs.getString("userid")); 
-                cvo.setNickname(rs.getString("nickname"));
-                cvo.setSubject(rs.getString("subject"));
-                cvo.setContent(rs.getString("content"));
-                cvo.setRecommands(rs.getInt("recommands"));
-                cvo.setKind(rs.getInt("kind"));
-                cvo.setCreatedate(rs.getTimestamp("createdate"));
+                community = new CommunityVO();
+                community.setGseq(rs.getInt("gseq"));
+                community.setVcount(rs.getInt("vcount"));
+                // community.setUserid(rs.getString("userid")); 
+                community.setNickname(rs.getString("nickname"));
+                community.setSubject(rs.getString("subject"));
+                community.setContent(rs.getString("content"));
+                community.setRecommands(rs.getInt("recommands"));
+                community.setKind(rs.getInt("kind"));
+                community.setCreatedate(rs.getTimestamp("createdate"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -78,7 +78,7 @@ public class CommunityDao {
             DB.close(con, pstmt, rs);
         }
 
-        return cvo;
+        return community;
     }
     
     public ArrayList<CommunityVO> communityList(Paging paging, String key) {

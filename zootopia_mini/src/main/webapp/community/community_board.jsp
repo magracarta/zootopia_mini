@@ -4,7 +4,7 @@
 <%@ page import="zootopia_mini.zootopia.controller.dao.CommunityDao" %>
 <%@ page import="zootopia_mini.zootopia.controller.dto.CommunityVO" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file ="/header.jsp" %>
+<%@ include file="/header.jsp" %>
 
 <body>
     <h1>커뮤니티</h1>
@@ -29,11 +29,11 @@
     
     <!-- 페이지 번호 표시 -->
     <div class="row">
-         <div class="col">
-             <jsp:include page="/community/paging/paging.jsp" >
-               <jsp:param value="zootopia.do?command=communityBoard" name="address"/>
+        <div class="col">
+            <jsp:include page="/community/paging/paging.jsp">
+                <jsp:param value="zootopia.do?command=communityBoard" name="address"/>
             </jsp:include>
-         </div>
-      </div>
+        </div>
+    </div>
 </body>
-<%@ include file ="/footer.jsp" %>
+<%@ include file="/footer.jsp" %>
