@@ -3,6 +3,7 @@ package zootopia_mini.zootopia.controller;
 
 import zootopia_mini.zootopia.controller.action.Action;
 import zootopia_mini.zootopia.controller.action.community.CommunityBoardAction;
+import zootopia_mini.zootopia.controller.action.community.CommunityDetailAction;
 import zootopia_mini.zootopia.controller.action.contest.ContestBoardAction;
 import zootopia_mini.zootopia.controller.action.main.MainAction;
 import zootopia_mini.zootopia.controller.action.member.JoinFormAction;
@@ -29,7 +30,10 @@ public class ActionFactory {
 		else if(command.equals("joinform")) ac = new JoinFormAction();
 		
 		else if(command.equals("contestBoard")) ac = new ContestBoardAction();
+		
+		//community
 		else if(command.equals("communityBoard")) ac = new CommunityBoardAction();
+		else if(command.equals("communityDetailAction ")) ac = new CommunityDetailAction();
 		
 		// mypage
 		else if(command.equals("mypage")) ac = new MypageAction();
