@@ -56,5 +56,37 @@ public class MemberDao {
 		
 	
 	}
+
+
+	public int insertMember(MemberVO mvo) {
+
+		int result = 0;
+		
+		con = DB.getConnection();
+		String sql = "insert into member(userid, nickname, pwd, name, phone, email, "
+				+ " image, saveimage, kind, petname, petgender) " 
+				+ " values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mvo.getUserid());
+			pstmt.setString(2, mvo.getNickname());
+			pstmt.setString(3, mvo.getPwd());
+			pstmt.setString(4, mvo.getName());
+			pstmt.setString(5, mvo.getPhone());
+			pstmt.setString(6, mvo.getEmail());
+			pstmt.setString(7, mvo.getImage());
+			pstmt.setString(8, mvo.getSaveimage());
+			pstmt.setString(9, mvo.getKind());
+			pstmt.setString(10, mvo.getPetname());
+			pstmt.setString(11, mvo.getPetgender());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+		return result;
+	}
 	
 }
