@@ -50,8 +50,11 @@
 				</li>
 			</c:forEach>
 			<c:if test='${contest_detail.cpdList.size() <  contest_detail.pcnt}'>
-				<li>
-					<span>더 추가하기</span>
+				<li class="more_pet">
+					<a href="javascript:0">
+						<span class="plus"><img src="images/plus.png"></span>
+						<span class="button">더 추가하기</span>
+					</a>
 				</li>
 			</c:if>
 		</ul>
@@ -79,9 +82,23 @@
 <%@ include file ="/footer.jsp" %>
 
 <style>
-.reply {  }
+.reply { margin-top:100px }
 .reply >  h2 { font-size:30px; font-weight:700; color:#000; }
 .reply .submit_reply {  }
 
+.contest_pet_list .more_pet { background:#D9D9D9; }
+.contest_pet_list .more_pet a { display:flex;  height:393.32px; flex-direction: column; 
+justify-content: center; align-items: center; align-content: center; }
+.contest_pet_list .more_pet .plus { position:relative; }
+.contest_pet_list .more_pet .button { margin-top:50px;
+display:block; color:#fff; font-size:15px; border:1px solid #fff; padding:11px 88px; border-radius:4px; }
+
 </style>
 
+
+
+<div class="">
+	<form name="">
+	
+	</form>
+</div>

@@ -111,15 +111,14 @@ public class ContestDao {
 	}
 	public void insertContest(ContestDTO cdto) {
 		con = DB.getConnection();
-		String sql = "insert into contest (userid, nickname , subject , content, lastdate ,pcnt ) values (?, ?, ?, ?, ? ,? )";
+		String sql = "insert into contest (userid , subject , content, lastdate ,pcnt ) values (?, ?, ?, ? ,? )";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, cdto.getUserid());
-			pstmt.setString(2, cdto.getNickname());
-			pstmt.setString(3, cdto.getSubject());
-			pstmt.setString(4, cdto.getContent());
-			pstmt.setTimestamp(5, cdto.getLastdate());
-			pstmt.setInt(6, cdto.getPcnt());
+			pstmt.setString(2, cdto.getSubject());
+			pstmt.setString(3, cdto.getContent());
+			pstmt.setTimestamp(4, cdto.getLastdate());
+			pstmt.setInt(5, cdto.getPcnt());
 			
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
