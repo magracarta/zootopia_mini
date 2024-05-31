@@ -19,7 +19,7 @@
         <c:forEach var="post" items="${commList}">
             <tr>
                 <td>${post.gseq}</td>
-                <td><a href="zootopia.do?command=communitydetail&gseq=${post.gseq}">${post.subject}</a></td>
+                <td><a href="zootopia.do?command=communityDetail&gseq=${post.gseq}">${post.subject}</a></td>
                 <td>${post.nickname}</td>
                 <td>${post.recommands}</td>
                 <td>${post.createdate}</td>

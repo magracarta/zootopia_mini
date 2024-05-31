@@ -33,7 +33,7 @@ public class ActionFactory {
 		
 		//community
 		else if(command.equals("communityBoard")) ac = new CommunityBoardAction();
-		else if(command.equals("communityDetailAction")) ac = new CommunityDetailAction();
+		else if(command.equals("communityDetail")) ac = new CommunityDetailAction();
 		
 		// mypage
 		else if(command.equals("mypage")) ac = new MypageAction();
