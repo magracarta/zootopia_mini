@@ -66,5 +66,9 @@ public class CommunityVO {
 	   public void setCreatedate(Timestamp createdate) {
 	      this.createdate = createdate;
 	   }
-
+	   public void setNicknameFromView(String viewNickname) {
+	        this.nickname = viewNickname;
+	    }
+	   
+	   
 }

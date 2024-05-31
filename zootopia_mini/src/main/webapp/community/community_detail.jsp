@@ -23,9 +23,14 @@
 				<div class="field" style="border-bottom:2px solid blueviolet;border-top:2px solid blueviolet;">
 					<label>답변내용</label><div style="padding:10px;">${communityVO.recommands}</div>
 				</div>
-				<div class="btn" >
-		   			<input type="button" value="목록으로" onClick="location.href='zootopia.do?command=community_board.jsp'">	
-		   		</div>	
+                <div class="btn" >
+                    <c:if test="${userLoggedIn && userNickname == communityVO.nickname}">
+                        <!-- 작성자와 로그인한 사용자가 동일한 경우에만 수정 및 삭제 버튼 표시 -->
+                        <input type="button" value="수정" onClick="location.href='zootopia.do?command=communityWrite&gseq=${communityVO.gseq}'">
+                        <input type="button" value="삭제" onclick="confirmDelete()">
+                    </c:if>
+                    <input type="button" value="목록으로" onClick="location.href='zootopia.do?command=community_board.jsp'">
+                </div>	
 			</form>
 		</article>
 
