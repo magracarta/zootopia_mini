@@ -24,7 +24,7 @@
 					<li><span></span></li>
 					<li><a href="zootopia.do?command=free">자유게시판</a></li>
 					<li><span></span></li>
-					<li><a href="zootopia.do?command=qna">Q&A</a></li>
+					<li><a href="zootopia.do?command=qnaList">Q&A</a></li>
 				</ul>
 			</div>
 			<div class="text-wrapper">

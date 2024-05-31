@@ -38,6 +38,8 @@ ALTER TABLE contest add COLUMN pcnt int default 6;
 
 select * from contest_pet;
 select * from contest;
+select * from contest;
+select * from member;
 
 
 
