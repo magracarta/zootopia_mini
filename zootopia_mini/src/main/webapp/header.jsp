@@ -37,7 +37,7 @@
 			<ul>
 				<li><a href="zootopia.do?command=contestBoard">콘테스트</a></li>
 				<li><a href="zootopia.do?command=communityBoard">자유게시판</a></li>
-				<li><a href="zootopia.do?command=qna">Q&A</a></li>
+				<li><a href="zootopia.do?command=qnaList">Q&A</a></li>
 			</ul>
 		</nav>
 	
@@ -46,11 +46,11 @@
 	<div class="login-menu">
 		<c:choose>
 			<c:when test="${empty loginUser}">
-				<a href="zootopia.do?command=loginform">Login</a>
-				<a href="zootopia.do?command=joinform">Join</a>
+				<a href="zootopia.do?command=loginForm">Login</a>
+				<a href="zootopia.do?command=joinForm">Join</a>
 			</c:when>
 			<c:otherwise>
-				<a href="zootopia.do?command=mypageform">${loginUser.nickname}(${loginUser.userid})</a>
+				<a href="zootopia.do?command=mypageForm">${loginUser.nickname}(${loginUser.userid})</a>
 				<a href="zootopia.do?command=logout">Logout</a>
 			</c:otherwise>
 		</c:choose>

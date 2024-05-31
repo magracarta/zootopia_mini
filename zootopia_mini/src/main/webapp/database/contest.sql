@@ -36,7 +36,7 @@ DATE_ADD(NOW(), INTERVAL 1 DAY));
 ALTER TABLE contest RENAME COLUMN count TO cnt;
 ALTER TABLE contest add COLUMN pcnt int default 6;
 
-select * from contest_pet;
+select * from contest;
 select * from member;
 
 CREATE OR REPLACE VIEW contestpet_view AS
