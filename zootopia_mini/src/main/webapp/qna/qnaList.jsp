@@ -1,17 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
-
+<link rel="stylesheet" href="qna/css/qnacss.css">
 <section>
 		<article>
 			<form>
-				<h2> Q & A List </h2>
-				<div class="tb">
+				<ul style="font-size: xx-large;
+    font-weight: bold;"> Q & A List </ul>
+				<div class="tb" >
 					<div class="row">
-						<div class="coltitle">번호</div>
-						<div class="coltitle">제목</div>
-						<div class="coltitle">닉네임</div>
-						<div class="coltitle">작성일</div>
-						<div class="coltitle">답변여부</div>
+						<div class="coltitle" style="width:19px; height:22px; top:373px; left:320px;">번호</div>
+						<div class="coltitle" style="width:28px; height:22px; top:373px; left:417px;">제목</div>
+						<div class="coltitle" style="width:42px; height:22px; top:373px; left:1131px;">닉네임</div>
+						<div class="coltitle" style="width:42px; height:22px; top:373px; left:1347px;">작성일</div>
+						<div class="coltitle" style="width:42px; height:22px; top:373px; left:1574px;">답변여부</div>
 					</div>		
 					<c:forEach items="${qnaList}"  var="qnaVO">
 						<div class="row">
@@ -30,14 +31,14 @@
 					</c:forEach>
 					<c:url var="action" value="zootopia.do?command=qnaList" />
 					<div class="row">
-						<div class="coltitle" style="font-size:120px; font-weight:bold;">
+						<div class="coltitle" style="font-size:80%; font-weight:bold;">
 								
 										<c:if test="${paging.prev}">
 											<a href="${action}&page=${paging.beginPage-1}">◀</a>&nbsp;
 										</c:if>
 										<c:forEach begin="${paging.beginPage}" end="${paging.endPage}" var="index">
 												<c:if test="${index==paging.page}">
-													<span style="color:red">${index}&nbsp;</span>
+													<span style="color:gray">${index}&nbsp;</span>
 												</c:if>
 												<c:if test="${index!=paging.page}">
 													<a href="${action}&page=${index}">${index}&nbsp;</a>
@@ -48,7 +49,7 @@
 										</c:if>
 						</div>
 					</div>
-					<div class="row">
+					<div class="low">
 							<div class="coltitle">
 								<div class="btn">
 									<input type="button" value="질문하기" 

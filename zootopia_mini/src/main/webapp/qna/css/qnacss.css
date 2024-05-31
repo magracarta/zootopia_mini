@@ -1,2 +1,24 @@
 @charset "UTF-8";
 
+.row{
+	    display: flex;
+    justify-content: space-between;
+    color: black;
+    font-size: x-large;
+    font-weight: bold;
+}
+.coltitle{
+	flex:1;
+}
+.low{
+	display: flex;
+    justify-content: space-between;
+    color: black;
+    font-size: large;
+    font-weight: bold;
+}
+.ul{
+    color: black;
+    font-size: large;
+    font-weight: bold;
+}

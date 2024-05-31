@@ -62,6 +62,7 @@ public class ActionFactory {
 		else if(command.equals("contestcreateAction")) ac = new ContestcreateAction();
 		else if(command.equals("contestcount")) ac = new ContestcountAction();
 		else if(command.equals("contestDetail")) ac = new ContestDetailAction();
+		
 		//qna
 		else if(command.equals("qnaList")) ac = new QnaListAction();
 		else if(command.equals("qnaView")) ac = new QnaViewAction();
