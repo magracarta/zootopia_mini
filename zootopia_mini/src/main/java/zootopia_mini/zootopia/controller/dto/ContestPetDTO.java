@@ -39,10 +39,11 @@ public class ContestPetDTO {
 		this.recommends = recommends;
 		this.image = image;
 		this.saveimage = saveimage;
-		this.petname = petname;
+		this.setPetname(petname);
 		this.petgender = petgender;
 		this.kind = kind;
 		this.password = password;
+		
 	}
 
 	public int getCpseq() {
@@ -94,12 +95,7 @@ public class ContestPetDTO {
 		this.saveimage = saveimage;
 	}
 
-	public String getPetnickname() {
-		return petname;
-	}
-
-	public void setPetnickname(String petname) {
-	}
+	
 
 	public String getPassword() {
 		return password;
@@ -123,5 +119,13 @@ public class ContestPetDTO {
 
 	public void setKind(String kind) {
 		this.kind = kind;
+	}
+
+	public String getPetname() {
+		return petname;
+	}
+
+	public void setPetname(String petname) {
+		this.petname = petname;
 	}
 }

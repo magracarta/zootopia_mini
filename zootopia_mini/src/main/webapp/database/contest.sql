@@ -85,44 +85,44 @@ select * from contestpet_view;
 
 
 insert into contest_pet (userid , nickname , cseq , content , image, saveimage) values 
-('user7','SunnySmile', 47 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image2.jpg','pet_image2.jpg' );
+('user7','SunnySmile', 15 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image2.jpg','pet_image2.jpg' );
 insert into contest_pet (userid , nickname , cseq , content , image, saveimage) values 
-('user8','일난풍화한', 47 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image1.jpg','pet_image1.jpg' );
+('user8','일난풍화한', 15 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image1.jpg','pet_image1.jpg' );
 
 insert into contest_pet (userid , nickname , cseq , content , image, saveimage) values 
-('user4','퐤니모', 47 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image2.jpg','pet_image2.jpg' );
+('user4','퐤니모', 15 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image2.jpg','pet_image2.jpg' );
 insert into contest_pet (userid , nickname , cseq , content , image, saveimage) values 
-('user3','서매빠디뿌', 47 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image1.jpg','pet_image1.jpg' );
+('user3','서매빠디뿌', 15 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image1.jpg','pet_image1.jpg' );
 
 insert into contest_pet (userid , nickname , cseq , content , image, saveimage) values 
-('user4','퐤니모', 47 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image2.jpg','pet_image2.jpg' );
+('user4','퐤니모', 15 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image2.jpg','pet_image2.jpg' );
 insert into contest_pet (userid , nickname , cseq , content , image, saveimage) values 
-('user3','서매빠디뿌', 47 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image1.jpg','pet_image1.jpg' );
+('user3','서매빠디뿌', 15 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image1.jpg','pet_image1.jpg' );
 
 insert into contest_pet (userid , nickname , cseq , content , image, saveimage) values 
-('user2','서바두턔바쨰', 46 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image2.jpg','pet_image2.jpg' );
+('user2','서바두턔바쨰', 14 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image2.jpg','pet_image2.jpg' );
 insert into contest_pet (userid , nickname , cseq , content , image, saveimage) values 
-('user10','WiseOwl', 46 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image1.jpg','pet_image1.jpg' );
-
-
-insert into contest_pet (userid , nickname , cseq , content , image, saveimage) values 
-('user2','서바두턔바쨰', 46 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image2.jpg','pet_image2.jpg' );
-insert into contest_pet (userid , nickname , cseq , content , image, saveimage) values 
-('user1','역학계몽요해', 45 ,'저희 강아지좀 보세요 대박이에요.' , 'pet_image1.jpg','pet_image1.jpg' );
-
-
+('user10','WiseOwl', 14 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image1.jpg','pet_image1.jpg' );
 
 
 insert into contest_pet (userid , nickname , cseq , content , image, saveimage) values 
-('user2','서바두턔바쨰', 1 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image2.jpg','pet_image2.jpg' );
+('user2','서바두턔바쨰', 14 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image2.jpg','pet_image2.jpg' );
 insert into contest_pet (userid , nickname , cseq , content , image, saveimage) values 
-('user10','WiseOwl', 1 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image1.jpg','pet_image1.jpg' );
+('user1','역학계몽요해', 13 ,'저희 강아지좀 보세요 대박이에요.' , 'pet_image1.jpg','pet_image1.jpg' );
+
+
 
 
 insert into contest_pet (userid , nickname , cseq , content , image, saveimage) values 
-('user2','서바두턔바쨰', 1 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image2.jpg','pet_image2.jpg' );
+('user2','서바두턔바쨰',12 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image2.jpg','pet_image2.jpg' );
 insert into contest_pet (userid , nickname , cseq , content , image, saveimage) values 
-('user1','역학계몽요해', 1 ,'저희 강아지좀 보세요 대박이에요.' , 'pet_image1.jpg','pet_image1.jpg' );
+('user10','WiseOwl', 13 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image1.jpg','pet_image1.jpg' );
+
+
+insert into contest_pet (userid , nickname , cseq , content , image, saveimage) values 
+('user2','서바두턔바쨰', 11 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image2.jpg','pet_image2.jpg' );
+insert into contest_pet (userid , nickname , cseq , content , image, saveimage) values 
+('user1','역학계몽요해', 11 ,'저희 강아지좀 보세요 대박이에요.' , 'pet_image1.jpg','pet_image1.jpg' );
 
 
 
@@ -136,3 +136,17 @@ insert into contest_pet (userid , nickname , cseq , content , image, saveimage) 
 ('user2','서바두턔바쨰', 10 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image2.jpg','pet_image2.jpg' );
 insert into contest_pet (userid , nickname , cseq , content , image, saveimage) values 
 ('user1','역학계몽요해', 10 ,'저희 강아지좀 보세요 대박이에요.' , 'pet_image1.jpg','pet_image1.jpg' );
+select * from contest;
+select * from contestpetiv_view;
+update contest_pet set gender = 'M' where gender is null;
+update member set petname = 'dongdong' where petname is null;
+update member set petgender = 'M' where petgender is null;
+update contest set useyn = 'Y' where cseq = 50;
+
+select * from contest_reply;
+-- contest_reply  댓글 불러오기
+insert into contest_reply (cseq , userid, nickname , content) 
+values (13,'user2' , '서바두턔바쨰' , '너무 이쁜데요오오오오옹??');
+insert into contest_reply (cseq , userid, nickname , content) 
+values (13,'user1' , '역학계몽요해' , '이 다음에는 저도 참가하고싶네요!!');
+

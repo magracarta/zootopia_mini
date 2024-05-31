@@ -4,6 +4,10 @@ package zootopia_mini.zootopia.controller;
 import zootopia_mini.zootopia.controller.action.Action;
 import zootopia_mini.zootopia.controller.action.community.CommunityBoardAction;
 import zootopia_mini.zootopia.controller.action.contest.ContestBoardAction;
+import zootopia_mini.zootopia.controller.action.contest.ContestDetailAction;
+import zootopia_mini.zootopia.controller.action.contest.ContestFormAction;
+import zootopia_mini.zootopia.controller.action.contest.ContestcountAction;
+import zootopia_mini.zootopia.controller.action.contest.ContestcreateAction;
 import zootopia_mini.zootopia.controller.action.main.MainAction;
 import zootopia_mini.zootopia.controller.action.member.JoinFormAction;
 import zootopia_mini.zootopia.controller.action.member.LoginAction;
@@ -40,6 +44,10 @@ public class ActionFactory {
 		else if(command.equals("mycontest")) ac = new MycontestAction();
 		
 		
+		else if(command.equals("contestForm")) ac = new ContestFormAction();
+		else if(command.equals("contestcreateAction")) ac = new ContestcreateAction();
+		else if(command.equals("contestcount")) ac = new ContestcountAction();
+		else if(command.equals("contestDetail")) ac = new ContestDetailAction();
 		
 		
 		return ac;
