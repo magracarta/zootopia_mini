@@ -21,11 +21,11 @@ public class ContestBoardAction implements Action {
 		HttpSession session = request.getSession();
 		String currentPage = request.getParameter("pagenum");
 		
-		String search;
+		String search = "";
 		
 		if(request.getParameter("search") != null) search =request.getParameter("search");
 		else if( session.getAttribute("search") !=null) search = (String) session.getAttribute("search");
-		else search = "";
+		else if(request.getParameter("search") == null && session.getAttribute("search")== null) search = "";
 		
 		ContestDao cdao = ContestDao.getInstance();
 		int contestAllcount = cdao.getAllCount("contest" , search);
@@ -38,9 +38,7 @@ public class ContestBoardAction implements Action {
 		
 		
 		Date date = new Date();
-        
         Timestamp timestamp = new Timestamp(date.getTime());
-        
         for(ContestDTO cdto : list ) cdto.setCpdList(cdao.getCpdList(cdto.getCseq()));
         
         

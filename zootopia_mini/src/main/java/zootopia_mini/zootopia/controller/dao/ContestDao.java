@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import zootopia_mini.zootopia.controller.dto.ContestDTO;
@@ -22,7 +23,7 @@ public class ContestDao {
 		ArrayList<ContestDTO> list = new ArrayList<ContestDTO>();
 		
 		con = DB.getConnection();
-		String sql = "select * from contestpet_view  where subject like concat('%',?,'%') order by cseq desc limit ? offset ?";
+		String sql = "select * from contestpet_view  where subject like concat('%',?,'%') and useyn ='Y' order by cseq desc limit ? offset ?";
 		try {
 			pstmt =  con.prepareStatement(sql);
 			pstmt.setString(1, search);
@@ -58,7 +59,7 @@ public class ContestDao {
 	public int getAllCount(String table, String search) {
 		int count = 0;
 		con = DB.getConnection();
-		String sql = "select count(*) as cnt from "+table+ " where subject like concat('%',?,'%')";
+		String sql = "select count(*) as cnt from "+table+ " where useyn ='Y' and subject like concat('%',?,'%')";
 		
 		try {
 			pstmt = con.prepareStatement(sql);
@@ -97,6 +98,8 @@ public class ContestDao {
 						rs.getString("kind"),
 						rs.getString("password")
 						));
+				
+				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -105,6 +108,74 @@ public class ContestDao {
 		}
 		
 		return list;
+	}
+	public void insertContest(ContestDTO cdto) {
+		con = DB.getConnection();
+		String sql = "insert into contest (userid, nickname , subject , content, lastdate ,pcnt ) values (?, ?, ?, ?, ? ,? )";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, cdto.getUserid());
+			pstmt.setString(2, cdto.getNickname());
+			pstmt.setString(3, cdto.getSubject());
+			pstmt.setString(4, cdto.getContent());
+			pstmt.setTimestamp(5, cdto.getLastdate());
+			pstmt.setInt(6, cdto.getPcnt());
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+	}
+	public ContestDTO getContest(int cseq) {
+		ContestDTO cdto = null;
+		con = DB.getConnection();
+		String sql = "select * from contestpet_view where cseq = ?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, cseq);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				cdto = new ContestDTO(
+							rs.getInt("cseq"),
+							rs.getString("userid"),
+							rs.getString("subject"),
+							rs.getString("content"),
+							rs.getTimestamp("createdate"),
+							rs.getTimestamp("lastdate"),
+							rs.getInt("cnt"),
+							rs.getString("useyn"),
+							rs.getInt("pcnt"),
+							rs.getInt("allpcnt"),
+							rs.getString("nickname")
+						);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+		return cdto;
+	}
+	public void viewCountUp(int visitcount, String csep) {
+		con = DB.getConnection();
+		String sql = "update contest set cnt = ? where cseq = ? ";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, visitcount);
+			pstmt.setInt(2, Integer.parseInt(csep));
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+				
+		
 	}
 	
 	

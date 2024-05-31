@@ -24,7 +24,7 @@
 			</c:forEach>
 		</div>
 		<c:if test="${paging.next == true}">
-		<a  class="nextBtn"  href="<%=url%>${paging.lastnum+1}"><img src="images/arrow.svg"></a>
+		<a  class="nextBtn"  href="<%=url%>&pagenum=${paging.lastnum+1}"><img src="images/arrow.svg"></a>
 		</c:if>
 	</div>
 	

@@ -136,3 +136,17 @@ insert into contest_pet (userid , nickname , cseq , content , image, saveimage) 
 ('user2','서바두턔바쨰', 10 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image2.jpg','pet_image2.jpg' );
 insert into contest_pet (userid , nickname , cseq , content , image, saveimage) values 
 ('user1','역학계몽요해', 10 ,'저희 강아지좀 보세요 대박이에요.' , 'pet_image1.jpg','pet_image1.jpg' );
+select * from contest;
+select * from contestpetiv_view;
+update contest_pet set gender = 'M' where gender is null;
+update member set petname = 'dongdong' where petname is null;
+update member set petgender = 'M' where petgender is null;
+update contest set useyn = 'Y' where cseq = 50;
+
+select * from contest_reply;
+-- contest_reply  댓글 불러오기
+insert into contest_reply (cseq , userid, nickname , content) 
+values (13,'user2' , '서바두턔바쨰' , '너무 이쁜데요오오오오옹??');
+insert into contest_reply (cseq , userid, nickname , content) 
+values (13,'user1' , '역학계몽요해' , '이 다음에는 저도 참가하고싶네요!!');
+

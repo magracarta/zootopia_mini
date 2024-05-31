@@ -7,7 +7,7 @@
 	</div>
 	<div class="contestform">
 		<form name="contestform">
-			<input type="hidden" name="command" value="contestAction">
+			<input type="hidden" name="command" value="contestcreateAction">
 			<div class="title">
 				<span>제목</span>
 				<input type="text" name="subject">

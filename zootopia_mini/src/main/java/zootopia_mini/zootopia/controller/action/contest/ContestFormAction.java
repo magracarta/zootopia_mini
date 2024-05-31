@@ -1,4 +1,4 @@
-package zootopia_mini.zootopia.controller;
+package zootopia_mini.zootopia.controller.action.contest;
 
 import java.io.IOException;
 
@@ -16,15 +16,10 @@ public class ContestFormAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		MemberVO mvo = (MemberVO) session.getAttribute("loginUser");
-		response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
+	
 		if(mvo == null) response.sendRedirect("zootopia.do?command=loginform"); 
-		else {
+		else request.getRequestDispatcher("contest/contestForm.jsp").forward(request, response);
 		
-		     
-			
-			request.getRequestDispatcher("contest/contestForm.jsp").forward(request, response);
-		}
 	}
 
 }

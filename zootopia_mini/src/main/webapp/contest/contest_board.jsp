@@ -18,7 +18,9 @@
 			<c:forEach items ="${contestList}" var="list" varStatus="state" >
 				<li>
 						<div class="date_num">
-							<span class="cseq">NO. ${list.cseq}</span>
+							<span class="cseq">NO. ${list.cseq} <br>
+								<span style="font-size:14px; display:block; margin:5px 0 10px;">개최자 - ${list.nickname}</span>
+							</span>
 							<c:if test="${list.lastdate > now}">
 								<div class="left-box">
 								<p>조회수(${list.cnt})</p>
@@ -71,7 +73,7 @@
 							<c:if test="${list.lastdate < now}">
 								<span>투표기간이 완료되었습니다.<br>결과를 같이 확인해주세요!</span>
 							</c:if>
-							<a href="zootopia.do?command=contestDetail&cseq=${list.cseq}">
+							<a href="zootopia.do?command=contestcount&cseq=${list.cseq}">
 							자세히 보러가기
 							</a>
 						</div>	
