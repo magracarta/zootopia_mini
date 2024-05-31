@@ -26,13 +26,21 @@
      	<div class="field">
 			<input name="nickname" type="text" placeholder="닉네임" size="12"/>
 			<input type="hidden" name="renickname"/>
-			<input type="button" value="중복확인" class="dup" onClick="idcheck()"/>   
+			<input type="button" value="중복확인" class="dup" onClick="nicknamecheck()"/>   
       	</div>
       	<div class="field">
 	  		<input name="phone" type="text" placeholder="전화번호"/>   
       	</div>
       	<div class="field">
-      		<input type="file" name="image" value="이미지 등록"/>
+      		<c:choose>
+				<c:when test="${empty photoview.saveimage}">
+					<img src="images/noname.jpg" width="100px;" />
+				</c:when>
+				<c:otherwise>						
+					<img src="images/${photoview.saveimage}" width="100px;" />
+				</c:otherwise>
+			</c:choose>
+      	<input type="file" name="image" value="이미지 등록"/>      		
       	</div>
       	<div class="field">
       		<input type="text" name="petname" placeholder="반려견 이름"/>
@@ -45,14 +53,14 @@
       	</div>
       	<div class="field">
       		<select name="petgender">
-      			<option value="남아">남아</option>
-      			<option value="여아">여아</option>
+      			<option value="M">남아</option>
+      			<option value="F">여아</option>
       		</select>
       	</div>
       	<div class="btn">
          	<input type="button" value="Join" onClick="go_save()">
       	</div>
-      	<span>이미 계정이 있으신가요?&nbsp;<a href="zootopia.do?command=loginform">로그인</a></span>
+      	<span>이미 계정이 있으신가요?&nbsp;<a href="zootopia.do?command=loginform" style="font-weight:bold;">로그인</a></span>
    	</form>
 </div>
 

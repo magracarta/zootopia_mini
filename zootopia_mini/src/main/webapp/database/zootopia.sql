@@ -205,3 +205,8 @@ ALTER TABLE qnadate
 ;
 
 ALTER TABLE contest RENAME COLUMN count TO cnt;
+
+select * from community_reply;
+
+select * from member;
+UPDATE member set nickname='하이루' where userid='user1';

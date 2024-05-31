@@ -5,10 +5,13 @@ import zootopia_mini.zootopia.controller.action.Action;
 import zootopia_mini.zootopia.controller.action.community.CommunityBoardAction;
 import zootopia_mini.zootopia.controller.action.contest.ContestBoardAction;
 import zootopia_mini.zootopia.controller.action.main.MainAction;
+import zootopia_mini.zootopia.controller.action.member.IdCheckFormAction;
+import zootopia_mini.zootopia.controller.action.member.JoinAction;
 import zootopia_mini.zootopia.controller.action.member.JoinFormAction;
 import zootopia_mini.zootopia.controller.action.member.LoginAction;
 import zootopia_mini.zootopia.controller.action.member.LoginFormAction;
 import zootopia_mini.zootopia.controller.action.member.LogoutAction;
+import zootopia_mini.zootopia.controller.action.member.NicknameCheckFormAction;
 import zootopia_mini.zootopia.controller.action.mypage.ModifyAction;
 import zootopia_mini.zootopia.controller.action.mypage.MypageAction;
 
@@ -27,6 +30,9 @@ public class ActionFactory {
 		else if(command.equals("login")) ac = new LoginAction();
 		else if(command.equals("logout")) ac = new LogoutAction();
 		else if(command.equals("joinform")) ac = new JoinFormAction();
+		else if(command.equals("join")) ac = new JoinAction();
+		else if(command.equals("idcheckform")) ac = new IdCheckFormAction();
+		else if(command.equals("nicknamecheckform")) ac = new NicknameCheckFormAction();
 		
 		else if(command.equals("contestBoard")) ac = new ContestBoardAction();
 		else if(command.equals("communityBoard")) ac = new CommunityBoardAction();
