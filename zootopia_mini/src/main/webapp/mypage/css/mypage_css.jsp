@@ -12,6 +12,7 @@
     justify-content: space-between;
     width: 900px;
     margin: auto 0;
+    
 }
 
 .profile-info {
@@ -20,8 +21,10 @@
     align-items: center;
 }
 
-.profile-img {
-    width: 100px;
+.profile_img {
+}
+.profile_img img{
+	width: 100px;
     height: 100px;
     border-radius: 50%;
     background-color: #ddd;

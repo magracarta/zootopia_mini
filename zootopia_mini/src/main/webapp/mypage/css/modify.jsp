@@ -67,7 +67,7 @@
     margin-top: 5px;
 }
 
-.submit-btn {
+.btn input {
     width: 100%;
     padding: 15px;
     background-color: #000;

@@ -10,6 +10,7 @@ import zootopia_mini.zootopia.controller.action.member.LoginAction;
 import zootopia_mini.zootopia.controller.action.member.LoginFormAction;
 import zootopia_mini.zootopia.controller.action.member.LogoutAction;
 import zootopia_mini.zootopia.controller.action.mypage.ModifyAction;
+import zootopia_mini.zootopia.controller.action.mypage.ModifyFormAction;
 import zootopia_mini.zootopia.controller.action.mypage.MycontestAction;
 import zootopia_mini.zootopia.controller.action.mypage.MypageAction;
 
@@ -35,6 +36,7 @@ public class ActionFactory {
 		// mypage
 		else if(command.equals("mypage")) ac = new MypageAction();
 		else if(command.equals("modify")) ac = new ModifyAction();
+		else if(command.equals("modifyform")) ac = new ModifyFormAction();
 		else if(command.equals("mycontest")) ac = new MycontestAction();
 		
 		

@@ -37,14 +37,8 @@ ALTER TABLE contest RENAME COLUMN count TO cnt;
 ALTER TABLE contest add COLUMN pcnt int default 6;
 
 select * from contest_pet;
-select * from member;
+select * from contest;
 
-CREATE OR REPLACE VIEW contestpet_view AS
-SELECT a.cseq as cseq , a.userid as userid , a.subject as subject, a.content as content , a.createdate as createdate
-, a.cnt as cnt , a.useyn as useyn , a.pcnt as pcnt ,
-count(b.cseq) as allpcnt , m.nickname as nickname 
-FROM contest AS a, contest_pet AS b , member AS m
-WHERE a.cseq = b.cseq and a.userid = m.userid ;
 
 
 CREATE OR REPLACE VIEW contestpetiv_view AS
