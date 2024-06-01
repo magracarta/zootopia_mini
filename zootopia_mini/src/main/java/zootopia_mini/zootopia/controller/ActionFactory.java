@@ -4,6 +4,8 @@ package zootopia_mini.zootopia.controller;
 import zootopia_mini.zootopia.controller.action.Action;
 import zootopia_mini.zootopia.controller.action.community.CommunityBoardAction;
 import zootopia_mini.zootopia.controller.action.community.CommunityDetailAction;
+import zootopia_mini.zootopia.controller.action.community.WriteCommunityAction;
+import zootopia_mini.zootopia.controller.action.community.WriteCommunityFormAction;
 import zootopia_mini.zootopia.controller.action.contest.ContestBoardAction;
 import zootopia_mini.zootopia.controller.action.contest.ContestDetailAction;
 import zootopia_mini.zootopia.controller.action.contest.ContestFormAction;
@@ -50,7 +52,9 @@ public class ActionFactory {
 		//community
 		else if(command.equals("communityBoard")) ac = new CommunityBoardAction();
 		else if(command.equals("communityDetail")) ac = new CommunityDetailAction();
-		
+		else if( command.equals("writeCommunityForm") ) ac = new WriteCommunityFormAction();
+		else if( command.equals("writeCommunity") ) ac = new WriteCommunityAction();
+
 		// mypage
 		else if(command.equals("mypage")) ac = new MypageAction();
 		else if(command.equals("modify")) ac = new ModifyAction();

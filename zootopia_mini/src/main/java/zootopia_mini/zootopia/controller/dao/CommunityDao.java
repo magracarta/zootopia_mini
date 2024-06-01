@@ -21,8 +21,9 @@ public class CommunityDao {
 
     public ArrayList<CommunityVO> selectCommunity(Paging paging) {
         ArrayList<CommunityVO> list = new ArrayList<CommunityVO>();
-        String sql = "SELECT c.gseq, c.subject, c.content, c.createdate, c.recommands, m.nickname FROM "
-        		+ "community c JOIN member m ON c.userid = m.userid ORDER BY c.gseq DESC LIMIT ? OFFSET ?;";
+        String sql = "SELECT c.gseq, c.subject, c.content, c.createdate, c.recommands, c.userid, m.nickname, m.userid AS user_id FROM "
+                + "community c JOIN member m ON c.userid = m.userid ORDER BY c.gseq DESC LIMIT ? OFFSET ?;";
+
         con = DB.getConnection();
         try {
             pstmt = con.prepareStatement(sql);
@@ -33,10 +34,10 @@ public class CommunityDao {
                 CommunityVO cvo = new CommunityVO();
                 cvo.setGseq(rs.getInt("gseq"));
                 cvo.setSubject(rs.getString("subject"));
+                cvo.setUserid(rs.getString("userid"));
                 cvo.setContent(rs.getString("content"));
                 cvo.setCreatedate(rs.getTimestamp("createdate"));
                 cvo.setRecommands(rs.getInt("recommands"));
-                // 닉네임 설정
                 cvo.setNicknameFromView(rs.getString("nickname"));
                 list.add(cvo);
             }
@@ -66,7 +67,8 @@ public class CommunityDao {
     }
 
     public CommunityVO getCommunity(int gseq) {
-        CommunityVO community = null;
+        CommunityVO cvo = null; // 결과가 없는 경우에는 null로 초기화
+        
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -79,15 +81,16 @@ public class CommunityDao {
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                community = new CommunityVO();
-                community.setGseq(gseq);
-                community.setVcount(rs.getInt("vcount"));
-                community.setNickname(rs.getString("nickname"));
-                community.setSubject(rs.getString("subject"));
-                community.setContent(rs.getString("content"));
-                community.setRecommands(rs.getInt("recommands"));
-                community.setKind(rs.getInt("kind"));
-                community.setCreatedate(rs.getTimestamp("createdate"));
+                cvo = new CommunityVO(); 
+                cvo.setGseq(gseq);
+                cvo.setVcount(rs.getInt("vcount"));
+                cvo.setNicknameFromView(rs.getString("nickname"));
+                cvo.setUserid(rs.getString("userid"));
+                cvo.setSubject(rs.getString("subject"));
+                cvo.setContent(rs.getString("content"));
+                cvo.setRecommands(rs.getInt("recommands"));
+                cvo.setKind(rs.getInt("kind"));
+                cvo.setCreatedate(rs.getTimestamp("createdate"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -95,7 +98,22 @@ public class CommunityDao {
             DB.close(con, pstmt, rs);
         }
 
-        return community;
+        return cvo;
     }
+
+	public void insertCommunity(CommunityVO cvo) {
+		String sql = "INSERT INTO community (subject, content, createdate, userid, nickname, user_id) \r\n"
+				+ "SELECT ?, ?, ?, ?, nickname, ? FROM nickname WHERE userid = ?;";
+		con = DB.getConnection();
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, cvo.getSubject());
+		    pstmt.setString(2, cvo.getContent());
+		    pstmt.setString(3, cvo.getUserid());
+		    pstmt.setString(3, cvo.getNickname());
+		    pstmt.executeUpdate();  
+		} catch (SQLException e) {e.printStackTrace();
+		} finally {  DB.close(con, pstmt, rs);  }		
+	}
 	
 }
