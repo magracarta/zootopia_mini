@@ -6,12 +6,13 @@ public class CommunityVO {
 	   private int gseq;
 	   private int vcount;
 	   private String userid;
-	   private String nickname;
 	   private String subject;
 	   private String content;
 	   private int recommands;
 	   private int kind;
 	   private Timestamp createdate;
+	   private String nickname;
+	   
 	   public int getGseq() {
 	      return gseq;
 	   }
@@ -30,12 +31,7 @@ public class CommunityVO {
 	   public void setUserid(String userid) {
 	      this.userid = userid;
 	   }
-	   public String getNickname() {
-	      return nickname;
-	   }
-	   public void setNickname(String nickname) {
-	      this.nickname = nickname;
-	   }
+
 	   public String getSubject() {
 	      return subject;
 	   }
@@ -69,6 +65,14 @@ public class CommunityVO {
 	   public void setNicknameFromView(String viewNickname) {
 	        this.nickname = viewNickname;
 	    }
-	   
+	   public String getNicknameFromView() {
+		    return this.nickname;
+		}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 	   
 }

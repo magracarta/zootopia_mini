@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import zootopia_mini.zootopia.controller.dto.CommunityVO;
 import zootopia_mini.zootopia.util.DB;
@@ -21,8 +22,9 @@ public class CommunityDao {
 
     public ArrayList<CommunityVO> selectCommunity(Paging paging) {
         ArrayList<CommunityVO> list = new ArrayList<CommunityVO>();
-        String sql = "SELECT c.gseq, c.subject, c.content, c.createdate, c.recommands, c.userid, m.nickname, m.userid AS user_id FROM "
-                + "community c JOIN member m ON c.userid = m.userid ORDER BY c.gseq DESC LIMIT ? OFFSET ?;";
+        String sql = "SELECT c.gseq, c.subject, c.content, c.createdate, c.recommands, c.userid, m.nickname, m.userid AS user_id, c.kind " +
+                     "FROM community c JOIN member m ON c.userid = m.userid " +
+                     "ORDER BY c.gseq DESC LIMIT ? OFFSET ?;";
 
         con = DB.getConnection();
         try {
@@ -39,6 +41,7 @@ public class CommunityDao {
                 cvo.setCreatedate(rs.getTimestamp("createdate"));
                 cvo.setRecommands(rs.getInt("recommands"));
                 cvo.setNicknameFromView(rs.getString("nickname"));
+                cvo.setKind(rs.getInt("kind")); // kind 추가
                 list.add(cvo);
             }
         } catch (SQLException e) {
@@ -84,7 +87,7 @@ public class CommunityDao {
                 cvo = new CommunityVO(); 
                 cvo.setGseq(gseq);
                 cvo.setVcount(rs.getInt("vcount"));
-                cvo.setNicknameFromView(rs.getString("nickname"));
+               // cvo.setNicknameFromView(rs.getString("nickname"));
                 cvo.setUserid(rs.getString("userid"));
                 cvo.setSubject(rs.getString("subject"));
                 cvo.setContent(rs.getString("content"));
@@ -101,19 +104,48 @@ public class CommunityDao {
         return cvo;
     }
 
-	public void insertCommunity(CommunityVO cvo) {
-		String sql = "INSERT INTO community (subject, content, createdate, userid, nickname, user_id) \r\n"
-				+ "SELECT ?, ?, ?, ?, nickname, ? FROM nickname WHERE userid = ?;";
-		con = DB.getConnection();
-		try {
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, cvo.getSubject());
-		    pstmt.setString(2, cvo.getContent());
-		    pstmt.setString(3, cvo.getUserid());
-		    pstmt.setString(3, cvo.getNickname());
-		    pstmt.executeUpdate();  
-		} catch (SQLException e) {e.printStackTrace();
-		} finally {  DB.close(con, pstmt, rs);  }		
-	}
+    public void insertCommunity(CommunityVO cvo) {
+        String sql = "INSERT INTO community (userid, subject, content, kind) VALUES (?, ?, ?, ?)";
+
+        try {
+            con = DB.getConnection();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, cvo.getUserid());
+            pstmt.setString(2, cvo.getSubject());
+            pstmt.setString(3, cvo.getContent());
+            pstmt.setInt(4, cvo.getKind());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DB.close(con, pstmt, rs);
+        }
+    }
+
+    public String getNickname(String userid) {
+        String nickname = null;
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            con = DB.getConnection();
+            String sql = "SELECT nickname FROM nickname WHERE userid = ?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, userid);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                nickname = rs.getString("nickname");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DB.close(con, pstmt, rs);
+        }
+
+        return nickname;
+    }
+	
 	
 }
