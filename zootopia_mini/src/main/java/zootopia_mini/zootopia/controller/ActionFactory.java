@@ -5,10 +5,13 @@ import zootopia_mini.zootopia.controller.action.Action;
 import zootopia_mini.zootopia.controller.action.community.CommunityBoardAction;
 import zootopia_mini.zootopia.controller.action.community.CommunityDetailAction;
 import zootopia_mini.zootopia.controller.action.contest.ContestBoardAction;
+import zootopia_mini.zootopia.controller.action.contest.ContestDeleteAction;
 import zootopia_mini.zootopia.controller.action.contest.ContestDetailAction;
 import zootopia_mini.zootopia.controller.action.contest.ContestFormAction;
+import zootopia_mini.zootopia.controller.action.contest.ContestUpdateFormAction;
 import zootopia_mini.zootopia.controller.action.contest.ContestcountAction;
 import zootopia_mini.zootopia.controller.action.contest.ContestcreateAction;
+import zootopia_mini.zootopia.controller.action.contest.ContestupdateAction;
 import zootopia_mini.zootopia.controller.action.main.MainAction;
 import zootopia_mini.zootopia.controller.action.member.IdCheckFormAction;
 import zootopia_mini.zootopia.controller.action.member.JoinAction;
@@ -45,7 +48,6 @@ public class ActionFactory {
 		else if(command.equals("idcheckform")) ac = new IdCheckFormAction();
 		else if(command.equals("nicknamecheckform")) ac = new NicknameCheckFormAction();
 		
-		else if(command.equals("contestBoard")) ac = new ContestBoardAction();
 		
 		//community
 		else if(command.equals("communityBoard")) ac = new CommunityBoardAction();
@@ -57,11 +59,17 @@ public class ActionFactory {
 		else if(command.equals("modifyform")) ac = new ModifyFormAction();
 		else if(command.equals("mycontest")) ac = new MycontestAction();
 		
-		
+
+		//contest
+		else if(command.equals("contestBoard")) ac = new ContestBoardAction();
 		else if(command.equals("contestForm")) ac = new ContestFormAction();
 		else if(command.equals("contestcreateAction")) ac = new ContestcreateAction();
 		else if(command.equals("contestcount")) ac = new ContestcountAction();
 		else if(command.equals("contestDetail")) ac = new ContestDetailAction();
+		else if(command.equals("contestUpdateForm")) ac = new ContestUpdateFormAction();
+		else if(command.equals("contestupdate")) ac = new ContestupdateAction();
+		else if(command.equals("contestDelete")) ac = new ContestDeleteAction();
+		
 		//qna
 		else if(command.equals("qnaList")) ac = new QnaListAction();
 		else if(command.equals("qnaView")) ac = new QnaViewAction();

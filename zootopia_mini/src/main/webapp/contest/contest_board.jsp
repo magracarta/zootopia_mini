@@ -6,6 +6,13 @@
 <%@ include file ="/header.jsp" %>
 <%@ include file ="css/content_css.jsp" %>
 
+<script>
+	if(location.href.indexOf("contestDelete") > 0){
+		alert("삭제에 성공했습니다.");
+		location.href="zootopia.do?command=contestBoard";	
+	}
+</script>
+
 <div class="contest">
 
 <div class="title-wrapper">
@@ -14,19 +21,21 @@
 </div>
 
 
+ 
 <div class="contest_container">
 	<div class="contest_list">
 		<ul>
-			<c:forEach items ="${contestList}" var="list" varStatus="state" >
+			<c:forEach items ="${contestList}" var="list" varStatus="state">
 				<li>
 						<div class="date_num">
-							<span class="cseq">NO. ${list.cseq} <br>
+							<%-- <span class="cseq">NO. ${list.cseq} <br> --%>
+							<span class="cseq">NO. <span class="index"></span> <br>
 								<span style="font-size:14px; display:block; margin:5px 0 10px;">개최자 - ${list.nickname}</span>
 							</span>
 							<c:if test="${list.lastdate > now}">
 								<div class="left-box">
-								<p>조회수(${list.cnt})</p>
-								<span class="lastdate"><fmt:formatDate value="${list.lastdate}" pattern="yy/MM/dd hh:mm:ss" />까지 등록가능</span>
+									<p>조회수(${list.cnt})</p>
+									<span class="lastdate"><fmt:formatDate value="${list.lastdate}" pattern="yy/MM/dd hh:mm:ss" />까지 등록가능</span>
 							
 								</div>
 							</c:if>
@@ -75,7 +84,7 @@
 							<c:if test="${list.lastdate < now}">
 								<span>투표기간이 완료되었습니다.<br>결과를 같이 확인해주세요!</span>
 							</c:if>
-							<a href="zootopia.do?command=contestcount&cseq=${list.cseq}">
+							<a class='go_btn' data-url ="${list.cseq}">
 							자세히 보러가기
 							</a>
 						</div>	
@@ -101,6 +110,18 @@
 	   slidesPerView: 'auto',
 	      freeMode: true,
 	    });
+   
+   
+
+ let begin = ${allcnt - (paging.recordrow*(paging.currentPage-1))-1} +1;
+ 
+ document.querySelectorAll(".contest_list li").forEach((elem,index)=>{
+	 	let indexdate = begin - index;
+	    elem.querySelector(".date_num .index").innerHTML = indexdate;
+	    elem.querySelector(".go_btn").href="zootopia.do?command=contestcount&cseq="+elem.querySelector(".go_btn").dataset.url+"&index="+indexdate;
+	});
  </script>
+ 
+ 
 
 <%@ include file ="/footer.jsp" %>

@@ -90,8 +90,9 @@ border:1px solid #D9D9D9; border-radius: 3px; width:362px; position:absolute; ba
 .contest .title-wrapper .right a { text-decoration: none; border:1px solid #000000; padding:15px 49px; border-radius:5px; font-weight:600; }
 
 .contest_pet_list {  }
-.contest_pet_list ul { display:flex; flex-wrap: wrap; justify-content: space-between; }
-.contest_pet_list ul li { width:calc(33.3333% - 40px); }
+.contest_pet_list ul { display:flex; flex-wrap: wrap; justify-content: flex-start; }
+.contest_pet_list ul li { width:calc(33.3333% - 40px); margin-right:60px; }
+.contest_pet_list ul li:nth-child(3n) {  margin-right:0px; }
 .contest_pet_list ul li .image-box { position:relative; }
 .contest_pet_list ul li .image-box img { width:100%; height:393.32px; object-fit: cover; }
 .contest_pet_list ul li .image-box .rank { width: 68px; height: 68px; font-size: 25px; display: flex;
@@ -114,4 +115,16 @@ display:block; margin-top:18px;
 font-size:15px; width:100%; text-align : center; padding:13px 0; color:#333; border:1px solid #333; }
 
 .contest .detailinfo { font-size:13px; color:#999; font-weight:600; display:block; margin:0px 0 20px; }
+
+.reply { margin-top:100px }
+.reply >  h2 { font-size:30px; font-weight:700; color:#000; }
+.reply .submit_reply {  }
+
+.contest_pet_list .more_pet {  }
+.contest_pet_list .more_pet a { display:flex;  height:393.32px; flex-direction: column; 
+justify-content: center; align-items: center; align-content: center; background:#D9D9D9; }
+.contest_pet_list .more_pet .plus { position:relative; padding-top:25px; }
+.contest_pet_list .more_pet .button { margin-top:50px;
+display:block; color:#fff; font-size:15px; border:1px solid #fff; padding:11px 88px; border-radius:4px; }
+
 </style>

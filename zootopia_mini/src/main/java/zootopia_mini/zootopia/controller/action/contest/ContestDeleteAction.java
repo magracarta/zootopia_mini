@@ -7,23 +7,23 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import zootopia_mini.zootopia.controller.action.Action;
 import zootopia_mini.zootopia.controller.dao.ContestDao;
-import zootopia_mini.zootopia.controller.dto.ContestDTO;
 
-public class ContestcountAction implements Action {
+public class ContestDeleteAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String cseq = request.getParameter("cseq");
-		String index = request.getParameter("index");
+		int cseq = Integer.parseInt(request.getParameter("cseq"));
+		
+		
 		ContestDao cdao = ContestDao.getInstance();
-		ContestDTO cdot = cdao.getContest(Integer.parseInt(cseq));
+		int result = cdao.deleteContest(cseq);
 		
-		int visitcount = cdot.getCnt()+1;
+		String url = "contest/contest_board.jsp";
+		if(result == 0) url = "zootopia.do?command=contestDetail&delete=no&cseq="+cseq;
 		
-		cdao.viewCountUp(visitcount , cseq);
-		request.setAttribute("cseq", cseq);
-		request.setAttribute("index", index);
-		request.getRequestDispatcher("contest/contestcount.jsp").forward(request, response);
+		request.getRequestDispatcher(url).forward(request, response);
+		
+
 	}
 
 }

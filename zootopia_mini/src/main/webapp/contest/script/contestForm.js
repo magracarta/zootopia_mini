@@ -16,12 +16,18 @@ function go_createcontest(){
 	return true;
 }
 
+function goDelete(cseq){
+	if(confirm("이 콘테스트를 정말 삭제하시겠습니까?")) location.href="zootopia.do?command=contestDelete&cseq="+cseq;
+}
+
+
+
 function no_text( formvalue ,text ){
 	alert(text);
 	formvalue.focus();
 }
 
-if(location.href.indexOf("contestForm") > 0){
+if(location.href.indexOf("contestForm") > 0 || location.href.indexOf("contestUpdateForm") > 0){
 	let open = [false , false];
 	let selectAll=document.querySelectorAll(".selectcontainer");
 	
@@ -41,9 +47,10 @@ if(location.href.indexOf("contestForm") > 0){
 			elem2.addEventListener('click',()=>{
 				elem.querySelector("input").value= (elem2.dataset.value);
 				elem.querySelector(".button-wrap a").style.color="#000";
-				let text = '일';
-				if(index == 1)text = '마리';
-				elem.querySelector(".button-wrap a").innerHTML =elem2.dataset.value+text+' <img src="images/arrow.svg">';
+				let text = elem2.dataset.value+'일';
+				if(index == 1)text = elem2.dataset.value+'마리';
+				if(elem2.innerText =="변경하지 않기" ) text ="변경하지 않기";
+				elem.querySelector(".button-wrap a").innerHTML =text+' <img src="images/arrow.svg">';
 				open[0] = false;
 				open[1] = false;
 				closeSelection(selectAll[1]);

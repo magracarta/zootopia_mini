@@ -113,14 +113,14 @@ INSERT INTO member (nickname, userid, pwd, name, phone, email, petname, petgende
 
 
 insert into contest_pet (userid  , cseq , content , image, saveimage ) values 
-('user2', 1 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image2.jpg','pet_image2.jpg' );
+('user2', 7 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image2.jpg','pet_image2.jpg' );
 insert into contest_pet (userid  , cseq , content , image, saveimage) values 
-('user1', 1 ,'저희 강아지좀 보세요 대박이에요.' , 'pet_image1.jpg','pet_image1.jpg' );
+('user1', 7 ,'저희 강아지좀 보세요 대박이에요.' , 'pet_image1.jpg','pet_image1.jpg' );
 
 insert into contest_pet (userid  , cseq , content , image, saveimage) values 
-('user2', 1 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image2.jpg','pet_image2.jpg' );
+('user2', 6 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image2.jpg','pet_image2.jpg' );
 insert into contest_pet (userid  , cseq , content , image, saveimage) values 
-('user1', 1 ,'저희 강아지좀 보세요 대박이에요.' , 'pet_image1.jpg','pet_image1.jpg' );
+('user1', 6 ,'저희 강아지좀 보세요 대박이에요.' , 'pet_image1.jpg','pet_image1.jpg' );
 
 
 
@@ -134,8 +134,17 @@ select * from contest;
 update contest set useyn = 'Y' where useyn = 'W';
 
 
-
+INSERT INTO contest (userid, useyn, subject, content, lastdate)
+values ('user1','Y','누가 더 사랑스러운 반려동물을 가지고 있는가!' , '사랑스러운 반려동물들을 찾아보세요!! 지금 바로 여러분의 귀여운 동물 사진들을 올려주세요!' ,
+DATE_ADD(NOW(), INTERVAL 3 DAY));
+INSERT INTO contest (userid, useyn, subject, content, lastdate)
+values ('user1','Y','누가 더 사랑스러운 반려동물을 가지고 있는가!' , '사랑스러운 반려동물들을 찾아보세요!! 지금 바로 여러분의 귀여운 동물 사진들을 올려주세요!' ,
+DATE_ADD(NOW(), INTERVAL 3 DAY));
+INSERT INTO contest (userid, useyn, subject, content, lastdate)
+values ('user1','Y','누가 더 사랑스러운 반려동물을 가지고 있는가!' , '사랑스러운 반려동물들을 찾아보세요!! 지금 바로 여러분의 귀여운 동물 사진들을 올려주세요!' ,
+DATE_ADD(NOW(), INTERVAL 3 DAY));
 INSERT INTO contest (userid, useyn, subject, content, lastdate)
 values ('user1','Y','누가 더 사랑스러운 반려동물을 가지고 있는가!' , '사랑스러운 반려동물들을 찾아보세요!! 지금 바로 여러분의 귀여운 동물 사진들을 올려주세요!' ,
 DATE_ADD(NOW(), INTERVAL 3 DAY));
 
+update contest set useyn = 'Y' where useyn = 'W';

@@ -3,19 +3,27 @@
 <%@ include file ="/header.jsp" %>
 <%@ include file ="css/content_css.jsp" %>
 
+
 <div class="contest contest_detail">
 	<div class="title-wrapper">
 		<div  class="left">
-			<span class="detail_num">NO. ${contest_detail.cseq}</span>
+			<%-- <span class="detail_num">NO. ${contest_detail.cseq}</span> --%>
+			<span class="detail_num">NO. ${index}</span>
 			<span class="detailinfo">작성자 : ${contest_detail.nickname} / 조회수 : ${contest_detail.cnt}</span>
 			<h2 class="title">${contest_detail.subject}</h2>
 			<p>${contest_detail.content}</p>
 		</div>
 		<div class="right">
-		<c:if test="${contest_detail.userid == loginUser.userid  }">
-		
-			<a href="">내가 작성한 콘테스트 수정하기</a>
-		</c:if>
+			<c:if test="${contest_detail.lastdate > now}">
+				<span class="lastdate" style="display:block; color:#FF4646; text-align:right;"><fmt:formatDate value="${contest_detail.lastdate}" pattern="yy/MM/dd hh:mm:ss" />까지 등록가능</span>
+				<c:if test="${contest_detail.userid == loginUser.userid  }">
+					<a style="margin-top:15px;" href="zootopia.do?command=contestUpdateForm&cseq=${contest_detail.cseq}">콘테스트 수정하기</a>
+				</c:if>
+			</c:if>
+			<c:if test="${contest_detail.lastdate < now}">완료된 콘테스트</c:if>
+			<c:if test="${contest_detail.userid == loginUser.userid  }">
+				<a style="margin-top:15px; margin-left:10px; background:#000; color:#fff;" href="#none" onclick="goDelete('${contest_detail.cseq}')">콘테스트 삭제하기</a>
+			</c:if>
 		</div>
 	</div>
 	<div class="contest_pet_list">
@@ -81,20 +89,7 @@
 </div>
 <%@ include file ="/footer.jsp" %>
 
-<style>
-.reply { margin-top:100px }
-.reply >  h2 { font-size:30px; font-weight:700; color:#000; }
-.reply .submit_reply {  }
-
-.contest_pet_list .more_pet { background:#D9D9D9; }
-.contest_pet_list .more_pet a { display:flex;  height:393.32px; flex-direction: column; 
-justify-content: center; align-items: center; align-content: center; }
-.contest_pet_list .more_pet .plus { position:relative; }
-.contest_pet_list .more_pet .button { margin-top:50px;
-display:block; color:#fff; font-size:15px; border:1px solid #fff; padding:11px 88px; border-radius:4px; }
-
-</style>
-
+<script src="contest/script/contestForm.js"></script>
 
 
 <div class="">
@@ -102,3 +97,12 @@ display:block; color:#fff; font-size:15px; border:1px solid #fff; padding:11px 8
 	
 	</form>
 </div>
+
+<script>
+	
+	if(location.href.indexOf("delete=no") > 0){
+		alert("삭제에 실패했습니다.");
+		location.href="zootopia.do?command=contestDetail&cseq="+${contest_detail.cseq};
+	}
+	
+</script>

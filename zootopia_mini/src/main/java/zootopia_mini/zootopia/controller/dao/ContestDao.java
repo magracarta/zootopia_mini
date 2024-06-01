@@ -176,6 +176,42 @@ public class ContestDao {
 				
 		
 	}
+	public void updateContest(ContestDTO cdto) {
+		con =DB.getConnection();
+		String sql = "update contest set subject = ? , content = ? , lastdate = ? ,pcnt =?  where cseq = ?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, cdto.getSubject());
+			pstmt.setString(2, cdto.getContent());
+			pstmt.setTimestamp(3, cdto.getLastdate());
+			pstmt.setInt(4, cdto.getPcnt());
+			pstmt.setInt(5, cdto.getCseq());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+	}
+	public int deleteContest(int cseq) {
+		int result = 0;
+		con =DB.getConnection();
+		String sql = "delete from contest where cseq = ?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, cseq);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		return result;
+
+	}
 	
 	
 	
