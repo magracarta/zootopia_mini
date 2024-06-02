@@ -15,10 +15,10 @@ public class WriteCommunityAction implements Action {
 
         // CommunityVO 객체 생성
         CommunityVO cvo = new CommunityVO();
-        cvo.setUserid(request.getParameter("userid")); // 제목 설정
-        cvo.setSubject(request.getParameter("subject")); // 제목 설정
-        cvo.setContent(request.getParameter("content")); // 내용 설정
-        cvo.setKind(Integer.parseInt(request.getParameter("kind"))); // 내용 설정
+        cvo.setUserid(request.getParameter("userid"));
+        cvo.setSubject(request.getParameter("subject")); 
+        cvo.setContent(request.getParameter("content")); 
+        cvo.setKind(Integer.parseInt(request.getParameter("kind"))); 
         
 		CommunityDao cdao = CommunityDao.getInstance();
         cdao.insertCommunity(cvo);

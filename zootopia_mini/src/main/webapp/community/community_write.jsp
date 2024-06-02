@@ -4,14 +4,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <article>
     <form action="zootopia.do?command=writeCommunity" method="post">
-        <h2> community Write</h2>
+        <h2> 자유게시판 양식 </h2>
         <div class="field">
             <label>작성자</label>
-            <input type="text" name="userid" value="${loginUser.userid}" readonly />
+            <input type="text" name="userid"  value="${loggedInUserId}" readonly />
         </div>
         <div class="field">
             <label>닉네임</label>
-            <input type="text" name="nickname" value="${loginUser.nickname}" readonly />
+            <input type="text" name="nickname" value="${communityVO.nickname}" readonly />
         </div>
         <div class="field">
             <label>카테고리 선택</label>

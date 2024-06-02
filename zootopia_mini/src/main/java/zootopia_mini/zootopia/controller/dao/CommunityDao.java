@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+
 import zootopia_mini.zootopia.controller.dto.CommunityVO;
 import zootopia_mini.zootopia.util.DB;
 import zootopia_mini.zootopia.util.Paging;
@@ -53,19 +54,26 @@ public class CommunityDao {
     }
    
     public int getAllCount() {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
         int count = 0;
-        con = DB.getConnection();
-        String sql = "select count(*) as cnt from community";
+
         try {
+            con = DB.getConnection();
+            String sql = "SELECT COUNT(*) AS cnt FROM community";
             pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
-            if (rs.next()) 
+
+            if (rs.next()) {
                 count = rs.getInt("cnt");
-        } catch (SQLException e) { 
+            }
+        } catch (SQLException e) {
             e.printStackTrace();
-        } finally {  
-            DB.close(con, pstmt, rs);  
+        } finally {
+            DB.close(con, pstmt, rs);
         }
+
         return count;
     }
 
@@ -105,15 +113,15 @@ public class CommunityDao {
     }
 
     public void insertCommunity(CommunityVO cvo) {
-        String sql = "INSERT INTO community (userid, subject, content, kind) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO community (subject, content, kind, userid) VALUES (?, ?, ?, ?)";
 
         try {
             con = DB.getConnection();
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, cvo.getUserid());
-            pstmt.setString(2, cvo.getSubject());
-            pstmt.setString(3, cvo.getContent());
-            pstmt.setInt(4, cvo.getKind());
+            pstmt.setString(1, cvo.getSubject());
+            pstmt.setString(2, cvo.getContent());
+            pstmt.setInt(3, cvo.getKind());
+            pstmt.setString(4, cvo.getUserid());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -145,6 +153,23 @@ public class CommunityDao {
         }
 
         return nickname;
+    }
+
+    public void updateCommunity(CommunityVO cvo) {
+        String sql = "UPDATE community SET kind=?, subject=?, content=? WHERE gseq=?";
+        con = DB.getConnection();
+        try {
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, cvo.getKind());
+            pstmt.setString(2, cvo.getSubject());
+            pstmt.setString(3, cvo.getContent());
+            pstmt.setInt(4, cvo.getGseq());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally { 
+            DB.close(con, pstmt, rs);  
+        }   
     }
 	
 	
