@@ -77,7 +77,7 @@ public class ContestDao {
 	public ArrayList<ContestPetDTO> getCpdList(int cseq) {
 		ArrayList<ContestPetDTO> list = new ArrayList<ContestPetDTO>();
 		con = DB.getConnection();
-		String sql = "select * from contestpetiv_view where cseq = ? order by recommends";
+		String sql = "select * from contestpetiv_view where cseq = ? order by recommends desc";
 		try {
 			pstmt =  con.prepareStatement(sql);
 			pstmt.setInt(1, cseq);
@@ -209,8 +209,115 @@ public class ContestDao {
 		}finally {
 			DB.close(con, pstmt, rs);
 		}
+		int petdelte = deletecontest_pet(cseq);
+		
+		
 		return result;
-
+	}
+	
+	public int deletecontest_pet(int cseq) {
+		int result = 0;
+		con =DB.getConnection();
+		String sql ="delete from contest_pet where cseq = ?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, cseq);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		return result;
+	}
+	public int getCpdList(String userid, String cseq) {
+		int result =0;
+		con=DB.getConnection();
+		String sql ="select * from contest_pet where cseq = ? && userid =?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(cseq));
+			pstmt.setString(2, userid);
+			rs = pstmt.executeQuery();
+			if(rs.next()) result = 1;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+		
+		return result;
+	}
+	public void insertContestPet(ContestPetDTO cpdto) {
+		con=DB.getConnection();
+		String sql ="insert into contest_pet (userid , cseq , content , image , saveimage) values(? , ? , ? , ?, ?)";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, cpdto.getUserid());
+			pstmt.setInt(2, cpdto.getCseq());
+			pstmt.setString(3, cpdto.getContent());
+			pstmt.setString(4, cpdto.getImage());
+			pstmt.setString(5, cpdto.getSaveimage());
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+	}
+	public ContestPetDTO getContestPet(int cpseq) {
+		ContestPetDTO cdto = null;
+		con = DB.getConnection();
+		String sql = "select * from contestpetiv_view where cpseq = ?";
+		try {
+			pstmt =  con.prepareStatement(sql);
+			pstmt.setInt(1, cpseq);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				cdto = (new ContestPetDTO(
+						rs.getInt("cpseq"),
+						rs.getString("content"),
+						rs.getString("userid"),
+						rs.getString("nickname"),
+						rs.getInt("cseq"),
+						rs.getInt("recommends"),
+						rs.getString("image"),
+						rs.getString("saveimage"),
+						rs.getString("petname"),
+						rs.getString("petgender"),
+						rs.getString("kind"),
+						rs.getString("password")
+						));
+				
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+		return cdto;
+	}
+	public void addRecommend(int recommends, int cpseq) {
+		con = DB.getConnection();
+		String sql = "update contest_pet set recommends = ? where cpseq = ?";
+		try {
+			pstmt =con.prepareStatement(sql);
+			pstmt.setInt(1, recommends);
+			pstmt.setInt(2, cpseq);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		
 	}
 	
 	

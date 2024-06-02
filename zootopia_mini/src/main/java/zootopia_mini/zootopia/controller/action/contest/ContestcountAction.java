@@ -16,9 +16,9 @@ public class ContestcountAction implements Action {
 		String cseq = request.getParameter("cseq");
 		String index = request.getParameter("index");
 		ContestDao cdao = ContestDao.getInstance();
-		ContestDTO cdot = cdao.getContest(Integer.parseInt(cseq));
+		ContestDTO cdto = cdao.getContest(Integer.parseInt(cseq));
 		
-		int visitcount = cdot.getCnt()+1;
+		int visitcount = cdto.getCnt()+1;
 		
 		cdao.viewCountUp(visitcount , cseq);
 		request.setAttribute("cseq", cseq);

@@ -97,13 +97,9 @@ update contest set useyn = 'Y' where cseq = 50;
 
 select * from contest_reply;
 -- contest_reply  댓글 불러오기
-insert into contest_reply (cseq , userid, nickname , content) 
-values (13,'user2' , '서바두턔바쨰' , '너무 이쁜데요오오오오옹??');
-insert into contest_reply (cseq , userid, nickname , content) 
-values (13,'user1' , '역학계몽요해' , '이 다음에는 저도 참가하고싶네요!!');
 
 
-select * from member;
+select * from contest_pet;
 
 INSERT INTO member (nickname, userid, pwd, name, phone, email, petname, petgender, kind) VALUES
 ('닉네임1', 'user1', '0000', '홍길동', '010-1234-5678', 'user1@example.com', 'ALEX', 'F' ,'강아지'),
@@ -113,17 +109,18 @@ INSERT INTO member (nickname, userid, pwd, name, phone, email, petname, petgende
 
 
 insert into contest_pet (userid  , cseq , content , image, saveimage ) values 
-('user2', 7 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image2.jpg','pet_image2.jpg' );
+('user2', 39 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image2.jpg','pet_image2.jpg' );
 insert into contest_pet (userid  , cseq , content , image, saveimage) values 
-('user1', 7 ,'저희 강아지좀 보세요 대박이에요.' , 'pet_image1.jpg','pet_image1.jpg' );
+('user1', 39 ,'저희 강아지좀 보세요 대박이에요.' , 'pet_image1.jpg','pet_image1.jpg' );
 
 insert into contest_pet (userid  , cseq , content , image, saveimage) values 
-('user2', 6 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image2.jpg','pet_image2.jpg' );
+('user2', 39 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image2.jpg','pet_image2.jpg' );
 insert into contest_pet (userid  , cseq , content , image, saveimage) values 
 ('user1', 6 ,'저희 강아지좀 보세요 대박이에요.' , 'pet_image1.jpg','pet_image1.jpg' );
 
 
-
+INSERT INTO member (nickname, userid, pwd, name, phone, email) VALUES
+('닉네임6', 'user6', '0000', '홍길동', '010-1234-5678', 'user1@example.com');
 
 INSERT INTO member (nickname, userid, pwd, name, phone, email, petname, petgender, kind , image , saveimage) VALUES
 ('닉네임5', 'user5', '0000', '홍길동', '010-1234-5678', 'user1@example.com', 'ALEX', 'F' ,'강아지' , 'profileimage1.jpg' , 'profileimage1.jpg');

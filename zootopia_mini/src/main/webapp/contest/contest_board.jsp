@@ -52,7 +52,7 @@
 							    <div class="swiper-wrapper">
 									<c:forEach items ="${list.cpdList}" var="plist" varStatus="state" >
 										 <div class="swiper-slide">
-										 	<img src="images/${plist.image}">
+										 	<img src="images/${plist.saveimage}">
 										 	<div class="rank">
 										 		${state.index+1}
 										 	</div>
@@ -118,7 +118,8 @@
  document.querySelectorAll(".contest_list li").forEach((elem,index)=>{
 	 	let indexdate = begin - index;
 	    elem.querySelector(".date_num .index").innerHTML = indexdate;
-	    elem.querySelector(".go_btn").href="zootopia.do?command=contestcount&cseq="+elem.querySelector(".go_btn").dataset.url+"&index="+indexdate;
+	    elem.querySelector(".go_btn").href="zootopia.do?command=contestcount&cseq="+elem.querySelector(".go_btn").dataset.url+"&index="+indexdate
+	    		+"&contestDetailCount=1";
 	});
  </script>
  

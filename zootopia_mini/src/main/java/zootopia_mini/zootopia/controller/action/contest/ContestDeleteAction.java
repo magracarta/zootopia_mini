@@ -21,6 +21,8 @@ public class ContestDeleteAction implements Action {
 		String url = "contest/contest_board.jsp";
 		if(result == 0) url = "zootopia.do?command=contestDetail&delete=no&cseq="+cseq;
 		
+		
+		
 		request.getRequestDispatcher(url).forward(request, response);
 		
 

@@ -12,6 +12,8 @@ import zootopia_mini.zootopia.controller.action.contest.ContestUpdateFormAction;
 import zootopia_mini.zootopia.controller.action.contest.ContestcountAction;
 import zootopia_mini.zootopia.controller.action.contest.ContestcreateAction;
 import zootopia_mini.zootopia.controller.action.contest.ContestupdateAction;
+import zootopia_mini.zootopia.controller.action.contest.InsertContestPetAction;
+import zootopia_mini.zootopia.controller.action.contest.ReccomnadPetAction;
 import zootopia_mini.zootopia.controller.action.main.MainAction;
 import zootopia_mini.zootopia.controller.action.member.IdCheckFormAction;
 import zootopia_mini.zootopia.controller.action.member.JoinAction;
@@ -69,6 +71,8 @@ public class ActionFactory {
 		else if(command.equals("contestUpdateForm")) ac = new ContestUpdateFormAction();
 		else if(command.equals("contestupdate")) ac = new ContestupdateAction();
 		else if(command.equals("contestDelete")) ac = new ContestDeleteAction();
+		else if(command.equals("insertContestPet")) ac = new InsertContestPetAction();
+		else if(command.equals("reccomnadPet")) ac = new ReccomnadPetAction();
 		
 		//qna
 		else if(command.equals("qnaList")) ac = new QnaListAction();

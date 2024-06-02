@@ -27,6 +27,50 @@ function no_text( formvalue ,text ){
 	formvalue.focus();
 }
 
+
+if(location.href.indexOf("contestDetail") > 0 && document.querySelector(".morePetBtn")){
+	document.querySelector(".morePetBtn").addEventListener('click',()=>{
+	    document.querySelector(".createForm_contaienr").style.display = 'flex';
+	});
+	
+	document.querySelectorAll(".createForm_contaienr .closeBtn , .createForm_contaienr .overay").forEach((elem)=>{
+		elem.addEventListener('click',()=>{
+		    document.querySelector(".createForm_contaienr").style.display = 'none';
+		});
+	});
+	document.querySelector(".createForm_contaienr .left img").addEventListener('click',()=>{
+		document.querySelector(".createForm_contaienr .left input").click();
+	});
+	document.querySelector(".createForm_contaienr .left input").addEventListener('change',(e)=>{
+		imgPreview(document.querySelector(".createForm_contaienr .left input"));
+	});
+	
+	function imgPreview(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+	
+			reader.onload = function (e) {
+				document.querySelector(".createForm_contaienr .left img").src=(e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+	
+	function petform(userid){
+		let formdate = document.contestAddPet;
+		if(formdate.userid.value != userid){
+			no_text(formdate.subject,"해당 정보가 일치하지 않습니다. 다시 로그인해주세요!");
+			return false;
+		}else if(formdate.imagefile.value == ""){
+			no_text(formdate.imagefile,"이미지를 등록해주세요.");
+			return false;
+		}else if(formdate.content.value == ""){
+			no_text(formdate.content,"내용을 입력해주세요.");
+			return false;
+		}
+		return true;
+	}
+}
 if(location.href.indexOf("contestForm") > 0 || location.href.indexOf("contestUpdateForm") > 0){
 	let open = [false , false];
 	let selectAll=document.querySelectorAll(".selectcontainer");

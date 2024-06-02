@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <style>
 .contest li a { width:100%; display:block; } 
 .contest .swiper-slide {  }
@@ -126,5 +128,6 @@ justify-content: center; align-items: center; align-content: center; background:
 .contest_pet_list .more_pet .plus { position:relative; padding-top:25px; }
 .contest_pet_list .more_pet .button { margin-top:50px;
 display:block; color:#fff; font-size:15px; border:1px solid #fff; padding:11px 88px; border-radius:4px; }
+
 
 </style>
