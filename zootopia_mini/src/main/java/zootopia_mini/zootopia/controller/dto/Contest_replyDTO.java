@@ -14,15 +14,15 @@ public class Contest_replyDTO {
 	
 	public Contest_replyDTO() {}
 	
-	public Contest_replyDTO(int cseq, String userid, Timestamp createdate, String content) {
+	public Contest_replyDTO(int cseq, String userid, String content) {
 		this.cseq = cseq;
 		this.userid = userid;
-		this.createdate = createdate;
 		this.content = content;
 	}
 
 	public Contest_replyDTO(int crseq, int cseq, String userid, Timestamp createdate, String content) {
-		this( cseq, userid, createdate, content);
+		this( cseq, userid, content);
+		this.createdate  = createdate;
 		this.crseq = crseq;
 	}
 	public int getCrseq() {

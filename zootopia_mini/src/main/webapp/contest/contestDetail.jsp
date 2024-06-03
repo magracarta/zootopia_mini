@@ -13,10 +13,7 @@
 			<h2 class="title">${contest_detail.subject}</h2>
 			<p>${contest_detail.content}</p>
 			
-			
 		</div>
-		
-		
 		
 		<div class="right" style="text-align: right;">
 			<c:if test="${contest_detail.lastdate > now}">
@@ -27,7 +24,7 @@
 					<a style="margin:15px 0;" href="zootopia.do?command=contestUpdateForm&cseq=${contest_detail.cseq}">콘테스트 수정하기</a>
 				</c:if>
 			</c:if>
-			<c:if test="${contest_detail.lastdate < now}">완료된 콘테스트</c:if>
+			<c:if test="${contest_detail.lastdate < now}"><span style="display:block;">완료된 콘테스트</span></c:if>
 			<c:if test="${contest_detail.userid == loginUser.userid  }">
 				<a style="margin:15px 0; margin-left:10px; background:#000; color:#fff;" href="#none" onclick="goDelete('${contest_detail.cseq}')">콘테스트 삭제하기</a>
 				<br>
@@ -124,10 +121,9 @@
 		<c:if test="${loginUser != null}">
 		<div class="submit_reply">
 			<form method="post" action="zootopia.do?command=updateReply" name="replyform" >
-				<input type="hidden" name="userid" value="${replylist.userid}">
-				<input type="hidden" name="cseq" value="${replylist.cseq}">
+				<input type="hidden" name="userid" value="${loginUser.userid}">
+				<input type="hidden" name="cseq" value="${contest_detail.cseq}">
 				<input type="hidden" name="index" value="${index}">
-				<input type="hidden" name="crseq" value="${replylist.crseq}">
 				<div class="longin-info-box">
 					<c:if test ="${loginUser.saveimage != null}">
 						<img src="images/${loginUser.saveimage}">
@@ -159,11 +155,10 @@
 								
 							</div>
 							<div class="text-box">
-								<span>@ ${replylist.userid }</span>
+								<span>@ ${replylist.mvo.nickname }</span>
 								<span>${replylist.content }</span>
 							</div>
 							<div class="button-box">
-						
 								<p>${replylist.createdate}</p>
 							</div>
 							
@@ -179,8 +174,8 @@
 										<input type="hidden" name="crseq" value="${replylist.crseq}">
 										<textarea name="content"></textarea>
 										<div class="button_box">
-											<input type="submit" value="수정">
-											<input class="delete" type="button" value="삭제" onclick="">
+											<input type="submit" value="수정" onclick="return replyUpdate()">
+											<input class="delete" type="button" value="삭제" onclick="replyDelete('${replylist.crseq}' , '${replylist.cseq}' , '${index}')">
 										</div>
 									</form>
 								</div>
@@ -188,11 +183,12 @@
 					</li>		
 				</c:forEach>
 				
-				<jsp:include page="/paging/paging.jsp" flush="true" >
-					<jsp:param name="url" value="zootopia.do?command=contestDetail&cseq=${contest_detail.cseq}&index=${index}" />
-					<jsp:param name="search" value="${search}" />
-				</jsp:include>
+				
 			</ul>
+			<jsp:include page="/paging/paging.jsp" flush="true" >
+				<jsp:param name="url" value="zootopia.do?command=contestDetail&cseq=${contest_detail.cseq}&index=${index}" />
+				<jsp:param name="search" value="${search}" />
+			</jsp:include>
 		</div>
 	</div>
 
@@ -200,7 +196,7 @@
 </div>
 <%@ include file ="/footer.jsp" %>
 <style>
-
+form[name="search"] { display:none; }
 </style>
 
 
@@ -243,5 +239,11 @@
 	<script>
 	alert("로그인 후 추천해주세요.");
 	location.href="zootopia.do?command=loginform";
+	</script>
+</c:if>
+<c:if test ="${replyDelete == 'replyDelete' }">
+	<script>
+	alert("댓글을 삭제하였습니다.");
+	location.href="zootopia.do?command=contestDetail&cseq="+cseq+"&index="+${index};
 	</script>
 </c:if>

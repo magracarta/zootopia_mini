@@ -16,11 +16,24 @@ function go_createcontest(){
 	return true;
 }
 
+function replyDelete(crseq , cseq , index){
+	if(confirm("이 댓글을 정말 삭제하시겠습니까?")) location.href="zootopia.do?command=contestReplyDelete&crseq="+crseq+"&cseq="+cseq +"&index="+index;
+}
+
 function goDelete(cseq){
 	if(confirm("이 콘테스트를 정말 삭제하시겠습니까?")) location.href="zootopia.do?command=contestDelete&cseq="+cseq;
 }
 
-
+function contest_reply(){
+	let formdate = document.replyform;
+	if(formdate.content.value == ""){
+		no_text(formdate.content,"제목을 입력해주세요!");
+		return false;
+	}else{
+		return true;
+	}
+	
+}
 
 function no_text( formvalue ,text ){
 	alert(text);

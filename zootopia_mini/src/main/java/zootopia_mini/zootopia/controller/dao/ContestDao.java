@@ -403,6 +403,36 @@ public class ContestDao {
 		
 		return count;
 	}
+	public void insertContestReply(Contest_replyDTO crdto) {
+		con = DB.getConnection();
+		String sql = "insert into contest_reply ( cseq , userid , content ) values ( ? , ?, ?) ";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, crdto.getCseq());
+			pstmt.setString(2, crdto.getUserid());
+			pstmt.setString(3, crdto.getContent());
+			pstmt.executeUpdate();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+	}
+	public void deleteContestReply(int crseq) {
+		con = DB.getConnection();
+		String sql = "delete from contest_reply where crseq = ?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1,crseq);
+			pstmt.executeUpdate();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+	}
 	
 	
 	

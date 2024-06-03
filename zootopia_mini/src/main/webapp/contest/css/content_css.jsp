@@ -178,8 +178,9 @@ border-radius: 5px; margin:0 5px;  }
 
 
 .reply_list {  }
-.reply_list ul {  }
-.reply_list ul li {  padding:30px 0; border-top:1px solid #E3E3E3; border-bottom:1px solid #E3E3E3;  }
+.reply_list ul { margin-bottom:30px; }
+.reply_list ul li {  padding:40px 0; border-top:1px solid #E3E3E3;  }
+.reply_list ul li:last-child {  border-bottom:1px solid #E3E3E3;   }
 .reply_list ul li .top { display:flex; align-items: center; }
 .reply_list ul li .image_box { width:80px; height:80px; overflow: hidden; border-radius: 50%; margin-right:36px;  }
 .reply_list ul li .image_box img { width:100%; height:100%; object-fit: cover; }
@@ -191,7 +192,7 @@ border-radius: 5px; margin:0 5px;  }
 .reply_list ul li .button-box p { font-size: 15px; color:#959595; font-weight: 500; }
 
 .reply_list ul li .replyUpdateForm { margin-top:30px; }
-.reply_list ul li .replyUpdateForm textarea { height: 80px; border:1px solid #D9D9D9; }
+.reply_list ul li .replyUpdateForm textarea { height: 60px; border:1px solid #D9D9D9; }
 .reply_list ul li .replyUpdateForm .button_box { display:flex; justify-content: flex-end;
 align-items: center; margin-top:20px;}
 
