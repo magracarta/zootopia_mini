@@ -34,12 +34,13 @@ $(document).ready(function() {
         if (confirm("정말로 추천하시겠습니까?")) {
             // 사용자가 확인을 눌렀을 경우에만 AJAX 요청 보내기
             $.ajax({
-                url: "communityRecommands",
+                url: "http://localhost:8090/zootopia_mini/zootopia.do?command=communityRecommands",
                 type: "POST",
                 data: { gseq: gseq },
                 success: function(data) {
-                    // 응답으로 받은 새로운 추천 수를 화면에 업데이트
-                    $("#recommends").text(data);
+                    // 서버로부터 받은 JSON 데이터를 파싱하여 추천 수를 화면에 업데이트
+                    var recommends = data.recommends;
+                    $("#recommends").text(recommends);
                 },
                 error: function(xhr, status, error) {
                     console.error("AJAX request failed: " + error);
@@ -50,5 +51,11 @@ $(document).ready(function() {
 });
 
 function cancel() {
-        window.history.back();
+    var confirmed = confirm("작성을 취소하시겠습니까?"); // 사용자에게 확인 메시지 표시
+    if (confirmed) {
+        var href = "http://localhost:8090/zootopia_mini/zootopia.do?command=communityBoard"; // 이동할 페이지의 URL
+        window.location.href = href;
+    } else {
+       
     }
+}

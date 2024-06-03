@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file="/header.jsp" %>
+
 <article>
     <form action="zootopia.do?command=writeCommunity" method="post">
         <h2> 자유게시판 양식 </h2>
@@ -33,9 +35,9 @@
 		</div>
         <div class="btn">
             <input type="submit" value="작성하기" />
-            <button type="button" onclick="cancel()">취소하기</button>
+            <button type="button" onclick="cancel()">작성취소</button>
         </div>
     </form>
 </article>
 
-</script>
+<%@ include file="/footer.jsp" %>
