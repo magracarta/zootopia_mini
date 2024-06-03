@@ -25,11 +25,11 @@ public class CommunityBoardAction implements Action {
 	    	CommunityDao cdao = CommunityDao.getInstance();
 	    	
 	    	int page = 1;
-	    	if( request.getParameter("page") != null ) {
-	    		page = Integer.parseInt( request.getParameter("page") );
-	    		session.setAttribute("page", page);
-	    	}else if( session.getAttribute("page")!=null) {
-	    		page = (Integer)session.getAttribute("page");
+	    	if( request.getParameter("pagenum") != null ) {
+	    		page = Integer.parseInt( request.getParameter("pagenum") );
+	    		session.setAttribute("pagenum", page);
+	    	}else if( session.getAttribute("pagenum")!=null) {
+	    		page = (Integer)session.getAttribute("pagenum");
 	    	}
 	    	
 	    	Paging paging = new Paging();
@@ -39,7 +39,9 @@ public class CommunityBoardAction implements Action {
 			
 			// 레코드의 전체 갯수 조회
 			int count = cdao.getAllCount();    	
-			paging.setPageAllcount(count);
+			paging.setRecordAllcount(count);
+			
+		
 	    		    	
 			ArrayList<CommunityVO> list = cdao.selectCommunity(paging);
 	    	
