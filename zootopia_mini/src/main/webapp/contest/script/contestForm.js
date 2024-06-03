@@ -56,7 +56,7 @@ if(location.href.indexOf("contestDetail") > 0 && document.querySelector(".morePe
 		}
 	}
 	
-	function petform(userid){
+	function createpetform(userid){
 		let formdate = document.contestAddPet;
 		if(formdate.userid.value != userid){
 			no_text(formdate.subject,"해당 정보가 일치하지 않습니다. 다시 로그인해주세요!");
@@ -70,7 +70,81 @@ if(location.href.indexOf("contestDetail") > 0 && document.querySelector(".morePe
 		}
 		return true;
 	}
+	
+	
 }
+
+
+
+if(location.href.indexOf("contestDetail") > 0 && document.querySelector(".petUpdate")){
+	let beforeimage;
+	document.querySelectorAll("a.petUpdate").forEach((elem, index)=>{
+		elem.addEventListener('click',(e)=>{
+			document.contestUpdatePet.imagefile.value = "";
+			 beforeimage = (e.target.dataset.img);
+			 document.querySelector(".updateForm_contaienr").style.display = 'flex';
+			 document.querySelector(".updateForm_contaienr .left img").src = 'images/'+(beforeimage);
+			 document.contestUpdatePet.content.innerText = (e.target.dataset.content);
+			 document.contestUpdatePet.cpseq.value = (e.target.dataset.cpseq);
+		});
+		
+		
+	});
+	
+	
+	document.querySelectorAll(".updateForm_contaienr .closeBtn , .updateForm_contaienr .overay").forEach((elem)=>{
+		elem.addEventListener('click',()=>{
+		    document.querySelector(".updateForm_contaienr").style.display = 'none';
+		});
+	});
+	document.querySelector(".updateForm_contaienr .change_btn").addEventListener('click',(e)=>{
+		
+		document.querySelector(".updateForm_contaienr .left input").click();
+		
+	});
+	document.querySelector(".updateForm_contaienr .left input").addEventListener('change',(e)=>{
+		imgPreview(document.querySelector(".updateForm_contaienr .left input"));
+	});
+	
+	function imgPreview(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+	
+			reader.onload = function (e) {
+				document.querySelector(".updateForm_contaienr .left img").src=(e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+	
+	function petUpdateform(userid){
+		let formdate = document.contestUpdatePet;
+		if(formdate.userid.value != userid){
+			no_text(formdate.subject,"해당 정보가 일치하지 않습니다. 다시 로그인해주세요!");
+			return false;
+		}else if(formdate.content.value == ""){
+			no_text(formdate.content,"내용을 입력해주세요.");
+			return false;
+		}
+		return true;
+	}
+	document.querySelector(".before_btn").addEventListener('click',(e)=>{
+		document.contestUpdatePet.imagefile.value = "";
+		document.querySelector(".updateForm_contaienr .left img").src = 'images/'+beforeimage;
+	});
+
+document.querySelectorAll(".petDelete").forEach((elem)=>{
+	elem.addEventListener('click',(e)=>{
+		if(confirm("정말로 삭제하시겠습니까?")){
+			location.href="zootopia.do?command=contestpetDelete&cpseq="+elem.dataset.cpseq+"&cseq="
+			+elem.dataset.cseq+"&index="+elem.dataset.index;
+		}
+	});
+	
+});
+	
+}
+
 if(location.href.indexOf("contestForm") > 0 || location.href.indexOf("contestUpdateForm") > 0){
 	let open = [false , false];
 	let selectAll=document.querySelectorAll(".selectcontainer");

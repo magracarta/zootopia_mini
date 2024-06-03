@@ -77,7 +77,8 @@ public class InsertContestPetAction implements Action {
 			
 			
 			
-			request.getRequestDispatcher("zootopia.do?command=contestDetail").forward(request, response);
+
+			response.sendRedirect("zootopia.do?command=contestDetail&cseq="+cseq+"&index="+index);
 		}
 
 	}

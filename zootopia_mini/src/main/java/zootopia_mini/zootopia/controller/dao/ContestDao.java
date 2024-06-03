@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import zootopia_mini.zootopia.controller.dto.ContestDTO;
 import zootopia_mini.zootopia.controller.dto.ContestPetDTO;
+import zootopia_mini.zootopia.controller.dto.Contest_replyDTO;
 import zootopia_mini.zootopia.util.DB;
 import zootopia_mini.zootopia.util.Paging;
 
@@ -318,6 +319,70 @@ public class ContestDao {
 			DB.close(con, pstmt, rs);
 		}
 		
+	}
+	public void updateContestPet(ContestPetDTO cpdto) {
+		con = DB.getConnection();
+		String sql = "update contest_pet set userid = ?, cseq = ? , content = ?,  image = ? , saveimage = ? where cpseq = ?";
+		
+		try {
+			pstmt =con.prepareStatement(sql);
+			pstmt.setString(1, cpdto.getUserid());
+			pstmt.setInt(2, cpdto.getCseq());
+			pstmt.setString(3, cpdto.getContent());
+			pstmt.setString(4, cpdto.getImage());
+			pstmt.setString(5, cpdto.getSaveimage());
+			pstmt.setInt(6, cpdto.getCpseq());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+	}
+	public void deletePet(int cpseq) {
+		
+		con = DB.getConnection();
+		String sql = "delete from contest_pet where cpseq = ?";
+		
+		try {
+			pstmt =con.prepareStatement(sql);
+			pstmt.setInt(1, cpseq);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+	}
+	public ArrayList<Contest_replyDTO> getContestList(String cseq) {
+		ArrayList<Contest_replyDTO> list = new ArrayList<Contest_replyDTO>();
+		
+		con = DB.getConnection();
+		String sql = "select * from contest_reply where cseq = ? order by crseq desc";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(cseq));
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				list.add(new Contest_replyDTO(
+							rs.getInt("crseq"),
+							rs.getInt("cseq"),
+							rs.getString("userid"),
+							rs.getTimestamp("createdate"),
+							rs.getString("content")
+						));
+			}
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+		
+		return list;
 	}
 	
 	

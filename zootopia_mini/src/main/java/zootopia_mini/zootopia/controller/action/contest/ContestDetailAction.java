@@ -2,6 +2,7 @@ package zootopia_mini.zootopia.controller.action.contest;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 
 import jakarta.servlet.ServletException;
@@ -9,7 +10,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import zootopia_mini.zootopia.controller.action.Action;
 import zootopia_mini.zootopia.controller.dao.ContestDao;
+import zootopia_mini.zootopia.controller.dao.MemberDao;
 import zootopia_mini.zootopia.controller.dto.ContestDTO;
+import zootopia_mini.zootopia.controller.dto.Contest_replyDTO;
+import zootopia_mini.zootopia.util.Paging;
 
 public class ContestDetailAction implements Action {
 
@@ -19,6 +23,7 @@ public class ContestDetailAction implements Action {
 		String index = request.getParameter("index");
 		
 		ContestDao cdao = ContestDao.getInstance();
+		MemberDao mdao = MemberDao.getInstance();
 		ContestDTO cdto = cdao.getContest(Integer.parseInt(cseq));
 		
 		cdto.setCpdList(cdao.getCpdList(cdto.getCseq()));
@@ -26,6 +31,19 @@ public class ContestDetailAction implements Action {
 		Date date = new Date();
 		Timestamp now = new Timestamp(date.getTime());
 		
+		
+			
+		//리스트 뿌리기
+		ArrayList<Contest_replyDTO> creplylist = cdao.getContestList(cseq);
+		
+		for(Contest_replyDTO list : creplylist) {
+			list.setMvo(mdao.getMember(list.getUserid()));
+		}
+		
+		
+		
+		
+		request.setAttribute("creplylist", creplylist);
 		request.setAttribute("now", now);
 		request.setAttribute("index", index);
 		request.setAttribute("contest_detail", cdto);
