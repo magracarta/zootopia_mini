@@ -14,8 +14,6 @@
 			</div>
 			<div class="field" style="border-top:1px dotted blueviolet;">
 				<label>제목</label><div>${communityVO.subject}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<div></div><span id="recommends_${communityVO.gseq}">${communityVO.recommands}</span> <!-- 추천 수가 표시될 위치 -->
-				</div>
 			</div>
 			<div class="field" style="border-top:1px dotted blueviolet;">
 				<label>등록일</label><div><fmt:formatDate value="${communityVO.createdate}" type="date"/></div>
@@ -24,16 +22,10 @@
 		    <div class="field" style="border-top:1px dotted blueviolet;">
 		    <div class="field" style="border-top:1px dotted blueviolet;">
             <label>본문 내용</label>
-            <div>
-                <pre>${communityVO.content}</pre>
-                <!-- 추천 버튼과 숫자를 담은 div 추가 -->
-                <div>
-                    <!-- 추천 버튼 클릭 시 알람 띄우고 확인을 누르면 추천 처리 -->
-                    <button onclick="recommands('${communityVO.gseq}', '${communityVO.recommands}')">추천</button>
-                    <span id="recommends_${communityVO.gseq}">${communityVO.recommands}</span> <!-- 추천 수가 표시될 위치 -->
-                </div>
-            </div>
-        </div>	
+            <button id="recommendButton">추천</button>
+            <input type="hidden" id="gseq" value="${communityVO.gseq}">
+            <span id="recommends">${communityVO.recommands}</span>
+        </div>
 			<div class="field" style="border-top:1px dotted blueviolet;">
 			    <label>종류</label>
 			    <div>

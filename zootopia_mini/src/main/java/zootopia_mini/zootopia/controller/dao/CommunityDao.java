@@ -191,13 +191,22 @@ public class CommunityDao {
     
     public void updateRecommendations(int gseq) {
         String sql = "UPDATE community SET recommands = recommands + 1 WHERE gseq = ?";
-        try (Connection con = DB.getConnection();
-             PreparedStatement pstmt = con.prepareStatement(sql)) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        try {           
+            con = DB.getConnection();
+            pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, gseq);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (pstmt != null) pstmt.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
-    
 }

@@ -33,6 +33,7 @@
 		</div>
         <div class="btn">
             <input type="submit" value="작성하기" />
+            <button type="button" onclick="cancel()">취소하기</button>
         </div>
     </form>
 </article>
