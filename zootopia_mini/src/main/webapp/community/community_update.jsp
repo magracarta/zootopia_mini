@@ -18,13 +18,13 @@
 			</div>
 			<input type="hidden" name="gseq" value="${communityVO.gseq}">
 			<label>카테고리 선택</label>
-            <select name="kind">
-                <option value="1">고민</option>
-                <option value="2">자랑</option>
-                <option value="3">잡담</option>
-            </select>
+			<select name="kind">
+			    <option value="1" ${communityVO.kind == 1 ? 'selected' : ''}>고민</option>
+				<option value="2" ${communityVO.kind == 2 ? 'selected' : ''}>자랑</option>
+				<option value="3" ${communityVO.kind == 3 ? 'selected' : ''}>잡담</option>
+			</select>
 			<div class="btn">
-				<input type="submit" value="수정">
+				<input type="submit" value="수정완료">
 				<input type="button" value="삭제" onClick="deleteProduct('${communityVO.gseq}')">
 				<input type="button" value="취소" onClick="location.href='zootopia.do?command=communityDetail&gseq=${communityVO.gseq}'">
 			</div>

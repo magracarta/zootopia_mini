@@ -9,21 +9,32 @@
 		
 			<h2> 자유게시판 </h2>
 			<div class="field" style="border-top:2px solid blueviolet;">
-				<label>작성자</label><div>${cvo.userid}</div>
+				<label>작성자</label><div>${communityVO.userid}</div>
 			</div>
 			<div class="field" style="border-top:1px dotted blueviolet;">
-				<label>제목</label><div>${cvo.subject}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<div></div><span id="recommends_${cvo.gseq}">${cvo.recommands}</span> <!-- 추천 수가 표시될 위치 -->
+				<label>제목</label><div>${communityVO.subject}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div></div><span id="recommends_${communityVO.gseq}">${communityVO.recommands}</span> <!-- 추천 수가 표시될 위치 -->
 				</div>
 			</div>
 			<div class="field" style="border-top:1px dotted blueviolet;">
-				<label>등록일</label><div><fmt:formatDate value="${cvo.createdate}" type="date"/></div>
+				<label>등록일</label><div><fmt:formatDate value="${communityVO.createdate}" type="date"/></div>
 			</div>
 			<div class="field" style="border-top:1px dotted blueviolet;">
-				<label>본문 내용</label><div><pre>${cvo.content}</pre>        
-				<button onclick="recommend('${cvo.gseq}')">추천</button>
+				<label>본문 내용</label><div><pre>${communityVO.content}</pre>        
+				<button onclick="recommend('${communityVO.gseq}')">추천</button>
 				<button onclick>비추천</button></div>
 				
+			</div>
+			<div class="field" style="border-top:1px dotted blueviolet;">
+			    <label>종류</label>
+			    <div>
+			        <c:choose>
+			            <c:when test="${communityVO.kind eq 1}">고민</c:when>
+			            <c:when test="${communityVO.kind eq 2}">자랑</c:when>
+			            <c:when test="${communityVO.kind eq 3}">잡담</c:when>
+			            <c:otherwise>알 수 없음</c:otherwise>
+			        </c:choose>
+			    </div>
 			</div>
 			<%-- <div class="field" style="border-bottom:2px solid blueviolet;border-top:2px solid blueviolet;">
             <label>댓글</label>
@@ -43,9 +54,9 @@
             </div> --%>
         </div>
 			<div class="btn">
-			    <input type="submit" value="수정" onclick="location.href='zootopia.do?command=communityUpdate&gseq=${cvo.gseq}'">
-			    <input type="button" value="삭제" onclick="deleteProduct('${cvo.gseq}')">
-			    <input type="button" value="목록으로" onclick="location.href='zootopia.do?command=communityBoard'">
+				<input type="submit" value="수정" onclick="location.href='zootopia.do?command=communityUpdateForm&gseq=${communityVO.gseq}'">	
+				<input type="button" value="삭제" onclick="deleteProduct('${communityVO.gseq}')">
+				<input type="button" value="목록으로" onclick="location.href='zootopia.do?command=communityBoard'">
 			</div>
 		</form>
 	</article>

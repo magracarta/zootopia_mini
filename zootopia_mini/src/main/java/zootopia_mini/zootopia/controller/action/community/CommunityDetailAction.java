@@ -19,6 +19,7 @@ public class CommunityDetailAction implements Action {
         CommunityVO cvo = cdao.getCommunity(gseq); 
 
         request.setAttribute("communityVO", cvo);
+        request.setAttribute("kind", cvo.getKind()); // kind 값 추가
 
         request.getRequestDispatcher("community/community_detail.jsp").forward(request, response);
     }
