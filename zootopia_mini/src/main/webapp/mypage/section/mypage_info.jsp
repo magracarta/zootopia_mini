@@ -2,16 +2,18 @@
     pageEncoding="UTF-8"%>
     
     
-<form name="mypageForm">
+	<form name="mypageForm">
 			<div class="profile-container">
 				<div class="profile-info">
 					<div class="profile_img">
-						<c:if test="${loginUser.saveimage == null}">
-							<img   src="images/profileimage_null.jpg"  width="100px"/>
-						</c:if>
-						<c:if test="${loginUser.saveimage != null}">
-							<img  src="images/${loginUser.saveimage}"  width="100px"/>
-						</c:if>
+						<c:choose>
+							<c:when test="${loginUser.saveimage == null}">
+								<img   src="images/repl-noimg.png"  width="100px"/>
+							</c:when>
+							<c:otherwise>
+								<img  src="images/${loginUser.saveimage}"  width="100px"/>
+							</c:otherwise>
+						</c:choose>
 					</div>
 					<div class="profile-text">
 						<p class="pet-nickname">${loginUser.petname}</p>
@@ -21,14 +23,17 @@
 				</div>
 				<div class="profile-buttons">
 		            <a href="zootopia.do?command=modifyform" class="btn btn-edit" >회원 정보 수정</a>
-		            <a href="#" class="btn btn-delete" onclick="confirmDelete(event)">회원 탈퇴</a>
+		            <a href="zootopia.do?command=deletemember" class="btn btn-delete" >회원 탈퇴</a>
+	        		<!-- onclick="confirmDelete(event)" -->
 	        	</div>
 			</div>
-			<div class="mytext">
+			
+			
+			<div class="mycategory">
 				<a href="zootopia.do?command=mycontest">콘테스트</a>
-				<a href="#">내가 작성한 글</a>
-				<a href="#">내가 쓴 댓글</a>
-				<a href="#">내 Q&A</a>
+				<a href="zootopia.do?command=mywrite">내가 작성한 글</a>
+				<a href="zootopia.do?command=myreply">내가 쓴 댓글</a>
+				<a href="zootopia.do?command=myqna">내 Q&A</a>
 			</div>
 		</form>
 		

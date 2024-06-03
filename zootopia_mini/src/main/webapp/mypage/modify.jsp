@@ -5,7 +5,7 @@
 
 <div class="container">
         <h1 class="title">회원 정보 수정</h1>
-        <form method="post" class="update-form"  action="zootopia.do?command=modify" name="modifyForm">
+        <form method="post" class="update-form"  action="zootopia.do?command=modify" name="modifyForm" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="username">아이디</label>
                 <input type="text" id="userid" class="form-control" value="${loginUser.userid}" name="userid">
@@ -72,21 +72,24 @@
             <div class="form-group">
         <label for="pet-photo">사진</label>
         	<c:if test="${loginUser.saveimage == null}">
-           	 	<img id="preview" src="images/profileimage_null.jpg" width="100px"/>
+           	 	<img id="preview" src="images/repl-noimg.png" width="100px"/>
         	</c:if>
 	        <c:if test="${loginUser.saveimage != null}">
 	            <img id="preview" src="images/${loginUser.saveimage}" width="100px"/>
 		    </c:if>
-	        <input type="file" id="pet-photo" class="form-control" accept="image/*">
+	        <input type="file" name="imagefile" id="pet-photo" class="form-control" >
 	    </div>
             <div class="btn">
-            	<input type="button" value="회원정보수정" onclick="go_updateMember()">
+            	<input type="submit" value="회원정보수정" onclick="return go_updateMember()">
             </div>
         </form>
-        <p class="login-link">이미 계정이 있으신가요? <a href="zootopia.do?command=login">로그인</a></p>
+        <!-- <p class="login-link">이미 계정이 있으신가요? <a href="zootopia.do?command=login">로그인</a></p> -->
     </div>
 
+
+
 <script>
+
 document.getElementById('pet-photo').addEventListener('change', function(event) {
     const file = event.target.files[0];
     const reader = new FileReader();

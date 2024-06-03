@@ -19,6 +19,8 @@ public class MypageDao {
 	
 	
 	public void updateMember(MemberVO mvo1) {
+		
+		System.out.println("DB에 저장되는 파일명: " + mvo1.getSaveimage());
 		con = DB.getConnection();
 		String sql = "update member set pwd=?, name=?, email=? , "
 				+ " phone=?, petname=?, kind=? , petgender=?, "
@@ -42,5 +44,19 @@ public class MypageDao {
 		} finally { DB.close(con, pstmt, rs);
 		}
 	 
+	}
+
+
+	public void deleteMember(String userid) {
+		con = DB.getConnection();
+		String sql = "update member set useyn='N' where userid = ? ";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally { DB.close(con, pstmt, rs);
+		}
 	}
 }
