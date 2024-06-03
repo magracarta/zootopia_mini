@@ -21,11 +21,19 @@
 				<label>등록일</label><div><fmt:formatDate value="${communityVO.createdate}" type="date"/></div>
 			</div>
 			<div class="field" style="border-top:1px dotted blueviolet;">
-				<label>본문 내용</label><div><pre>${communityVO.content}</pre>        
-				<button onclick="recommend('${communityVO.gseq}')">추천</button>
-				<button onclick>비추천</button></div>
-				
-			</div>
+		    <div class="field" style="border-top:1px dotted blueviolet;">
+		    <div class="field" style="border-top:1px dotted blueviolet;">
+            <label>본문 내용</label>
+            <div>
+                <pre>${communityVO.content}</pre>
+                <!-- 추천 버튼과 숫자를 담은 div 추가 -->
+                <div>
+                    <!-- 추천 버튼 클릭 시 알람 띄우고 확인을 누르면 추천 처리 -->
+                    <button onclick="recommands('${communityVO.gseq}', '${communityVO.recommands}')">추천</button>
+                    <span id="recommends_${communityVO.gseq}">${communityVO.recommands}</span> <!-- 추천 수가 표시될 위치 -->
+                </div>
+            </div>
+        </div>	
 			<div class="field" style="border-top:1px dotted blueviolet;">
 			    <label>종류</label>
 			    <div>

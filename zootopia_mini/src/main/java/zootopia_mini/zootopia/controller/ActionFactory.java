@@ -5,6 +5,7 @@ import zootopia_mini.zootopia.controller.action.Action;
 import zootopia_mini.zootopia.controller.action.community.CommunityBoardAction;
 import zootopia_mini.zootopia.controller.action.community.CommunityDeleteAction;
 import zootopia_mini.zootopia.controller.action.community.CommunityDetailAction;
+import zootopia_mini.zootopia.controller.action.community.CommunityRecommandsAction;
 import zootopia_mini.zootopia.controller.action.community.CommunityUpdateAction;
 import zootopia_mini.zootopia.controller.action.community.CommunityUpdateFormAction;
 import zootopia_mini.zootopia.controller.action.community.WriteCommunityAction;
@@ -60,6 +61,7 @@ public class ActionFactory {
 		else if( command.equals("communityUpdateForm") ) ac = new CommunityUpdateFormAction();
 		else if( command.equals("communityUpdate") ) ac = new CommunityUpdateAction();
 		else if( command.equals("communityDelete") ) ac = new CommunityDeleteAction();
+		else if( command.equals("communityRecommands") ) ac = new CommunityRecommandsAction();
 
 		// mypage
 		else if(command.equals("mypage")) ac = new MypageAction();
