@@ -4,9 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import zootopia_mini.zootopia.controller.dto.ContestDTO;
+import zootopia_mini.zootopia.controller.dto.ContestPetDTO;
 import zootopia_mini.zootopia.controller.dto.MemberVO;
 import zootopia_mini.zootopia.util.DB;
 
@@ -76,13 +78,72 @@ public class MypageDao {
 				ContestDTO cdto = new ContestDTO();
 				cdto.setSubject(rs.getString("subject"));
 				cdto.setContent(rs.getString("content"));
+				
+				System.out.println(cdto.getSubject());
+				System.out.println(cdto.getContent());
 				contestList.add(cdto);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally { DB.close(con, pstmt, rs);
+		} finally { DB.close(con, pstmt, rs);}
 		
 		return contestList;
 		}
+
+
+	public ArrayList<ContestPetDTO> mypetList(String userid) {
+		ArrayList<ContestPetDTO> list = new ArrayList<ContestPetDTO>();
+		String sql = "select * from contestpetiv_view where userid = ? ";
+		con = DB.getConnection();
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				ContestPetDTO cpdto = new ContestPetDTO();
+				cpdto.setCseq(rs.getInt("cseq"));
+				list.add(cpdto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally { DB.close(con, pstmt, rs);}
+		
+		return list;
+	}
+
+
+	public ContestDTO getMypetContest(int cseq) {
+		ContestDTO cdto = null;
+		String sql = "select * from contestpet_view where cseq = ? ";
+		con = DB.getConnection();
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, cseq);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				//int cseq, String userid, String subject, String content, 
+				//Timestamp createdate , Timestamp lastdate, int cnt,
+				//String useyn, int pcnt, int allpcnt, String nickname
+				cdto = new ContestDTO(
+						rs.getInt("cseq"),
+						rs.getString("userid"),
+						rs.getString("subject"),
+						rs.getString("content"),
+						rs.getTimestamp("createdate"),
+						rs.getTimestamp("lastdate"),
+						rs.getInt("cnt"),
+						rs.getString("useyn"),
+						rs.getInt("pcnt"),
+						rs.getInt("allpcnt"),
+						rs.getString("nickname")
+						);
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally { DB.close(con, pstmt, rs);}
+		return cdto;
 	}
 }
+

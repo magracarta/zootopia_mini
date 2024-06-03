@@ -7,38 +7,30 @@
 	<form name="mypageMycontestForm">
 		<div class="container">
 			<div class="column">
-			<h2>내 콘테스트(총 콘테스트 수${allcnt})</h2>
+			<h2>내 콘테스트</h2>
 				<div class="contestlist">
-					<h3>콘테스트 제목${contestList.subject}</h3>
-					<p>콘테스트 내용${contestList.content}</p>
-				</div>
-				<div class="contestlist">
-					<h3>콘테스트 제목${list.subject}</h3>
-					<p>콘테스트 내용${list.content}</p>
-				</div>
-			</div>
-			<div class="column">
-			<h2>참가중인 콘테스트(총 콘테스트 수${allcnt})</h2>
-				<div class="contestlist">
-					<h3>콘테스트 제목${list.subject}</h3>
-					<p>콘테스트 내용${list.content}</p>
-				</div>
-				<div class="contestlist">
-					<h3>콘테스트 제목${list.subject}</h3>
-					<p>콘테스트 내용${list.content}</p>
+					<c:choose>
+						<c:when test="${empty contestList}">
+							 <p>내가 등록한 콘테스트가 없습니다.</p>
+						</c:when>
+					<c:otherwise>
+						<c:forEach items ="${contestList}" var="list">
+							<h3>${list.subject}</h3>
+							<p>${list.content}</p>
+						</c:forEach>
+					</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 			<div class="column">
-			<h2>종료된 콘테스트(총 콘테스트 수${allcnt})</h2>
+			<h2>참가중인 콘테스트</h2>
 				<div class="contestlist">
-					<h3>콘테스트 제목${list.subject}</h3>
-					<p>콘테스트 내용${list.content}</p>
+					<c:forEach items="${contestmypetList}" var="list2">
+						<span>${list2.subject }</span>
+					</c:forEach>
+					
+					
 				</div>
-				<div class="contestlist">
-					<h3>콘테스트 제목${list.subject}</h3>
-					<p>콘테스트 내용${list.content}</p>
-				</div>
-			</div>
 		</div>
 	</form>
 		
