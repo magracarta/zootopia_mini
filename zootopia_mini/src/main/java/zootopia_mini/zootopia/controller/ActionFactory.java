@@ -30,10 +30,14 @@ import zootopia_mini.zootopia.controller.action.member.LoginAction;
 import zootopia_mini.zootopia.controller.action.member.LoginFormAction;
 import zootopia_mini.zootopia.controller.action.member.LogoutAction;
 import zootopia_mini.zootopia.controller.action.member.NicknameCheckFormAction;
+import zootopia_mini.zootopia.controller.action.mypage.DeleteMemberAction;
 import zootopia_mini.zootopia.controller.action.mypage.ModifyAction;
 import zootopia_mini.zootopia.controller.action.mypage.ModifyFormAction;
 import zootopia_mini.zootopia.controller.action.mypage.MycontestAction;
 import zootopia_mini.zootopia.controller.action.mypage.MypageAction;
+import zootopia_mini.zootopia.controller.action.mypage.MyqnaAction;
+import zootopia_mini.zootopia.controller.action.mypage.MyreplyAction;
+import zootopia_mini.zootopia.controller.action.mypage.MywriteAction;
 import zootopia_mini.zootopia.controller.action.qna.QnaListAction;
 import zootopia_mini.zootopia.controller.action.qna.QnaViewAction;
 import zootopia_mini.zootopia.controller.action.qna.WriteQnaAction;
@@ -74,6 +78,10 @@ public class ActionFactory {
 		else if(command.equals("modify")) ac = new ModifyAction();
 		else if(command.equals("modifyform")) ac = new ModifyFormAction();
 		else if(command.equals("mycontest")) ac = new MycontestAction();
+		else if(command.equals("mywrite")) ac = new MywriteAction();
+		else if(command.equals("myreply")) ac = new MyreplyAction();
+		else if(command.equals("myqna")) ac = new MyqnaAction();
+		else if(command.equals("deletemember")) ac = new DeleteMemberAction();
 		
 
 		//contest

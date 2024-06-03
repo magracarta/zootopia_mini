@@ -5,7 +5,7 @@
 
 <div class="container">
         <h1 class="title">회원 정보 수정</h1>
-        <form method="post" class="update-form"  action="zootopia.do?command=modify" name="modifyForm">
+        <form method="post" class="update-form"  action="zootopia.do?command=modify" name="modifyForm" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="username">아이디</label>
                 <input type="text" id="userid" class="form-control" value="${loginUser.userid}" name="userid">
@@ -41,48 +41,55 @@
             </div>
             <div class="form-group">
                 <label for="pet-type">종류</label>
-                <select id="pet-type" class="form-control" name="pet-type">
-	                <c:if test="${loginUser.kind eq '강아지'}" >
-	                    <option value="강아지" selected>강아지</option>
-	                    <option value="고양이">고양이</option>
-	                 </c:if>
-	                 <c:if test="${loginUser.kind eq '고양이'}" >
-	                    <option value="강아지" >강아지</option>
-	                    <option value="고양이" selected>고양이</option>
-	                 </c:if>
+                <select id="pet-type" class="form-control" name="kind">
+                	<c:choose>
+                		<c:when test="${loginUser.kind eq '고양이'}" >
+	                		<option value="강아지" >강아지</option>
+		                    <option value="고양이" selected>고양이</option>
+                		</c:when>
+                		<c:otherwise>
+                			<option value="강아지" selected>강아지</option>
+		                    <option value="고양이">고양이</option>
+                		</c:otherwise>
+                	</c:choose>
                 </select>
             </div>
             <div class="form-group">
                 <label for="pet-gender">성별</label>
-                <select id="pet-gender" class="form-control" name="pet-gender">
-	                <c:if test="${loginUser.petgender eq 'M'}" >
-	                    <option value="남아" selected>남아</option>
-	                    <option value="여아">여아</option>
-	                 </c:if>
-	                 <c:if test="${loginUser.petgender eq 'F'}" >
-	                    <option value="남아" >남아</option>
-	                    <option value="여아" selected>여아</option>
-	                 </c:if>
+                <select id="pet-gender" class="form-control" name="petgender">
+                	<c:choose>
+                		<c:when test="${loginUser.petgender eq 'M'}" >
+	                		<option value="M" >남아</option>
+		                    <option value="F" selected>여아</option>
+                		</c:when>
+                		<c:otherwise>
+                			<option value="M" selected>남아</option>
+		                    <option value="F">여아</option>
+                		</c:otherwise>
+                	</c:choose>
                 </select>
             </div>
             <div class="form-group">
         <label for="pet-photo">사진</label>
         	<c:if test="${loginUser.saveimage == null}">
-           	 	<img id="preview" src="images/profileimage_null.jpg" width="100px"/>
+           	 	<img id="preview" src="images/repl-noimg.png" width="100px"/>
         	</c:if>
 	        <c:if test="${loginUser.saveimage != null}">
 	            <img id="preview" src="images/${loginUser.saveimage}" width="100px"/>
 		    </c:if>
-	        <input type="file" id="pet-photo" class="form-control" accept="image/*">
+	        <input type="file" name="imagefile" id="pet-photo" class="form-control" >
 	    </div>
             <div class="btn">
-            	<input type="button" value="회원정보수정" onclick="go_updateMember()">
+            	<input type="submit" value="회원정보수정" onclick="return go_updateMember()">
             </div>
         </form>
-        <p class="login-link">이미 계정이 있으신가요? <a href="zootopia.do?command=login">로그인</a></p>
+        <!-- <p class="login-link">이미 계정이 있으신가요? <a href="zootopia.do?command=login">로그인</a></p> -->
     </div>
 
+
+
 <script>
+
 document.getElementById('pet-photo').addEventListener('change', function(event) {
     const file = event.target.files[0];
     const reader = new FileReader();
