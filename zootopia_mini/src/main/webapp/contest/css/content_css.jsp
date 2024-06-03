@@ -119,7 +119,7 @@ font-size:15px; width:100%; text-align : center; padding:13px 0; color:#333; bor
 .contest .detailinfo { font-size:13px; color:#999; font-weight:600; display:block; margin:0px 0 20px; }
 
 .reply { margin-top:100px }
-.reply >  h2 { font-size:30px; font-weight:700; color:#000; }
+.reply > h2 { font-size:30px; font-weight:700; color:#000; margin-bottom:30px; }
 .reply .submit_reply {  }
 
 .contest_pet_list .more_pet {  }

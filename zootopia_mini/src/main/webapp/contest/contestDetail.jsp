@@ -98,7 +98,7 @@
 				</c:when>
 				<c:when test="${empty loginUser}">
 					<li class="more_pet">
-						<a href="zootopia.do?command=loginForm">
+						<a href="zootopia.do?command=loginform">
 							<span style="color:#fff">로그인 먼저 해주세요.</span>
 							<span class="button">로그인하러가기</span>
 						</a>
@@ -120,7 +120,7 @@
 
 
 	<div class="reply">
-		<h2>댓글 ${creplylist.size() }개</h2>
+		<h2>댓글 ${replyAll}개</h2>
 		<c:if test="${loginUser != null}">
 		<div class="submit_reply">
 			<form method="post" action="zootopia.do?command=updateReply" name="replyform" >
@@ -187,6 +187,11 @@
 						</c:if>
 					</li>		
 				</c:forEach>
+				
+				<jsp:include page="/paging/paging.jsp" flush="true" >
+					<jsp:param name="url" value="zootopia.do?command=contestDetail&cseq=${contest_detail.cseq}&index=${index}" />
+					<jsp:param name="search" value="${search}" />
+				</jsp:include>
 			</ul>
 		</div>
 	</div>
@@ -237,6 +242,6 @@
 <c:if test ="${user == 'no' }">
 	<script>
 	alert("로그인 후 추천해주세요.");
-	location.href="zootopia.do?command=loginForm";
+	location.href="zootopia.do?command=loginform";
 	</script>
 </c:if>

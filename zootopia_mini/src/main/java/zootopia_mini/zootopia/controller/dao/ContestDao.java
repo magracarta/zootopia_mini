@@ -354,15 +354,17 @@ public class ContestDao {
 			DB.close(con, pstmt, rs);
 		}
 	}
-	public ArrayList<Contest_replyDTO> getContestList(String cseq) {
+	public ArrayList<Contest_replyDTO> getContestList(String cseq, Paging page) {
 		ArrayList<Contest_replyDTO> list = new ArrayList<Contest_replyDTO>();
 		
 		con = DB.getConnection();
-		String sql = "select * from contest_reply where cseq = ? order by crseq desc";
+		String sql = "select * from contest_reply where cseq = ? order by crseq desc limit ? offset ?";
 		
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, Integer.parseInt(cseq));
+			pstmt.setInt(2, page.getRecordrow());
+			pstmt.setInt(3, page.getOffsetnum());
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -383,6 +385,23 @@ public class ContestDao {
 		
 		
 		return list;
+	}
+	public int getAllCountReply(String cseq) {
+		int count =0;
+		con = DB.getConnection();
+		String sql = "select count(*) as cnt from contest_reply where cseq = ?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(cseq));
+			rs =pstmt.executeQuery();
+			if(rs.next()) count = rs.getInt("cnt");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+		return count;
 	}
 	
 	

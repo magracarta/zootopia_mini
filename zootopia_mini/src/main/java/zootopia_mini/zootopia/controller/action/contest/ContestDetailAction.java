@@ -21,6 +21,11 @@ public class ContestDetailAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cseq = request.getParameter("cseq");
 		String index = request.getParameter("index");
+		int replypagenum = 1;
+		
+		if(request.getParameter("pagenum") != null) replypagenum = Integer.parseInt(request.getParameter("pagenum"));
+		
+		System.out.println(replypagenum);
 		
 		ContestDao cdao = ContestDao.getInstance();
 		MemberDao mdao = MemberDao.getInstance();
@@ -31,10 +36,13 @@ public class ContestDetailAction implements Action {
 		Date date = new Date();
 		Timestamp now = new Timestamp(date.getTime());
 		
+		Paging page = new Paging();
 		
-			
+		
+		page.setCurrentPage(replypagenum);
+		page.setRecordAllcount(cdao.getAllCountReply(cseq));
 		//리스트 뿌리기
-		ArrayList<Contest_replyDTO> creplylist = cdao.getContestList(cseq);
+		ArrayList<Contest_replyDTO> creplylist = cdao.getContestList(cseq , page);
 		
 		for(Contest_replyDTO list : creplylist) {
 			list.setMvo(mdao.getMember(list.getUserid()));
@@ -43,6 +51,8 @@ public class ContestDetailAction implements Action {
 		
 		
 		
+		request.setAttribute("paging", page);
+		request.setAttribute("replyAll", page.getRecordAllcount());
 		request.setAttribute("creplylist", creplylist);
 		request.setAttribute("now", now);
 		request.setAttribute("index", index);
