@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import zootopia_mini.zootopia.controller.dto.ContestDTO;
 import zootopia_mini.zootopia.controller.dto.MemberVO;
 import zootopia_mini.zootopia.util.DB;
 
@@ -57,6 +59,30 @@ public class MypageDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally { DB.close(con, pstmt, rs);
+		}
+	}
+
+
+	public ArrayList<ContestDTO> getMyContestList(String userId) {
+		ArrayList<ContestDTO> contestList = new ArrayList<>();
+		String sql = "select * from contest where userid = ? ";
+		con = DB.getConnection();
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userId); // 사용자 아이디를 매개변수로 설정합니다.
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ContestDTO cdto = new ContestDTO();
+				cdto.setSubject(rs.getString("subject"));
+				cdto.setContent(rs.getString("content"));
+				contestList.add(cdto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally { DB.close(con, pstmt, rs);
+		
+		return contestList;
 		}
 	}
 }

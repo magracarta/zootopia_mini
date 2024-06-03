@@ -10,7 +10,7 @@
 			<h2>내 콘테스트(총 콘테스트 수${allcnt})</h2>
 				<div class="contestlist">
 					<h3>콘테스트 제목${contestList.subject}</h3>
-					<p>콘테스트 내용${list.content}</p>
+					<p>콘테스트 내용${contestList.content}</p>
 				</div>
 				<div class="contestlist">
 					<h3>콘테스트 제목${list.subject}</h3>

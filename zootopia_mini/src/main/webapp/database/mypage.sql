@@ -2,6 +2,8 @@ update member set image='profileimage1.jpg', saveimage='profileimage1.jpg' where
 
 select * from member;
 
+select * from contest;
+
 update member set nickname = '바뀌나?' where userid = 'user1';
 
 
