@@ -7,11 +7,11 @@
         <h2> 자유게시판 양식 </h2>
         <div class="field">
             <label>작성자</label>
-            <input type="text" name="userid"  value="${loggedInUserId}" readonly />
+            <input type="text" name="userid"  value="${cvo.userid}" readonly />
         </div>
         <div class="field">
             <label>닉네임</label>
-            <input type="text" name="nickname" value="${communityVO.nickname}" readonly />
+            <input type="text" name="nickname" value="${cvo.nickname}" readonly />
         </div>
         <div class="field">
             <label>카테고리 선택</label>

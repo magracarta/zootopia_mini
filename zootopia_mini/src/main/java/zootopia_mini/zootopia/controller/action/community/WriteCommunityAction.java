@@ -7,15 +7,18 @@ import jakarta.servlet.http.HttpServletResponse;
 import zootopia_mini.zootopia.controller.action.Action;
 import zootopia_mini.zootopia.controller.dao.CommunityDao;
 import zootopia_mini.zootopia.controller.dto.CommunityVO;
+import zootopia_mini.zootopia.controller.dto.MemberVO;
 
 public class WriteCommunityAction implements Action {
     
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+    	MemberVO mVo = (MemberVO) request.getSession().getAttribute("loginUser");
+    	String userId = mVo.getUserid();
         // CommunityVO 객체 생성
         CommunityVO cvo = new CommunityVO();
-        cvo.setUserid(request.getParameter("userid"));
+        cvo.setUserid(userId); // 가져온 아이디를 CommunityVO 객체에 설정
         cvo.setSubject(request.getParameter("subject")); 
         cvo.setContent(request.getParameter("content")); 
         cvo.setKind(Integer.parseInt(request.getParameter("kind"))); 
