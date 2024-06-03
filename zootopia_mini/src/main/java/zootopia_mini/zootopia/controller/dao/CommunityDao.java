@@ -23,7 +23,7 @@ public class CommunityDao {
 
     public ArrayList<CommunityVO> selectCommunity(Paging paging) {
         ArrayList<CommunityVO> list = new ArrayList<CommunityVO>();
-        String sql = "SELECT c.gseq, c.subject, c.content, c.createdate, c.recommands, c.userid, m.nickname, m.userid AS user_id, c.kind " +
+        String sql = "SELECT c.gseq, c.subject, c.content, c.createdate, c.recommands, c.userid, m.nickname, m.userid AS user_id, c.kind, c.vcount " +
                      "FROM community c JOIN member m ON c.userid = m.userid " +
                      "ORDER BY c.gseq DESC LIMIT ? OFFSET ?;";
         con = DB.getConnection();
@@ -42,7 +42,8 @@ public class CommunityDao {
                 cvo.setCreatedate(rs.getTimestamp("createdate"));
                 cvo.setRecommands(rs.getInt("recommands"));
                 cvo.setNicknameFromView(rs.getString("nickname"));
-                cvo.setKind(rs.getInt("kind")); // kind 추가
+                cvo.setKind(rs.getInt("kind"));
+                cvo.setVcount(rs.getInt("vcount")); 
                 list.add(cvo);
             }
         } catch (SQLException e) {
@@ -209,4 +210,18 @@ public class CommunityDao {
             }
         }
     }
+
+	public void increaseViewCount(int gseq) {
+    String sql = "UPDATE community SET vcount = vcount + 1 WHERE gseq = ?";
+    try {
+        con = DB.getConnection();
+        pstmt = con.prepareStatement(sql);
+        pstmt.setInt(1, gseq);
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        DB.close(con, pstmt, rs);
+    }
+}
 }

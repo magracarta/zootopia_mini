@@ -4,46 +4,59 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/header.jsp" %>
 
-<body>
-    <h1>커뮤니티</h1>
-    <table border="1">
-        <tr>
-            <th>글 번호</th>
-            <th>종류</th>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>아이디</th>
-            <th>추천 수</th>
-            <th>작성일자</th>
+
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-3xl font-bold mb-6">자유게시판</h1>
+  <div class="relative w-full overflow-auto">
+    <table class="w-full caption-bottom text-sm">
+      <thead class="[&amp;_tr]:border-b">
+        <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+          <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+            no
+          </th>
+          <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+            [분류]제목
+          </th>
+          <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+            닉네임[작성자]
+          </th>
+          <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+            작성일
+          </th>
+          <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+            추천수
+          </th>
+          <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+            조회수
+          </th>
         </tr>
+      </thead>
+      <tbody>
         <c:forEach var="post" items="${commList}">
-            <tr>
-                <td>${post.gseq}</td>
-                <td>
-                    <c:choose>
-                        <c:when test="${post.kind == 1}">고민</c:when>
-                        <c:when test="${post.kind == 2}">자랑</c:when>
-                        <c:when test="${post.kind == 3}">잡담</c:when>
-                        <c:otherwise></c:otherwise>
-                    </c:choose>
-                </td>
-                <td><a href="zootopia.do?command=communityDetail&gseq=${post.gseq}">${post.subject}</a></td>
-                <td>${post.nickname}</td>
-                <td>${post.userid}</td>
-                <td>${post.recommands}</td>
-                <td>${post.createdate}</td>
-            </tr>
+          <tr>
+            <td>
+			    <a class="text-blue-600" href="javascript:void(0);" onclick="increaseViewCountAndRedirect(${post.gseq})">
+			        <c:choose>
+			            <c:when test="${post.kind == 1}">[고민]</c:when>
+			            <c:when test="${post.kind == 2}">[자랑]</c:when>
+			            <c:when test="${post.kind == 3}">[잡담]</c:when>
+			            <c:otherwise></c:otherwise>
+			        </c:choose>
+			        ${post.subject}
+			    </a>
+			</td>
+            <td>${post.nickname}[${post.userid}]</td>
+            <td>${post.createdate}</td>
+            <td>${post.recommands}</td>
+            <td>${post.vcount}</td>
+          </tr>
         </c:forEach>
+      </tbody>
     </table>
-    <div class="pagination-container">
-        <jsp:include page="/paging/paging.jsp">
-            <jsp:param name="url" value="zootopia.do?command=communityBoard" />
-        </jsp:include>
-    </div>
-    
+  </div>
+</div>
     <div>
         <button onclick="location.href='zootopia.do?command=writeCommunityForm'">글 작성하기</button>
     </div>
-</body>
 
 <%@ include file="/footer.jsp" %>

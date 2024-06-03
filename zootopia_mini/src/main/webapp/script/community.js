@@ -59,3 +59,24 @@ function cancel() {
        
     }
 }
+
+function increaseViewCount(gseq) {
+    $.ajax({
+        type: "POST",
+        url: "zootopia.do?command=communityViewCount&gseq=" + gseq,
+        success: function(response) {
+            console.log("View count increased successfully for post with gseq: " + gseq);
+        },
+        error: function(xhr, status, error) {
+            console.error("Error occurred while increasing view count for post with gseq: " + gseq);
+        }
+    });
+}
+
+function increaseViewCountAndRedirect(gseq) {
+    // 조회수 증가 함수 호출
+    increaseViewCount(gseq);
+    
+    // 원하는 페이지로 이동
+    window.location.href = 'zootopia.do?command=communityDetail&gseq=' + gseq;
+}

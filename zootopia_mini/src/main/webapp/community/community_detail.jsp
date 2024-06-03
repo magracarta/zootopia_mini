@@ -37,22 +37,7 @@
 			        </c:choose>
 			    </div>
 			</div>
-			<%-- <div class="field" style="border-bottom:2px solid blueviolet;border-top:2px solid blueviolet;">
-            <label>댓글</label>
-            <div style="padding:10px;">
-                <!-- 댓글 입력 폼 -->
-                <form action="zootopia.do?command=recommendWrite" method="post">
-                    <input type="hidden" name="gseq" value="${communityVO.gseq}">
-                    <textarea name="comment" placeholder="댓글을 입력하세요"></textarea>
-                    <input type="submit" value="댓글 작성">
-                </form>
-                <!-- 댓글 목록 -->
-                <ul>
-                    <c:forEach var="comment" items="${communityVO.comments}">
-                        <li>${comment}</li>
-                    </c:forEach>
-                </ul>
-            </div> --%>
+			
         </div>
 		<c:if test="${not empty loginUser.userid}">
 		    <!-- 세션에 로그인한 사용자의 아이디가 저장되어 있는 경우 -->

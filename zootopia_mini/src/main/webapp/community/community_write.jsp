@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="/header.jsp" %>
+<link rel="stylesheet" type="text/css" href="css/community.css">
 
 <article>
     <form action="zootopia.do?command=writeCommunity" method="post">
