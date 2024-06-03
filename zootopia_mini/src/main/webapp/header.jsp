@@ -46,8 +46,8 @@
 	<div class="login-menu">
 		<c:choose>
 			<c:when test="${empty loginUser}">
-				<a href="zootopia.do?command=loginForm">Login</a>
-				<a href="zootopia.do?command=joinForm">Join</a>
+				<a href="zootopia.do?command=loginform">Login</a>
+				<a href="zootopia.do?command=joinform">Join</a>
 			</c:when>
 			<c:otherwise>
 				<a href="zootopia.do?command=mypage">${loginUser.nickname}(${loginUser.userid})</a>

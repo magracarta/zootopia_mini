@@ -34,13 +34,13 @@
       	<div class="field">
       		<c:choose>
 				<c:when test="${empty photoview.saveimage}">
-					<img src="images/noname.jpg" width="100px;" />
+					<img id="preview" src="images/noname.jpg" width="100px;" />
 				</c:when>
 				<c:otherwise>						
-					<img src="images/${photoview.saveimage}" width="100px;" />
+					<img id="preview" src="images/${photoview.saveimage}" width="100px;" />
 				</c:otherwise>
 			</c:choose>
-      	<input type="file" name="image" value="이미지 등록"/>      		
+      	<input type="file" id="photo" onClick="show_preview()"/>      		
       	</div>
       	<div class="field">
       		<input type="text" name="petname" placeholder="반려견 이름"/>

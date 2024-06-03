@@ -37,7 +37,7 @@ public class ActionFactory {
 		Action ac =null;
 		
 		if(command.equals("main")) ac = new MainAction();
-		else if(command.equals("loginForm")) ac = new LoginFormAction();
+		else if(command.equals("loginform")) ac = new LoginFormAction();
 		else if(command.equals("login")) ac = new LoginAction();
 		else if(command.equals("logout")) ac = new LogoutAction();
 		else if(command.equals("joinform")) ac = new JoinFormAction();

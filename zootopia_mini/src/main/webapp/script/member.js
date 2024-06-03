@@ -66,7 +66,7 @@ function go_save() {
 	}else if(document.joinForm.reid.value != document.joinForm.userid.value){
 		alert("아이디 중복확인을 하지 않았습니다");
 		document.joinForm.reid.focus();	
-	}else if(document.joinForm.pwd.value == document.joinForm.userid.value){
+	}else if(document.joinForm.pwd.value==""){
 		alert("비밀번호를 입력해 주세요");
 		document.joinForm.pwd.focus();	
 	}else if(document.joinForm.pwd.value != document.joinForm.pwdCheck.value){
@@ -102,10 +102,22 @@ function go_save() {
 	}else {
 		document.joinForm.submit();
 	}
+}
+
+
+function show_preview(){
 	
-	
-	
-	
+	document.getElementById('photo').addEventListener('change', function(event) {
+    	const file = event.target.files[0];
+    	const reader = new FileReader();
+    	reader.onload = function(e) {
+      		const preview = document.getElementById('preview');
+        	preview.src = e.target.result;
+    	}
+    	if (file) {
+        	reader.readAsDataURL(file);
+    	}
+	});
 }
 
 
