@@ -3,6 +3,8 @@
 
 
 <%
+
 	String cseq = request.getParameter("cseq");
-	response.sendRedirect("zootopia.do?command=contestDetail&cseq="+cseq);
+	String index = request.getParameter("index");
+	response.sendRedirect("zootopia.do?command=contestDetail&cseq="+cseq+"&index="+index);
 %>

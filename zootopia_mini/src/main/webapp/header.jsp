@@ -36,7 +36,7 @@
 		</div>
 		<nav class="navigation">
 			<ul>
-				<li><a href="zootopia.do?command=contestBoard&search=">콘테스트</a></li>
+				<li><a href="zootopia.do?command=contestBoard&pagenum=1&search=">콘테스트</a></li>
 				<li><a href="zootopia.do?command=communityBoard">자유게시판</a></li>
 				<li><a href="zootopia.do?command=qnaList">Q&A</a></li>
 			</ul>

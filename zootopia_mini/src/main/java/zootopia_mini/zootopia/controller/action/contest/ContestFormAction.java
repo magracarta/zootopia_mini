@@ -17,7 +17,8 @@ public class ContestFormAction implements Action {
 		HttpSession session = request.getSession();
 		MemberVO mvo = (MemberVO) session.getAttribute("loginUser");
 	
-		if(mvo == null) response.sendRedirect("zootopia.do?command=loginform"); 
+		
+		if(mvo == null) response.sendRedirect("zootopia.do?command=loginForm"); 
 		else request.getRequestDispatcher("contest/contestForm.jsp").forward(request, response);
 		
 	}

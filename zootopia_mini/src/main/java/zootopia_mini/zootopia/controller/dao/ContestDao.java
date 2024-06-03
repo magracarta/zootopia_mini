@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import zootopia_mini.zootopia.controller.dto.ContestDTO;
 import zootopia_mini.zootopia.controller.dto.ContestPetDTO;
+import zootopia_mini.zootopia.controller.dto.Contest_replyDTO;
 import zootopia_mini.zootopia.util.DB;
 import zootopia_mini.zootopia.util.Paging;
 
@@ -77,7 +78,7 @@ public class ContestDao {
 	public ArrayList<ContestPetDTO> getCpdList(int cseq) {
 		ArrayList<ContestPetDTO> list = new ArrayList<ContestPetDTO>();
 		con = DB.getConnection();
-		String sql = "select * from contestpetiv_view where cseq = ? order by recommends";
+		String sql = "select * from contestpetiv_view where cseq = ? order by recommends desc";
 		try {
 			pstmt =  con.prepareStatement(sql);
 			pstmt.setInt(1, cseq);
@@ -111,15 +112,14 @@ public class ContestDao {
 	}
 	public void insertContest(ContestDTO cdto) {
 		con = DB.getConnection();
-		String sql = "insert into contest (userid, nickname , subject , content, lastdate ,pcnt ) values (?, ?, ?, ?, ? ,? )";
+		String sql = "insert into contest (userid , subject , content, lastdate ,pcnt ) values (?, ?, ?, ? ,? )";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, cdto.getUserid());
-			pstmt.setString(2, cdto.getNickname());
-			pstmt.setString(3, cdto.getSubject());
-			pstmt.setString(4, cdto.getContent());
-			pstmt.setTimestamp(5, cdto.getLastdate());
-			pstmt.setInt(6, cdto.getPcnt());
+			pstmt.setString(2, cdto.getSubject());
+			pstmt.setString(3, cdto.getContent());
+			pstmt.setTimestamp(4, cdto.getLastdate());
+			pstmt.setInt(5, cdto.getPcnt());
 			
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -176,6 +176,213 @@ public class ContestDao {
 		}
 				
 		
+	}
+	public void updateContest(ContestDTO cdto) {
+		con =DB.getConnection();
+		String sql = "update contest set subject = ? , content = ? , lastdate = ? ,pcnt =?  where cseq = ?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, cdto.getSubject());
+			pstmt.setString(2, cdto.getContent());
+			pstmt.setTimestamp(3, cdto.getLastdate());
+			pstmt.setInt(4, cdto.getPcnt());
+			pstmt.setInt(5, cdto.getCseq());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+	}
+	public int deleteContest(int cseq) {
+		int result = 0;
+		con =DB.getConnection();
+		String sql = "delete from contest where cseq = ?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, cseq);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		int petdelte = deletecontest_pet(cseq);
+		
+		
+		return result;
+	}
+	
+	public int deletecontest_pet(int cseq) {
+		int result = 0;
+		con =DB.getConnection();
+		String sql ="delete from contest_pet where cseq = ?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, cseq);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		return result;
+	}
+	public int getCpdList(String userid, String cseq) {
+		int result =0;
+		con=DB.getConnection();
+		String sql ="select * from contest_pet where cseq = ? && userid =?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(cseq));
+			pstmt.setString(2, userid);
+			rs = pstmt.executeQuery();
+			if(rs.next()) result = 1;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+		
+		return result;
+	}
+	public void insertContestPet(ContestPetDTO cpdto) {
+		con=DB.getConnection();
+		String sql ="insert into contest_pet (userid , cseq , content , image , saveimage) values(? , ? , ? , ?, ?)";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, cpdto.getUserid());
+			pstmt.setInt(2, cpdto.getCseq());
+			pstmt.setString(3, cpdto.getContent());
+			pstmt.setString(4, cpdto.getImage());
+			pstmt.setString(5, cpdto.getSaveimage());
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+	}
+	public ContestPetDTO getContestPet(int cpseq) {
+		ContestPetDTO cdto = null;
+		con = DB.getConnection();
+		String sql = "select * from contestpetiv_view where cpseq = ?";
+		try {
+			pstmt =  con.prepareStatement(sql);
+			pstmt.setInt(1, cpseq);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				cdto = (new ContestPetDTO(
+						rs.getInt("cpseq"),
+						rs.getString("content"),
+						rs.getString("userid"),
+						rs.getString("nickname"),
+						rs.getInt("cseq"),
+						rs.getInt("recommends"),
+						rs.getString("image"),
+						rs.getString("saveimage"),
+						rs.getString("petname"),
+						rs.getString("petgender"),
+						rs.getString("kind"),
+						rs.getString("password")
+						));
+				
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+		return cdto;
+	}
+	public void addRecommend(int recommends, int cpseq) {
+		con = DB.getConnection();
+		String sql = "update contest_pet set recommends = ? where cpseq = ?";
+		try {
+			pstmt =con.prepareStatement(sql);
+			pstmt.setInt(1, recommends);
+			pstmt.setInt(2, cpseq);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+	}
+	public void updateContestPet(ContestPetDTO cpdto) {
+		con = DB.getConnection();
+		String sql = "update contest_pet set userid = ?, cseq = ? , content = ?,  image = ? , saveimage = ? where cpseq = ?";
+		
+		try {
+			pstmt =con.prepareStatement(sql);
+			pstmt.setString(1, cpdto.getUserid());
+			pstmt.setInt(2, cpdto.getCseq());
+			pstmt.setString(3, cpdto.getContent());
+			pstmt.setString(4, cpdto.getImage());
+			pstmt.setString(5, cpdto.getSaveimage());
+			pstmt.setInt(6, cpdto.getCpseq());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+	}
+	public void deletePet(int cpseq) {
+		
+		con = DB.getConnection();
+		String sql = "delete from contest_pet where cpseq = ?";
+		
+		try {
+			pstmt =con.prepareStatement(sql);
+			pstmt.setInt(1, cpseq);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+	}
+	public ArrayList<Contest_replyDTO> getContestList(String cseq) {
+		ArrayList<Contest_replyDTO> list = new ArrayList<Contest_replyDTO>();
+		
+		con = DB.getConnection();
+		String sql = "select * from contest_reply where cseq = ? order by crseq desc";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(cseq));
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				list.add(new Contest_replyDTO(
+							rs.getInt("crseq"),
+							rs.getInt("cseq"),
+							rs.getString("userid"),
+							rs.getTimestamp("createdate"),
+							rs.getString("content")
+						));
+			}
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+		
+		return list;
 	}
 	
 	

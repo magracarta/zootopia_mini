@@ -32,6 +32,8 @@ public class ContestBoardAction implements Action {
 		
 		Paging page = new Paging();
 		if(currentPage != null) page.setCurrentPage(Integer.parseInt(currentPage));
+		else if(session.getAttribute("paging") != null ) page = (Paging)session.getAttribute("paging");
+		else if(request.getParameter("paging") == null && session.getAttribute("paging")== null) page.setCurrentPage(1);
 		
 		page.setRecordAllcount(contestAllcount);
 		ArrayList<ContestDTO> list = cdao.getList(page , search);
@@ -45,7 +47,7 @@ public class ContestBoardAction implements Action {
         
         session.setAttribute("search", search);
         request.setAttribute("now", timestamp);
-        request.setAttribute("paging", page);
+        session.setAttribute("paging", page);
 		request.setAttribute("allcnt", contestAllcount);
 		request.setAttribute("contestList", list);
 		

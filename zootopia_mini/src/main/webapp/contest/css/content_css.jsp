@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <style>
 .contest li a { width:100%; display:block; } 
 .contest .swiper-slide {  }
@@ -90,8 +92,9 @@ border:1px solid #D9D9D9; border-radius: 3px; width:362px; position:absolute; ba
 .contest .title-wrapper .right a { text-decoration: none; border:1px solid #000000; padding:15px 49px; border-radius:5px; font-weight:600; }
 
 .contest_pet_list {  }
-.contest_pet_list ul { display:flex; flex-wrap: wrap; justify-content: space-between; }
-.contest_pet_list ul li { width:calc(33.3333% - 40px); }
+.contest_pet_list ul { display:flex; flex-wrap: wrap; justify-content: flex-start; }
+.contest_pet_list ul li { width:calc(33.3333% - 40px); margin-right:60px; }
+.contest_pet_list ul li:nth-child(3n) {  margin-right:0px; }
 .contest_pet_list ul li .image-box { position:relative; }
 .contest_pet_list ul li .image-box img { width:100%; height:393.32px; object-fit: cover; }
 .contest_pet_list ul li .image-box .rank { width: 68px; height: 68px; font-size: 25px; display: flex;
@@ -114,4 +117,88 @@ display:block; margin-top:18px;
 font-size:15px; width:100%; text-align : center; padding:13px 0; color:#333; border:1px solid #333; }
 
 .contest .detailinfo { font-size:13px; color:#999; font-weight:600; display:block; margin:0px 0 20px; }
+
+.reply { margin-top:100px }
+.reply >  h2 { font-size:30px; font-weight:700; color:#000; }
+.reply .submit_reply {  }
+
+.contest_pet_list .more_pet {  }
+.contest_pet_list .more_pet a { display:flex;  height:393.32px; flex-direction: column; 
+justify-content: center; align-items: center; align-content: center; background:#D9D9D9; }
+.contest_pet_list .more_pet .plus { position:relative; padding-top:25px; }
+.contest_pet_list .more_pet .button { margin-top:50px;
+display:block; color:#fff; font-size:15px; border:1px solid #fff; padding:11px 88px; border-radius:4px; }
+
+
+
+/* 펫 폼 */
+.petContainer {display:none;  position:fixed; top:0; left:0; width:100%; height:100%;  z-index:20;  align-items: center; justify-content: center; }
+.overay { position:absolute; width:100%; height:100%; background:rgba(0,0,0,0.5);  top: 0; left: 0; z-index:1; }
+.petContainer .createForm_wrapper { position:relative; z-index:2; max-width:1100px; margin:0 auto; background:#fff; width: 90%; }
+.petContainer .createForm_wrapper .closeBtn { position:absolute; right:20px; top:20px; }
+.petContainer .createForm_wrapper form { padding:30px 70px; }
+.petContainer .createForm_wrapper form h3 { font-size:18px; margin-bottom:30px; color:#000; font-weight:600; }
+.petContainer .createForm_wrapper form .cotainer { display:flex; align-items: flex-end; }
+.petContainer .createForm_wrapper form .left { width:283px; }
+.petContainer .createForm_wrapper form .left img { width:100%; height:283px; object-fit: cover;}
+.petContainer .createForm_wrapper form .left input { display:none; }
+
+.petContainer .createForm_wrapper form .right { width:70%;padding-left:30px; }
+.petContainer .createForm_wrapper form .right > div { margin-top:30px; }
+.petContainer .createForm_wrapper form .right > div .title { font-size:18px; color:#000; font-weight:700; }
+.petContainer .createForm_wrapper form .right > div .content { font-size:18px; margin-left:15px; }
+.petContainer .createForm_wrapper form .right > div textarea {margin-top:10px; height:151px; }
+.petContainer .createForm_wrapper form .right .petname {  }
+.petContainer .submitbutton_container { display:flex; justify-content: flex-end; margin-top:30px; }
+.petContainer .submitbutton_container .submitbutton { background:#000; color:#fff; padding:12px 78px; border-radius:5px; border:none; }
+
+
+.contestpetInfo_container { text-align:right; margin-bottom:20px; }
+.contestpetInfo { color: #999; font-weight:700;
+    display: inline-block; border-radius: 50px; margin-top: 10px; } 
+
+
+/* 댓글 영역 */
+.loginButton_ud { margin-top:10px; display: flex; text-align: center; }
+.petUpdate , .petDelete { font-size:15px; color:#fff; background:#000; border:1px solid #000; border-radius:0px; padding:15px 0; }
+.petDelete { color:#000; background:#fff; margin-left:10px; }
+
+.submit_reply { padding:50px 0; }
+.submit_reply form { display:flex; }
+.submit_reply form .longin-info-box { width:100px; align-items: center;  }
+.submit_reply form .longin-info-box img { width: 80px; height: 80px;
+    overflow: hidden; border-radius: 50%; }
+.submit_reply form .longin-info-box span { display:block; margin-top:8px; font-weight: 800; }
+.submit_reply form .login-content { width: calc(100% - 100px); }
+.submit_reply form .login-content textarea { border:1px solid #D9D9D9; }
+.submit_reply form .login-content > div { text-align: right; margin-top:20px; }
+.submit_reply form .login-content > div input[type="submit"] {padding:5px 15px; background:#000; color:#fff; border:1px solid #000; box-sizing: border-box; 
+border-radius: 5px; margin:0 5px;  }
+
+
+
+.reply_list {  }
+.reply_list ul {  }
+.reply_list ul li {  padding:30px 0; border-top:1px solid #E3E3E3; border-bottom:1px solid #E3E3E3;  }
+.reply_list ul li .top { display:flex; align-items: center; }
+.reply_list ul li .image_box { width:80px; height:80px; overflow: hidden; border-radius: 50%; margin-right:36px;  }
+.reply_list ul li .image_box img { width:100%; height:100%; object-fit: cover; }
+.reply_list ul li .text-box { width:calc(85% - 80px); }
+.reply_list ul li .text-box span { display: block; }
+.reply_list ul li .text-box span:first-child { margin-bottom:10px;font-weight: 800; }
+.reply_list ul li .button-box { width:calc(25% - 80px);  text-align: right; }
+
+.reply_list ul li .button-box p { font-size: 15px; color:#959595; font-weight: 500; }
+
+.reply_list ul li .replyUpdateForm { margin-top:30px; }
+.reply_list ul li .replyUpdateForm textarea { height: 80px; border:1px solid #D9D9D9; }
+.reply_list ul li .replyUpdateForm .button_box { display:flex; justify-content: flex-end;
+align-items: center; margin-top:20px;}
+
+.reply_list ul li .replyUpdateForm .button_box input { padding:5px 15px; background:#000; color:#fff; border:1px solid #000; box-sizing: border-box; 
+border-radius: 5px; margin:0 5px;
+}
+.reply_list ul li .replyUpdateForm .button_box .delete { display:inline-block; width:auto; background: #fff; color:#000; }
+
+
 </style>
