@@ -35,7 +35,6 @@
             </tr>
         </c:forEach>
     </table>
-    
     <div class="pagination-container">
         <jsp:include page="/paging/paging.jsp">
             <jsp:param name="url" value="zootopia.do?command=communityBoard" />

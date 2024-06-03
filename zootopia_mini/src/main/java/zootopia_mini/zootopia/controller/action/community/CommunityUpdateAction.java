@@ -8,32 +8,6 @@ import zootopia_mini.zootopia.controller.action.Action;
 import zootopia_mini.zootopia.controller.dao.CommunityDao;
 import zootopia_mini.zootopia.controller.dto.CommunityVO;
 
-/*
- * public class CommunityUpdateAction implements Action {
- * 
- * @Override public void execute(HttpServletRequest request, HttpServletResponse
- * response) throws ServletException, IOException {
- * 
- * 
- * CommunityVO cvo = new CommunityVO(); int gseq =
- * Integer.parseInt(request.getParameter("gseq")); int kind =
- * Integer.parseInt(request.getParameter("kind")); String subject =
- * request.getParameter("subject"); String content =
- * request.getParameter("content");
- * 
- * cvo.setGseq(gseq); cvo.setKind(kind); cvo.setSubject(subject);
- * cvo.setContent(content);
- * 
- * CommunityDao cdao = CommunityDao.getInstance(); cdao.updateCommunity(cvo);
- * 
- * response.sendRedirect("zootopia.do?command=Communitydetail&gseq=" + gseq);
- * 
- * 
- * }
- * 
- * }
- */
-
 public class CommunityUpdateAction implements Action {
   
   @Override public void execute(HttpServletRequest request, HttpServletResponse

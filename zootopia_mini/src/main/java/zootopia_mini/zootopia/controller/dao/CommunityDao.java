@@ -26,12 +26,12 @@ public class CommunityDao {
         String sql = "SELECT c.gseq, c.subject, c.content, c.createdate, c.recommands, c.userid, m.nickname, m.userid AS user_id, c.kind " +
                      "FROM community c JOIN member m ON c.userid = m.userid " +
                      "ORDER BY c.gseq DESC LIMIT ? OFFSET ?;";
-
         con = DB.getConnection();
         try {
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, paging.getRecordrow());
-            pstmt.setInt(2, paging.getFirstnum());
+            pstmt.setInt(2, paging.getOffsetnum());
+
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 CommunityVO cvo = new CommunityVO();
@@ -73,7 +73,7 @@ public class CommunityDao {
         } finally {
             DB.close(con, pstmt, rs);
         }
-
+     
         return count;
     }
 
