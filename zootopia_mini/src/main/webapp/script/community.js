@@ -16,3 +16,5 @@ function deleteCommunity(gseq) {
         location.href = 'zootopia.do?command=communityDelete&gseq=' + gseq;
     }
 }
+
+

@@ -7,7 +7,8 @@
 
 	<article>
 		
-			<h2> 자유게시판 </h2>
+			<h2> 자유게시판 </h2><input type="button" value="목록으로" onclick="location.href='zootopia.do?command=communityBoard'">
+			
 			<div class="field" style="border-top:2px solid blueviolet;">
 				<label>작성자</label><div>${communityVO.userid}</div>
 			</div>
@@ -53,11 +54,29 @@
                 </ul>
             </div> --%>
         </div>
-			<div class="btn">
-			    <input type="submit" value="수정" onclick="location.href='zootopia.do?command=communityUpdateForm&gseq=${communityVO.gseq}'">    
-				<input type="button" value="삭제" onclick="deleteCommunity('${communityVO.gseq}')">
-				<input type="button" value="목록으로" onclick="location.href='zootopia.do?command=communityBoard'">
-			</div>
+		<c:if test="${not empty loginUser.userid}">
+		    <!-- 세션에 로그인한 사용자의 아이디가 저장되어 있는 경우 -->
+		    <c:choose>
+		        <c:when test="${communityVO.userid eq loginUser.userid}">
+		            <!-- 게시글 작성자와 로그인한 사용자의 아이디가 일치하는 경우 -->
+		            <div class="btn">
+		                <input type="button" value="수정" onclick="location.href='zootopia.do?command=communityUpdateForm&gseq=${communityVO.gseq}'">    
+		                <input type="button" value="삭제" onclick="deleteCommunity('${communityVO.gseq}')">
+		            </div>
+		        </c:when>
+		        <c:otherwise>
+		            <!-- 게시글 작성자와 로그인한 사용자의 아이디가 일치하지 않는 경우 -->
+		            <div class="btn">
+		                <!-- 수정 및 삭제 버튼을 숨깁니다. -->
+		                <!-- 여기에 해당하는 경우에 대한 처리를 추가합니다. -->
+		                <!-- 예: 스타일을 이용하여 숨김 처리 -->
+		                <input type="button" value="수정" style="display: none;">
+		                <input type="button" value="삭제" style="display: none;">
+		            </div>
+		        </c:otherwise>
+		    </c:choose>
+		</c:if>
+			
 		</form>
 	</article>
 

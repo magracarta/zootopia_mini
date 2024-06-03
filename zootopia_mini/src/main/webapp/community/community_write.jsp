@@ -7,11 +7,11 @@
         <h2> 자유게시판 양식 </h2>
         <div class="field">
             <label>작성자</label>
-            <input type="text" name="userid"  value="${cvo.userid}" readonly />
+            <input type="text" name="userid" value="${loginUser.userid}" readonly/>
         </div>
         <div class="field">
             <label>닉네임</label>
-            <input type="text" name="nickname" value="${cvo.nickname}" readonly />
+            <input type="text" name="nickname" value="${loginUser.nickname}" readonly />
         </div>
         <div class="field">
             <label>카테고리 선택</label>
@@ -36,3 +36,5 @@
         </div>
     </form>
 </article>
+
+</script>
