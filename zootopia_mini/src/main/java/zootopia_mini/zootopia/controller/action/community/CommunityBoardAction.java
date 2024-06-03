@@ -14,43 +14,44 @@ import zootopia_mini.zootopia.util.Paging;
 
 public class CommunityBoardAction implements Action {
 
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		HttpSession session = request.getSession();
-	    MemberVO mvo = (MemberVO) session.getAttribute("loginUser");
-	    if (mvo == null) {
-	    	response.sendRedirect("zootopia.do?command=loginform");
-	    } else {
-	    	CommunityDao cdao = CommunityDao.getInstance();
-	    	
-	    	int page = 1;
-	    	if( request.getParameter("pagenum") != null ) {
-	    		page = Integer.parseInt( request.getParameter("pagenum") );
-	    		session.setAttribute("pagenum", page);
-	    	}else if( session.getAttribute("pagenum")!=null) {
-	    		page = (Integer)session.getAttribute("pagenum");
-	    	}
-	    	
-	    	Paging paging = new Paging();
-	    	paging.setCurrentPage(page);
-	    	paging.setPagecnt(6);
-			paging.setRecordrow(5);
-			
-			// 레코드의 전체 갯수 조회
-			int count = cdao.getAllCount();    	
-			paging.setRecordAllcount(count);
-			
-		
-	    		    	
-			ArrayList<CommunityVO> list = cdao.selectCommunity(paging);
-	    	
-	    	request.setAttribute("paging", paging);
-	    	request.setAttribute("commList", list); 
-	    	request.getRequestDispatcher( "community/community_board.jsp").forward(request, response);
-	    }
+    @Override
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	}
+        HttpSession session = request.getSession();
+        MemberVO mvo = (MemberVO) session.getAttribute("loginUser");
+        if (mvo == null) {
+            response.sendRedirect("zootopia.do?command=loginform");
+        } else {
+            CommunityDao cdao = CommunityDao.getInstance();
 
+            String searchKeyword = request.getParameter("search");
+            if (searchKeyword != null && !searchKeyword.isEmpty()) {
+                ArrayList<CommunityVO> searchResult = cdao.searchCommunity(searchKeyword);
+                request.setAttribute("searchResult", searchResult);
+            }
+
+            int page = 1;
+            if (request.getParameter("pagenum") != null) {
+                page = Integer.parseInt(request.getParameter("pagenum"));
+                session.setAttribute("pagenum", page);
+            } else if (session.getAttribute("pagenum") != null) {
+                page = (Integer) session.getAttribute("pagenum");
+            }
+
+            Paging paging = new Paging();
+            paging.setCurrentPage(page);
+            paging.setPagecnt(6);
+            paging.setRecordrow(5);
+
+            // 레코드의 전체 갯수 조회
+            int count = cdao.getAllCount();
+            paging.setRecordAllcount(count);
+
+            ArrayList<CommunityVO> list = cdao.selectCommunity(paging);
+
+            request.setAttribute("paging", paging);
+            request.setAttribute("commList", list);
+            request.getRequestDispatcher("community/community_board.jsp").forward(request, response);
+        }
+    }
 }
-	

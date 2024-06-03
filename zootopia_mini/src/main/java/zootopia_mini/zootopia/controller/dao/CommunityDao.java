@@ -224,4 +224,34 @@ public class CommunityDao {
         DB.close(con, pstmt, rs);
     }
 }
+
+	public ArrayList<CommunityVO> searchCommunity(String keyword) {
+        ArrayList<CommunityVO> searchResult = new ArrayList<>();
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            con = DB.getConnection();
+            String sql = "SELECT * FROM community WHERE subject LIKE ? OR content LIKE ?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, "%" + keyword + "%");
+            pstmt.setString(2, "%" + keyword + "%");
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                CommunityVO cvo = new CommunityVO();
+                cvo.setGseq(rs.getInt("gseq"));
+                cvo.setSubject(rs.getString("subject"));
+                cvo.setContent(rs.getString("content"));
+                searchResult.add(cvo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DB.close(con, pstmt, rs);
+        }
+
+        return searchResult;
+    }
 }

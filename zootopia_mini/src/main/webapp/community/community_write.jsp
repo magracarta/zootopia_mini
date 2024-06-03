@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="css/community.css">
 
 <article>
-    <form action="zootopia.do?command=writeCommunity" method="post">
+    <form name="communityForm" action="zootopia.do?command=writeCommunity" method="post" onsubmit="return validateForm()">
         <h2> 자유게시판 양식 </h2>
         <div class="field">
             <label>작성자</label>
@@ -29,7 +29,7 @@
             <input type="text" name="subject" />
         </div>
         <div class="field">
-            <label>질문내용</label>
+            <label>내용</label>
         </div>
 		<div>
             <textarea name="content" rows="10" cols="85"></textarea>

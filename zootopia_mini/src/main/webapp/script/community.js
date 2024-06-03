@@ -80,3 +80,17 @@ function increaseViewCountAndRedirect(gseq) {
     // 원하는 페이지로 이동
     window.location.href = 'zootopia.do?command=communityDetail&gseq=' + gseq;
 }
+
+
+    function validateForm() {
+        var subject = document.forms["communityForm"]["subject"].value;
+        var content = document.forms["communityForm"]["content"].value;
+        if (subject == "") {
+            alert("제목은 필수 입력사항입니다.");
+            return false;
+        }
+        if (content == "") {
+            alert("내용은 필수 입력사항입니다.");
+            return false;
+        }
+    }

@@ -55,6 +55,12 @@
     </table>
   </div>
 </div>
+
+<jsp:include page="paging.jsp" flush="true">
+  <jsp:param name="url" value="communityBoard" />
+  <jsp:param name="search" value="${searchResult}" />
+</jsp:include>
+
     <div>
         <button onclick="location.href='zootopia.do?command=writeCommunityForm'">글 작성하기</button>
     </div>
