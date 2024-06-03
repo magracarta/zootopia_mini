@@ -15,6 +15,9 @@
 					<label>제목</label><input type="text" name="subject"  >
 				</div>
 				<div class="field" >
+					<label>분류</label><input type="text" name="subject"  >
+				</div>
+				<div class="field" >
 					<label>질문내용</label>
 					<textarea name="content" rows="30"  cols="85"></textarea>
 				</div>
