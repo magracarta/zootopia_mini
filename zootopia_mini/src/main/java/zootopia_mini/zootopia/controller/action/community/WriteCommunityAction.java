@@ -14,8 +14,8 @@ public class WriteCommunityAction implements Action {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    	MemberVO mVo = (MemberVO) request.getSession().getAttribute("loginUser");
-    	String userId = mVo.getUserid();
+    	MemberVO mvo = (MemberVO) request.getSession().getAttribute("loginUser");
+    	String userId = mvo.getUserid();
         // CommunityVO 객체 생성
         CommunityVO cvo = new CommunityVO();
         cvo.setUserid(userId); // 가져온 아이디를 CommunityVO 객체에 설정

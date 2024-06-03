@@ -172,5 +172,21 @@ public class CommunityDao {
         }   
     }
 	
-	
+    public void deleteCommunity(int gseq) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+
+        try {
+            con = DB.getConnection();
+            String sql = "DELETE FROM community WHERE gseq=?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, gseq);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DB.close(con, pstmt, rs);
+        }
+    }
+    
 }

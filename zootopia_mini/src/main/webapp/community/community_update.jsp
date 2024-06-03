@@ -25,7 +25,6 @@
 			</select>
 			<div class="btn">
 				<input type="submit" value="수정완료">
-				<input type="button" value="삭제" onClick="deleteProduct('${communityVO.gseq}')">
 				<input type="button" value="취소" onClick="location.href='zootopia.do?command=communityDetail&gseq=${communityVO.gseq}'">
 			</div>
 		</form>
@@ -33,6 +32,5 @@
 
 </section>
 
-<script src="script/community.js"></script>
 
 <%@ include file="/footer.jsp" %>

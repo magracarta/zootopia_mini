@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="css/header_footer.css">
 <link rel="stylesheet" href="css/common.css">
 <script src="script/member.js"></script>
+<script src="script/community.js"></script>
 <script src="script/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 

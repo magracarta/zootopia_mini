@@ -54,8 +54,8 @@
             </div> --%>
         </div>
 			<div class="btn">
-				<input type="submit" value="수정" onclick="location.href='zootopia.do?command=communityUpdateForm&gseq=${communityVO.gseq}'">	
-				<input type="button" value="삭제" onclick="deleteProduct('${communityVO.gseq}')">
+			    <input type="submit" value="수정" onclick="location.href='zootopia.do?command=communityUpdateForm&gseq=${communityVO.gseq}'">    
+				<input type="button" value="삭제" onclick="deleteCommunity('${communityVO.gseq}')">
 				<input type="button" value="목록으로" onclick="location.href='zootopia.do?command=communityBoard'">
 			</div>
 		</form>
@@ -63,7 +63,6 @@
 
 </section>
 
-<script src="script/community.js"></script>
 
 <%@ include file="/footer.jsp" %>
 
