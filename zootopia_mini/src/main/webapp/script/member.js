@@ -40,7 +40,7 @@ function nicknamecheck() {
 	var opt = "toolbar=no, menubar=no, resizable=no, width=500, height=250, scrollbars=no";
 	
 	window.open(url, "idcheck", opt);
-	
+
 }
 
 
@@ -88,15 +88,15 @@ function go_save() {
 		alert("전화번호를 입력해 주세요");
 		document.joinForm.phone.focus();	
 	}else if(document.joinForm.image.value == ""){
-		alert("사진?를 입력해 주세요");
+		alert("사진을 등록해 주세요");
 		document.joinForm.phone.focus();
 	}else if(document.joinForm.petname.value == ""){
 		alert("반려동물 이름을 입력해 주세요");
 		document.joinForm.phone.focus();
-	}else if(document.joinForm.kind.value == ""){
+	}else if(document.joinForm.kind.value == "" || document.joinForm.kind.value == "선택"){
 		alert("종류를 선택해 주세요");
 		document.joinForm.phone.focus();
-	}else if(document.joinForm.petgender.value == ""){
+	}else if(document.joinForm.petgender.value == "" || document.joinForm.petgender.value == "선택"){
 		alert("반려동물 성별을 선택해 주세요");
 		document.joinForm.phone.focus();
 	}else {
@@ -107,7 +107,7 @@ function go_save() {
 
 function show_preview(){
 	
-	document.getElementById('photo').addEventListener('change', function(event) {
+	document.getElementById('photoinput').addEventListener('change', function(event) {
     	const file = event.target.files[0];
     	const reader = new FileReader();
     	reader.onload = function(e) {
