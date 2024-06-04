@@ -10,12 +10,12 @@
 		<div class="communityboard">
          <ul>
             <li class="board_head">
-            <span class="num">no.</span>      
-            <span class="subject">[분류]제목</span>         
-            <span class="userid">닉네임[작성자]</span>         
-            <span class="createdate">작성일</span>         
-            <span class="recommands">추천수</span>         
-            <span class="vcount">조회수</span>         
+	            <span class="num">no.</span>      
+	            <span class="subject">[분류]제목</span>         
+	            <span class="userid">닉네임[작성자]</span>         
+	            <span class="createdate">작성일</span>         
+	            <span class="recommands">추천수</span>         
+	            <span class="vcount">조회수</span>         
             </li>
             <c:forEach var="post" items="${communityList}">
             <li>
@@ -38,7 +38,7 @@
             </li>
             </c:forEach>
          </ul>
-  </div>
+  	</div>
 
 		
 	<jsp:include page="paging.jsp" flush="true">

@@ -7,9 +7,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 400px;
     text-align: center;
-    /* display: flex;
-    flex-direction: column;
-    align-items: center; */
+    margin: 0 auto;
 }
 
 .title {

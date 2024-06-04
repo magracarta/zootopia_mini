@@ -10,19 +10,26 @@ update member set nickname = '바뀌나?' where userid = 'user1';
 
 
 INSERT INTO member (nickname, userid, pwd, name, phone, email, petname, petgender, kind) VALUES
-('닉네임6', 'user6', '0000', '김철수', '010-9876-5432', 'user2@example.com', '카미', 'F', '고양이'),
-('닉네임7', 'user7', '0000', '이영희', '010-1111-2222', 'user3@example.com', '뽀삐', 'F', '강아지'),
-('닉네임8', 'user8', '0000', '박미영', '010-3333-4444', 'user4@example.com', '맥스', 'M', '강아지');
+('닉네임1', 'user1', '0000', '김철수', '010-9876-5432', 'user1@example.com', '카미', 'F', '고양이'),
+('닉네임2', 'user2', '0000', '이영희', '010-1111-2222', 'user2@example.com', '뽀삐', 'F', '강아지'),
+('닉네임3', 'user3', '0000', '박미영', '010-3333-4444', 'user3@example.com', '맥스', 'M', '강아지');
+
+INSERT INTO member (nickname, userid, pwd, name, phone, email, petname, petgender, kind) VALUES
+('조하엄마', 'joha', '0000', '정은선', '010-9876-5432', 'user1@example.com', '조하', 'F', '강아지'),
+('조하아빠', 'jota', '0000', '현진이', '010-1111-2222', 'user2@example.com', '조타', 'F', '강아지'),
+('닉네임4', 'user4', '0000', '박미영', '010-3333-4444', 'user3@example.com', '맥스', 'M', '강아지');
 
 
 insert into contest_pet (userid  , cseq , content , image, saveimage ) values 
-('jota', 8 ,'우리 조하 귀엽죠 ㅋㅋㅋㅋ' , 'joha13.jpg','joha13.jpg' );
+('jota', 5 ,'우리 조하 귀엽죠 ㅋㅋㅋㅋ' , 'joha13.jpg','joha13.jpg' );
 insert into contest_pet (userid  , cseq , content , image, saveimage) values 
-('joha', 7 ,'얜 잘때 왜이럴까 진짜,,' , 'joha5.jpg','joha5.jpg' );
+('joha', 4 ,'얜 잘때 왜이럴까 진짜,,' , 'joha5.jpg','joha5.jpg' );
 insert into contest_pet (userid  , cseq , content , image, saveimage) values 
-('user4', 8 ,'나는 오늘 쉬야를 했습니다' , 'joha21.jpg','joha21.jpg' );
+('user3', 5 ,'나는 오늘 쉬야를 했습니다' , 'joha21.jpg','joha21.jpg' );
 insert into contest_pet (userid  , cseq , content , image, saveimage) values 
-('user5', 7 ,'귀여운 혓바닥 메롱' , 'joha17.jpg','joha17.jpg' );
+('user4', 4 ,'귀여운 혓바닥 메롱' , 'joha17.jpg','joha17.jpg' );
+
+select * from contest;
 
 
 
@@ -58,3 +65,6 @@ delete from contestpetiv_view where cpseq = 16;
 
 
 select * from contestpet_view;
+
+select * from community_reply;
+
