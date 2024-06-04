@@ -26,6 +26,9 @@
 		<c:if test="${paging.next == true}">
 		<a  class="nextBtn"  href="<%=url%>&pagenum=${paging.lastnum+1}"><img src="images/arrow.svg"></a>
 		</c:if>
+	    <div>
+	        <button onclick="location.href='zootopia.do?command=writeCommunityForm'">글 작성하기</button>
+	    </div>
 	</div>
 	
 	<div class="serach-form">
@@ -46,6 +49,7 @@
 		.pagenation-container .pagenation-wrapper * { width: 25px; height: 25px; display: flex; justify-content: center;
     			align-items: center; color:#999999; border-radius:3px;  }
 		.pagenation-container .pagenation-wrapper span { background:#1F1F1F; color:#fff;  }
+		.div .button {float: left}
 		
 		.serach-form { display:flex; justify-content: center; margin-top:50px; }
 		.serach-form input[name="search"] { width:287px; border-radius:5px; border:1px solid #D9D9D9; height:45px; margin-right:5px; display:inline-block; }

@@ -40,8 +40,8 @@ public class CommunityBoardAction implements Action {
 
             Paging paging = new Paging();
             paging.setCurrentPage(page);
-            paging.setPagecnt(6);
-            paging.setRecordrow(5);
+            paging.setPagecnt(10);
+            paging.setRecordrow(10);
 
             // 레코드의 전체 갯수 조회
             int count = cdao.getAllCount();

@@ -20,7 +20,7 @@ public class CommunityDetailAction implements Action {
 	        
 	        // 로그인된 사용자가 없다면 로그인 페이지로 리다이렉트
 	        if (mvo == null) {
-	            response.sendRedirect("zootopia.do?command=loginForm");
+	            response.sendRedirect("zootopia.do?command=loginform");
 	            return;
 	        }
 	        
