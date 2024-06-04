@@ -43,7 +43,7 @@
 
 <jsp:include page="paging.jsp" flush="true">
   <jsp:param name="url" value="zootopia.do?command=communityBoard" />
-  <jsp:param name="search" value="${searchResult}" />
+  <jsp:param name="search" value="${search}" />
 </jsp:include>
 
 <%@ include file="/community/css/community_css.jsp" %>

@@ -233,10 +233,11 @@ public class CommunityDao {
 
         try {
             con = DB.getConnection();
-            String sql = "SELECT * FROM community WHERE subject LIKE ? OR content LIKE ?";
+            String sql = "SELECT * FROM community WHERE userid LIKE ? OR subject LIKE ? OR content LIKE ?";
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, "%" + keyword + "%");
             pstmt.setString(2, "%" + keyword + "%");
+            pstmt.setString(3, "%" + keyword + "%");
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
@@ -244,6 +245,7 @@ public class CommunityDao {
                 cvo.setGseq(rs.getInt("gseq"));
                 cvo.setSubject(rs.getString("subject"));
                 cvo.setContent(rs.getString("content"));
+                cvo.setUserid(rs.getString("userid"));
                 searchResult.add(cvo);
             }
         } catch (SQLException e) {
