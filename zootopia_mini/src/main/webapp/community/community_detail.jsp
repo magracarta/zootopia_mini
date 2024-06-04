@@ -25,7 +25,7 @@
 						</span>			
 					<span class="userid">${communityVO.nickname}[${communityVO.userid}]</span>			
 					<span class="createdate"><fmt:formatDate value="${communityVO.createdate}" type="date"/></span>			
-					<span class="recommands">추천 수[${communityVO.recommands}]<button id="recommendsButton">추천</button>
+					<span class="recommands">추천 수[${communityVO.recommands}]<button id="recommendButton">추천</button>
 						<div class="content" >
 							<input type="hidden" id="gseq" value="${communityVO.gseq}">
 						</div>
