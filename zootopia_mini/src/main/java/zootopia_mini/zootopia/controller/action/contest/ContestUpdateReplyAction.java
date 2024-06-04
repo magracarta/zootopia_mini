@@ -7,28 +7,32 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import zootopia_mini.zootopia.controller.action.Action;
 import zootopia_mini.zootopia.controller.dao.ContestDao;
-import zootopia_mini.zootopia.controller.dto.Contest_replyDTO;
 
-public class ContestReplyDeleteAction implements Action {
+public class ContestUpdateReplyAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int cseq = Integer.parseInt(request.getParameter("cseq"));
 		int crseq = Integer.parseInt(request.getParameter("crseq"));
-		String index = request.getParameter("index");
+		int cseq = Integer.parseInt(request.getParameter("cseq"));
+		int index = Integer.parseInt(request.getParameter("index"));
+		String content = request.getParameter("content");
 		String pagenum = request.getParameter("pagenum");
 		
 		int page =1;
 		if(pagenum != null) page = Integer.parseInt(pagenum);
 		
 		ContestDao cdao = ContestDao.getInstance();
-		cdao.deleteContestReply(crseq);
+		
+		cdao.updateContestReply(crseq,content);
+		
+		
+
+		
 		
 		request.setAttribute("pagenum", page);
-		request.setAttribute("replyDelete", "replyDelete");
-		request.setAttribute("cseq", cseq);
-		request.setAttribute("index", index);
-		request.getRequestDispatcher("zootopia.do?command=contestDetail").forward(request, response);
+		
+		response.sendRedirect("zootopia.do?command=contestDetail&cseq="+cseq+"&index="+index+"&pagenum="+pagenum);
+		
 
 	}
 

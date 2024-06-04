@@ -19,8 +19,21 @@
 	<h2 class="title">콘테스트 (${allcnt})</h2>
 	<a href="zootopia.do?command=contestForm">나도 콘테스트 추가하기 ></a>
 </div>
-
-
+<div class="contest-category">
+	<ul>
+		<li><a class="all select" href="zootopia.do?command=contestBoard&category=all&pagenum=1&search=">All</a></li>
+		<li><a class="playing" href="zootopia.do?command=contestBoard&category=playing&pagenum=1&search=">진행중인 콘테스트</a></li>
+		<li><a class="accomplished" href="zootopia.do?command=contestBoard&category=accomplished&pagenum=1&search=">완료된 콘테스트</a></li>
+		<li><a class="wating" href="zootopia.do?command=contestBoard&category=wating&pagenum=1&search=">대기중인 콘테스트</a></li>
+	</ul>
+</div>
+<style>
+.contest-category { padding-bottom:50px; }
+.contest-category ul { display:flex;  }
+.contest-category ul li { border-bottom:2px solid #F3F3F3; }
+.contest-category ul li a { padding: 15px 15px; position:relative; top:2px; width:auto; }
+.contest-category ul li a.select { border-bottom:2px solid #000; }
+</style>
  
 <div class="contest_container">
 	<div class="contest_list">

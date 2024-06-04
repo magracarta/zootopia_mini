@@ -8,11 +8,11 @@
 	<div class="title-wrapper">
 		<div  class="left">
 			<%-- <span class="detail_num">NO. ${contest_detail.cseq}</span> --%>
-			<span class="detail_num">NO. ${index}</span>
+			
+			<c:if test="${index != null}"><span class="detail_num">NO. ${index}</span></c:if>
 			<span class="detailinfo">작성자 : ${contest_detail.nickname} / 조회수 : ${contest_detail.cnt}</span>
 			<h2 class="title">${contest_detail.subject}</h2>
 			<p>${contest_detail.content}</p>
-			
 		</div>
 		
 		<div class="right" style="text-align: right;">
@@ -24,12 +24,12 @@
 					<a style="margin:15px 0;" href="zootopia.do?command=contestUpdateForm&cseq=${contest_detail.cseq}">콘테스트 수정하기</a>
 				</c:if>
 			</c:if>
-			<c:if test="${contest_detail.lastdate < now}"><span style="display:block;">완료된 콘테스트</span></c:if>
+			<c:if test="${contest_detail.lastdate < now}"><span style="display:block; margin-bottom:20px;">완료된 콘테스트</span></c:if>
 			<c:if test="${contest_detail.userid == loginUser.userid  }">
 				<a style="margin:15px 0; margin-left:10px; background:#000; color:#fff;" href="#none" onclick="goDelete('${contest_detail.cseq}')">콘테스트 삭제하기</a>
 				<br>
 			</c:if>
-			<a style="margin-bottom:15px; margin-left:10px;" href="zootopia.do?command=contestBoard">뒤로가기 ></a>
+			<a style="margin-bottom:15px; margin-left:10px;" href="zootopia.do?command=contestBoard">목록으로 ></a>
 		</div>
 	</div>
 	<div class="contest_pet_list">
@@ -120,7 +120,7 @@
 		<h2>댓글 ${replyAll}개</h2>
 		<c:if test="${loginUser != null}">
 		<div class="submit_reply">
-			<form method="post" action="zootopia.do?command=updateReply" name="replyform" >
+			<form method="post" action="zootopia.do?command=addReply" name="replyform" >
 				<input type="hidden" name="userid" value="${loginUser.userid}">
 				<input type="hidden" name="cseq" value="${contest_detail.cseq}">
 				<input type="hidden" name="index" value="${index}">
@@ -167,15 +167,17 @@
 						</div>
 						<c:if test="${loginUser.userid == replylist.userid}">
 								<div class="replyUpdateForm">
-									<form action="zootopia.do?command=updateReply" name="replyform">
+									<form action="zootopia.do?" name="replyupdateform">
+										<input type="hidden" name="command" value="contestUpdateReply">
 										<input type="hidden" name="userid" value="${replylist.userid}">
 										<input type="hidden" name="cseq" value="${replylist.cseq}">
 										<input type="hidden" name="index" value="${index}">
+										<input type="hidden" name="pagenum" value="${pagenum}">
 										<input type="hidden" name="crseq" value="${replylist.crseq}">
 										<textarea name="content"></textarea>
 										<div class="button_box">
-											<input type="submit" value="수정" onclick="return replyUpdate()">
-											<input class="delete" type="button" value="삭제" onclick="replyDelete('${replylist.crseq}' , '${replylist.cseq}' , '${index}')">
+											<input type="submit" value="수정" onclick="return replyUpdate(${state.index})">
+											<input class="delete" type="button" value="삭제" onclick="replyDelete('${replylist.crseq}' , '${replylist.cseq}' , '${index}' , '${pagenum}')">
 										</div>
 									</form>
 								</div>

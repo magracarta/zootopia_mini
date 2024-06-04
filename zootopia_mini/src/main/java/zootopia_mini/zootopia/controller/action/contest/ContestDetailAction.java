@@ -21,6 +21,7 @@ public class ContestDetailAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cseq = request.getParameter("cseq");
 		String index = request.getParameter("index");
+		String pagenum = request.getParameter("pagenum");
 		int replypagenum = 1;
 		
 		if(request.getParameter("pagenum") != null) replypagenum = Integer.parseInt(request.getParameter("pagenum"));
@@ -51,6 +52,7 @@ public class ContestDetailAction implements Action {
 		
 		
 		
+		request.setAttribute("pagenum", page.getCurrentPage());
 		request.setAttribute("paging", page);
 		request.setAttribute("replyAll", page.getRecordAllcount());
 		request.setAttribute("creplylist", creplylist);

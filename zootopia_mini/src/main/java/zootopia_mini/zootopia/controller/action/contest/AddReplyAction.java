@@ -10,7 +10,7 @@ import zootopia_mini.zootopia.controller.action.Action;
 import zootopia_mini.zootopia.controller.dao.ContestDao;
 import zootopia_mini.zootopia.controller.dto.Contest_replyDTO;
 
-public class UpdateReplyAction implements Action {
+public class AddReplyAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

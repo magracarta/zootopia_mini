@@ -6,5 +6,8 @@
 
 	String cseq = request.getParameter("cseq");
 	String index = request.getParameter("index");
+	if(index != null){
 	response.sendRedirect("zootopia.do?command=contestDetail&cseq="+cseq+"&index="+index);
+		
+	}else response.sendRedirect("zootopia.do?command=contestDetail&cseq="+cseq);
 %>

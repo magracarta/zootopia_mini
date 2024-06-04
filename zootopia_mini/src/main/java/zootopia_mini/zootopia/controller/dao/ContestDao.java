@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+import zootopia_mini.zootopia.controller.dto.CommunityVO;
 import zootopia_mini.zootopia.controller.dto.ContestDTO;
 import zootopia_mini.zootopia.controller.dto.ContestPetDTO;
 import zootopia_mini.zootopia.controller.dto.Contest_replyDTO;
@@ -426,12 +427,123 @@ public class ContestDao {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1,crseq);
 			pstmt.executeUpdate();
-		} catch (SQLException e1) {
-			e1.printStackTrace();
+		}catch (SQLException e) {
+			e.printStackTrace();
 		}finally {
 			DB.close(con, pstmt, rs);
 		}
 		
+	}
+	public void updateContestReply(int crseq, String content) {
+		con = DB.getConnection();
+		String sql = "update contest_reply set content = ? where crseq = ?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, content);
+			pstmt.setInt(2, crseq);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+	}
+
+	public ArrayList<ContestDTO> getContestThirdList() {
+		ArrayList<ContestDTO> lsit = new ArrayList<ContestDTO>();
+		con = DB.getConnection();
+		String sql =  "select * from contestpet_view where lastdate > now() "
+				+ "and createdate > DATE_SUB(NOW(), INTERVAL 7 DAY) and  useyn = 'Y' order by cnt desc limit 3;";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				
+				lsit.add( new ContestDTO(
+							rs.getInt("cseq"),
+							rs.getString("userid"),
+							rs.getString("subject"),
+							rs.getString("content"),
+							rs.getTimestamp("createdate"),
+							rs.getTimestamp("lastdate"),
+							rs.getInt("cnt"),
+							rs.getString("useyn"),
+							rs.getInt("pcnt"),
+							rs.getInt("allpcnt"),
+							rs.getString("nickname")
+						));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+		return lsit;
+	}
+	public ArrayList<ContestPetDTO> getMainCpdList(int cseq) {
+		ArrayList<ContestPetDTO> lsit = new ArrayList<ContestPetDTO>();
+		con = DB.getConnection();
+		String sql =  "select * from contestpetiv_view where cseq = ? order by recommends desc limit 3;";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, cseq);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				lsit.add(new ContestPetDTO(
+						rs.getInt("cpseq"),
+						rs.getString("content"),
+						rs.getString("userid"),
+						rs.getString("nickname"),
+						rs.getInt("cseq"),
+						rs.getInt("recommends"),
+						rs.getString("image"),
+						rs.getString("saveimage"),
+						rs.getString("petname"),
+						rs.getString("petgender"),
+						rs.getString("kind"),
+						rs.getString("password")
+						));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+		return lsit;
+	}
+	public ArrayList<CommunityVO> getCommunityMainList() {
+		ArrayList<CommunityVO> list = new ArrayList<CommunityVO>();
+		String sql = "SELECT c.gseq, c.subject, c.content, c.createdate, c.recommands, c.userid, m.nickname, m.userid AS user_id, c.kind " +
+                "FROM community c JOIN member m ON c.userid = m.userid " +
+                "where c.createdate > DATE_SUB(NOW(), INTERVAL 7 DAY) ORDER BY c.recommands DESC , c.vcount DESC LIMIT 4;";
+		   con = DB.getConnection();
+		   try {
+		       pstmt = con.prepareStatement(sql);
+		       rs = pstmt.executeQuery();
+		       while (rs.next()) {
+		           CommunityVO cvo = new CommunityVO();
+		           cvo.setGseq(rs.getInt("gseq"));
+		           cvo.setSubject(rs.getString("subject"));
+		           cvo.setUserid(rs.getString("userid"));
+		           cvo.setContent(rs.getString("content"));
+		           cvo.setCreatedate(rs.getTimestamp("createdate"));
+		           cvo.setRecommands(rs.getInt("recommands"));
+		           cvo.setNicknameFromView(rs.getString("nickname"));
+		           cvo.setKind(rs.getInt("kind")); // kind 추가
+		           list.add(cvo);
+		       }
+		   } catch (SQLException e) {
+		       e.printStackTrace();
+		   } finally {
+		       DB.close(con, pstmt, rs);
+		   }
+		   return list;
 	}
 	
 	

@@ -50,8 +50,8 @@ values(3 , 'user1' , '저는 까미 응원합니다.... 너무 귀여워요!! �
 insert into contest_reply (cseq, userid , content) 
 values(3 , 'user2' , '넘 귀여워요!. 저희 아이도 나중에 참가해볼게요!');
 
-
-
+--where lastdate > now()
+select * from contestpet_view where lastdate > now() and createdate > DATE_SUB(NOW(), INTERVAL 3 DAY) and allpcnt >= 3 order by cnt desc limit 3;
 
 
 CREATE OR REPLACE VIEW contestpetiv_view AS
@@ -62,6 +62,7 @@ FROM contest AS a, contest_pet AS b , member AS m
 WHERE a.cseq = b.cseq and b.userid = m.userid ;
 
 select * from contestpetiv_view;
+select * from contestpet_view;
 
 CREATE OR REPLACE VIEW contestpet_view AS
 SELECT 
@@ -159,3 +160,6 @@ values ('user1','Y','누가 더 사랑스러운 반려동물을 가지고 있는
 DATE_ADD(NOW(), INTERVAL 3 DAY));
 
 update contest set useyn = 'Y' where useyn = 'W';
+
+select * from community;
+

@@ -16,6 +16,7 @@ import zootopia_mini.zootopia.controller.action.contest.ContestDetailAction;
 import zootopia_mini.zootopia.controller.action.contest.ContestFormAction;
 import zootopia_mini.zootopia.controller.action.contest.ContestReplyDeleteAction;
 import zootopia_mini.zootopia.controller.action.contest.ContestUpdateFormAction;
+import zootopia_mini.zootopia.controller.action.contest.ContestUpdateReplyAction;
 import zootopia_mini.zootopia.controller.action.contest.ContestcountAction;
 import zootopia_mini.zootopia.controller.action.contest.ContestcreateAction;
 import zootopia_mini.zootopia.controller.action.contest.ContestpetDeleteAction;
@@ -23,7 +24,7 @@ import zootopia_mini.zootopia.controller.action.contest.ContestupdateAction;
 import zootopia_mini.zootopia.controller.action.contest.InsertContestPetAction;
 import zootopia_mini.zootopia.controller.action.contest.ReccomnadPetAction;
 import zootopia_mini.zootopia.controller.action.contest.UpdateContestPetAction;
-import zootopia_mini.zootopia.controller.action.contest.UpdateReplyAction;
+import zootopia_mini.zootopia.controller.action.contest.AddReplyAction;
 import zootopia_mini.zootopia.controller.action.main.MainAction;
 import zootopia_mini.zootopia.controller.action.member.IdCheckFormAction;
 import zootopia_mini.zootopia.controller.action.member.JoinAction;
@@ -99,7 +100,8 @@ public class ActionFactory {
 		else if(command.equals("reccomnadPet")) ac = new ReccomnadPetAction();
 		else if(command.equals("updateContestPet")) ac = new UpdateContestPetAction();
 		else if(command.equals("contestpetDelete")) ac = new ContestpetDeleteAction();
-		else if(command.equals("updateReply")) ac = new UpdateReplyAction();
+		else if(command.equals("addReply")) ac = new AddReplyAction();
+		else if(command.equals("contestUpdateReply")) ac = new ContestUpdateReplyAction();
 		else if(command.equals("contestReplyDelete")) ac = new ContestReplyDeleteAction();
 		
 		//qna
