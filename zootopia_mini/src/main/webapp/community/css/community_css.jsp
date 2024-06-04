@@ -17,23 +17,60 @@
 .communityboard ul li .recommands	{ width: 5%; text-align: center; }
 .communityboard ul li .vcount	{ width: 5%; text-align: center; }
 
-section {border: 2px solid; }
+section {  }
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2%;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 3px solid #ddd;
 }
 
-.header h2 {
-    font-size: larger;
-    font-weight: bolder;
-    color: palevioletred;
+.header .text{
+    width: 100%;
 }
 
-.header input[type="button"] {
-    background-color: #4CAF50; /* 버튼 배경색 */
+.header .num {
+padding: 1%;
+}
+
+.header .top {
+
+}
+
+.header .title{
+    display: flex;
+    font-size: x-large;
+    font-weight: bold;
+    padding: 10px;
+    text-align: left;
+}
+
+.header .namerecomreply {
+    display: flex;
+}
+
+.header .namerecomreply .nickname {
+padding: 1%;
+}
+
+.header .namerecomreply .recommands {
+    padding: 1%;
+}
+
+.header .namerecomreply .vcount {
+    padding: 1%;
+}
+
+.header .buttondiv{
+
+}
+
+.header .buttondiv .button_container{
+
+}
+
+.detailcontainer input[type="button"] {
+    background-color: lightgray; /* 버튼 배경색 */
     color: white; /* 버튼 텍스트 색상 */
     border: none; /* 테두리 없애기 */
     padding: 10px 20px; /* 패딩값 */
@@ -43,37 +80,6 @@ section {border: 2px solid; }
     font-size: 16px;
     margin-left: 10px; /* 버튼과 제목 사이 간격 조절 */
 }
-
-
-.detailcontainer	{  }
-.detailcontainer ul	{  }
-.detailcontainer ul li {
-    padding: 20px;
-    border-bottom: 1px solid #ddd;
-}
-.detailcontainer ul li a	{ 
-display: flex;
-}
-.detailcontainer ul li .num	{ 
-width: 5%;     
-color: red;
-}
-.detailcontainer ul li .subject	{ 
-width: 60%; 
-text-align: left; 
-font-weight: bold;
-}
-.detailcontainer ul li .userid	{ 
-width: 15%; 
-text-align: center; 
-}
-.detailcontainer ul li .createdate	{ width: 10%; text-align: left; }
-.detailcontainer ul li .recommands	{ width: 15%; text-align: center; }
-.detailcontainer ul li .recommands .content	{ width: 5%; text-align: center; }
-.detailcontainer ul li .vcount	{ width: 10%; text-align: center; }
-.detailcontainer .content	{ width: 100%; }
-.detailcontainer .content	p { display:flex; text-align: left; background-color: lightgray; padding:30%;
-												font-size: large;padding-top: 20px; padding-left: 20px;}
 
 .button_container {
   display: flex;
@@ -98,24 +104,17 @@ text-align: center;
 }
 
 
+.detailcontainer .content	{ width: 100%; }
 
-/* NO. 20 */
 
-position: absolute;
-width: 48px;
-height: 22px;
-left: 310px;
-top: 159px;
-
-font-family: 'Noto Sans KR';
-font-style: normal;
-font-weight: 500;
-font-size: 15px;
-line-height: 22px;
-/* identical to box height */
-
-color: #999999;
-
+.detailcontainer .content	p { 
+isplay:flex; 
+text-align:left; 
+padding:30%;
+font-size: large;
+padding-top: 20px; 
+padding-left: 20px;
+}
 
 
 
