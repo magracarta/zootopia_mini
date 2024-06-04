@@ -39,7 +39,7 @@ function nicknamecheck() {
 	var url = "zootopia.do?command=nicknamecheckform&nickname=" + document.joinForm.nickname.value;
 	var opt = "toolbar=no, menubar=no, resizable=no, width=500, height=250, scrollbars=no";
 	
-	window.open(url, "idcheck", opt);
+	window.open(url, "nicknamecheck", opt);
 
 }
 

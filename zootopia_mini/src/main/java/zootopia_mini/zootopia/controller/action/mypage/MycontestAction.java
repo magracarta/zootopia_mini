@@ -10,18 +10,19 @@ import jakarta.servlet.http.HttpSession;
 import zootopia_mini.zootopia.controller.action.Action;
 import zootopia_mini.zootopia.controller.dao.MypageDao;
 import zootopia_mini.zootopia.controller.dto.ContestDTO;
+import zootopia_mini.zootopia.controller.dto.MemberVO;
 
 public class MycontestAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-        String userId = (String) session.getAttribute("userid"); // 세션에서 사용자 아이디를 가져옵니다.
+        MemberVO mvo = (MemberVO) session.getAttribute("loginUser"); // 세션에서 사용자 아이디를 가져옵니다.
         
         System.out.println("UserId from session: " + userId);
         
         if (userId == null) {
-            response.sendRedirect("zootopia.do?command=loginForm");
+            response.sendRedirect("zootopia.do?command=loginform");
         } else {
             MypageDao mdao = MypageDao.getInstance();
             ArrayList<ContestDTO> contestList = mdao.getMyContestList(userId); // 사용자 아이디를 매개변수로 전달합니다.

@@ -5,7 +5,7 @@ VALUES
 (0, 'user2' , '두 번째 글', '헌법개정은 국회재적의원 과반수 또는 대통령의 발의로 제안된다. 모든 국민은 통신의 비밀을 침해받지 아니한다.				
 행정권은 대통령을 수반으로 하는 정부에 속한다.', 0, 2, NOW());				
 
-
+select * from member;
 select * from community;
 INSERT INTO member (nickname, userid, pwd, name, phone, email, petname, petgender, kind) VALUES
 ('닉네임1', 'user1', '0000', '홍길동', '010-1234-5678', 'user1@example.com', 'ALEX', 'F' ,'강아지'),
@@ -31,3 +31,8 @@ insert into contest_pet (userid  , cseq , content , image, saveimage) values
 ('user2', 1 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image2.jpg','pet_image2.jpg' );
 insert into contest_pet (userid  , cseq , content , image, saveimage) values 
 ('user1', 1 ,'저희 강아지좀 보세요 대박이에요.' , 'pet_image1.jpg','pet_image1.jpg' );
+
+INSERT INTO admins (adminid, name, pwd, phone)
+VALUES ('admin', '김종호', 'admin', '010-8730-3736');
+
+select * from admins;

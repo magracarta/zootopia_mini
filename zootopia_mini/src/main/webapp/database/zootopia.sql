@@ -109,16 +109,17 @@ CREATE TABLE member
 );
 
 
-CREATE TABLE qnadate
+CREATE TABLE qnareply
 (
-	qseq int NOT NULL AUTO_INCREMENT,
-	userid varchar(30) NOT NULL,
-	subject varchar(100) NOT NULL,
-	content varchar(1000) NOT NULL,
-	reply varchar(1000) NOT NULL,
-	createdate datetime DEFAULT now() NOT NULL,
-	PRIMARY KEY (qseq)
+   qseq int NOT NULL AUTO_INCREMENT,
+   userid varchar(30) NOT NULL,
+   subject varchar(100) NOT NULL,
+   content varchar(1000) NOT NULL,
+   reply varchar(1000),
+   createdate datetime DEFAULT now() NOT NULL,
+   PRIMARY KEY (qseq)
 );
+
 
 
 
@@ -188,7 +189,7 @@ ALTER TABLE contest_reply
 ;
 
 
-ALTER TABLE qnadate
+ALTER TABLE qnareply
 	ADD FOREIGN KEY (userid)
 	REFERENCES member (userid)
 	ON UPDATE CASCADE
