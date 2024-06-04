@@ -7,10 +7,12 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+import zootopia_mini.zootopia.controller.dto.CommunityVO;
 import zootopia_mini.zootopia.controller.dto.ContestDTO;
 import zootopia_mini.zootopia.controller.dto.ContestPetDTO;
 import zootopia_mini.zootopia.controller.dto.MemberVO;
 import zootopia_mini.zootopia.util.DB;
+import zootopia_mini.zootopia.util.Paging;
 
 public class MypageDao {
 	private MypageDao() {}
@@ -197,6 +199,60 @@ public class MypageDao {
             DB.close(con, pstmt, rs);
         }
         return list;
+	}
+
+
+	public ArrayList<CommunityVO> getMyCommunityList(Paging page, String userid) {
+		ArrayList<CommunityVO> list = new ArrayList<CommunityVO>();
+		String sql = "select * from community where userid = ? order by gseq desc limit ? offset ?";
+		con = DB.getConnection();
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			pstmt.setInt(2, page.getRecordrow());
+			pstmt.setInt(3, page.getOffsetnum());
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				CommunityVO community = new CommunityVO();
+				community.setGseq(rs.getInt("gseq"));
+				community.setVcount(rs.getInt("vcount"));
+				community.setUserid(rs.getString("userid"));
+				community.setSubject(rs.getString("subject"));
+				community.setContent(rs.getString("content"));
+				community.setRecommands(rs.getInt("recommands"));
+				community.setKind(rs.getInt("kind"));
+				community.setCreatedate(rs.getTimestamp("createdate"));
+				list.add(community);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+            DB.close(con, pstmt, rs);
+        }
+		
+		return list;
+	}
+
+
+	public int getAllCount(String table, String userid) {
+		int count = 0;
+		con = DB.getConnection();
+		
+		String sql = "select count(*) as gseq from "+table + " where userid = ?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			rs = pstmt.executeQuery();
+			if(rs.next()) count = rs.getInt("gseq");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+		
+		return count;
 	}
 }
 

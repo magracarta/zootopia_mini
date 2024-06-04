@@ -31,4 +31,3 @@
 		
 		
 		<%@ include file="mycategory.jsp" %>
-		

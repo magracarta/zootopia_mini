@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file ="../header.jsp" %>
 <%@ include file="section/mypage_info.jsp" %>
 
@@ -72,9 +71,11 @@
 					</c:choose>
 				</div>
 			</div>
+		</div>
 	</form>
 		
 <%@ include file="css/mypage_css.jsp" %>
 <%@ include file="css/mycontest.jsp" %>
-<%@ include file ="../footer.jsp" %>
+<%@ include file="../footer.jsp" %>
 
+		                    
