@@ -96,7 +96,7 @@ public class CommunityDao {
                 cvo = new CommunityVO(); 
                 cvo.setGseq(gseq);
                 cvo.setVcount(rs.getInt("vcount"));
-               // cvo.setNicknameFromView(rs.getString("nickname"));
+                cvo.setNicknameFromView(rs.getString("nickname"));
                 cvo.setUserid(rs.getString("userid"));
                 cvo.setSubject(rs.getString("subject"));
                 cvo.setContent(rs.getString("content"));

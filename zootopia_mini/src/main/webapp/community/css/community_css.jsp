@@ -17,11 +17,11 @@
 .communityboard ul li .recommands	{ width: 5%; text-align: center; }
 .communityboard ul li .vcount	{ width: 5%; text-align: center; }
 
+section {border: 1px solid; }
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center; /* 제목과 버튼을 수직 가운데 정렬 */
-    background-color: #f2f2f2; /* 예시 배경색 */
     padding: 10px 20px; /* 예시 패딩값 */
 }
 
@@ -41,21 +41,29 @@
     margin-left: 10px; /* 버튼과 제목 사이 간격 조절 */
 }
 
+
 .detailcontainer	{  }
 .detailcontainer ul	{  }
-.detailcontainer ul li	{ padding: 14px 0; border-bottom: 1px solid #ddd; }
-.detailcontainer ul li.board_head	{ display: flex; justify-content: space-between; }
-.detailcontainer ul li a	{ display: flex; justify-content: space-between; }
+.detailcontainer ul li	{ padding: 14px 0; border-bottom: 1px solid #ddd;  border: 1px solid black; padding: 20px; flex-direction: row;}
+.detailcontainer ul li a	{ display: flex;}
 .detailcontainer ul li .num	{ width: 5%; }
 .detailcontainer ul li .subject	{ width: 60%; text-align: left; }
 .detailcontainer ul li .userid	{ width: 15%; text-align: center; }
-.detailcontainer ul li .createdate	{ width: 20%; text-align: left; }
-.detailcontainer ul li .recommands	{ width: 5%; text-align: center; }
-.detailcontainer ul li .vcount	{ width: 5%; text-align: center; }
+.detailcontainer ul li .createdate	{ width: 10%; text-align: left; }
+.detailcontainer ul li .recommands	{ width: 15%; text-align: center; }
+.detailcontainer ul li .recommands .content	{ width: 5%; text-align: center; }
+.detailcontainer ul li .vcount	{ width: 10%; text-align: center; }
+.detailcontainer .content	{ width: 100%; }
+.detailcontainer .content	p { display:flex; text-align: left; background-color: lightgray; padding:20%;
+												font-size: large;padding-top: 20px; padding-left: 20px;}
 
+.button_container {  }
+.button_container .button1 {  }
+.button_container .button2 {  }
 
-
-
+.button_container2 {  }
+.button_container .button1 {  }
+.button_container .button2 {  }
 
 
 
