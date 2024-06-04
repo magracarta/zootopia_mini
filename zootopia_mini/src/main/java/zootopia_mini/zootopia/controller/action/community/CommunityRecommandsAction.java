@@ -7,18 +7,28 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import zootopia_mini.zootopia.controller.action.Action;
 import zootopia_mini.zootopia.controller.dao.CommunityDao;
+import zootopia_mini.zootopia.controller.dto.CommunityVO;
 
 public class CommunityRecommandsAction implements Action {
 
-	@Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int gseq = Integer.parseInt(request.getParameter("gseq"));
+	 @Override
+	    public void execute(HttpServletRequest request, HttpServletResponse response)
+	            throws ServletException, IOException {
+	        int gseq = Integer.parseInt(request.getParameter("gseq"));
 
-        // DAO 호출하여 추천 수 증가
-        CommunityDao cdao = CommunityDao.getInstance();
-        cdao.updateRecommendations(gseq);
+	        // DAO 객체 생성
+	        CommunityDao cdao = CommunityDao.getInstance();
 
-        // 추천 버튼을 누른 후 다시 게시글 상세 페이지로 이동
-        response.sendRedirect("zootopia.do?command=communityDetail&gseq=" + gseq);
-    }
+	        // 추천 수 증가
+	        cdao.updateRecommendations(gseq);
+
+	        // 새로운 추천 수 가져오기
+	        CommunityVO community = cdao.getCommunity(gseq);
+	        int newRecommends = community.getRecommands();
+
+	        // JSON 형태로 응답 작성
+	        response.setContentType("application/json; character-set='utf-8'");
+	        response.setCharacterEncoding("UTF-8");
+	        response.getWriter().write("{\"recommends\": " + newRecommends + "}");
+	    }
 }
