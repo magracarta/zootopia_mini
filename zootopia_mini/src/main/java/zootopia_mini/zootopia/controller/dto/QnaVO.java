@@ -8,8 +8,8 @@ public class QnaVO {
 	private String subject;
 	private String content;
 	private String reply;
-	private String userid; 
-	private Timestamp indate;
+	private String userid;
+	private Timestamp createdate;
 	
 	public Integer getQseq() {
 		return qseq;
@@ -41,11 +41,12 @@ public class QnaVO {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-	public Timestamp getIndate() {
-		return indate;
+
+	public Timestamp getCreatedate() {
+		return createdate;
 	}
-	public void setIndate(Timestamp indate) {
-		this.indate = indate;
+	public void setCreatedate(Timestamp createdate) {
+		this.createdate = createdate;
 	}
 	
 	

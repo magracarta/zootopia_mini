@@ -44,6 +44,7 @@ import zootopia_mini.zootopia.controller.action.mypage.MypageAction;
 import zootopia_mini.zootopia.controller.action.mypage.MyqnaAction;
 import zootopia_mini.zootopia.controller.action.mypage.MyreplyAction;
 import zootopia_mini.zootopia.controller.action.mypage.MywriteAction;
+import zootopia_mini.zootopia.controller.action.qna.QnaDeleteAction;
 import zootopia_mini.zootopia.controller.action.qna.QnaListAction;
 import zootopia_mini.zootopia.controller.action.qna.QnaViewAction;
 import zootopia_mini.zootopia.controller.action.qna.WriteQnaAction;
@@ -114,6 +115,7 @@ public class ActionFactory {
 		else if(command.equals("qnaView")) ac = new QnaViewAction();
 		else if(command.equals("writeQnaForm")) ac = new WriteQnaFormAction();
 		else if(command.equals("writeQna")) ac = new WriteQnaAction();
+		else if( command.equals("deleteqna") ) ac = new QnaDeleteAction();
 		
 		//admin
 		else if(command.equals("admin")) ac = new AdminAction();

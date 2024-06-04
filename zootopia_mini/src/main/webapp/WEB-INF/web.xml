@@ -19,4 +19,24 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>QnaDeleteAction</display-name>
+    <servlet-name>QnaDeleteAction</servlet-name>
+    <servlet-class>zootopia_mini.zootopia.controller.action.qna.QnaDeleteAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>QnaDeleteAction</servlet-name>
+    <url-pattern>/QnaDeleteAction</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>QnaDeleteAction1</display-name>
+    <servlet-name>QnaDeleteAction1</servlet-name>
+    <servlet-class>zootopia_mini.zootopia.controller.action.qna.QnaDeleteAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>QnaDeleteAction1</servlet-name>
+    <url-pattern>/QnaDeleteAction1</url-pattern>
+  </servlet-mapping>
 </web-app>
