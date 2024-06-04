@@ -92,6 +92,13 @@ select * from contest_pet;
 
 select * from contestpet_view;
 
+-- 1. user id 로 내가 참가한 이미 조회
+select * from contestpetiv_view;
+
+-- 2. cseq 
+select * from contestpet_view;
+
+
 
 select * from member;
 

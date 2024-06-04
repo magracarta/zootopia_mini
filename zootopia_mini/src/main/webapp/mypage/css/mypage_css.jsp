@@ -12,6 +12,7 @@
     justify-content: space-between;
     width: 900px;
     margin: auto 0;
+    margin-bottom: 20px;
     
 }
 

@@ -1,50 +1,17 @@
 <style>
 
 
-.mywriteform {
-	font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
- 	margin: 0;
-	padding: 0;
-}
-
-
-
-.container {
-	width:90%;
-	margin: 20px auto;
-}
-
-h1{
-	font-weight: normal;
-	margin-bottom: 20px;
-}
-
-table {
-	width: 100%;
-	border-collapse: collapse;
-    background-color: #ffffff;
-}
-
-th, td {
-    padding: 15px;
-    border-bottom: 1px solid #e0e0e0;
-    text-align: left;
-}
-
-th {
-	background-color: #f2f2f2;
-    font-weight: normal;
-}
-
-
-.count {
-    color: red;
-}
-
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
+.communityboard   {  }
+.communityboard ul   {  }
+.communityboard ul li   { padding: 14px 0; border-bottom: 1px solid #ddd; }
+.communityboard ul li.board_head   { display: flex; justify-content: space-between; }
+.communityboard ul li a   { display: flex; justify-content: space-between; }
+.communityboard ul li .num   { width: 5%; }
+.communityboard ul li .subject   { width: 60%; text-align: left; }
+.communityboard ul li .userid   { width: 15%; text-align: center; }
+.communityboard ul li .createdate   { width: 20%; text-align: left; }
+.communityboard ul li .recommands   { width: 5%; text-align: center; }
+.communityboard ul li .vcount   { width: 5%; text-align: center; }
 
 
 .search-container { 
