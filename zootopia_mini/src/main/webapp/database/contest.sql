@@ -170,3 +170,6 @@ update contest set useyn = 'Y' where useyn = 'W';
 
 select * from community;
 
+
+select * from contestpet_view order by useyn desc  , cseq desc limit 5  ;
+

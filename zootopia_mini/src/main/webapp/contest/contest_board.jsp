@@ -17,23 +17,21 @@
 
 <div class="title-wrapper">
 	<h2 class="title">콘테스트 (${allcnt})</h2>
-	<a href="zootopia.do?command=contestForm">나도 콘테스트 추가하기 ></a>
+	<c:if test="${userlogin != null}"><a href="zootopia.do?command=contestForm">나도 콘테스트 추가하기 ></a></c:if>
 </div>
 <div class="contest-category">
-	<ul>
-		<li><a class="all select" href="zootopia.do?command=contestBoard&category=all&pagenum=1&search=">All</a></li>
+	<ul data-category ="${category}">
+		<li><a class="all" href="zootopia.do?command=contestBoard&category=all&pagenum=1&search=">All</a></li>
 		<li><a class="playing" href="zootopia.do?command=contestBoard&category=playing&pagenum=1&search=">진행중인 콘테스트</a></li>
 		<li><a class="accomplished" href="zootopia.do?command=contestBoard&category=accomplished&pagenum=1&search=">완료된 콘테스트</a></li>
 		<li><a class="wating" href="zootopia.do?command=contestBoard&category=wating&pagenum=1&search=">대기중인 콘테스트</a></li>
 	</ul>
 </div>
-<style>
-.contest-category { padding-bottom:50px; }
-.contest-category ul { display:flex;  }
-.contest-category ul li { border-bottom:2px solid #F3F3F3; }
-.contest-category ul li a { padding: 15px 15px; position:relative; top:2px; width:auto; }
-.contest-category ul li a.select { border-bottom:2px solid #000; }
-</style>
+
+<script>
+let category = document.querySelector(".contest-category ul").dataset.category;
+document.querySelector("."+category).classList.add("select");
+</script>
  
 <div class="contest_container">
 	<div class="contest_list">
@@ -45,13 +43,13 @@
 							<span class="cseq">NO. <span class="index"></span> <br>
 								<span style="font-size:14px; display:block; margin:5px 0 10px;">개최자 - ${list.nickname}</span>
 							</span>
-							<c:if test="${list.lastdate > now}">
 								<div class="left-box">
 									<p>조회수(${list.cnt})</p>
+								<c:if test="${list.lastdate > now}">
 									<span class="lastdate"><fmt:formatDate value="${list.lastdate}" pattern="yy/MM/dd hh:mm:ss" />까지 등록가능</span>
+								</c:if>
 							
 								</div>
-							</c:if>
 						</div>
 						<div class="title-box">
 							<h1>${list.subject}</h1>
@@ -97,9 +95,14 @@
 							<c:if test="${list.lastdate < now}">
 								<span>투표기간이 완료되었습니다.<br>결과를 같이 확인해주세요!</span>
 							</c:if>
-							<a class='go_btn' data-url ="${list.cseq}">
-							자세히 보러가기
-							</a>
+							<c:if test="${list.useyn == 'W'}">
+								<a class="go_btn watingText">대기 중</a>
+							</c:if>
+							<c:if test="${list.useyn != 'W'}">
+								<a class='go_btn' data-url ="${list.cseq}">
+									자세히 보러가기
+								</a>
+							</c:if>
 						</div>	
 						</div>		
 					

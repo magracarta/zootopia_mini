@@ -19,6 +19,9 @@ public class CommunityBoardAction implements Action {
 
         HttpSession session = request.getSession();
         MemberVO mvo = (MemberVO) session.getAttribute("loginUser");
+       
+        
+        
         if (mvo == null) {
             response.sendRedirect("zootopia.do?command=loginform");
         } else {

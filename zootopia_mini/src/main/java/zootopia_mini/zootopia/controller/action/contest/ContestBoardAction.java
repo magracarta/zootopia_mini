@@ -20,6 +20,15 @@ public class ContestBoardAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String currentPage = request.getParameter("pagenum");
+	    String category = "all" ;
+
+	     if(request.getParameter("category") != null) {
+	    	 category = request.getParameter("category");
+	    	 session.setAttribute("category", category);
+	     }
+		 else if ( session.getAttribute("category") != null ) {
+	     	category = (String) session.getAttribute("category");
+	     }else if(request.getParameter("category") == null && session.getAttribute("category") == null) category = "all" ;
 		
 		String search = "";
 		
@@ -28,7 +37,7 @@ public class ContestBoardAction implements Action {
 		else if(request.getParameter("search") == null && session.getAttribute("search")== null) search = "";
 		
 		ContestDao cdao = ContestDao.getInstance();
-		int contestAllcount = cdao.getAllCount("contest" , search);
+		int contestAllcount = cdao.getAllCount("contest" , search , category);
 		
 		Paging page = new Paging();
 		if(currentPage != null) page.setCurrentPage(Integer.parseInt(currentPage));
@@ -36,7 +45,8 @@ public class ContestBoardAction implements Action {
 		else if(request.getParameter("paging") == null && session.getAttribute("paging")== null) page.setCurrentPage(1);
 		
 		page.setRecordAllcount(contestAllcount);
-		ArrayList<ContestDTO> list = cdao.getList(page , search);
+		
+		ArrayList<ContestDTO> list = cdao.getList(page , search , category);
 		
 		
 		Date date = new Date();
@@ -44,7 +54,8 @@ public class ContestBoardAction implements Action {
         for(ContestDTO cdto : list ) cdto.setCpdList(cdao.getCpdList(cdto.getCseq()));
         
         
-        
+
+        request.setAttribute("category", category);
         session.setAttribute("search", search);
         request.setAttribute("now", timestamp);
         session.setAttribute("paging", page);

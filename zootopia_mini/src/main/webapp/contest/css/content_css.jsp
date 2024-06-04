@@ -10,6 +10,15 @@
 .contest .title-wrapper .title { font-size:30px; font-weight:600; }
 .contest .title-wrapper a { font-size:15px; text-decoration: underline; }
 
+
+
+.contest-category { padding-bottom: 60px; margin-top: -21px; }
+.contest-category ul { display:flex;  }
+.contest-category ul li { border-bottom:2px solid #F3F3F3; }
+.contest-category ul li a { padding: 15px 15px; position:relative; top:2px; width:auto; font-size:18px; }
+.contest-category ul li a.select { border-bottom:2px solid #000; font-weight: 800; color: #000; }
+
+
 .contest_container {  }
 .contest_container .contest_list {  }
 .contest_container .contest_list ul {  }
@@ -82,6 +91,7 @@ border:1px solid #D9D9D9; border-radius: 3px; width:362px; position:absolute; ba
 
 
 
+.contest_container .contest_list .button-wrapper a.watingText { pointer-events: none; text-align: center; background: #ddd; }
 </style>
 
 
@@ -200,6 +210,7 @@ align-items: center; margin-top:20px;}
 border-radius: 5px; margin:0 5px;
 }
 .reply_list ul li .replyUpdateForm .button_box .delete { display:inline-block; width:auto; background: #fff; color:#000; }
+
 
 
 </style>

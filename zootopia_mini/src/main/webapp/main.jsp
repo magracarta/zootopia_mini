@@ -93,7 +93,7 @@
 		</ul>
 	</div>
 	<div class="button-wrap">
-		<a class="moreBtn" href="zootopia.do?command=contestBoard&pagenum=1&search=">더 많은 콘테스트 보기</a>	
+		<a class="moreBtn" href="zootopia.do?command=contestBoard&category=all&pagenum=1&search=">더 많은 콘테스트 보기</a>	
 	</div>
 </section>
 

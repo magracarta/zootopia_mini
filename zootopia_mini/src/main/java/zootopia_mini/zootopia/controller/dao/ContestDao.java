@@ -58,10 +58,91 @@ public class ContestDao {
 		
 		return list;
 	}
+	
+	
+	public ArrayList<ContestDTO> getList(Paging page, String search , String category) {
+		ArrayList<ContestDTO> list = new ArrayList<ContestDTO>();
+		con = DB.getConnection();
+		String useyn = " and useyn ='Y' ";
+		if(category.equals("wating")) {
+			useyn = " and useyn ='W' ";
+		}else if(category.equals("all")) {
+			useyn = "  ";
+			
+		}else if(category.equals("accomplished")) {
+			useyn = " and now() > lastdate ";
+		}
+		String sql = "select * from contestpet_view  where subject like concat('%',?,'%')"
+				+ useyn
+				+ "order by useyn desc , cseq desc limit ? offset ?";
+		
+		try {
+			pstmt =  con.prepareStatement(sql);
+			pstmt.setString(1, search);
+			pstmt.setInt(2, page.getRecordrow());
+			pstmt.setInt(3, page.getOffsetnum());
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				
+				list.add(new ContestDTO(
+						rs.getInt("cseq"),
+						rs.getString("userid"),
+						rs.getString("subject"),
+						rs.getString("content"),
+						rs.getTimestamp("createdate"),
+						rs.getTimestamp("lastdate"),
+						rs.getInt("cnt"),
+						rs.getString("useyn"),
+						rs.getInt("pcnt"),
+						rs.getInt("allpcnt"),
+						rs.getString("nickname")
+						));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+	
+		
+		return list;
+	}
+	
+	
 	public int getAllCount(String table, String search) {
 		int count = 0;
 		con = DB.getConnection();
 		String sql = "select count(*) as cnt from "+table+ " where useyn ='Y' and subject like concat('%',?,'%')";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, search);
+			rs = pstmt.executeQuery();
+			if(rs.next()) count = rs.getInt("cnt");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+		return count;
+	}
+	
+	public int getAllCount(String table, String search, String category) {
+		int count = 0;
+		String useyn = " and useyn ='Y' ";
+		if(category.equals("wating")) {
+			useyn = " and useyn ='W' ";
+		}else if(category.equals("all")) {
+			useyn = "  ";
+			
+		}else if(category.equals("accomplished")) {
+			useyn = " and now() > lastdate ";
+		}
+		con = DB.getConnection();
+		String sql = "select count(*) as cnt from "+table+ " where subject like concat('%',?,'%') "
+				+ useyn;
 		
 		try {
 			pstmt = con.prepareStatement(sql);
