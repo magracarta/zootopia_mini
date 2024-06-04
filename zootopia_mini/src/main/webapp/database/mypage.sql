@@ -4,6 +4,8 @@ select * from member;
 
 select * from contest;
 
+select * from contestpetiv_view;
+
 update member set nickname = '바뀌나?' where userid = 'user1';
 
 
@@ -14,18 +16,24 @@ INSERT INTO member (nickname, userid, pwd, name, phone, email, petname, petgende
 
 
 insert into contest_pet (userid  , cseq , content , image, saveimage ) values 
-('user2', 1 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image2.jpg','pet_image2.jpg' );
+('jota', 8 ,'우리 조하 귀엽죠 ㅋㅋㅋㅋ' , 'joha13.jpg','joha13.jpg' );
 insert into contest_pet (userid  , cseq , content , image, saveimage) values 
-('user1', 1 ,'저희 강아지좀 보세요 대박이에요.' , 'pet_image1.jpg','pet_image1.jpg' );
+('joha', 7 ,'얜 잘때 왜이럴까 진짜,,' , 'joha5.jpg','joha5.jpg' );
 insert into contest_pet (userid  , cseq , content , image, saveimage) values 
-('user2', 1 ,'저희 강아지좀 보세요 대박이에요.2' , 'pet_image2.jpg','pet_image2.jpg' );
+('user4', 8 ,'나는 오늘 쉬야를 했습니다' , 'joha21.jpg','joha21.jpg' );
 insert into contest_pet (userid  , cseq , content , image, saveimage) values 
-('user1', 1 ,'저희 강아지좀 보세요 대박이에요.' , 'pet_image1.jpg','pet_image1.jpg' );
+('user5', 7 ,'귀여운 혓바닥 메롱' , 'joha17.jpg','joha17.jpg' );
 
 
 
 INSERT INTO contest (userid, useyn, subject, content, lastdate)
-values ('user1','Y','누가 더 사랑스러운 반려동물을 가지고 있는가!' , '사랑스러운 반려동물들을 찾아보세요!! 지금 바로 여러분의 귀여운 동물 사진들을 올려주세요!' ,
+values ('joha','Y','우리 반려견 엽기사진 콘테스트' , '우리 반려견의 엽기 사진 대결해요!' ,
+DATE_ADD(NOW(), INTERVAL 3 DAY));
+INSERT INTO contest (userid, useyn, subject, content, lastdate)
+values ('jota','Y','콘테스트 또 올려요~~' , '테스트입니다' ,
+DATE_ADD(NOW(), INTERVAL 3 DAY));
+INSERT INTO contest (userid, useyn, subject, content, lastdate)
+values ('jota','Y','조타 콘테스트 3' , '테스트입니다' ,
 DATE_ADD(NOW(), INTERVAL 3 DAY));
 INSERT INTO contest (userid, useyn, subject, content, lastdate)
 values ('user1','Y','누가 더 사랑스러운 반려동물을 가지고 있는가!' , '사랑스러운 반려동물들을 찾아보세요!! 지금 바로 여러분의 귀여운 동물 사진들을 올려주세요!' ,
@@ -33,6 +41,20 @@ DATE_ADD(NOW(), INTERVAL 3 DAY));
 INSERT INTO contest (userid, useyn, subject, content, lastdate)
 values ('user1','Y','누가 더 사랑스러운 반려동물을 가지고 있는가!' , '사랑스러운 반려동물들을 찾아보세요!! 지금 바로 여러분의 귀여운 동물 사진들을 올려주세요!' ,
 DATE_ADD(NOW(), INTERVAL 3 DAY));
+
+-- 종료된 콘테스트 
 INSERT INTO contest (userid, useyn, subject, content, lastdate)
-values ('user1','Y','누가 더 사랑스러운 반려동물을 가지고 있는가!' , '사랑스러운 반려동물들을 찾아보세요!! 지금 바로 여러분의 귀여운 동물 사진들을 올려주세요!' ,
-DATE_ADD(NOW(), INTERVAL 3 DAY));
+values ('jota','Y','종료된 콘테스트 테스트' , '기간이 종료 되었습니다!!' ,
+DATE_SUB(NOW(), INTERVAL 3 DAY));
+insert into contest_pet (userid  , cseq , content , image, saveimage) values 
+('joha', 9 ,'종료된 콘테스트에 참가했었어요' , 'joha11.jpg','joha11.jpg' );
+
+
+
+update member set useyn = 'Y' where userid = 'joha';
+
+delete from contestpetiv_view where cpseq = 16;
+
+
+
+select * from contestpet_view;

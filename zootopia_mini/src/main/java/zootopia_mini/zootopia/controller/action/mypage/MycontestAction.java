@@ -2,6 +2,8 @@ package zootopia_mini.zootopia.controller.action.mypage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -29,19 +31,40 @@ public class MycontestAction implements Action {
             MypageDao mdao = MypageDao.getInstance();
             ArrayList<ContestDTO> contestList = mdao.getMyContestList(mvo.getUserid()); // 사용자 아이디를 매개변수로 전달합니다.
 			
-			
             
-            ArrayList<ContestPetDTO> contestPetList = mdao.mypetList(mvo.getUserid());
-            ArrayList<ContestDTO> contestmypetList = new ArrayList<ContestDTO>();
+            ArrayList<ContestPetDTO> contestPetList = mdao.mypetList(mvo.getUserid()); 
+            ArrayList<ContestDTO> contestmypetList = new ArrayList<ContestDTO>(); // 내가 참가중인 콘테스트
             
-            System.out.println(contestPetList.size());
+            ArrayList<ContestDTO> contestClosedList = mdao.getClosedContests(mvo.getUserid()); // 종료된 콘테스트
+            
+            ArrayList<ContestDTO> contestActiveList = mdao.getActiveContests(mvo.getUserid()); // 종료되지 않은 콘테스트
+            
+            //System.out.println(contestPetList.size());
             for(ContestPetDTO list :  contestPetList) {
             	contestmypetList.add(mdao.getMypetContest(list.getCseq()));
             }
+            
+            // contestActiveList를 최신순으로 정렬 안되는거 같음 흠
+            Collections.sort(contestActiveList, new Comparator<ContestDTO>() {
+                @Override
+                public int compare(ContestDTO c1, ContestDTO c2) {
+                    if (c1.getCreatedate() == null && c2.getCreatedate() == null) {
+                        return 0;
+                    }
+                    if (c1.getCreatedate() == null) {
+                        return 1;
+                    }
+                    if (c2.getCreatedate() == null) {
+                        return -1;
+                    }
+                    return c2.getCreatedate().compareTo(c1.getCreatedate()); // 최신순 정렬
+                }
+            });
            
             
 			request.setAttribute("contestmypetList", contestmypetList);
-			request.setAttribute("contestList", contestList);
+			request.setAttribute("contestList", contestActiveList); // 활성화된 콘테스트만 전달
+			request.setAttribute("contestClosedList", contestClosedList); // 종료된 콘테스트 전달
 			
 			request.getRequestDispatcher("mypage/mycontest.jsp").forward(request, response);
 			

@@ -27,14 +27,8 @@
 	        		<!-- onclick="confirmDelete(event)" -->
 	        	</div>
 			</div>
-			
-			
-			<div class="mycategory">
-				<a href="zootopia.do?command=mycontest">콘테스트</a> 
-				<a href="zootopia.do?command=mywrite">내가 작성한 글</a>
-				<a href="zootopia.do?command=myreply">내가 쓴 댓글</a>
-				<a href="zootopia.do?command=myqna">내 Q&A</a>
-			</div>
 		</form>
 		
+		
+		<%@ include file="mycategory.jsp" %>
 		

@@ -145,5 +145,58 @@ public class MypageDao {
 		}finally { DB.close(con, pstmt, rs);}
 		return cdto;
 	}
+
+
+	public ArrayList<ContestDTO> getClosedContests(String userid) {
+		ArrayList<ContestDTO> list = new ArrayList<ContestDTO>();
+		String sql = "select * from contest where userid = ? and lastdate < now()";
+		con = DB.getConnection();
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ContestDTO contest = new ContestDTO();
+                contest.setCseq(rs.getInt("cseq"));
+                contest.setUserid(rs.getString("userid"));
+                contest.setUseyn(rs.getString("useyn"));
+                contest.setSubject(rs.getString("subject"));
+                contest.setContent(rs.getString("content"));
+                contest.setLastdate(rs.getTimestamp("lastdate"));
+                list.add(contest);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally { DB.close(con, pstmt, rs);}
+		
+		return list;
+	}
+	
+	public ArrayList<ContestDTO> getActiveContests(String userid) {
+        ArrayList<ContestDTO> list = new ArrayList<ContestDTO>();
+        String sql = "SELECT * FROM contest WHERE userid = ? AND lastdate >= NOW()";
+        con = DB.getConnection();
+        try {
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, userid);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                ContestDTO contest = new ContestDTO();
+                contest.setCseq(rs.getInt("cseq"));
+                contest.setUserid(rs.getString("userid"));
+                contest.setUseyn(rs.getString("useyn"));
+                contest.setSubject(rs.getString("subject"));
+                contest.setContent(rs.getString("content"));
+                contest.setLastdate(rs.getTimestamp("lastdate"));
+                list.add(contest);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DB.close(con, pstmt, rs);
+        }
+        return list;
+	}
 }
 
