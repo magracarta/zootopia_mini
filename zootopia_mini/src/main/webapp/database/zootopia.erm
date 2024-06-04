@@ -10,9 +10,9 @@
 		<right_margin>30</right_margin>
 	</page_setting>
 	<category_index>0</category_index>
-	<zoom>0.8</zoom>
-	<x>0</x>
-	<y>-68</y>
+	<zoom>1.0</zoom>
+	<x>186</x>
+	<y>-94</y>
 	<default_color>
 		<r>128</r>
 		<g>128</g>
@@ -946,12 +946,12 @@
 	<contents>
 		<table>
 			<id>0</id>
-			<height>75</height>
-			<width>120</width>
+			<height>128</height>
+			<width>200</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
-			<x>1447</x>
-			<y>115</y>
+			<x>1032</x>
+			<y>66</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -2955,7 +2955,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>14</word_id>
+					<word_id>10</word_id>
 					<id>49</id>
 					<description></description>
 					<unique_key_name></unique_key_name>

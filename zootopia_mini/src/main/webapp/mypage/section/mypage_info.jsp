@@ -8,10 +8,10 @@
 					<div class="profile_img">
 						<c:choose>
 							<c:when test="${loginUser.saveimage == null}">
-								<img   src="images/repl-noimg.png"  width="100px"/>
+								<img src="images/repl-noimg.png"  width="100px"/>
 							</c:when>
 							<c:otherwise>
-								<img  src="images/${loginUser.saveimage}"  width="100px"/>
+								<img src="images/${loginUser.saveimage}"  width="100px"/>
 							</c:otherwise>
 						</c:choose>
 					</div>

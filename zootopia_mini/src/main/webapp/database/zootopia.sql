@@ -123,6 +123,7 @@ CREATE TABLE qnareply
 
 
 
+
 /* Create Foreign Keys */
 
 ALTER TABLE community_reply

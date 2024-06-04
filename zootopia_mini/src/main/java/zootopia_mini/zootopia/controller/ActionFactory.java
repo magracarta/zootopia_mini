@@ -2,6 +2,9 @@ package zootopia_mini.zootopia.controller;
 
 
 import zootopia_mini.zootopia.controller.action.Action;
+import zootopia_mini.zootopia.controller.action.admin.AdminAction;
+import zootopia_mini.zootopia.controller.action.admin.AdminLoginAction;
+import zootopia_mini.zootopia.controller.action.admin.AdminMemberListAction;
 import zootopia_mini.zootopia.controller.action.community.CommunityBoardAction;
 import zootopia_mini.zootopia.controller.action.community.CommunityDeleteAction;
 import zootopia_mini.zootopia.controller.action.community.CommunityDetailAction;
@@ -57,6 +60,8 @@ public class ActionFactory {
 		Action ac =null;
 		
 		if(command.equals("main")) ac = new MainAction();
+		
+		//member
 		else if(command.equals("loginform")) ac = new LoginFormAction();
 		else if(command.equals("login")) ac = new LoginAction();
 		else if(command.equals("logout")) ac = new LogoutAction();
@@ -110,6 +115,10 @@ public class ActionFactory {
 		else if(command.equals("writeQnaForm")) ac = new WriteQnaFormAction();
 		else if(command.equals("writeQna")) ac = new WriteQnaAction();
 		
+		//admin
+		else if(command.equals("admin")) ac = new AdminAction();
+		else if(command.equals("adminlogin")) ac = new AdminLoginAction();
+		else if(command.equals("adminmemberlist")) ac = new AdminMemberListAction();
 		
 		return ac;
 	}

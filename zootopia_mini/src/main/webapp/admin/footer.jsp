@@ -13,18 +13,21 @@
 			<div class="admin-info">
 				<p>고객 센터</p>
 				<span>000-000-0000</span>
-				<a href="zootopia.do?command=admin">admin<img src="images/Arrow 1.png"></a>
+				<a href="zootopia.do?command=admin">user<img src="images/Arrow 1.png"></a>
 			</div>
 		</div>
 		
 		<div class="right">
 			<div class="menu-wrapper">
 				<ul>
-					<li><a href="zootopia.do?command=contest">콘테스트</a></li>
+					<li><a href="zootopia.do?command=admincontestlist">회원 관리</a></li>
 					<li><span></span></li>
-					<li><a href="zootopia.do?command=free">자유게시판</a></li>
+					<li><a href="zootopia.do?command=admincommunitylist">커뮤니티 관리</a></li>
 					<li><span></span></li>
-					<li><a href="zootopia.do?command=qnaList">Q&A</a></li>
+					<li><a href="zootopia.do?command=admincontestlist">콘테스트 관리</a></li>
+					<li><span></span></li>
+					<li><a href="zootopia.do?command=adminqnalist">Q&A 관리</a></li>
+					
 				</ul>
 			</div>
 			<div class="text-wrapper">
