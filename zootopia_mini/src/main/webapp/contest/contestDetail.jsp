@@ -83,7 +83,7 @@
 				 	</div>
 				</li>
 			</c:forEach>
-			<c:if test='${contest_detail.cpdList.size() <  contest_detail.pcnt}'>
+			<c:if test='${contest_detail.cpdList.size() <  contest_detail.pcnt && contest_detail.lastdate > now}'>
 			<c:choose>
 				<c:when test="${loginUser.petname != null }">
 					<li class="more_pet">
