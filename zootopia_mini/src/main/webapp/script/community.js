@@ -94,3 +94,5 @@ function increaseViewCountAndRedirect(gseq) {
             return false;
         }
     }
+    
+    

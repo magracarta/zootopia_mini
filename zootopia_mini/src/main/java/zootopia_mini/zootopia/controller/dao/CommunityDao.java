@@ -256,4 +256,40 @@ public class CommunityDao {
 
         return searchResult;
     }
+	
+	public ArrayList<CommunityVO> getTop3Posts() {
+	    ArrayList<CommunityVO> top3Posts = new ArrayList<>();
+	    Connection con = null;
+	    PreparedStatement pstmt = null;
+	    ResultSet rs = null;
+
+	    try {
+	        con = DB.getConnection();
+	        String sql = "SELECT c.gseq, c.subject, c.content, c.userid, c.recommands, c.kind, m.nickname, c.createdate " +
+	                     "FROM community c JOIN member m ON c.userid = m.userid " +
+	                     "ORDER BY c.recommands DESC LIMIT 3";
+	        pstmt = con.prepareStatement(sql);
+	        rs = pstmt.executeQuery();
+
+	        while (rs.next()) {
+	            CommunityVO cvo = new CommunityVO();
+	            cvo.setGseq(rs.getInt("gseq"));
+	            cvo.setSubject(rs.getString("subject"));
+	            cvo.setContent(rs.getString("content"));
+	            cvo.setUserid(rs.getString("userid"));
+	            cvo.setRecommands(rs.getInt("recommands"));
+	            cvo.setKind(rs.getInt("kind"));
+	            cvo.setNicknameFromView(rs.getString("nickname"));
+	            cvo.setCreatedate(rs.getTimestamp("createdate"));
+	            top3Posts.add(cvo);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        DB.close(con, pstmt, rs);
+	    }
+
+	    return top3Posts;
+	}
+	
 }

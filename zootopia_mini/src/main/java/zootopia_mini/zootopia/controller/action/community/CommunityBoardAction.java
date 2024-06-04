@@ -14,20 +14,21 @@ import zootopia_mini.zootopia.util.Paging;
 
 public class CommunityBoardAction implements Action {
 
-    @Override
+	@Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         HttpSession session = request.getSession();
-        
-        
-            CommunityDao cdao = CommunityDao.getInstance();
+        CommunityDao cdao = CommunityDao.getInstance();
 
-            String searchKeyword = request.getParameter("search");
-            if (searchKeyword != null && !searchKeyword.isEmpty()) {
-                ArrayList<CommunityVO> searchResult = cdao.searchCommunity(searchKeyword);
-                request.setAttribute("searchResult", searchResult);
-            }
+        String searchKeyword = request.getParameter("search");
+        ArrayList<CommunityVO> list;
+        Paging paging = new Paging();
 
+        if (searchKeyword != null && !searchKeyword.isEmpty()) {
+            ArrayList<CommunityVO> searchResult = cdao.searchCommunity(searchKeyword);
+            request.setAttribute("searchResult", searchResult);
+            paging.setRecordAllcount(searchResult.size());
+            list = searchResult;
+        } else {
             int page = 1;
             if (request.getParameter("pagenum") != null) {
                 page = Integer.parseInt(request.getParameter("pagenum"));
@@ -36,19 +37,23 @@ public class CommunityBoardAction implements Action {
                 page = (Integer) session.getAttribute("pagenum");
             }
 
-            Paging paging = new Paging();
             paging.setCurrentPage(page);
             paging.setPagecnt(10);
             paging.setRecordrow(10);
 
-            // 레코드의 전체 갯수 조회
+            // 전체 게시글 수 조회
             int count = cdao.getAllCount();
             paging.setRecordAllcount(count);
 
-            ArrayList<CommunityVO> list = cdao.selectCommunity(paging);
-
-            request.setAttribute("paging", paging);
-            request.setAttribute("commList", list);
-            request.getRequestDispatcher("community/community_board.jsp").forward(request, response);
+            list = cdao.selectCommunity(paging);
         }
+
+        // 추천수 상위 3개의 게시글을 가져옵니다.
+        ArrayList<CommunityVO> top3Posts = cdao.getTop3Posts();
+        request.setAttribute("top3Posts", top3Posts);
+
+        request.setAttribute("paging", paging);
+        request.setAttribute("commList", list);
+        request.getRequestDispatcher("community/community_board.jsp").forward(request, response);
     }
+}

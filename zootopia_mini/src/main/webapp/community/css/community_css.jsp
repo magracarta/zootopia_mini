@@ -8,6 +8,11 @@
 .communityboard	{  }
 .communityboard ul	{  }
 .communityboard ul li	{ padding: 14px 0; border-bottom: 1px solid #ddd; }
+.communityboard ul li	{ padding: 14px 0; border-bottom: 1px solid #ddd; }
+.communityboard ul .hottopic	{ 
+ background: lightgray; 
+ border-bottom: 1px solid #ddd;
+ }
 .communityboard ul li.board_head	{ display: flex; justify-content: space-between; }
 .communityboard ul li a	{ display: flex; justify-content: space-between; }
 .communityboard ul li .num	{ width: 5%; }
@@ -17,7 +22,8 @@
 .communityboard ul li .recommands	{ width: 5%; text-align: center; }
 .communityboard ul li .vcount	{ width: 5%; text-align: center; }
 
-section {  }
+
+
 .header {
     display: flex;
     justify-content: space-between;

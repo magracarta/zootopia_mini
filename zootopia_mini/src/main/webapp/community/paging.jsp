@@ -32,12 +32,12 @@
 	</div>
 	
 	<div class="serach-form">
-    <form name="search" method="get">
-        <input type="hidden" name="command" value="communityBoard">
-        <input type="text" name="search" value="${search}">
-        <input type="submit" value="검색">
-    </form>
-</div>
+	    <form name="search" method="get" action="zootopia.do">
+		    <input type="hidden" name="command" value="communityBoard">
+		    <input type="text" name="search" value="${param.search}">
+		    <input type="submit" value="검색">
+		</form>
+	</div>
 	
 	<style>
 		.pagenation-container { display:flex; align-items: center; justify-content: center; }
