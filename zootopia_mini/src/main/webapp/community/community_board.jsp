@@ -42,7 +42,7 @@
 </div>
 
 <jsp:include page="paging.jsp" flush="true">
-  <jsp:param name="url" value="communityBoard" />
+  <jsp:param name="url" value="zootopia.do?command=communityBoard" />
   <jsp:param name="search" value="${searchResult}" />
 </jsp:include>
 

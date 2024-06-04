@@ -11,29 +11,29 @@
 		</div>
 		<div class="detailcontainer">
 		<ul>
-   			<li>
-	   			<a class="" >
-					<span class="num">no.${communityVO.gseq}</span>   	
-					<span class="subject">
-						<c:choose>
-				            <c:when test="${communityVO.kind == 1}">[고민]</c:when>
-				            <c:when test="${communityVO.kind == 2}">[자랑]</c:when>
-				            <c:when test="${communityVO.kind == 3}">[잡담]</c:when>
-				            <c:otherwise></c:otherwise>
-				        </c:choose>
-							${communityVO.subject}
-						</span>			
-					<span class="userid">${communityVO.nickname}[${communityVO.userid}]</span>			
-					<span class="createdate"><fmt:formatDate value="${communityVO.createdate}" type="date"/></span>			
-					<span class="recommands">추천 수[${communityVO.recommands}]<button id="recommendsButton">추천</button>
-						<div class="content" >
-							<input type="hidden" id="gseq" value="${communityVO.gseq}">
-						</div>
-					</span>			
-					<span class="vcount">조회수[${communityVO.vcount}]</span>			
-				</a>
-   			</li>
-   		</ul>
+		    <li>
+		        <a class="">
+		            <span class="num">no.${communityVO.gseq}</span>      
+		            <span class="subject">
+		                <c:choose>
+		                    <c:when test="${communityVO.kind == 1}">[고민]</c:when>
+		                    <c:when test="${communityVO.kind == 2}">[자랑]</c:when>
+		                    <c:when test="${communityVO.kind == 3}">[잡담]</c:when>
+		                    <c:otherwise></c:otherwise>
+		                </c:choose>
+		                ${communityVO.subject}
+		            </span>          
+		            <span class="userid">${communityVO.nickname}[${communityVO.userid}]</span>          
+		            <span class="createdate"><fmt:formatDate value="${communityVO.createdate}" type="date"/></span>          
+		            <span class="recommands">추천 수[${communityVO.recommands}]<button class="recommendButton">추천</button>
+		                <div class="content" >
+		                    <input type="hidden" class="gseq" value="${communityVO.gseq}">
+		                </div>
+		            </span>          
+		            <span class="vcount">조회수[${communityVO.vcount}]</span>          
+		        </a>
+		    </li>
+		</ul>
 			<div class="content" >
 				<p>${communityVO.content}</p> 
 			</div>

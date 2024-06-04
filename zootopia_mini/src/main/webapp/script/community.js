@@ -27,8 +27,8 @@ function updateCommunity() {
 
 
 $(document).ready(function() {
-    $(document).on("click", "#recommendsButton", function() {
-        var gseq = $(this).closest('li').find("#gseq").val(); // 게시글 번호를 가져옴
+    $(".recommendButton").click(function() {
+        var gseq = $(this).closest('li').find(".gseq").val(); // 게시글 번호를 가져옴
 
         // 확인 창 띄우기
         if (confirm("정말로 추천하시겠습니까?")) {
@@ -40,7 +40,7 @@ $(document).ready(function() {
                 success: function(data) {
                     // 서버로부터 받은 JSON 데이터를 파싱하여 추천 수를 화면에 업데이트
                     var recommends = data.recommends;
-                    $("#recommends").text("추천 수[" + recommends + "]");
+                    $(".recommands").text("추천 수[" + recommends + "]");
                 },
                 error: function(xhr, status, error) {
                     console.error("AJAX request failed: " + error);
