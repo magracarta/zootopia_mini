@@ -12,7 +12,7 @@
                 </div>
                 <div class="field">
                     <label>카테고리</label>
-	                   <select id="board_category" name="board_category">
+	                   <select  name="category">
 						<option value="1">콘테스트 문의</option>
 						<option value="2">자유게시판 문의</option>
 						<option value="3">기타 문의</option>
@@ -35,3 +35,5 @@
         </article>
     </div>
 </section>
+<%@ include file="/qna/css/qna_css.jsp" %>
+<%@ include file="../footer.jsp" %>

@@ -9,6 +9,13 @@ public class QnaVO {
 	private String content;
 	private String reply;
 	private String userid;
+	private Integer category;
+	public Integer getCategory() {
+		return category;
+	}
+	public void setCategory(Integer category) {
+		this.category = category;
+	}
 	private Timestamp createdate;
 	
 	public Integer getQseq() {
