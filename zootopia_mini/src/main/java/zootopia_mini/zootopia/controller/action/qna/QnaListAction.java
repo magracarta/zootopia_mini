@@ -20,28 +20,26 @@ public class QnaListAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-	    MemberVO mvo = (MemberVO) session.getAttribute("loginUser");
-	    if (mvo == null) {
-	    	response.sendRedirect("zootopia.do?command=loginform");
-	    } else {
+	    
 	    	QnaDao qdao = QnaDao.getInstance();
 	    	
-	    	int page = 1;
-	    	if( request.getParameter("page") != null ) {
-	    		page = Integer.parseInt( request.getParameter("page") );
-	    		session.setAttribute("page", page);
-	    	}else if( session.getAttribute("page")!=null) {
-	    		page = (Integer)session.getAttribute("page");
-	    	}
+
+            int page = 1;
+            if (request.getParameter("pagenum") != null) {
+                page = Integer.parseInt(request.getParameter("pagenum"));
+                session.setAttribute("pagenum", page);
+            } else if (session.getAttribute("pagenum") != null) {
+                page = (Integer) session.getAttribute("pagenum");
+            }
 	    	
-	    	Paging paging = new Paging();
-	    	paging.setPage(page);
-	    	paging.setDisplayPage(5);
-			paging.setDisplayRow(5);
-			
-			// 레코드의 전체 갯수 조회
-			int count = qdao.getAllCount();    	
-			paging.setTotalCount(count);
+            Paging paging = new Paging();
+            paging.setCurrentPage(page);
+            paging.setPagecnt(10);
+            paging.setRecordrow(10);
+
+            // 레코드의 전체 갯수 조회
+            int count = qdao.getAllCount();
+            paging.setRecordAllcount(count);
 	    		    	
 	    	ArrayList<QnaVO> list = qdao.selectQna(paging);
 	    	
@@ -50,6 +48,6 @@ public class QnaListAction implements Action {
 	    	request.getRequestDispatcher( "qna/qnaList.jsp").forward(request, response);
 	    }
 
-	}
+	
 
 }

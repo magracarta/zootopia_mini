@@ -4,13 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import zootopia_mini.zootopia.controller.dto.CommunityVO;
 import zootopia_mini.zootopia.controller.dto.ContestDTO;
 import zootopia_mini.zootopia.controller.dto.ContestPetDTO;
 import zootopia_mini.zootopia.controller.dto.MemberVO;
+import zootopia_mini.zootopia.controller.dto.QnaVO;
 import zootopia_mini.zootopia.util.DB;
 import zootopia_mini.zootopia.util.Paging;
 
@@ -223,6 +223,35 @@ public class MypageDao {
 				community.setKind(rs.getInt("kind"));
 				community.setCreatedate(rs.getTimestamp("createdate"));
 				list.add(community);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+            DB.close(con, pstmt, rs);
+        }
+		
+		return list;
+	}
+	
+	public ArrayList<QnaVO> getMyQnaList(Paging page, String userid) {
+		ArrayList<QnaVO> list = new ArrayList<QnaVO>();
+		String sql = "select * from qnareply where userid = ? order by qseq desc limit ? offset ?";
+		con = DB.getConnection();
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			pstmt.setInt(2, page.getRecordrow());
+			pstmt.setInt(3, page.getOffsetnum());
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				QnaVO qna = new QnaVO();
+				qna.setQseq(rs.getInt("qseq"));
+				qna.setUserid(rs.getString("userid"));
+				qna.setSubject(rs.getString("subject"));
+				qna.setContent(rs.getString("content"));
+				qna.setReply(rs.getString("reply"));
+				qna.setCreatedate(rs.getTimestamp("createdate"));
+				list.add(qna);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

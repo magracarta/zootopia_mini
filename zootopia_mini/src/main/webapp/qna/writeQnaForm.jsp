@@ -35,3 +35,5 @@
         </article>
     </div>
 </section>
+<%@ include file="/qna/css/qna_css.jsp" %>
+<%@ include file="../footer.jsp" %>

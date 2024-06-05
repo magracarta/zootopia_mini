@@ -22,12 +22,12 @@ public class QnaDao {
 	
 	public ArrayList<QnaVO> selectQna( Paging paging ) {
 		ArrayList<QnaVO> list = new ArrayList<QnaVO>();
-		String sql = "select * from qnareply order by qseq asc limit ?  offset ?";
+		String sql = "select * from qnareply order by qseq desc limit ?  offset ?";
 		con = DB.getConnection();
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, paging.getDisplayRow() );
-			pstmt.setInt(2,  paging.getStartNum() - 1 );
+			pstmt.setInt(1, paging.getRecordrow() );
+			pstmt.setInt(2,  paging.getOffsetnum() );
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 		    	QnaVO qvo = new QnaVO();
