@@ -11,3 +11,24 @@ function adminloginCheck() {
 		return true;
 	}
 }
+
+function go_search(command) {
+	var url="zootopia.do?command=" + command + "&page=1";
+	document.frm.action = url;
+	document.frm.submit();
+}
+
+function show_preview(){
+	
+	document.getElementById('photoinput').addEventListener('change', function(event) {
+    	const file = event.target.files[0];
+    	const reader = new FileReader();
+    	reader.onload = function(e) {
+      		const preview = document.getElementById('preview');
+        	preview.src = e.target.result;
+    	}
+    	if (file) {
+        	reader.readAsDataURL(file);
+    	}
+	});
+}

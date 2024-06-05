@@ -29,7 +29,7 @@ public class AdminLoginAction implements Action {
 		else if(avo.getPwd().equals(pwd)) {
 			HttpSession session = request.getSession();
 			session.setAttribute("adminUser", avo);
-			url = "zootopia.do?command=adminmemberlist";
+			url = "zootopia.do?command=adminmain";
 		}
 		request.getRequestDispatcher(url).forward(request, response);
 		
