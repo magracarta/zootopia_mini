@@ -10,7 +10,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 900px;
+    width: 100%;
     margin: auto 0;
     margin-bottom: 20px;
     

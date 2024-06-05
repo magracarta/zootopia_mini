@@ -6,68 +6,46 @@
 	<form name="mypageMycontestForm">
 		<div class="container">
 			<div class="column">
-			<h2>내 콘테스트</h2>
+			<h2>내가 등록한 콘테스트(${myContestCnt})</h2>
 				<div class="contestlist">
 					<c:choose>
             			<c:when test="${empty contestList}">
                 			<p>내가 등록한 콘테스트가 없습니다.</p>
             			</c:when>
             			<c:otherwise>
-		                	<div class="contest">
-		                		<a href="zootopia.do?command=contestDetail&cseq=${contestList[0].cseq}">
-		                    		<h3>${contestList[0].subject}</h3>
-		                    		<p>${contestList[0].content}</p>
-	                    		</a>
-                			</div>
-			                <c:if test="${contestList.size() > 1}">
-			                    <div class="contest">
-			                        <a href="zootopia.do?command=contestDetail&cseq=${contestList[1].cseq}">
-			                            <h3>${contestList[1].subject}</h3>
-			                            <p>${contestList[1].content}</p>
-			                        </a>
-			                    </div>
-			                </c:if>
+            				<div class="scroll">
+            					<c:forEach items ="${contestList}" var="list">
+			                		<div class="contest">
+										<a href="zootopia.do?command=contestDetail&cseq=${list.cseq}">
+				                    		<h3>${list.subject}</h3>
+				                    		<p>${list.content}</p>
+		                    			</a>
+	                				</div>
+	                			</c:forEach>
+			                </div>
             			</c:otherwise>
         			</c:choose>
 				</div>
 			</div>
 			<div class="column">
-			<h2>참가중인 콘테스트</h2>
+			<h2>내가 참가한 콘테스트(${myJoinedContestCnt})</h2>
 				<div class="contestlist">
 					<c:choose>
 						<c:when test="${empty contestmypetList}">
 							 <p>참가중인 콘테스트가 없습니다.</p>
 						</c:when>
 					<c:otherwise>
-						<c:forEach items ="${contestmypetList}" var="list2">
-							<div class="contest">
-								<a href="zootopia.do?command=contestDetail&cseq=${list2.cseq}">
-			                        <h3>${list2.subject}</h3>
-			                        <p>${list2.content}</p>
-			                    </a>
-		                    </div>
-						</c:forEach>
-					</c:otherwise>
-					</c:choose>
-				</div>
-			</div>
-			<div class="column">
-			<h2>종료된 콘테스트</h2>
-				<div class="contestlist">
-					<c:choose>
-						<c:when test="${empty contestClosedList}">
-							 <p>종료된 콘테스트가 없습니다.</p>
-						</c:when>
-					<c:otherwise>
-						<c:forEach items ="${contestClosedList}" var="list3">
-							<div class="contest">
-								<a href="zootopia.do?command=contestDetail&cseq=${list3.cseq}">
-			                        <h3>${list3.subject}</h3>
-			                        <p>${list3.content}</p>
-			                    </a>
-		                    </div>
-						</c:forEach>
-					</c:otherwise>
+		                	<div class="scroll">
+            					<c:forEach items ="${contestmypetList}" var="list2">
+			                		<div class="contest">
+										<a href="zootopia.do?command=contestDetail&cseq=${list2.cseq}">
+				                    		<h3>${list2.subject}</h3>
+				                    		<p>${list2.content}</p>
+		                    			</a>
+	                				</div>
+	                			</c:forEach>
+			                </div>
+            			</c:otherwise>
 					</c:choose>
 				</div>
 			</div>
