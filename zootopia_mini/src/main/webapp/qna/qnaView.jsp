@@ -6,6 +6,9 @@
 				<form name="frm">
 					<h2 style="font-size: x-large;"> Q & A </h2>
 					<div class="field" style="border-top:1px solid black;">
+						<label>카테고리</label><div>${qnaVO.category}</div>
+					</div>
+					<div class="field" style="border-top:1px solid black;">
 						<label>제목</label><div>${qnaVO.subject}</div>
 					</div>
 					<div class="field" style="border-top:1px solid black;">

@@ -113,6 +113,7 @@ CREATE TABLE member
 CREATE TABLE qnareply
 (
 	qseq int NOT NULL AUTO_INCREMENT,
+	category int NOT NULL,
 	userid varchar(30) NOT NULL,
 	subject varchar(100) NOT NULL,
 	content varchar(1000) NOT NULL,

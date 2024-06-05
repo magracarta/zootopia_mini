@@ -32,6 +32,7 @@ public class QnaDao {
 			while(rs.next()) {
 		    	QnaVO qvo = new QnaVO();
 		    	qvo.setQseq( rs.getInt("qseq") );
+		    	qvo.setCategory( rs.getInt("category") ) ;	
 		    	qvo.setSubject( rs.getString("subject") );
 		    	qvo.setContent (rs.getString("content") );
 		    	qvo.setUserid( rs.getString("userid") );
@@ -54,6 +55,7 @@ public class QnaDao {
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				qvo.setQseq(qseq);
+				qvo.setCategory( rs.getInt("category") ) ;	
 				qvo.setSubject(rs.getString("subject"));
 				qvo.setContent(rs.getString("content"));
 				qvo.setUserid(rs.getString("userid"));
