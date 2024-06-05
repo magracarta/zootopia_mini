@@ -1,4 +1,4 @@
-package zootopia_mini.zootopia.controller.action.community;
+	package zootopia_mini.zootopia.controller.action.community;
 
 import java.io.IOException;
 
@@ -15,16 +15,9 @@ public class CommunityDetailAction implements Action {
 
     	@Override
 	    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 HttpSession session = request.getSession();
-			MemberVO mvo = (MemberVO) session.getAttribute("loginUser");
-	        
-	        // 로그인된 사용자가 없다면 로그인 페이지로 리다이렉트
-	        if (mvo == null) {
-	            response.sendRedirect("zootopia.do?command=loginform");
-	            return;
-	        }
-	        
-	        String loginUserid = mvo.getUserid();
+		 
+    	HttpSession session = request.getSession();
+			
         int gseq = Integer.parseInt(request.getParameter("gseq"));
 
         CommunityDao cdao = CommunityDao.getInstance();

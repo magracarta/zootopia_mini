@@ -4,6 +4,7 @@ import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import zootopia_mini.zootopia.controller.action.Action;
 import zootopia_mini.zootopia.controller.dao.CommunityDao;
 import zootopia_mini.zootopia.controller.dto.CommunityVO;
@@ -14,6 +15,12 @@ public class WriteCommunityAction implements Action {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+    	 HttpSession session = request.getSession(false); // 세션이 없는 경우 null을 반환
+    	    if (session == null || session.getAttribute("loginUser") == null) {
+    	        response.sendRedirect("loginform.jsp"); // 로그인 페이지로 리다이렉트
+    	        return;
+    	    }
+    	
     	MemberVO mvo = (MemberVO) request.getSession().getAttribute("loginUser");
     	String userId = mvo.getUserid();
         // CommunityVO 객체 생성

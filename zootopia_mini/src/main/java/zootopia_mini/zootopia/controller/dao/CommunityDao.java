@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-
 import zootopia_mini.zootopia.controller.dto.CommunityVO;
 import zootopia_mini.zootopia.util.DB;
 import zootopia_mini.zootopia.util.Paging;
@@ -225,33 +224,79 @@ public class CommunityDao {
     }
 }
 
-	public ArrayList<CommunityVO> searchCommunity(String keyword) {
-        ArrayList<CommunityVO> searchResult = new ArrayList<>();
-        Connection con = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
+	
+	public ArrayList<CommunityVO> getTop3Posts() {
+	    ArrayList<CommunityVO> top3Posts = new ArrayList<>();
+	    Connection con = null;
+	    PreparedStatement pstmt = null;
+	    ResultSet rs = null;
 
-        try {
-            con = DB.getConnection();
-            String sql = "SELECT * FROM community WHERE subject LIKE ? OR content LIKE ?";
-            pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, "%" + keyword + "%");
-            pstmt.setString(2, "%" + keyword + "%");
-            rs = pstmt.executeQuery();
+	    try {
+	        con = DB.getConnection();
+	        String sql = "SELECT c.gseq, c.subject, c.content, c.userid, c.recommands, c.kind, m.nickname, c.createdate " +
+	                     "FROM community c JOIN member m ON c.userid = m.userid " +
+	                     "ORDER BY c.recommands DESC LIMIT 3";
+	        pstmt = con.prepareStatement(sql);
+	        rs = pstmt.executeQuery();
 
-            while (rs.next()) {
-                CommunityVO cvo = new CommunityVO();
-                cvo.setGseq(rs.getInt("gseq"));
-                cvo.setSubject(rs.getString("subject"));
-                cvo.setContent(rs.getString("content"));
-                searchResult.add(cvo);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            DB.close(con, pstmt, rs);
-        }
+	        while (rs.next()) {
+	            CommunityVO cvo = new CommunityVO();
+	            cvo.setGseq(rs.getInt("gseq"));
+	            cvo.setSubject(rs.getString("subject"));
+	            cvo.setContent(rs.getString("content"));
+	            cvo.setUserid(rs.getString("userid"));
+	            cvo.setRecommands(rs.getInt("recommands"));
+	            cvo.setKind(rs.getInt("kind"));
+	            cvo.setNicknameFromView(rs.getString("nickname"));
+	            cvo.setCreatedate(rs.getTimestamp("createdate"));
+	            top3Posts.add(cvo);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        DB.close(con, pstmt, rs);
+	    }
 
-        return searchResult;
-    }
+	    return top3Posts;
+	}
+
+	  public ArrayList<CommunityVO> findcontent(String subject) {
+	        ArrayList<CommunityVO> list = new ArrayList<CommunityVO>();
+	        Connection con = null;
+	        PreparedStatement pstmt = null;
+	        ResultSet rs = null;
+
+	        try {
+	            con = DB.getConnection();
+	            String sql = "SELECT c.gseq, c.subject, c.content, c.userid, c.recommands, c.kind, m.nickname, c.createdate " 
+	            				+ "FROM community c JOIN member m ON c.userid = m.userid "
+	            						+ " WHERE c.subject LIKE concat ('%', ? ,'%')";
+
+	            pstmt = con.prepareStatement(sql);
+	            pstmt.setString(1,  subject);
+	            rs = pstmt.executeQuery();
+
+	            while (rs.next()) {
+	                CommunityVO cvo = new CommunityVO();
+	                cvo.setGseq(rs.getInt("gseq")); // gseq 컬럼 값 설정
+	                cvo.setSubject(rs.getString("subject")); // subject 컬럼 값 설정
+	                cvo.setContent(rs.getString("content")); // content 컬럼 값 설정
+	                cvo.setUserid(rs.getString("userid")); // userid 컬럼 값 설정
+	                cvo.setRecommands(rs.getInt("recommands")); // recommands 컬럼 값 설정
+	                cvo.setKind(rs.getInt("kind")); // kind 컬럼 값 설정
+	                cvo.setNicknameFromView(rs.getString("nickname")); // nickname 컬럼 값 설정
+	                cvo.setNickname(rs.getString("nickname")); // nickname 컬럼 값 설정
+	                cvo.setCreatedate(rs.getTimestamp("createdate")); // createdate 컬럼 값 설정
+	                list.add(cvo);
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        } finally {
+	            DB.close(con, pstmt, rs);
+	        }
+
+	        return list;
+	    }
+	
+	
 }

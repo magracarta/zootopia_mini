@@ -14,9 +14,8 @@ import zootopia_mini.zootopia.util.Paging;
 
 public class CommunityBoardAction implements Action {
 
-    @Override
+	@Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         HttpSession session = request.getSession();
         MemberVO mvo = (MemberVO) session.getAttribute("loginUser");
        
@@ -26,13 +25,11 @@ public class CommunityBoardAction implements Action {
             response.sendRedirect("zootopia.do?command=loginform");
         } else {
             CommunityDao cdao = CommunityDao.getInstance();
+        
+            ArrayList<CommunityVO> list;
+            Paging paging = new Paging();
 
-            String searchKeyword = request.getParameter("search");
-            if (searchKeyword != null && !searchKeyword.isEmpty()) {
-                ArrayList<CommunityVO> searchResult = cdao.searchCommunity(searchKeyword);
-                request.setAttribute("searchResult", searchResult);
-            }
-
+        
             int page = 1;
             if (request.getParameter("pagenum") != null) {
                 page = Integer.parseInt(request.getParameter("pagenum"));
@@ -41,16 +38,19 @@ public class CommunityBoardAction implements Action {
                 page = (Integer) session.getAttribute("pagenum");
             }
 
-            Paging paging = new Paging();
             paging.setCurrentPage(page);
             paging.setPagecnt(10);
             paging.setRecordrow(10);
 
-            // 레코드의 전체 갯수 조회
+            // 전체 게시글 수 조회
             int count = cdao.getAllCount();
             paging.setRecordAllcount(count);
 
-            ArrayList<CommunityVO> list = cdao.selectCommunity(paging);
+            list = cdao.selectCommunity(paging);
+        
+
+            ArrayList<CommunityVO> top3Posts = cdao.getTop3Posts();
+            request.setAttribute("top3Posts", top3Posts);
 
             request.setAttribute("paging", paging);
             request.setAttribute("commList", list);

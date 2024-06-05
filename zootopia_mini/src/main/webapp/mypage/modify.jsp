@@ -101,7 +101,7 @@ document.getElementById('pet-photo').addEventListener('change', function(event) 
         reader.readAsDataURL(file);
     }
 });
-        
+
 document.addEventListener('DOMContentLoaded', () => {
     const pwd = document.getElementById('pwd');
     const confirmPwd = document.getElementById('confirm-pwd');
