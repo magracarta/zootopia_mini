@@ -45,8 +45,7 @@
 		<div class="detailcontainer">
 			<div class="content" >
 				<p>${communityVO.content}</p> 
-						 	   <input class="button3" type="button" value="목록으로" onclick="location.href='zootopia.do?command=communityBoard'">
-				
+				<input class="button3" type="button" value="목록으로" onclick="location.href='zootopia.do?command=communityBoard'">
 			</div>
         </div>
 		
@@ -55,6 +54,5 @@
 </section>
 
 <%@ include file="/community/css/community_css.jsp" %>
-
 <%@ include file="/footer.jsp" %>
 
