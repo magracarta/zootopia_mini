@@ -32,7 +32,7 @@
 		<form name="search" method="get">
 			<input type="hidden" name="command" value="communityList">
 			<input type="text" name="search" value="${search}">
-			<input type="submit" value="검색">
+			<input type="submit	" value="검색">
 		</form>
 	</div>
 	

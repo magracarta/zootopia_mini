@@ -12,8 +12,11 @@ import zootopia_mini.zootopia.controller.action.community.CommunityRecommandsAct
 import zootopia_mini.zootopia.controller.action.community.CommunityUpdateAction;
 import zootopia_mini.zootopia.controller.action.community.CommunityUpdateFormAction;
 import zootopia_mini.zootopia.controller.action.community.CommunityViewCountAction;
+import zootopia_mini.zootopia.controller.action.community.FindCommunityAction;
 import zootopia_mini.zootopia.controller.action.community.WriteCommunityAction;
 import zootopia_mini.zootopia.controller.action.community.WriteCommunityFormAction;
+import zootopia_mini.zootopia.controller.action.communityreply.ViewCommunityReplyAction;
+import zootopia_mini.zootopia.controller.action.communityreply.WriteCommunityReplyAction;
 import zootopia_mini.zootopia.controller.action.contest.ContestBoardAction;
 import zootopia_mini.zootopia.controller.action.contest.ContestDeleteAction;
 import zootopia_mini.zootopia.controller.action.contest.ContestDetailAction;
@@ -83,7 +86,14 @@ public class ActionFactory {
 		else if( command.equals("communityDelete") ) ac = new CommunityDeleteAction();
 		else if( command.equals("communityRecommands") ) ac = new CommunityRecommandsAction();
 		else if( command.equals("communityViewCount") ) ac = new CommunityViewCountAction();
-
+		else if( command.equals("findCommunity") ) ac = new FindCommunityAction();
+		
+		//community_reply
+		else if( command.equals("writeCommunityReply") ) ac = new WriteCommunityReplyAction();
+		else if( command.equals("viewCommunityReply") ) ac = new ViewCommunityReplyAction();
+		
+		
+		
 		// mypage
 		else if(command.equals("mypage")) ac = new MypageAction();
 		else if(command.equals("modify")) ac = new ModifyAction();

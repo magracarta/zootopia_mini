@@ -5,6 +5,7 @@
 <!-- 페이지네이션, 검색 -->
 <% String url = request.getParameter("url");
    String search = request.getParameter("search");
+   String searchurl = request.getParameter("searchurl");
 %>
 	<div class="pagenation-container">
 		<c:if test="${paging.prev == true &&  paging.pageAllcount > paging.pagecnt }">
@@ -26,18 +27,15 @@
 		<c:if test="${paging.next == true}">
 		<a  class="nextBtn"  href="<%=url%>&pagenum=${paging.lastnum+1}"><img src="images/arrow.svg"></a>
 		</c:if>
-	    <div>
-	        <button onclick="location.href='zootopia.do?command=writeCommunityForm'">글 작성하기</button>
-	    </div>
 	</div>
 	
-	<div class="serach-form">
-	    <form name="search" method="get" action="zootopia.do">
-		    <input type="hidden" name="command" value="communityBoard">
-		    <input type="text" name="search" value="${param.search}">
-		    <input type="submit" value="검색">
-		</form>
-	</div>
+<div class="serach-form">
+    <form name="search" method="get" action="zootopia.do">
+        <input type="hidden" name="command" value="<%=searchurl%>">
+        <input type="text" name="search" value="${search}">
+        <input type="submit" value="검색">
+    </form>
+</div>
 	
 	<style>
 		.pagenation-container { display:flex; align-items: center; justify-content: center; }

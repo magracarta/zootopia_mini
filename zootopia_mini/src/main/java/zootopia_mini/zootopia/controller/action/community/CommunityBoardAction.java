@@ -19,16 +19,10 @@ public class CommunityBoardAction implements Action {
         HttpSession session = request.getSession();
         CommunityDao cdao = CommunityDao.getInstance();
 
-        String searchKeyword = request.getParameter("search");
         ArrayList<CommunityVO> list;
         Paging paging = new Paging();
 
-        if (searchKeyword != null && !searchKeyword.isEmpty()) {
-            ArrayList<CommunityVO> searchResult = cdao.searchCommunity(searchKeyword);
-            request.setAttribute("searchResult", searchResult);
-            paging.setRecordAllcount(searchResult.size());
-            list = searchResult;
-        } else {
+        
             int page = 1;
             if (request.getParameter("pagenum") != null) {
                 page = Integer.parseInt(request.getParameter("pagenum"));
@@ -46,9 +40,8 @@ public class CommunityBoardAction implements Action {
             paging.setRecordAllcount(count);
 
             list = cdao.selectCommunity(paging);
-        }
+        
 
-        // 추천수 상위 3개의 게시글을 가져옵니다.
         ArrayList<CommunityVO> top3Posts = cdao.getTop3Posts();
         request.setAttribute("top3Posts", top3Posts);
 

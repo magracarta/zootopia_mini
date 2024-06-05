@@ -3,40 +3,34 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="/header.jsp" %>
-<link rel="stylesheet" type="text/css" href="css/community.css">
-
+<%@ include file="/community/css/community_css.jsp" %>
 <article>
-    <form name="communityForm" action="zootopia.do?command=writeCommunity" method="post" onsubmit="return validateForm()">
-        <h2> 자유게시판 양식 </h2>
-        <div class="field">
-            <label>작성자</label>
-            <input type="text" name="userid" value="${loginUser.userid}" readonly/>
-        </div>
-        <div class="field">
-            <label>닉네임</label>
-            <input type="text" name="nickname" value="${loginUser.nickname}" readonly />
-        </div>
-        <div class="field">
+    <form class="communityform" name="communityForm" action="zootopia.do?command=writeCommunity" method="post" onsubmit="return validateForm()">
+        <div class="form"> 자유게시판 양식 </div>
+        <div class="detail">
+            <label class="writer">작성자</label>
+            <span class="nickname" name="nickname" >${loginUser.nickname}</span>
+            <span class="userid" name="userid">[${loginUser.userid}]</span>
+       </div>
+       <div class="kind">     
             <label>카테고리 선택</label>
-            <select name="kind">
-                <option value="1">고민</option>
-                <option value="2">자랑</option>
-                <option value="3">잡담</option>
+            <select class="kindlist" name="kind">
+                <option class="list1" value="1">고민</option>
+                <option class="list2" value="2">자랑</option>
+                <option class="list3" value="3">잡담</option>
             </select>
         </div>
-        <div class="field">
+        <div class="class">    
             <label>제목</label>
             <input type="text" name="subject" />
         </div>
-        <div class="field">
+        <div class="content">
             <label>내용</label>
-        </div>
-		<div>
-            <textarea name="content" rows="10" cols="85"></textarea>
+            <textarea class="content" name="content" rows="10" cols="85"></textarea>
 		</div>
         <div class="btn">
-            <input type="submit" value="작성하기" />
-            <button type="button" onclick="cancel()">작성취소</button>
+			<input class="button3" type="button" value="작성완료" onclick="location.href='zootopia.do?command=communityBoard'">
+			<input class="button4" type="button" value="작성취소" onclick="cancel()">
         </div>
     </form>
 </article>

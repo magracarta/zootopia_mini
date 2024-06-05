@@ -5,6 +5,24 @@
 .container {  }
 .container .title { line-height: 3; font-size: large;}
 
+.head{
+    display: flex;
+    justify-content: space-between;
+align-items: baseline;
+}
+.head .write{
+    background-color: lightgray; /* 버튼 배경색 */
+    color: white; /* 버튼 텍스트 색상 */
+    border: none; /* 테두리 없애기 */
+    padding: 10px 20px; /* 패딩값 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    text-decoration: none; /* 밑줄 없애기 */
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 10px;
+    color: black;
+}
+
 .communityboard	{  }
 .communityboard ul	{  }
 .communityboard ul li	{ padding: 14px 0; border-bottom: 1px solid #ddd; }
@@ -122,6 +140,131 @@ padding-top: 20px;
 padding-left: 20px;
 }
 
+
+.serach-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.serach-form input[name="findcommunity"] {
+    width: 287px;
+    border-radius: 5px;
+    border: 1px solid #D9D9D9;
+    height: 45px;
+    margin-right: 5px;
+    display: inline-block;
+}
+
+.serach-form input[type="button"] {
+    height: 45px;
+    color: #fff;
+    background: #000;
+    border: none;
+    border-radius: 4px;
+}
+
+.communityform{
+
+}
+
+.communityform .form {
+    display: flex;
+    padding: 10px;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bold;
+
+}
+
+.communityform .detail{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.communityform .detail .writer{
+	width: 80px;
+    text-align: left;
+    padding: 15px 0;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.communityform .detail .userid{
+    border: none;
+}
+
+.communityform .detail .nickname{
+    border: none;
+    padding-right: 10px;    
+}
+
+.communityform .kind label {
+    font-size: large;
+    font-weight: bold;	
+}
+
+.communityform .kind .kindlist {
+	width: 10%;
+    text-align: center;
+}
+
+.communityform .kind .kindlist .list1 {
+	width: 10%;
+    text-align: center;
+    
+}
+ 
+ .communityform .kind .kindlist .list1 {
+	width: 10%;
+    text-align: center;
+}
+
+.communityform .kind .kindlist .list1 {
+	width: 10%;
+    text-align: center;
+}
+.communityform .class {
+}
+.communityform .class label {
+	font-size: larger;
+    font-weight: bold;	
+}
+
+.communityform .class .text{
+
+}
+
+.communityform .content label{
+
+}
+
+.communityform .content .content{
+height: 300px;
+}
+
+.communityform .btn{
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.communityform .btn .button3{
+    padding: 20px;
+    color: white;
+    background: blue;
+}
+
+.communityform .btn .button4{
+    padding: 20px;
+    color: white;
+    background: red;
+}
 
 
 
