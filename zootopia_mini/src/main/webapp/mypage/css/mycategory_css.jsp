@@ -10,6 +10,7 @@
         font-size: 16px; 
         text-decoration: none; /* 밑줄 제거 */
         color: #333;
+        
     }
     
     .mycategory > div a.active {

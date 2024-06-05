@@ -1,47 +1,55 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file ="../header.jsp" %>
 <%@ include file="section/mypage_info.jsp" %>
 
 
-
 <form class="myReplyform">
 	<div class="container">
-		<h2>내가 쓴 댓글 (${allcnt})</h2>
-		<div class="replyboard">
-         <ul>
-            <li class="board_head">
-	            <span class="num">no.</span>      
-	            <span class="subject">댓글 내용</span>   
-	            <span class="createdate">작성일</span>
-            </li>
-            <c:forEach var="post" items="${communityList}">
-            <li>
-               <a class="" href="javascript:void(0);" onclick="increaseViewCountAndRedirect(${post.gseq})">
-               <span class="num">no.${post.gseq}</span>      
-               <span class="subject">
-                  <c:choose>
-                        <c:when test="${post.kind == 1}">[고민]</c:when>
-                        <c:when test="${post.kind == 2}">[자랑]</c:when>
-                        <c:when test="${post.kind == 3}">[잡담]</c:when>
-                        <c:otherwise></c:otherwise>
-                    </c:choose>
-                     ${post.subject}
-                  </span>         
-               <span class="userid">${post.nickname}[${post.userid}]</span>         
-               <span class="createdate">${post.createdate}</span>         
-               <span class="recommands">${post.recommands}</span>         
-               <span class="vcount">${post.vcount}</span>         
-            </a>
-            </li>
-            </c:forEach>
-         </ul>
-  	</div>
+        <h2>내가 쓴 댓글 (<c:out value="${myReplyList.size()}" />)</h2>
+        <div class="comments-container">
+        <ul class="comment-list">
+        	
+             <c:forEach items="${myReplyList}" var="list" varStatus="loop">
+             <c:choose>
+        		<c:when test="${myReplyList.size() == 0}">
+        			등록된 댓글이 없습니다!
+        		</c:when>
+        		<c:otherwise>
+                    <li class="comment-item">
+                        <span class="comment-number">no.${post.gseq}</span> 
+                        <div class="comment-content">
+                            <p class="userid"><c:out value="${list.userId}"/> 
+                            	<span class="replyDate"><c:out value="${list.replyDate}" /></span>
+                            </p>
+                            <p>
+	                            <c:out value="${list.replyContent}" />
+                            </p>
+                            <p>
+                            
+                            원문제목 : <span class="subject"><c:out value="${list.subject}"/></span>
+                            
+                            </p>
+                            
+                        </div>
+                        <div class="comment-actions">
+                            
+                            <button>글 보러가기</button>
+                        </div>
+                    </li>
+                 </c:otherwise>
+			</c:choose>
+             </c:forEach>
+             
+        </ul>
+        </div>
 
 		
-	<jsp:include page="paging.jsp" flush="true">
-  	<jsp:param name="url" value="communityBoard" />
-  	<jsp:param name="search" value="${searchResult}" />
+	<jsp:include page="replypaging.jsp" flush="true">
+	  	<jsp:param name="url" value="zootopia.do?command=myreply" />
+	  	<jsp:param name="search" value="${searchResult}" />
 	</jsp:include>
 		
 		
@@ -51,6 +59,6 @@
 </form>
 
 
-
+<%@ include file="css/myreply_css.jsp" %>
 <%@ include file="css/mypage_css.jsp" %>
 <%@ include file ="../footer.jsp" %>

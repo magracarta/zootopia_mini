@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file ="../header.jsp" %>
 <%@ include file="section/mypage_info.jsp" %>
 
@@ -11,8 +13,7 @@
          <ul>
             <li class="board_head">
 	            <span class="num">no.</span>      
-	            <span class="subject">[분류]제목</span>         
-	            <span class="userid">닉네임[작성자]</span>         
+	            <span class="subject">제목</span>                
 	            <span class="createdate">작성일</span>         
 	            <span class="recommands">추천수</span>         
 	            <span class="vcount">조회수</span>         
@@ -29,8 +30,7 @@
                         <c:otherwise></c:otherwise>
                     </c:choose>
                      ${post.subject}
-                  </span>         
-               <span class="userid">${post.nickname}[${post.userid}]</span>         
+                  </span>               
                <span class="createdate">${post.createdate}</span>         
                <span class="recommands">${post.recommands}</span>         
                <span class="vcount">${post.vcount}</span>         
@@ -41,9 +41,9 @@
   	</div>
 
 		
-	<jsp:include page="paging.jsp" flush="true">
-  	<jsp:param name="url" value="communityBoard" />
-  	<jsp:param name="search" value="${searchResult}" />
+	<jsp:include page="writepaging.jsp" flush="true">
+	  	<jsp:param name="url" value="zootopia.do?command=mywrite" />
+	  	<jsp:param name="search" value="${searchResult}" />
 	</jsp:include>
 		
 		

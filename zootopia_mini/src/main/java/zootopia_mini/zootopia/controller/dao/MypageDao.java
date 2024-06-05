@@ -1,16 +1,19 @@
 package zootopia_mini.zootopia.controller.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.List;
+
 
 import zootopia_mini.zootopia.controller.dto.CommunityVO;
 import zootopia_mini.zootopia.controller.dto.ContestDTO;
 import zootopia_mini.zootopia.controller.dto.ContestPetDTO;
 import zootopia_mini.zootopia.controller.dto.MemberVO;
+import zootopia_mini.zootopia.controller.dto.MyReplyDTO;
 import zootopia_mini.zootopia.util.DB;
 import zootopia_mini.zootopia.util.Paging;
 
@@ -78,6 +81,7 @@ public class MypageDao {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				ContestDTO cdto = new ContestDTO();
+				cdto.setCseq(rs.getInt("cseq"));
 				cdto.setSubject(rs.getString("subject"));
 				cdto.setContent(rs.getString("content"));
 				
@@ -250,9 +254,86 @@ public class MypageDao {
 		}finally {
 			DB.close(con, pstmt, rs);
 		}
-		
-		
 		return count;
 	}
+	
+	public int getMyContestCount(String table, String userid) {
+		int count = 0;
+		con = DB.getConnection();
+		
+		String sql = "select count(*) as cseq from "+ table + " where userid = ?  ORDER BY lastdate DESC";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			rs = pstmt.executeQuery();
+			if(rs.next()) count = rs.getInt("cseq");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		return count;
+	}
+
+	public int getMyJoinedContestCount(String table, String userid) {
+		int count = 0;
+		con = DB.getConnection();
+		
+		String sql = "select count(*) as cpseq from "+ table + " where userid = ?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			rs = pstmt.executeQuery();
+			if(rs.next()) count = rs.getInt("cpseq");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		return count;
+	}
+
+	public ArrayList<MyReplyDTO> getMyReplyList(String userId) {
+		ArrayList<MyReplyDTO> myReplyList = new ArrayList<MyReplyDTO>();
+		con = DB.getConnection();
+		String sql = " {CALL get_user_comments(?)} ";
+		CallableStatement cstmt = null;
+		try {
+			cstmt = con.prepareCall(sql);
+			cstmt.setString(1, userId);
+            rs = cstmt.executeQuery();
+            while (rs.next()) {
+                MyReplyDTO mrdto = new MyReplyDTO();
+                mrdto.setSource(rs.getString("source"));
+                mrdto.setUserId(rs.getString("user_id"));
+                mrdto.setPostId(rs.getInt("post_id"));
+                mrdto.setReplyId(rs.getInt("reply_id"));
+                mrdto.setSubject(rs.getString("subject"));
+                mrdto.setReplyContent(rs.getString("reply_content"));
+                mrdto.setReplyDate(rs.getString("reply_date"));
+                myReplyList.add(mrdto);
+            }
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(cstmt != null) cstmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DB.close(con, pstmt, rs);
+		}
+		
+		return myReplyList;
+	}
+
+
+	
+	
+	
 }
 

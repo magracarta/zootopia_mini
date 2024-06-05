@@ -2,7 +2,7 @@
 
 h2 {font-size: large;}
 
-.board_head .num {font-style: bold;}
+.board_head span {font-weight: bold;}
  
 .container {  }
 .container .title { line-height: 3; font-size: large;}

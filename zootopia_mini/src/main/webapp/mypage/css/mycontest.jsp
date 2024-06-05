@@ -7,8 +7,8 @@
 	background-color: #eee;
 }
 .container {display: flex; justify-content: space-between;margin: 20px;}
-.column {width: 30%;}
-.column h2 {font-size: 1.2em;margin-bottom: 10px;}
+.column {width: 45%;}
+.column h2 {font-size: 1.2em; margin-bottom: 10px;}
 .contestlist {
 	
 	padding: 10px; 
@@ -17,10 +17,24 @@
 .contestlist h3 {
     margin: 0;
     font-size: 1em;
+    font-weight: bold;
 }
 .contestlist p {
     margin: 5px 0 0 0;
     font-size: 0.9em;
 }
 
+.scroll {  height: 325px; overflow: auto; padding-right:15px; }
+.scroll::-webkit-scrollbar {
+    width: 5px;  
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0 , 0.5); 
+    border-radius: 10px; 
+}
+
+.scroll::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, .1);  
+}
 </style>
