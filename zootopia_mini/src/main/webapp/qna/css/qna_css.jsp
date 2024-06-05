@@ -102,11 +102,12 @@
         width: 150px;
         height: 50px;
     }
-/*     .form-container .btn button:hover, 
-    .form-container .btn input[type="submit"]:hover {
-        background-color: #606060;
-    } */
     
-    
+    .content-box {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+/*     overflow: auto;  */
+    max-height: 500px; 
+}
     
    </style>
