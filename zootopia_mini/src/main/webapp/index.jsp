@@ -9,6 +9,6 @@
 <title>index.jsp</title>
 </head>
 <body>
-	<% response.sendRedirect("zootopia.do?command=main"); %> 	
+	<% response.sendRedirect("zootopia.do?command=admin"); %>
 </body>
 </html>

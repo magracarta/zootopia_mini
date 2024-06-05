@@ -40,11 +40,11 @@
 	<div class="login-menu">
 		<c:choose>
 			<c:when test="${empty adminUser}">
-				<a href="zootopia.do?command=loginform">Login</a>
+				<a href="zootopia.do?command=adminlogin">Login</a>
 			</c:when>
 			<c:otherwise>
-				<a href="zootopia.do?command=mypage">${adminUser.adminid}(${adminUser.name}) 관리자님</a>
-				<a href="zootopia.do?command=logout">Logout</a>
+				<a>${adminUser.adminid}(${adminUser.name}) 관리자님</a>
+				<a href="zootopia.do?command=adminlogout">Logout</a>
 			</c:otherwise>
 		</c:choose>
 	</div>

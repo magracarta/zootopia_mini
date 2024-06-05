@@ -34,9 +34,7 @@
 			</div>
 			<span style="color: #333; float: right;">사용자 페이지로
 				돌아가기&nbsp;&nbsp;<a href="zootopia.do?command=main"
-				style="font-weight: bold;">user<img
-					style="padding-top: 7px; padding-left: 5px;"
-					src="images/Arrow 1.png" /></a>
+				style="font-weight: bold;">user</a>
 			</span>
 		</form>
 	</div>
