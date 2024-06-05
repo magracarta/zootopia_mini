@@ -27,6 +27,7 @@ import zootopia_mini.zootopia.controller.action.contest.ContestpetDeleteAction;
 import zootopia_mini.zootopia.controller.action.contest.ContestupdateAction;
 import zootopia_mini.zootopia.controller.action.contest.InsertContestPetAction;
 import zootopia_mini.zootopia.controller.action.contest.ReccomnadPetAction;
+import zootopia_mini.zootopia.controller.action.contest.TestProcedureAction;
 import zootopia_mini.zootopia.controller.action.contest.UpdateContestPetAction;
 import zootopia_mini.zootopia.controller.action.contest.AddReplyAction;
 import zootopia_mini.zootopia.controller.action.main.MainAction;
@@ -111,6 +112,7 @@ public class ActionFactory {
 		else if(command.equals("addReply")) ac = new AddReplyAction();
 		else if(command.equals("contestUpdateReply")) ac = new ContestUpdateReplyAction();
 		else if(command.equals("contestReplyDelete")) ac = new ContestReplyDeleteAction();
+		else if(command.equals("testProcedure")) ac = new TestProcedureAction();
 		
 		//qna
 		else if(command.equals("qnaList")) ac = new QnaListAction();

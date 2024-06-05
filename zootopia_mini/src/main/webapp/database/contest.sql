@@ -173,3 +173,74 @@ select * from community;
 
 select * from contestpet_view order by useyn desc  , cseq desc limit 5  ;
 
+
+
+DELIMITER //
+
+
+
+CREATE OR REPLACE VIEW reply_all_view AS
+SELECT 
+   a.userid as community_userid , a.gseq as community_gseq , a.grseq as community_grseq , a.content as community_content , a.createdate as community_createdate ,
+   b.crseq as contest_crseq , b.cseq as contest_cseq , b.userid as contest_userid ,  b.createdate as contest_createdate ,  b.content as contest_content
+FROM 
+    community_reply AS a , contest_reply AS b 
+where a.userid = 'user1' and b.userid ='user1';
+
+
+
+
+select * from reply_all_view;
+select * from community_reply;
+select * from contest_reply;
+
+    
+
+INSERT INTO community_reply (userid, gseq, content, createdate) 
+VALUES ('user1', 2, '이 게시글 정말 좋네요!', '2024-06-01 10:00:00');
+INSERT INTO community_reply (userid, gseq, content, createdate) 
+VALUES ('user1', 3, '이 게시글 정말 좋네요!', '2024-06-01 10:00:00');
+
+DROP PROCEDURE get_user_comments;
+
+DELIMITER //
+
+
+CREATE PROCEDURE get_user_comments(IN input_userId VARCHAR(255))
+BEGIN
+    SELECT 
+        'community' AS source,
+        cr.userid AS user_id,
+        cr.gseq AS post_id,
+        cr.grseq AS reply_id,
+        cr.content AS reply_content,
+        cp.subject AS subject, 
+        cr.createdate AS reply_date
+    FROM 
+        community_reply cr
+    INNER JOIN community cp ON cr.gseq = cp.gseq 
+    WHERE 
+        cr.userid = input_userId
+
+    UNION ALL
+
+    SELECT 
+        'contest' AS source,
+        ct.userid AS user_id,
+        ct.cseq AS post_id,
+        ct.crseq AS reply_id,
+        ct.content AS reply_content,
+        cp.subject AS subject,
+        ct.createdate AS reply_date
+    FROM 
+        contest_reply ct
+    INNER JOIN contest cp ON ct.cseq = cp.cseq 
+    WHERE 
+        ct.userid = input_userId
+    ORDER BY 
+        reply_date DESC;
+END;
+
+
+
+CALL get_user_comments('user3');

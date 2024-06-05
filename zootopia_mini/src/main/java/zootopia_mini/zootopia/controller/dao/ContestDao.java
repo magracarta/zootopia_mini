@@ -1,5 +1,6 @@
 package zootopia_mini.zootopia.controller.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+import zootopia_mini.zootopia.controller.action.contest.testDto;
 import zootopia_mini.zootopia.controller.dto.CommunityVO;
 import zootopia_mini.zootopia.controller.dto.ContestDTO;
 import zootopia_mini.zootopia.controller.dto.ContestPetDTO;
@@ -625,6 +627,48 @@ public class ContestDao {
 		       DB.close(con, pstmt, rs);
 		   }
 		   return list;
+	}
+
+
+	public ArrayList<testDto> testProcedure(String userId) {
+		 ArrayList<testDto> list = new ArrayList<testDto>();
+		 con = DB.getConnection();
+		 String query = "{ CALL get_user_comments(?) }";
+		 CallableStatement cstmt = null;
+
+		 try {
+			cstmt = con.prepareCall(query);
+			
+			 cstmt.setString(1, userId);
+	         rs = cstmt.executeQuery();
+	         while (rs.next()) {
+	        	 testDto tdto = new testDto();
+	        	 tdto.setSource(rs.getString("source"));
+	        	 tdto.setUserId(rs.getString("user_id"));
+	        	 tdto.setPostId(rs.getInt("post_id"));
+	        	 tdto.setReplyId(rs.getInt("reply_id"));
+	        	 tdto.setReplyContent(rs.getString("reply_content"));
+	        	 tdto.setReplyDate(rs.getString("reply_date"));
+                list.add(tdto);
+	            }
+
+	         
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			try {
+				if(cstmt != null)cstmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+	       DB.close(con, pstmt, rs);
+	   }
+		 
+		 
+		 
+		 
+		 return list;
 	}
 	
 	

@@ -17,7 +17,7 @@
 
 <div class="title-wrapper">
 	<h2 class="title">콘테스트 (${allcnt})</h2>
-	<c:if test="${userlogin != null}"><a href="zootopia.do?command=contestForm">나도 콘테스트 추가하기 ></a></c:if>
+	<a href="zootopia.do?command=contestForm">나도 콘테스트 추가하기 ></a>
 </div>
 <div class="contest-category">
 	<ul data-category ="${category}">
