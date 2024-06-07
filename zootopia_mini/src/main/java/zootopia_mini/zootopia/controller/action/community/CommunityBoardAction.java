@@ -48,7 +48,16 @@ public class CommunityBoardAction implements Action {
 
             request.setAttribute("paging", paging);
             request.setAttribute("commList", list);
+            
+            // kind 파라미터 가져오기
+            String kindParam = request.getParameter("kind");
+            int kind = -1;
+            if (kindParam != null) {
+                kind = Integer.parseInt(kindParam);
+            }
+            request.setAttribute("kind", kind);
+
             request.getRequestDispatcher("community/community_board.jsp").forward(request, response);
         }
-    
+            
 }

@@ -19,7 +19,13 @@
         <span class="recommands">추천수</span>			
         <span class="vcount">조회수</span>			
       </li>
-
+	    <div class="kind-buttons">
+        <button onclick="location.href='zootopia.do?command=communityBoard&kind=1'">고민</button>
+        <button onclick="location.href='zootopia.do?command=communityBoard&kind=2'">자랑</button>
+        <button onclick="location.href='zootopia.do?command=communityBoard&kind=3'">잡담</button>
+        <button onclick="location.href='zootopia.do?command=communityBoard'">모든 게시글</button>
+    </div>
+	
       <!-- 검색 결과가 있을 경우 해당 블록 표시 -->
       <c:forEach var="post" items="${subjectList}">
     <li>
@@ -70,25 +76,27 @@
           </li>
         </c:forEach>
         <c:forEach var="post" items="${commList}">
-          <li>
-            <a class="" href="javascript:void(0);" onclick="increaseViewCountAndRedirect(${post.gseq})">
-              <span class="num">no.${post.gseq}</span>   	
-              <span class="subject">
-                <c:choose>
-                  <c:when test="${post.kind == 1}">[고민]</c:when>
-                  <c:when test="${post.kind == 2}">[자랑]</c:when>
-                  <c:when test="${post.kind == 3}">[잡담]</c:when>
-                  <c:otherwise></c:otherwise>
-                </c:choose>
-                ${post.subject}
-              </span>			
-              <span class="userid">${post.nickname}[${post.userid}]</span>			
-              <span class="createdate">${post.createdate}</span>			
-              <span class="recommands">${post.recommands}</span>			
-              <span class="vcount">${post.vcount}</span>			
-            </a>
-          </li>
-        </c:forEach>
+                <c:if test="${kind == -1 || post.kind == kind}">
+                    <li>
+                        <a class="" href="javascript:void(0);" onclick="increaseViewCountAndRedirect(${post.gseq})">
+                            <span class="num">no.${post.gseq}</span>   
+                            <span class="subject">
+                                <c:choose>
+                                    <c:when test="${post.kind == 1}">[고민]</c:when>
+                                    <c:when test="${post.kind == 2}">[자랑]</c:when>
+                                    <c:when test="${post.kind == 3}">[잡담]</c:when>
+                                    <c:otherwise></c:otherwise>
+                                </c:choose>
+                                ${post.subject}
+                            </span>            
+                            <span class="userid">${post.nickname}[${post.userid}]</span>         
+                            <span class="createdate">${post.createdate}</span>         
+                            <span class="recommands">${post.recommands}</span>        
+                            <span class="vcount">${post.vcount}</span>         
+                        </a>
+                    </li>
+                </c:if>
+            </c:forEach>
       </c:if>
     </ul>
   </div>
