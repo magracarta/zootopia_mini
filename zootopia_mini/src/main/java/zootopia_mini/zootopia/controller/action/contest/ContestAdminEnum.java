@@ -42,6 +42,7 @@ public enum ContestAdminEnum {
             setString.append(pair.getKey()).append(" = ");
             
             if(isNumeric(pair.getValue()))setString.append(pair.getValue());
+            if(pair.getValue().startsWith("DATE"))setString.append(pair.getValue());
             else setString.append("'"+pair.getValue()+"'");
             
             

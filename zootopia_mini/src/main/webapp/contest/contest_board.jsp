@@ -59,7 +59,7 @@ document.querySelector("."+category).classList.add("select");
 							</span>
 								<div class="left-box">
 									<p>조회수(${list.cnt})</p>
-								<c:if test="${list.lastdate > now}">
+								<c:if test="${list.lastdate > now and list.useyn != 'W'}">
 									<span class="lastdate"><fmt:formatDate value="${list.lastdate}" pattern="yy/MM/dd hh:mm:ss" />까지 등록가능</span>
 								</c:if>
 							
@@ -95,7 +95,7 @@ document.querySelector("."+category).classList.add("select");
 						
 						</div>
 						<div class="button-wrapper">
-						<c:if test="${list.lastdate > now}">
+						<c:if test="${list.lastdate > now and list.useyn != 'W'}">
 							<c:choose>
 								<c:when test = "${list.pcnt > list.cpdList.size()}">
 									<p>${list.pcnt - list.cpdList.size()}마리 더 도전할수 있어요!
@@ -108,16 +108,15 @@ document.querySelector("."+category).classList.add("select");
 							</c:choose>
 							
 							</c:if>
+							
 							<c:if test="${list.lastdate < now}">
-								<c:if test="${list.useyn == 'W'}">
-									<span>대기 기간을 넘어버렸습니다.ㅠ_ㅠ</span>
-								</c:if>
+								
 								<c:if test="${list.useyn != 'W'}">
 									<span>투표기간이 완료되었습니다.<br>결과를 같이 확인해주세요!</span>
 								</c:if>
 							</c:if>
 							<c:if test="${list.useyn == 'W'}">
-								<a class="go_btn watingText">대기 중</a>
+								<a class="go_btn watingText">대기 중<c:if test="${list.plusdays < 8 }"><span> + ${list.plusdays }일</span></c:if> </a>
 							</c:if>
 							<c:if test="${list.useyn != 'W'}">
 								<a class='go_btn' data-url ="${list.cseq}">

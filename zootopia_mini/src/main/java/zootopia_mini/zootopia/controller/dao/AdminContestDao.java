@@ -102,6 +102,7 @@ public class AdminContestDao {
 					rs.getInt("allpcnt"),
 					rs.getString("nickname")
 					);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

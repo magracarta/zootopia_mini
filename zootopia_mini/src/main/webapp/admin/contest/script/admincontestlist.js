@@ -45,8 +45,15 @@ let category =location.href.split("category=")[1].split("&")[0];
 	    else if(e.target.value == "수락") commandText = "permit";
 	    else if(e.target.value == "거절") commandText = "reject";
 	    else if(e.target.value == "대기") commandText = "waiting";
+	    else if(e.target.value == "마감") commandText = "complete";
 	    document.querySelector(".contest_command_name").value = (commandText);
 	    document.querySelector('.contestlistForm input[type="submit"]').click();
 	    
 	    
 	});
+	
+	if( category == "completed"  || category == "playing" ) document.querySelector('input[value="수락"]').style.display ="none";
+	if( category == "waiting"  ) document.querySelector('input[value="대기"]').style.display ="none";
+	if( category == "rejected"  ) document.querySelector('input[value="거절"]').style.display ="none";
+	if( category == "completed"  ) document.querySelector('input[value="마감"]').style.display ="none";
+	

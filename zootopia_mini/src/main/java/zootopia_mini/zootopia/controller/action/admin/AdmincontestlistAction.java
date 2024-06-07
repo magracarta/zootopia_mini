@@ -65,15 +65,6 @@ public class AdmincontestlistAction implements Action {
 
 	}
 
-	private void insert() {
-		ContestAdminEnum insert = ContestAdminEnum.CONESTVIEW;
-		Map <String , String> list = new HashMap<>();
-		list.put("cseq", "1");
-		list.put("text", "아무 글자인뎁쇼?");
-		
-		System.out.println(insert.addSQL(list, "contest"));
-		
-	}
 	
 	private void allContest(Paging page , AdminContestDao acdao , String search, HttpServletRequest request , String catewhere) {
 		ContestAdminEnum all = ContestAdminEnum.CONESTVIEW;

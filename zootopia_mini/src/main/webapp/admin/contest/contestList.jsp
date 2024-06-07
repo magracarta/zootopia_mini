@@ -39,6 +39,7 @@
 		<input type="button" value="수락">
 		<input type="button" value="거절">
 		<input type="button" value="대기">
+		<input type="button" value="마감">
 		</div>
 	</div>
 	<div class="contest_list">
@@ -63,7 +64,11 @@
 			</c:choose>
 		
 						<c:if test="${list.useyn == 'W'}">
-								<p class="wating">대기 중</p>
+							<p class="wating">대기 중
+								<c:if test="${list.plusdays < 8 }">
+									+${list.plusdays }일
+								</c:if> 
+							</p>
 						</c:if>
 						<div class="date_num">
 							<div class="left">
@@ -110,11 +115,17 @@
 						</div>
 						<div class="button-wrapper">
 							<p class="complete">참가현황 (${list.cpdList.size()}/${list.pcnt })</p>
-							
+							<c:if test="${list.useyn != 'W'}">
 							<c:if test="${list.lastdate < now}">
-								<span>마감기한이 지났습니다. <br>${list.lastdate}</span>
+								<span>생성날짜: <br>${list.createdate}</span><br>
+								<c:if test="${list.lastdate > list.createdate}">
+									<span>마감기한: <br>${list.lastdate}</span>
+								</c:if>
+								<c:if test="${list.lastdate < list.createdate}">
+									<span>마감기한 마이너스 변경 : <br>${list.lastdate}</span>
+								</c:if>
 							</c:if>
-							
+							</c:if>
 							
 							<a class='go_btn' 
 							href ="zootopia.do?command=adminContestDetial&cseq=${list.cseq}&category=${category}&beforePageNum=${paging.currentPage}">수정하기</a>

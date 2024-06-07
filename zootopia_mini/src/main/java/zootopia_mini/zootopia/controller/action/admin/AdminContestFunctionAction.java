@@ -47,7 +47,8 @@ public class AdminContestFunctionAction implements Action {
 			if(function.equals("permit")) {
 				alert = "허락이 완료되었습니다.";
 				Map<String, String> permitList = new HashMap<>();
-				permitList.put("useyn", "Y");
+				permitList.put("useyn", "Y");									
+				if(cdto.getPlusdays() <= 7 && cdto.getUseyn().equals("W")) permitList.put("lastdate", "DATE_ADD(NOW() , INTERVAL "+ cdto.getPlusdays() +" DAY)"); 
 				sql = contest.updateSQL(permitList, "where cseq = "+ cdto.getCseq());
 			}
 			if(function.equals("reject")) {
@@ -61,6 +62,13 @@ public class AdminContestFunctionAction implements Action {
 				Map<String, String> waitingList = new HashMap<>();
 				waitingList.put("useyn", "W");
 				sql = contest.updateSQL(waitingList, "where cseq = "+ cdto.getCseq());
+			}
+			if(function.equals("complete")) {
+				alert = "마감이 완료되었습니다.";
+				Map<String, String> complete = new HashMap<>();
+				complete.put("useyn", "Y");	
+				complete.put("lastdate", "DATE_SUB('"+ cdto.getCreatedate() +"', INTERVAL "+cdto.getPlusdays() +" DAY)");
+				sql = contest.updateSQL(complete, "where cseq = "+ cdto.getCseq());
 			}
 				
 			System.out.println(sql);

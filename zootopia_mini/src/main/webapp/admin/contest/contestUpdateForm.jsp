@@ -34,6 +34,8 @@
 						<li data-value="3"><a href="javascript:">3일</a></li>
 						<li data-value="4"><a href="javascript:">4일</a></li>
 						<li data-value="5"><a href="javascript:">5일</a></li>
+						<li data-value="6"><a href="javascript:">6일</a></li>
+						<li data-value="7"><a href="javascript:">7일</a></li>
 					</ul>
 				</div>
 			</div>
