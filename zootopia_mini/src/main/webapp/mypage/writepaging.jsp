@@ -33,7 +33,7 @@
 			<input type="hidden" name="command" value="mywrite">
 			<input type="hidden" name="pagenum" value="1">
 			<input type="text" name="search" value="${search}">
-			<input type="submit	" value="검색">
+			<input type="submit" value="검색">
 		</form>
 	</div>
 	

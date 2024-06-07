@@ -5,7 +5,7 @@
 <section>
     <article>
         <form>
-            <ul class="qna-header">Q&A</ul>
+            <!-- <ul class="qna-header">Q&A</ul> -->
             <div class="tb">
                 <div class="row">
                     <div class="coltitle">번호</div>
@@ -35,7 +35,7 @@
         </form>
     </article>
 </section>
-<jsp:include page="paging.jsp" flush="true">
+<jsp:include page="/paging/paging.jsp" flush="true">
   <jsp:param name="url" value="zootopia.do?command=myqna" />
 </jsp:include>
 <%@ include file="css/mypage_css.jsp" %>

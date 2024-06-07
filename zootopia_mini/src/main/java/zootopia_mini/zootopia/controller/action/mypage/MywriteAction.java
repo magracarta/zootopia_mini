@@ -19,6 +19,7 @@ public class MywriteAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String currentPage = request.getParameter("pagenum");
+		String search = request.getParameter("search");
 		MemberVO mvo = (MemberVO) session.getAttribute("loginUser");
 		MypageDao mdao = MypageDao.getInstance();
 		
@@ -27,12 +28,13 @@ public class MywriteAction implements Action {
 		if(mvo == null)
 		{
 			response.sendRedirect("zootopia.do?command=loginform");
-		} else 
-		{
-			
-			
-			
-			int myWriteAllCount = mdao.getAllCount("community" , mvo.getUserid());
+		} else {
+			int myWriteAllCount;
+			if (search == null || search.trim().isEmpty()) {
+                myWriteAllCount = mdao.getAllCount("community", mvo.getUserid());
+            } else {
+                myWriteAllCount = mdao.getAllCountWithSearch("community", mvo.getUserid(), search); // 검색어를 포함한 카운트 조회 메서드 호출
+            }
 			
 			Paging page = new Paging();
 			
@@ -42,11 +44,17 @@ public class MywriteAction implements Action {
 			
 			page.setRecordAllcount(myWriteAllCount);
 			
-			ArrayList<CommunityVO> communityList = mdao.getMyCommunityList(page, mvo.getUserid());
+			ArrayList<CommunityVO> communityList;
+			if (search == null || search.trim().isEmpty()) {
+                communityList = mdao.getMyCommunityList(page, mvo.getUserid());
+            } else {
+                communityList = mdao.getMyCommunityListWithSearch(page, mvo.getUserid(), search); // 검색어를 포함한 목록 조회 메서드 호출
+            }
 			
 			request.setAttribute("communityList", communityList);
 			session.setAttribute("paging", page);
 			request.setAttribute("allcnt", myWriteAllCount);
+			request.setAttribute("search", search);
 			
 			request.getRequestDispatcher("mypage/mywrite.jsp").forward(request, response);
 		}

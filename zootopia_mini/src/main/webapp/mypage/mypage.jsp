@@ -3,9 +3,10 @@
 <%@ include file ="../header.jsp" %>
 <script src="script/mypage.js"></script>
 
-
-		
 <%@ include file="section/mypage_info.jsp" %>
+
+
+
 	
 
 

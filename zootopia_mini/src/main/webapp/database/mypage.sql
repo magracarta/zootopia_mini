@@ -3,6 +3,7 @@ update member set image='profileimage1.jpg', saveimage='profileimage1.jpg' where
 select * from member;
 
 select * from contest;
+select * from community;
 
 select * from contestpetiv_view;
 
@@ -78,44 +79,44 @@ select * from contest_reply;
 select * from community;
 
 INSERT INTO community (vcount, userid, subject, content, recommands, kind, createdate) VALUES
-(10, 'jota', '첫 번째 글입니다.', '첫 번째 글의 내용입니다.', 5, 1, NOW()),
-(8, 'jota', '두 번째 글입니다.', '두 번째 글의 내용입니다.', 3, 1, NOW()),
-(15, 'jota', '세 번째 글입니다.', '세 번째 글의 내용입니다.', 7, 2, NOW()),
-(12, 'jota', '네 번째 글입니다.', '네 번째 글의 내용입니다.', 4, 2, NOW()),
-(20, 'jota', '다섯 번째 글입니다.', '다섯 번째 글의 내용입니다.', 8, 2, NOW()),
-(14, 'jota', '여섯 번째 글입니다.', '여섯 번째 글의 내용입니다.', 6, 1, NOW()),
-(18, 'jota', '일곱 번째 글입니다.', '일곱 번째 글의 내용입니다.', 9, 2, NOW()),
-(11, 'jota', '여덟 번째 글입니다.', '여덟 번째 글의 내용입니다.', 7, 1, NOW()),
-(25, 'jota', '아홉 번째 글입니다.', '아홉 번째 글의 내용입니다.', 12, 2, NOW()),
-(10, 'jota', '열 번째 글입니다.', '열 번째 글의 내용입니다.', 5, 1, NOW()),
-(12, 'jota', '열한 번째 글입니다.', '열한 번째 글의 내용입니다.', 8, 2, NOW()),
-(15, 'jota', '열두 번째 글입니다.', '열두 번째 글의 내용입니다.', 10, 1, NOW()),
-(18, 'jota', '열세 번째 글입니다.', '열세 번째 글의 내용입니다.', 6, 2, NOW()),
-(20, 'jota', '열네 번째 글입니다.', '열네 번째 글의 내용입니다.', 9, 1, NOW()),
-(16, 'jota', '열다섯 번째 글입니다.', '열다섯 번째 글의 내용입니다.', 7, 2, NOW()),
-(14, 'jota', '열여섯 번째 글입니다.', '열여섯 번째 글의 내용입니다.', 11, 1, NOW()),
-(17, 'jota', '열일곱 번째 글입니다.', '열일곱 번째 글의 내용입니다.', 8, 2, NOW()),
-(19, 'jota', '열여덟 번째 글입니다.', '열여덟 번째 글의 내용입니다.', 12, 1, NOW()),
-(11, 'jota', '열아홉 번째 글입니다.', '열아홉 번째 글의 내용입니다.', 9, 2, NOW()),
-(13, 'jota', '스무 번째 글입니다.', '스무 번째 글의 내용입니다.', 7, 1, NOW());
+(10, 'joha', '첫 번째 글입니다.', '첫 번째 글의 내용입니다.', 5, 1, NOW()),
+(8, 'joha', '두 번째 글입니다.', '두 번째 글의 내용입니다.', 3, 1, NOW()),
+(15, 'joha', '세 번째 글입니다.', '세 번째 글의 내용입니다.', 7, 2, NOW()),
+(12, 'joha', '네 번째 글입니다.', '네 번째 글의 내용입니다.', 4, 2, NOW()),
+(20, 'joha', '다섯 번째 글입니다.', '다섯 번째 글의 내용입니다.', 8, 2, NOW()),
+(14, 'joha', '여섯 번째 글입니다.', '여섯 번째 글의 내용입니다.', 6, 1, NOW()),
+(18, 'joha', '일곱 번째 글입니다.', '일곱 번째 글의 내용입니다.', 9, 2, NOW()),
+(11, 'joha', '여덟 번째 글입니다.', '여덟 번째 글의 내용입니다.', 7, 1, NOW()),
+(25, 'joha', '아홉 번째 글입니다.', '아홉 번째 글의 내용입니다.', 12, 2, NOW()),
+(10, 'joha', '열 번째 글입니다.', '열 번째 글의 내용입니다.', 5, 1, NOW()),
+(12, 'joha', '열한 번째 글입니다.', '열한 번째 글의 내용입니다.', 8, 2, NOW()),
+(15, 'joha', '열두 번째 글입니다.', '열두 번째 글의 내용입니다.', 10, 1, NOW()),
+(18, 'joha', '열세 번째 글입니다.', '열세 번째 글의 내용입니다.', 6, 2, NOW()),
+(20, 'joha', '열네 번째 글입니다.', '열네 번째 글의 내용입니다.', 9, 1, NOW()),
+(16, 'joha', '열다섯 번째 글입니다.', '열다섯 번째 글의 내용입니다.', 7, 2, NOW()),
+(14, 'joha', '열여섯 번째 글입니다.', '열여섯 번째 글의 내용입니다.', 11, 1, NOW()),
+(17, 'joha', '열일곱 번째 글입니다.', '열일곱 번째 글의 내용입니다.', 8, 2, NOW()),
+(19, 'joha', '열여덟 번째 글입니다.', '열여덟 번째 글의 내용입니다.', 12, 1, NOW()),
+(11, 'joha', '열아홉 번째 글입니다.', '열아홉 번째 글의 내용입니다.', 9, 2, NOW()),
+(13, 'joha', '스무 번째 글입니다.', '스무 번째 글의 내용입니다.', 7, 1, NOW());
 
 
 INSERT INTO community_reply (userid, gseq, content, createdate) 
-VALUES ('jota', 4, '이 게시글 정말 좋네요!', '2024-06-01 10:00:00');
+VALUES ('joha', 4, '이 게시글 정말 좋네요!', '2024-06-01 10:00:00');
 INSERT INTO community_reply (userid, gseq, content, createdate) 
-VALUES ('jota', 5, '이 게시글 정말 좋네요!', '2024-06-01 10:00:00');
+VALUES ('joha', 5, '이 게시글 정말 좋네요!', '2024-06-01 10:00:00');
 INSERT INTO community_reply (userid, gseq, content, createdate) 
-VALUES ('jota', 1, '이 게시글 정말 좋네요!', '2024-06-01 10:00:00');
+VALUES ('joha', 1, '이 게시글 정말 좋네요!', '2024-06-01 10:00:00');
 INSERT INTO community_reply (userid, gseq, content, createdate) 
-VALUES ('jota', 2, '이 게시글 정말 좋네요!', '2024-06-01 10:00:00');
+VALUES ('joha', 2, '이 게시글 정말 좋네요!', '2024-06-01 10:00:00');
 INSERT INTO community_reply (userid, gseq, content, createdate) 
-VALUES ('jota', 3, '이 게시글 정말 좋네요!', '2024-06-01 10:00:00');
+VALUES ('joha', 3, '이 게시글 정말 좋네요!', '2024-06-01 10:00:00');
 INSERT INTO community_reply (userid, gseq, content, createdate) 
-VALUES ('jota', 4, '이 게시글 정말 좋네요!', '2024-06-01 10:00:00');
+VALUES ('joha', 4, '이 게시글 정말 좋네요!', '2024-06-01 10:00:00');
 INSERT INTO community_reply (userid, gseq, content, createdate) 
-VALUES ('jota', 5, '이 게시글 정말 좋네요!', '2024-06-01 10:00:00');
+VALUES ('joha', 5, '이 게시글 정말 좋네요!', '2024-06-01 10:00:00');
 INSERT INTO community_reply (userid, gseq, content, createdate) 
-VALUES ('jota', 6, '이 게시글 정말 좋네요!', '2024-06-01 10:00:00');
+VALUES ('joha', 6, '이 게시글 정말 좋네요!', '2024-06-01 10:00:00');
 
 
     
@@ -155,7 +156,7 @@ END //
 DELIMITER ;
 
 
-CALL get_user_comments('jota');
+CALL get_user_comments('joha');
 
 DROP PROCEDURE get_user_comments;
 
@@ -257,3 +258,24 @@ END;
 
 select * from community_reply;
 select * from contest_reply;
+select * from qnareply;
+
+
+
+INSERT INTO qnareply (category, subject, content, reply, userid, createdate)
+VALUES 
+    (1,'샘플 제목 1', '샘플 내용 1', '샘플 답변 1', 'joha', NOW()),
+    (2,'샘플 제목 2', '샘플 내용 2', '샘플 답변 2', 'joha', NOW()),
+    (3,'샘플 제목 3', '샘플 내용 3', '샘플 답변 3', 'joha', NOW()),
+    (1,'샘플 제목 4', '샘플 내용 4', '샘플 답변 4', 'joha', NOW()),
+    (2,'샘플 제목 5', '샘플 내용 5', '샘플 답변 5', 'joha', NOW()),
+    (3,'샘플 제목 6', '샘플 내용 6', '샘플 답변 6', 'joha', NOW()),
+    (1,'샘플 제목 7', '샘플 내용 7', '샘플 답변 7', 'joha', NOW()),
+    (2,'샘플 제목 8', '샘플 내용 8', '샘플 답변 8', 'joha', NOW()),
+    (3,'샘플 제목 9', '샘플 내용 9', '샘플 답변 9', 'joha', NOW()),
+    (1, '샘플 제목 10', '샘플 내용 10', '샘플 답변 10', 'joha', NOW()),
+    (2, '샘플 제목 11', '샘플 내용 11', '샘플 답변 11', 'joha', NOW()),
+    (3, '샘플 제목 12', '샘플 내용 12', '샘플 답변 12', 'joha', NOW()),
+    (1, '샘플 제목 13', '샘플 내용 13', '샘플 답변 13', 'joha', NOW()),
+    (1, '샘플 제목 14', '샘플 내용 14', '샘플 답변 14', 'joha', NOW()),
+    (2, '샘플 제목 15', '샘플 내용 15', '샘플 답변 15', 'joha', NOW());

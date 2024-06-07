@@ -6,6 +6,9 @@
 <% String url = request.getParameter("url");
    String search = request.getParameter("search");
 %>
+
+First number: ${paging.firstnum}<br>
+Last number: ${paging.lastnum}<br>
 	<div class="pagenation-container">
             <c:if test="${paging.prev == true &&  paging.pageAllcount > paging.pagecnt }">
                 <a class="prevBtn" href="<%=url%>&pagenum=${paging.firstnum-paging.pagecnt}"><img src="images/arrow.svg"></a>

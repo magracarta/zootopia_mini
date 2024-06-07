@@ -326,42 +326,145 @@ public class MypageDao {
 	}
 
 	public ArrayList<MyReplyDTO> getMyReplyList(String userId) {
-		ArrayList<MyReplyDTO> myReplyList = new ArrayList<MyReplyDTO>();
+		ArrayList<MyReplyDTO> myReplyList = new ArrayList<>();
 		con = DB.getConnection();
-		String sql = " {CALL get_user_comments(?)} ";
-		CallableStatement cstmt = null;
-		try {
-			cstmt = con.prepareCall(sql);
-			cstmt.setString(1, userId);
-            rs = cstmt.executeQuery();
+		
+        String sqlCommunity = "SELECT gseq AS post_id, grseq AS reply_id, userid AS user_id, "
+        		+ " NULL AS subject, content AS reply_content, createdate AS reply_date, "
+        		+ " 'community' AS type FROM community_reply WHERE userid = ?" ;
+        
+        
+        String sqlContest = "SELECT cseq AS post_id, crseq AS reply_id, userid AS user_id, "
+        		+ " NULL AS subject, content AS reply_content, createdate AS reply_date, "
+        		+ " 'contest' AS type FROM contest_reply WHERE userid = ?" ;
+		
+        try {
+            // 커뮤니티 댓글
+            pstmt = con.prepareStatement(sqlCommunity);
+            pstmt.setString(1, userId);
+            rs = pstmt.executeQuery();
             while (rs.next()) {
                 MyReplyDTO mrdto = new MyReplyDTO();
-                mrdto.setSource(rs.getString("source"));
-                mrdto.setUserId(rs.getString("user_id"));
                 mrdto.setPostId(rs.getInt("post_id"));
                 mrdto.setReplyId(rs.getInt("reply_id"));
+                mrdto.setUserId(rs.getString("user_id"));
                 mrdto.setSubject(rs.getString("subject"));
                 mrdto.setReplyContent(rs.getString("reply_content"));
                 mrdto.setReplyDate(rs.getString("reply_date"));
+                mrdto.setType(rs.getString("type"));
                 myReplyList.add(mrdto);
             }
-			
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if(cstmt != null) cstmt.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			DB.close(con, pstmt, rs);
-		}
-		
-		return myReplyList;
+            rs.close();
+            pstmt.close();
+
+            // 콘테스트 댓글 
+            pstmt = con.prepareStatement(sqlContest);
+            pstmt.setString(1, userId);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                MyReplyDTO mrdto = new MyReplyDTO();
+                mrdto.setPostId(rs.getInt("post_id"));
+                mrdto.setReplyId(rs.getInt("reply_id"));
+                mrdto.setUserId(rs.getString("user_id"));
+                mrdto.setSubject(rs.getString("subject"));
+                mrdto.setReplyContent(rs.getString("reply_content"));
+                mrdto.setReplyDate(rs.getString("reply_date"));
+                mrdto.setType(rs.getString("type"));
+                myReplyList.add(mrdto);
+            }
+            rs.close();
+            pstmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DB.close(con, pstmt, rs);
+        }
+        return myReplyList;
 	}
 
 
+	public int getAllCountWithSearch(String table, String userid, String search) {
+		int count = 0;
+		String sql = "select count(*) from " + table + " where userid = ? and subject like ?";
+		con = DB.getConnection();
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			pstmt.setString(2, "%" + search + "%");
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+                count = rs.getInt(1);
+            }
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return count;
+	}
+
+
+	public ArrayList<CommunityVO> getMyCommunityListWithSearch(Paging page, String userid, String search) {
+		ArrayList<CommunityVO> list = new ArrayList<>();
+		String sql = "SELECT * FROM community WHERE userid = ? AND subject LIKE ? LIMIT ? offset ?";
+		con = DB.getConnection();
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			pstmt.setString(2, "%" + search + "%");
+			pstmt.setInt(3, page.getRecordrow());
+			pstmt.setInt(4, page.getOffsetnum());
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+                CommunityVO cvo = new CommunityVO();
+                cvo.setGseq(rs.getInt("gseq"));
+                cvo.setSubject(rs.getString("subject"));
+                cvo.setCreatedate(rs.getTimestamp("createdate"));
+                cvo.setRecommands(rs.getInt("recommands"));
+                cvo.setVcount(rs.getInt("vcount"));
+                list.add(cvo);
+            }
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	
+	public String getPostSubject(String type, int postId) {
+	    String subject = null;
+
+	    try {
+	        con = DB.getConnection();
+	        String sql = null;
+	        
+	        // type에 따라 쿼리를 다르게 작성
+	        if ("community".equals(type)) {
+	            sql = "SELECT subject FROM community WHERE gseq = ?";
+	        } else if ("contest".equals(type)) {
+	            sql = "SELECT subject FROM contest WHERE cseq = ?";
+	        }
+	        
+	        pstmt = con.prepareStatement(sql);
+	        pstmt.setInt(1, postId);
+	        rs = pstmt.executeQuery();
+	        
+	        if (rs.next()) {
+	        	subject = rs.getString("subject");
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        DB.close(con, pstmt, rs);
+	    }
+
+	    return subject;
+	}
+	
 	
 	
 	
