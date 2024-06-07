@@ -59,12 +59,7 @@ public class CommunityReplyDao {
 
         try {
             con = DB.getConnection(); // 데이터베이스 연결을 가져옵니다.
-            String sql = "SELECT cr.*, c.subject AS community_subject, c.content AS community_content, c.userid AS community_userid, c.createdate AS community_createdate, m.nickname AS member_nickname "
-                    + " FROM community_reply cr "
-                    + " JOIN community c ON cr.gseq = c.gseq "
-                    + " JOIN member m ON c.userid = m.userid "
-                    + " WHERE cr.grseq = ? "
-                    + " ORDER BY cr.createdate DESC";
+            String sql = "SELECT * FROM community_reply where gseq = ? order by createdate desc";
 
             pstmt = con.prepareStatement(sql); // SQL 쿼리를 준비합니다.
             pstmt.setInt(1, grseq); // SQL 쿼리에 매개변수를 설정합니다.

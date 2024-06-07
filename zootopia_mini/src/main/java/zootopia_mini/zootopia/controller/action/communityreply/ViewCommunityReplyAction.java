@@ -17,19 +17,18 @@ public class ViewCommunityReplyAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		 int gseq = Integer.parseInt(request.getParameter("gseq"));
+			int gseq = Integer.parseInt(request.getParameter("gseq"));
 	        CommunityDao cdao = CommunityDao.getInstance();
 	        CommunityVO cvo = cdao.getCommunity(gseq);
 	        
 	        CommunityReplyDao crdao = CommunityReplyDao.getInstance();
 	        ArrayList<CommunityReplyDTO> replies = crdao.getCommunityReplies(gseq);
 	        
-	        request.setAttribute("communityVO", cvo);
+	        
 	        request.setAttribute("communityReplies", replies);
+	        request.setAttribute("communityVO", cvo);
 	        
 	        request.getRequestDispatcher("community/community_detail.jsp").forward(request, response);
 	    }
-		
-	
 
 }

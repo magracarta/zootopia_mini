@@ -72,6 +72,7 @@
               <span class="createdate">${post.createdate}</span>			
               <span class="recommands">${post.recommands}</span>			
               <span class="vcount">${post.vcount}</span>			
+              <span class="vcount">${post.vcount}</span>			
             </a>
           </li>
         </c:forEach>
