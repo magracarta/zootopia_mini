@@ -544,7 +544,7 @@ public class ContestDao {
 		ArrayList<ContestDTO> lsit = new ArrayList<ContestDTO>();
 		con = DB.getConnection();
 		String sql =  "select * from contestpet_view where lastdate > now() "
-				+ "and createdate > DATE_SUB(NOW(), INTERVAL 7 DAY) and  useyn = 'Y' order by cnt desc limit 3;";
+				+ "and lastdate > now() and  useyn = 'Y' order by cnt desc limit 3;";
 		
 		try {
 			pstmt = con.prepareStatement(sql);
