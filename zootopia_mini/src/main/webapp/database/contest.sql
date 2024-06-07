@@ -39,6 +39,7 @@ ALTER TABLE contest add COLUMN pcnt int default 6;
 select * from contest_pet;
 select * from contest;
 select * from contest_reply;
+select * from contestpetiv_view;
 select * from member;
 
 insert into contest_reply (cseq, userid , content) 
@@ -86,7 +87,7 @@ JOIN
 GROUP BY 
     a.cseq, a.userid, a.subject, a.content, a.createdate, a.lastdate, a.cnt, a.useyn, a.pcnt, m.nickname;
 
-
+select * from contestpet_view  WHERE subject LIKE '%%'   order by cseq desc limit 5 offset 0;
 
 select * from contest_pet;
 
@@ -243,4 +244,13 @@ END;
 
 
 
-CALL get_user_comments('user3');
+CALL get_user_comments('user1');
+
+
+
+
+select * from admins;
+
+insert into admins (adminid , pwd , name , phone) values ('admin' , '0000' , '관리자' , '010-0000-0000' );
+
+

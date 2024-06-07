@@ -37,6 +37,7 @@ document.querySelector("."+category).classList.add("select");
 	<div class="contest_list">
 		<ul>
 			<c:forEach items ="${contestList}" var="list" varStatus="state">
+			<c:if test="${list.useyn != 'N'}">
 				<li>
 						<div class="date_num">
 							<%-- <span class="cseq">NO. ${list.cseq} <br> --%>
@@ -107,6 +108,7 @@ document.querySelector("."+category).classList.add("select");
 						</div>		
 					
 				</li>
+				</c:if>
 			</c:forEach>
 			
 		</ul>

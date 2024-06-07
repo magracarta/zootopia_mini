@@ -71,6 +71,9 @@ public class ContestDao {
 		}else if(category.equals("all")) {
 			useyn = "  ";
 			
+		}else if(category.equals("playing")) {
+			useyn = "and now() < lastdate  and useyn ='Y' ";
+			
 		}else if(category.equals("accomplished")) {
 			useyn = " and now() > lastdate ";
 		}
@@ -138,6 +141,9 @@ public class ContestDao {
 			useyn = " and useyn ='W' ";
 		}else if(category.equals("all")) {
 			useyn = "  ";
+			
+		}else if(category.equals("playing")) {
+			useyn = "and now() < lastdate  and useyn ='Y' ";
 			
 		}else if(category.equals("accomplished")) {
 			useyn = " and now() > lastdate ";

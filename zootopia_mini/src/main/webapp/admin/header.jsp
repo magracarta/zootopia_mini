@@ -15,6 +15,12 @@
 
 <link rel="stylesheet" href="admin/css/admin.css">
 
+
+<!-- 슬라이드 api -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
 <script src="admin/script/admin.js"></script>
 
 </head>
