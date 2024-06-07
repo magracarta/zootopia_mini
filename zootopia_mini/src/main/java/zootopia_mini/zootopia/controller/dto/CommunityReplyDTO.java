@@ -8,6 +8,14 @@ public class CommunityReplyDTO {
 	private int grseq;
 	private String content;
 	private Timestamp createdate;
+	private String nickname;
+	
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 	public String getUserid() {
 		return userid;
 	}

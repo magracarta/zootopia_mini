@@ -51,23 +51,25 @@
 		
     <!-- 댓글 작성 폼 -->
     <h2 class="commenth2">댓글 작성</h2>
-    <form action="zootopia.do?command=writeCommunityReply" method="post">
-        <textarea name="content" placeholder="Write your comment here" required></textarea>
+    <form class="commentwrite" action="zootopia.do?command=writeCommunityReply" method="post">
+        <textarea class="write" name="content"  required></textarea>
         <input type="hidden" name="gseq" value="${communityVO.gseq}">
-        <button class="submit" type="submit">Submit</button>
+        <button class="submit" type="submit">작성하기</button>
     </form>
+    
+    
 <h2>Comments</h2>
 <div class="comment-list">
     <c:forEach var="reply" items="${communityReplies}">
-        <div class="comment-card">
+    	<div class="commentbox">
             <div class="comment-content">
                 <p>${reply.content}</p>
             </div>
             <div class="comment-meta">
-                <span>Written by ${reply.userid}</span>
-                <span>Comment ID: ${reply.grseq}</span>
+                <span>작성자: ${reply.nickname}[${reply.userid}]</span>
+                <span>댓글번호:${reply.grseq}</span>
             </div>
-        </div>
+        </div>    
     </c:forEach>
 </div>
     
