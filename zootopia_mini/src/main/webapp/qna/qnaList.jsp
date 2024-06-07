@@ -10,6 +10,7 @@
             <div class="tb">
                 <div class="row">
                     <div class="coltitle">번호</div>
+                    <div class="coltitle">카테고리</div>
                     <div class="coltitle">제목</div>
                     <div class="coltitle">작성자</div>
                     <div class="coltitle">작성일</div>
@@ -19,6 +20,14 @@
                     <c:forEach items="${qnaList}" var="qnaVO">
                         <div class="row">
                             <div class="coltitle">${qnaVO.qseq}</div>
+                            <div class="coltitle">
+		                    <c:choose >
+			                    <c:when test="${qnaVO.category == 1}">[콘테스트 문의]</c:when>
+			                    <c:when test="${qnaVO.category == 2}">[자유게시판 문의]</c:when>
+			                    <c:when test="${qnaVO.category == 3}">[기타 문의]</c:when>
+			                    <c:otherwise></c:otherwise>
+			                </c:choose>
+			                </div>
                             <div class="coltitle">
                                 <a href="zootopia.do?command=qnaView&qseq=${qnaVO.qseq}">${qnaVO.subject}</a>
                             </div>

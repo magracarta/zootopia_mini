@@ -251,6 +251,7 @@ public class MypageDao {
 			while(rs.next()) {
 				QnaVO qna = new QnaVO();
 				qna.setQseq(rs.getInt("qseq"));
+				qna.setCategory(rs.getInt("category"));
 				qna.setUserid(rs.getString("userid"));
 				qna.setSubject(rs.getString("subject"));
 				qna.setContent(rs.getString("content"));

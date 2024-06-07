@@ -10,6 +10,7 @@ public class QnaVO {
 	private String reply;
 	private String userid;
 	private Integer category;
+	
 	public Integer getCategory() {
 		return category;
 	}

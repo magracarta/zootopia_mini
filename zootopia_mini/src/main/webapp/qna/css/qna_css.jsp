@@ -102,7 +102,11 @@
         width: 150px;
         height: 50px;
     }
-    
+/*     .category{
+     	display: block;
+        font-weight: bold;
+		margin-bottom: 15px;
+    } */
     .content-box {
     white-space: pre-wrap;
     word-wrap: break-word;

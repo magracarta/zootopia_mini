@@ -69,13 +69,14 @@ public class QnaDao {
 
 	public void insertQna(QnaVO qvo) {
 		
-		String sql = "insert into qnareply ( subject, content, userid)  values( ? , ? , ? )";
+		String sql = "insert into qnareply ( subject, content, userid, category)  values( ? , ? , ?, ? )";
 		con = DB.getConnection();
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, qvo.getSubject());
 		    pstmt.setString(2, qvo.getContent());
 		    pstmt.setString(3, qvo.getUserid());
+		    pstmt.setInt(4, qvo.getCategory());
 		    pstmt.executeUpdate();  
 		} catch (SQLException e) {e.printStackTrace();
 		} finally {  DB.close(con, pstmt, rs);  }
