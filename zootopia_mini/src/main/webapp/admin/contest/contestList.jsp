@@ -7,37 +7,44 @@
 	
 
 <div class="title-wrapper">
-	<h2 class="title">${title} (${Allcount})</h2>
+	<h2 class="title">${title} <c:if test="${ search.equals('') }">(${Allcount})</c:if></h2>
 </div>
 <div class="contest-category" data-category="">
 	<ul data-category ="${category}">
-		<li><a class="all" href="zootopia.do?command=admincontestlist&category=all&pagenum=1&search=">모든 콘테스트</a></li>
-		<li><a class="playing" href="zootopia.do?command=admincontestlist&category=playing&pagenum=1&search=">진행중인 콘테스트</a></li>
-		<li><a class="completed" href="zootopia.do?command=admincontestlist&category=completed&pagenum=1&search=">완료된 콘테스트</a></li>
-		<li><a class="waiting" href="zootopia.do?command=admincontestlist&category=waiting&pagenum=1&search=">대기중인 콘테스트</a></li>
-		<li><a class="rejected" href="zootopia.do?command=admincontestlist&category=rejected&pagenum=1&search=">거절된 콘테스트</a></li>
+		<li><a class="all" href="zootopia.do?command=admincontestlist&category=all&pagenum=1&search=">모든 콘테스트 (${realallcount})</a></li>
+		<li><a class="playing" href="zootopia.do?command=admincontestlist&category=playing&pagenum=1&search=">진행중인 콘테스트 (${playingcount})</a></li>
+		<li><a class="completed" href="zootopia.do?command=admincontestlist&category=completed&pagenum=1&search=">완료된 콘테스트 (${Completecount})</a></li>
+		<li><a class="waiting" href="zootopia.do?command=admincontestlist&category=waiting&pagenum=1&search=">대기중인 콘테스트 (${waitingcount})</a></li>
+		<li><a class="rejected" href="zootopia.do?command=admincontestlist&category=rejected&pagenum=1&search=">거절된 콘테스트 (${rejectcount})</a></li>
 	</ul>
 </div>
-<style>
 
-
-</style>
  
 
 <div class="contest_container">
-<form>
+<form class="contestlistForm">
+	<input type="hidden" name="command" value="functionAction">
+	<input class="contest_command_name" type="hidden" name="function" value="">
+	<input type="hidden" name="pagenum" value="${paging.currentPage }">
+	<input type="hidden" name="category" value="${category}">
+	<input type="hidden" name="search" value="${search}">
+	<input type="submit" class="displaynone" value="전송">
 	<div class="button-container">
 		<div class="allcheckbox">
 			<input type="checkbox" name="allcheck" id="allcheck">
-			<label for="allcheck">모두 선택</label>
+			<label for="allcheck">모두 선택 (<span>0/0</span>)</label>
 		</div>
 		<div class="button-box">
 		<input type="button" value="삭제">
 		<input type="button" value="수락">
 		<input type="button" value="거절">
+		<input type="button" value="대기">
 		</div>
 	</div>
 	<div class="contest_list">
+	<c:if test="${ search.equals('') != true }">
+			<span class="searchinfo">*검색어 '${search}'이 포함된 콘테스트를 ${Allcount}개 발견했습니다.</span>
+		</c:if>
 		<ul>
 			<c:forEach items ="${contestDtoList}" var="list" varStatus="state">
 			<c:choose>
@@ -109,7 +116,8 @@
 							</c:if>
 							
 							
-							<a class='go_btn' data-url ="${list.cseq}">수정하기</a>
+							<a class='go_btn' 
+							href ="zootopia.do?command=adminContestDetial&cseq=${list.cseq}&category=${category}&beforePageNum=${paging.currentPage}">수정하기</a>
 							
 						</div>	
 						</div>		
@@ -123,28 +131,14 @@
 
 </form>
 	<jsp:include page="/admin/contest/paging.jsp" flush="true" >
-		<jsp:param name="url" value="zootopia.do?command=admincontestlist" />
+		<jsp:param name="url" value="zootopia.do?command=admincontestlist&category=${category }" />
 		<jsp:param name="search" value="${search}" />
 	</jsp:include>
 
 </div>
 </div>
 
- <script>
- let category =location.href.split("category=")[1].split("&")[0];
- document.querySelector("."+category).classList.add("select");
-   setTimeout(()=>{
-	   var swiper = new Swiper(".mySwiper", {
-		   slidesPerView: 'auto',
-		      freeMode: true,
-		    });
-   document.querySelector('input[name="allcheck"]').addEventListener('change',(e)=>{
-	        document.querySelectorAll('input[name="cseq"]').forEach((elem)=>{
-			    if(e.target.checked == true) elem.checked = true;
-		    	else elem.checked = false;
-	        });
-	});
-   },500);
- </script>
+
 <%@ include file="/admin/footer.jsp" %>
 <%@ include file="/admin/contest/css/admincontest_css.jsp" %>
+<script src="admin/contest/script/admincontestlist.js"></script>

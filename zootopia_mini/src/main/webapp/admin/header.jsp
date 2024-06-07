@@ -36,7 +36,7 @@
 			<ul>
 				<li><a href="zootopia.do?command=adminmemberlist">회원 관리</a></li>
 				<li><a href="zootopia.do?command=admincommunitylist">커뮤니티 관리</a></li>
-				<li><a href="zootopia.do?command=admincontestList">콘테스트 관리</a></li>
+				<li><a href="zootopia.do?command=admincontestlist&category=all&pagenum=1&search=">콘테스트 관리</a></li>
 				<li><a href="zootopia.do?command=adminqnalist">Q&A 관리</a></li>
 			</ul>
 		</nav>

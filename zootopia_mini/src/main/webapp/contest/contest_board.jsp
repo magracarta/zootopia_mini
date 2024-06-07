@@ -16,15 +16,15 @@
 <div class="contest">
 
 <div class="title-wrapper">
-	<h2 class="title">콘테스트 (${allcnt})</h2>
+	<h2 class="title">콘테스트	</h2>
 	<a href="zootopia.do?command=contestForm">나도 콘테스트 추가하기 ></a>
 </div>
 <div class="contest-category">
 	<ul data-category ="${category}">
-		<li><a class="all" href="zootopia.do?command=contestBoard&category=all&pagenum=1&search=">All</a></li>
-		<li><a class="playing" href="zootopia.do?command=contestBoard&category=playing&pagenum=1&search=">진행중인 콘테스트</a></li>
-		<li><a class="accomplished" href="zootopia.do?command=contestBoard&category=accomplished&pagenum=1&search=">완료된 콘테스트</a></li>
-		<li><a class="wating" href="zootopia.do?command=contestBoard&category=wating&pagenum=1&search=">대기중인 콘테스트</a></li>
+		<li><a class="all" href="zootopia.do?command=contestBoard&category=all&pagenum=1&search=">All (${realallcount})</a></li>
+		<li><a class="playing" href="zootopia.do?command=contestBoard&category=playing&pagenum=1&search=">진행중인 콘테스트 (${playingcount})</a></li>
+		<li><a class="accomplished" href="zootopia.do?command=contestBoard&category=accomplished&pagenum=1&search=">완료된 콘테스트 (${Completecount})</a></li>
+		<li><a class="wating" href="zootopia.do?command=contestBoard&category=wating&pagenum=1&search=">대기중인 콘테스트 (${waitingcount})</a></li>
 	</ul>
 </div>
 
@@ -35,10 +35,23 @@ document.querySelector("."+category).classList.add("select");
  
 <div class="contest_container">
 	<div class="contest_list">
+	<c:if test="${ search.equals('') != true }">
+			<span class="searchinfo">*검색어 '${search}'이 포함된 콘테스트를 ${allcnt}개 발견했습니다.</span>
+		</c:if>
 		<ul>
 			<c:forEach items ="${contestList}" var="list" varStatus="state">
-			<c:if test="${list.useyn != 'N'}">
-				<li>
+				<c:if test="${list.useyn != 'N'}">
+					<c:choose>
+				<c:when test="${list.useyn == 'W'}">
+					<li class="wating">
+				</c:when>
+				<c:when test="${list.lastdate < now}">
+					<li class="end">
+				</c:when>
+				<c:otherwise>
+					<li>
+				</c:otherwise>
+			</c:choose>
 						<div class="date_num">
 							<%-- <span class="cseq">NO. ${list.cseq} <br> --%>
 							<span class="cseq">NO. <span class="index"></span> <br>
@@ -85,7 +98,9 @@ document.querySelector("."+category).classList.add("select");
 						<c:if test="${list.lastdate > now}">
 							<c:choose>
 								<c:when test = "${list.pcnt > list.cpdList.size()}">
-									<p>${list.pcnt - list.cpdList.size()}마리 더 도전할수 있어요!</p>
+									<p>${list.pcnt - list.cpdList.size()}마리 더 도전할수 있어요!
+										<c:if test="${list.useyn == 'W'}"><br>대기가 끝날 때까지 기다려주세요♥</c:if>
+									</p>
 								</c:when>
 								<c:otherwise>
 									<p class="complete">${list.pcnt}마리 모두 도전 완료!</p>
@@ -94,7 +109,12 @@ document.querySelector("."+category).classList.add("select");
 							
 							</c:if>
 							<c:if test="${list.lastdate < now}">
-								<span>투표기간이 완료되었습니다.<br>결과를 같이 확인해주세요!</span>
+								<c:if test="${list.useyn == 'W'}">
+									<span>대기 기간을 넘어버렸습니다.ㅠ_ㅠ</span>
+								</c:if>
+								<c:if test="${list.useyn != 'W'}">
+									<span>투표기간이 완료되었습니다.<br>결과를 같이 확인해주세요!</span>
+								</c:if>
 							</c:if>
 							<c:if test="${list.useyn == 'W'}">
 								<a class="go_btn watingText">대기 중</a>

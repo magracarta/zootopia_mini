@@ -379,3 +379,5 @@ article form .tb .row-list img:hover{cursor:pointer;}
 	border-radius:10px 10px 10px 10px;
 	padding:3px 5px;
 }
+
+pre { font-size: inherit; font-weight: inherit; font-family: inherit; color: inherit; line-height: 1.3em; }

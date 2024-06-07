@@ -13,7 +13,7 @@
 			<a href="zootopia.do?command=adminmemberlistform">ㆍ회원정보 수정</a>
 		</div>
 		<div class="view">
-			<a href="zootopia.do?command=admincontestlist">콘테스트 관리</a><br>
+			<a href="zootopia.do?command=admincontestlist&category=all&pagenum=1&search=">콘테스트 관리</a><br>
 			<span>콘테스트 허가 및 관리</span><hr>
 			<a href="zootopia.do?command=admincontestlist&category=all&pagenum=1&search=">ㆍ모든 콘테스트</a>
 			<a href="zootopia.do?command=admincontestlist&category=playing&pagenum=1&search=">ㆍ진행중인 콘테스트</a> 

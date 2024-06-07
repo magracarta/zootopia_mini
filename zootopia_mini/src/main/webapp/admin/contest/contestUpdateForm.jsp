@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file ="/header.jsp" %>
-<%@ include file ="css/content_css.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file="/admin/header.jsp" %>
 
 <div class="contest contest_detail">
 	<div class="title-wrapper">
@@ -8,8 +8,10 @@
 	</div>
 	<div class="contestform">
 		<form name="contestform">
-			<input type="hidden" name="command" value="contestupdate">
+			<input type="hidden" name="command" value="adminContestupdate">
 			<input type="hidden" name="cseq" value="${contest_detail.cseq}">
+			<input type="hidden" name="category" value="${category}">
+			<input type="hidden" name="beforePageNum" value="${beforePageNum}">
 			
 			<div class="title">
 				<span>제목</span>
@@ -43,7 +45,7 @@
 				<div class="select-container">
 					<ul>
 						<li data-value="none"><a href="javascript:">변경하지 않기</a></li>
-						<c:forEach begin ="${contest_detail.cpdList.size()+1}" end ="6" varStatus="status">
+						<c:forEach begin ="${1+contest_detail.cpdList.size()}" end ="6" varStatus="status">
 							<li data-value="${status.index}"><a href="javascript:">${status.index}</a></li>
 						</c:forEach>
 					</ul>
@@ -57,13 +59,11 @@
 	</div>
 
 </div>
-<script src="contest/script/contestForm.js"></script>
-<%@ include file ="/footer.jsp" %>
-
-<c:if test="${loginUser == null}">
-	<script>
-		window.location.href="/zootopia.do?command=loginForm";
-	</script>
-</c:if>
+<script src="admin/contest/script/contestForm.js"></script>
 
 
+
+
+
+<%@ include file="/admin/footer.jsp" %>
+<%@ include file="/admin/contest/css/admincontest_css.jsp" %>

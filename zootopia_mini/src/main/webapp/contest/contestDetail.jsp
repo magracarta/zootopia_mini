@@ -12,7 +12,7 @@
 			<c:if test="${index != null}"><span class="detail_num">NO. ${index}</span></c:if>
 			<span class="detailinfo">작성자 : ${contest_detail.nickname} / 조회수 : ${contest_detail.cnt}</span>
 			<h2 class="title">${contest_detail.subject}</h2>
-			<p>${contest_detail.content}</p>
+			<pre>${contest_detail.content}</pre>
 		</div>
 		
 		<div class="right" style="text-align: right;">
@@ -59,9 +59,8 @@
 					 			<c:if test = '${plist.petgender == "M"}'>
 			 						<span class="gender men">♂</span>
 				 				</c:if>
-				 				<p class="content">
-				 					${plist.content}
-				 				</p>
+			 					<pre class="content">${plist.content}</pre>
+				 			
 					 		</div>
 					 		<c:if test="${contest_detail.lastdate > now}">
 						 		<a class="recommnadButton"
@@ -156,7 +155,7 @@
 							</div>
 							<div class="text-box">
 								<span>@ ${replylist.mvo.nickname }</span>
-								<span>${replylist.content }</span>
+								<pre>${replylist.content }</pre>
 							</div>
 							<div class="button-box">
 								<p>${replylist.createdate}</p>

@@ -99,6 +99,7 @@ border:1px solid #D9D9D9; border-radius: 3px; width:362px; position:absolute; ba
 <style>
 .contest .title-wrapper .detail_num { font-size: 15px; color:#999999; font-weight:600; margin-bottom:10px; display:block; }
 .contest .title-wrapper p { color:#333; font-size:15px; display:block; margin-top:28px; }
+.contest .title-wrapper pre { color:#333; font-size:15px; display:block; margin-top:28px; }
 .contest .title-wrapper .right a { text-decoration: none; border:1px solid #000000; padding:15px 49px; border-radius:5px; font-weight:600; }
 
 .contest_pet_list {  }
@@ -211,6 +212,10 @@ border-radius: 5px; margin:0 5px;
 }
 .reply_list ul li .replyUpdateForm .button_box .delete { display:inline-block; width:auto; background: #fff; color:#000; }
 
-
+.searchinfo { display: block; font-size: 20px; padding-bottom: 20px; color: #999; font-weight: 700;}
+.contest_container .contest_list ul li.end { background:#f9f9f9; }
+.contest_container .contest_list ul li.wating { background:#ffe2e2; }
+.contest_container .contest_list ul li.end .listcpist .no_pet { background:#fff; }
+.contest_container .contest_list ul li.rejected { background:#e0e9ed; }
 
 </style>

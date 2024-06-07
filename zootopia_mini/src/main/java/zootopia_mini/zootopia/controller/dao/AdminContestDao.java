@@ -20,6 +20,19 @@ public class AdminContestDao {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	
+	public void updateDeleteFunction(String sql) {
+		con = DB.getConnection();
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}	
+		
+	}
+	
 	public int mysqlAllcount(String sql) {
 		int count = 0;
 		con = DB.getConnection();
@@ -94,6 +107,9 @@ public class AdminContestDao {
 		}
 		return cdto;
 	}
+
+
+	
 	
 	
 

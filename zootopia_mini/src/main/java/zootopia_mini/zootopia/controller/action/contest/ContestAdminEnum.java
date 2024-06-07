@@ -9,8 +9,9 @@ public enum ContestAdminEnum {
 	CONESTVIEW("contestpet_view") , 
 	CONTESTPETVIEW("contestpetiv_view"),
 	CONTEST("contest"),
-	CONTESTPET("contest_pet");
-
+	CONTESTPET("contest_pet"),
+	CONTESTREPLY("contest_reply");
+ 
 	
 	private final String condition;
 	

@@ -75,7 +75,7 @@ public class ContestDao {
 			useyn = "and now() < lastdate  and useyn ='Y' ";
 			
 		}else if(category.equals("accomplished")) {
-			useyn = " and now() > lastdate ";
+			useyn = " and now() > lastdate and useyn ='Y'";
 		}
 		String sql = "select * from contestpet_view  where subject like concat('%',?,'%')"
 				+ useyn
@@ -149,7 +149,7 @@ public class ContestDao {
 			useyn = " and now() > lastdate ";
 		}
 		con = DB.getConnection();
-		String sql = "select count(*) as cnt from "+table+ " where subject like concat('%',?,'%') "
+		String sql = "select count(*) as cnt from "+table+ " where subject like concat('%',?,'%') and useyn !='N' "
 				+ useyn;
 		
 		try {

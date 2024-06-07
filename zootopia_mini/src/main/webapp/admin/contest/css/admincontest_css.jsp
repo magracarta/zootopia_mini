@@ -104,6 +104,7 @@ border:1px solid #D9D9D9; border-radius: 3px; width:362px; position:absolute; ba
 <style>
 .contest .title-wrapper .detail_num { font-size: 15px; color:#999999; font-weight:600; margin-bottom:10px; display:block; }
 .contest .title-wrapper p { color:#333; font-size:15px; display:block; margin-top:28px; }
+.contest .title-wrapper pre { color:#333; font-size:15px; display:block; margin-top:28px; }
 .contest .title-wrapper .right a { text-decoration: none; border:1px solid #000000; padding:15px 49px; border-radius:5px; font-weight:600; }
 
 .contest_pet_list {  }
@@ -217,18 +218,32 @@ border-radius: 5px; margin:0 5px;
 .reply_list ul li .replyUpdateForm .button_box .delete { display:inline-block; width:auto; background: #fff; color:#000; }
 input[type='checkbox'] { width:25px; height:25px; padding:0; }
 input[type='checkbox']:checked {
-	background:url("/images/checked.svg");
+	background-image:url("images/checked.svg");
 	background-size: cover; background-position:center;
 	border-color: #000;
 }
 
-.button-container { display:flex; margin-bottom:50px; justify-content: space-between; align-items: center; }
+.button-container { display: flex; justify-content: space-between; align-items: center; position: fixed; bottom: 0;
+    z-index: 10; background: #fff; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); padding: 20px 50px; left:50%;
+    transform: translate(-50%, 0px); margin-bottom: 50px; border-radius: 50px; }
 .button-container .allcheckbox { display:flex; align-items: center; }
-.button-container .allcheckbox label { font-size: 18px; margin-left: 15px; cursor:pointer; }
+.button-container .allcheckbox label { font-size: 18px; margin-left: 15px; margin-right: 30px; cursor:pointer; }
 .button-container .allcheckbox input[type="checkbox"] {  }
 .button-container .button-box { }
-.button-container .button-box input[type="button"] { padding:8px 35px; font-size:16px; border-radius:5px; margin-left:10px; }
-.button-container .button-box input[type="button"]:last-child { background:#fff; color:#000;  }
+.button-container .button-box input[type="button"] { background:#fff; color:#000; padding:8px 35px; font-size:16px; border-radius:5px; margin-left:10px; }
+.button-container .button-box input[type="button"]:hover { background:#000; color:#fff;  }
 
 .contest_container .serach-form input[type="submit"] { padding:0 30px; }
+.searchinfo { display: block; font-size: 20px; padding-bottom: 50px; color: #999; font-weight: 700;}
+
+input[name="crseq"] { margin-right:15px;  }
+
+
+.buttonbox { display: flex; justify-content: space-between; align-items: center; padding: 20px 0 50px;}
+.buttonbox .allcheckbox { display: flex; align-items: center;  }
+.buttonbox .allcheckbox label { font-size:16px; margin-left:15px; }
+.buttonbox .button-box {  }
+.buttonbox .button-box input { padding:10px 30px; border-radius:5px; font-size:15px; margin:0; }
+.contest_pet_list li { position:relative; }
+.contest_pet_list input[name="cpseq"] { position:absolute; top:10px; right:10px; z-index: 2; }
 </style>

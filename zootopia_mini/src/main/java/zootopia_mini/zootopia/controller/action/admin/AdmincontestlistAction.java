@@ -56,6 +56,7 @@ public class AdmincontestlistAction implements Action {
 		request.setAttribute("title", "모든 콘테스트");
 		request.setAttribute("now", now);
 		request.setAttribute("paging", page);
+		request.setAttribute("category", category);
 		request.setAttribute("search", search);
 		session.setAttribute("paging", page);
 		session.setAttribute("search", search);
@@ -87,6 +88,13 @@ public class AdmincontestlistAction implements Action {
 			 cdto.setCpdList(acdao.mysqlContestSelect(pet.getSelectSQL(" ", " cseq = " + cdto.getCseq()+" " , page , " recommends desc ") , new ContestPetDTO()));
 		}
 		
+		
+		
+		request.setAttribute("realallcount", acdao.mysqlAllcount(all.getAllcount(" ", " ")));
+		request.setAttribute("playingcount", acdao.mysqlAllcount(all.getAllcount("", "and useyn = 'Y' and lastdate > now() ")));
+		request.setAttribute("waitingcount", acdao.mysqlAllcount(all.getAllcount("", "and useyn = 'W' ")));
+		request.setAttribute("rejectcount", acdao.mysqlAllcount(all.getAllcount("", "and useyn = 'N' ")));
+		request.setAttribute("Completecount", acdao.mysqlAllcount(all.getAllcount("", "and useyn = 'Y' and lastdate < now()")));
 		request.setAttribute("Allcount", Allcount);
 		request.setAttribute("contestDtoList", contestDtoList);
 		
