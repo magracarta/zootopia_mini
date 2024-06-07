@@ -27,7 +27,7 @@ public class ViewCommunityReplyAction implements Action {
 	        request.setAttribute("communityVO", cvo);
 	        request.setAttribute("communityReplies", replies);
 	        
-	        request.getRequestDispatcher("communityDetail.jsp").forward(request, response);
+	        request.getRequestDispatcher("community/community_detail.jsp").forward(request, response);
 	    }
 		
 	

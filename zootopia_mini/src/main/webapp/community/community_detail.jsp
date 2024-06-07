@@ -49,8 +49,23 @@
 			</div>
         </div>
 		
-			
-
+    <!-- 댓글 작성 폼 -->
+    <h2>Write a Comment</h2>
+    <form action="zootopia.do?command=writeCommunityReply" method="post">
+        <textarea name="content" placeholder="Write your comment here" required></textarea>
+        <input type="hidden" name="gseq" value="${communityVO.gseq}">
+        <button type="submit">Submit</button>
+    </form>
+    
+        <!-- 댓글 목록 -->
+    <h2>Comments</h2>
+    <c:forEach var="reply" items="${communityReplies}">
+        <div>
+            <p>${reply.content}${reply.grseq}</p>
+            <p>Written by ${reply.userid} </p>
+        </div>
+    </c:forEach>
+    
 </section>
 
 <%@ include file="/community/css/community_css.jsp" %>

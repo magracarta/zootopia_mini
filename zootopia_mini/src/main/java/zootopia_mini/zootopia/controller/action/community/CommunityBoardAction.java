@@ -17,13 +17,7 @@ public class CommunityBoardAction implements Action {
 	@Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        MemberVO mvo = (MemberVO) session.getAttribute("loginUser");
-       
         
-        
-        if (mvo == null) {
-            response.sendRedirect("zootopia.do?command=loginform");
-        } else {
             CommunityDao cdao = CommunityDao.getInstance();
         
             ArrayList<CommunityVO> list;
@@ -56,5 +50,5 @@ public class CommunityBoardAction implements Action {
             request.setAttribute("commList", list);
             request.getRequestDispatcher("community/community_board.jsp").forward(request, response);
         }
-    }
+    
 }

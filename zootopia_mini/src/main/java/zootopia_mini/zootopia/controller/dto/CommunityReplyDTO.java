@@ -1,6 +1,6 @@
 package zootopia_mini.zootopia.controller.dto;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class CommunityReplyDTO {
 	private String userid;

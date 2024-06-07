@@ -95,7 +95,6 @@ public class CommunityDao {
                 cvo = new CommunityVO(); 
                 cvo.setGseq(gseq);
                 cvo.setVcount(rs.getInt("vcount"));
-                cvo.setNicknameFromView(rs.getString("nickname"));
                 cvo.setUserid(rs.getString("userid"));
                 cvo.setSubject(rs.getString("subject"));
                 cvo.setContent(rs.getString("content"));
@@ -128,31 +127,6 @@ public class CommunityDao {
         } finally {
             DB.close(con, pstmt, rs);
         }
-    }
-
-    public String getNickname(String userid) {
-        String nickname = null;
-        Connection con = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-
-        try {
-            con = DB.getConnection();
-            String sql = "SELECT nickname FROM nickname WHERE userid = ?";
-            pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, userid);
-            rs = pstmt.executeQuery();
-
-            if (rs.next()) {
-                nickname = rs.getString("nickname");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            DB.close(con, pstmt, rs);
-        }
-
-        return nickname;
     }
 
     public void updateCommunity(CommunityVO cvo) {

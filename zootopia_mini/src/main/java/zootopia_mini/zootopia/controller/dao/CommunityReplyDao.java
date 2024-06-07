@@ -37,28 +37,57 @@ public class CommunityReplyDao {
 		
 	}
 
-    public ArrayList<CommunityReplyDTO> getCommunityReplies(int gseq) {
-    	ArrayList<CommunityReplyDTO> replies = new ArrayList<>();
-        String sql = "SELECT * FROM community_reply WHERE gseq = ? ORDER BY createdate DESC";
-        con = DB.getConnection();
+	/*
+	 * public ArrayList<CommunityReplyDTO> getCommunityReplies(int gseq) {
+	 * ArrayList<CommunityReplyDTO> replies = new ArrayList<>(); String sql =
+	 * "SELECT * FROM community_reply WHERE gseq = ? ORDER BY createdate DESC"; con
+	 * = DB.getConnection(); try { pstmt = con.prepareStatement(sql);
+	 * pstmt.setInt(1, gseq); rs = pstmt.executeQuery(); while (rs.next()) {
+	 * CommunityReplyDTO reply = new CommunityReplyDTO();
+	 * reply.setUserid(rs.getString("Userid")); reply.setGseq(rs.getInt("gseq"));
+	 * reply.setGrseq(rs.getInt("grseq"));
+	 * reply.setContent(rs.getString("content")); replies.add(reply); } } catch
+	 * (SQLException e) { e.printStackTrace(); } finally { DB.close(con, pstmt, rs);
+	 * } return replies; }
+	 */
+	
+	public ArrayList<CommunityReplyDTO> getCommunityReplies(int grseq) {
+        ArrayList<CommunityReplyDTO> list = new ArrayList<>();
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
         try {
-            pstmt = con.prepareStatement(sql);
-            pstmt.setInt(1, gseq);
-            rs = pstmt.executeQuery();
+            con = DB.getConnection(); // 데이터베이스 연결을 가져옵니다.
+            String sql = "SELECT cr.*, c.subject AS community_subject, c.content AS community_content, c.userid AS community_userid, c.createdate AS community_createdate, m.nickname AS member_nickname "
+                    + " FROM community_reply cr "
+                    + " JOIN community c ON cr.gseq = c.gseq "
+                    + " JOIN member m ON c.userid = m.userid "
+                    + " WHERE cr.grseq = ? "
+                    + " ORDER BY cr.createdate DESC";
+
+            pstmt = con.prepareStatement(sql); // SQL 쿼리를 준비합니다.
+            pstmt.setInt(1, grseq); // SQL 쿼리에 매개변수를 설정합니다.
+            rs = pstmt.executeQuery(); // SQL 쿼리를 실행하고 결과 집합을 가져옵니다.
+
+            // 결과 집합에서 각 레코드를 반복하여 CommunityReplyDTO 객체를 생성하고 목록에 추가합니다.
             while (rs.next()) {
-                CommunityReplyDTO reply = new CommunityReplyDTO();
-                reply.setUserid(rs.getString("Userid"));
-                reply.setGseq(rs.getInt("gseq"));
-                reply.setGrseq(rs.getInt("grseq"));
-                reply.setContent(rs.getString("content"));
-                replies.add(reply);
+                CommunityReplyDTO crdto = new CommunityReplyDTO();
+                crdto.setGrseq(rs.getInt("grseq")); // grseq 설정
+                crdto.setGseq(rs.getInt("gseq")); // gseq 설정
+                crdto.setUserid(rs.getString("userid")); // 사용자 ID 설정
+                crdto.setContent(rs.getString("content")); // 내용 설정
+
+                list.add(crdto); // 목록에 추가
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // SQL 예외 처리
         } finally {
-            DB.close(con, pstmt, rs);
+            DB.close(con, pstmt, rs); // 데이터베이스 연결을 닫습니다.
         }
-        return replies;
+
+        return list; // 결과 목록 반환
     }
+
 	
 }

@@ -95,7 +95,7 @@ padding: 1%;
 
 .detailcontainer input[type="button"] {
     background-color: lightgray; /* 버튼 배경색 */
-    color: white; /* 버튼 텍스트 색상 */
+    color: black; /* 버튼 텍스트 색상 */
     border: none; /* 테두리 없애기 */
     padding: 10px 20px; /* 패딩값 */
     text-align: center; /* 텍스트 가운데 정렬 */
@@ -120,11 +120,12 @@ padding: 1%;
   color: #fff;
 }
 .button_container .button1 {
-  background-color: #007bff !important; /* 버튼 1 배경색 */
+  background-color: black !important; /* 버튼 1 배경색 */
 }
 
 .button_container .button2 {
-  background-color: #dc3545; /* 버튼 2 배경색 */
+  background-color: lightgray; /* 버튼 2 배경색 */
+  color:black;
 }
 
 

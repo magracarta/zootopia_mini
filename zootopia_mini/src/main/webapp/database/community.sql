@@ -25,3 +25,6 @@ INSERT INTO community (vcount, userid, subject, content, recommands, kind, creat
 (13, 'user4', '스무 번째 글입니다.', '스무 번째 글의 내용입니다.', 7, 1, NOW());
 SELECT * FROM COMMUNITY;
 DROP TABLE COMMUNITY;
+
+
+SELECT * FROM COMMUNITY_REPLY;
