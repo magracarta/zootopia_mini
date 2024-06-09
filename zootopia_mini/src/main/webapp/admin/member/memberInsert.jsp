@@ -9,8 +9,8 @@
 	});
 </script>
 <div class="container">
-	<form method="post" action="zootopia.do?command=adminmemberlist" name="joinForm" enctype="multipart/form-data">
-    	<h2>JOIN</h2>
+	<form method="post" action="zootopia.do?command=adminmemberinsertform" name="joinForm" enctype="multipart/form-data">
+    	<h2>회원 추가</h2>
       	<div class="field_idcheck">
       		<input type="text" name="userid" size="12" placeholder="아이디"/>
 			<input type="hidden" name="reid"/>
@@ -72,9 +72,8 @@
 			</div>
 		</div>
       	<div class="btn" style="margin-top:50px;">
-         	<input type="button" style="background:black; color:white; border:1px solid black;" value="Join" onClick="go_save()">
+         	<input type="button" style="background:black; color:white; border:1px solid black;" value="회원 추가" onClick="go_save()">
       	</div>
-      	<span style="color:#333;">이미 계정이 있으신가요?&nbsp;<a href="zootopia.do?command=loginform" style="font-weight:bold;">로그인</a></span>
    	</form>
 </div>
 

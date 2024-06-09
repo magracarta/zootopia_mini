@@ -11,17 +11,15 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 import zootopia_mini.zootopia.controller.action.Action;
-import zootopia_mini.zootopia.controller.dao.MemberDao;
+import zootopia_mini.zootopia.controller.dao.AdminDao;
 import zootopia_mini.zootopia.controller.dto.MemberVO;
 
-public class AdminMemberInsertAction implements Action {
+public class AdminMemberUpdateAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		MemberDao mdao = MemberDao.getInstance();
 		MemberVO mvo = new MemberVO();
-		
 		mvo.setUserid(request.getParameter("userid"));
 		mvo.setNickname(request.getParameter("nickname"));
 		mvo.setPwd(request.getParameter("pwd"));
@@ -31,43 +29,41 @@ public class AdminMemberInsertAction implements Action {
 		mvo.setKind(request.getParameter("kind"));
 		mvo.setPetname(request.getParameter("petname"));
 		mvo.setPetgender(request.getParameter("petgender"));
-		
-		
+				
 		HttpSession session = request.getSession();
 		ServletContext context = session.getServletContext();
-		String uploadFilePath = context.getRealPath("images");
+		String uploadFilePath = context.getRealPath("product_images");
 		
 		File uploadDir = new File(uploadFilePath);
 		if(!uploadDir.exists()) uploadDir.mkdir();
-		
-		String fileName ="";
-		
-		for(Part p : request.getParts()) {
+
+		String fileName="";
+		String saveFilename = "";
+		for( Part p: request.getParts() ) {
 			fileName = "";
-			for(String content : p.getHeader("content-disposition").split(";")) {
-				if(content.trim().startsWith("filename")) {
-					fileName = content.substring(content.indexOf("=")+2, content.length()-1);
+			for (String content : p.getHeader("content-disposition").split(";")) {
+				if(content.trim().startsWith("filename")) { 
+			    	  fileName = content.substring(content.indexOf("=")+2, content.length()-1);
+			    	  System.out.println("filename : " + fileName);
+			    	  if(!fileName.equals("") ) {
+					  		Calendar today = Calendar.getInstance();
+							long dt = today.getTimeInMillis();
+							String fn1 = fileName.substring(0, fileName.indexOf(".")  );
+							String fn2 = fileName.substring( fileName.indexOf(".") );
+							saveFilename =  fn1 + dt + fn2;
+							p.write(uploadFilePath + File.separator + saveFilename); // 파일 저장
+							mvo.setImage(fileName);
+							mvo.setSaveimage(saveFilename);
+					 }else {
+							mvo.setImage( request.getParameter("oldimage"));
+							mvo.setSaveimage(request.getParameter("oldsavefilename"));
+					 }
 				}
 			}
-			String saveFilename ="";
-			if(!fileName.equals("")) {
-				Calendar today = Calendar.getInstance();
-				long dt = today.getTimeInMillis();
-				String fn1 = fileName.substring(0, fileName.indexOf("."));
-				String fn2 = fileName.substring(fileName.indexOf("."));
-				saveFilename = fn1 + dt + fn2;
-				p.write(uploadFilePath + File.separator + saveFilename); // 파일 저장
-				mvo.setImage(fileName);
-				mvo.setSaveimage(saveFilename);
-			}
 		}
-		
-		request.setAttribute("photoview", mvo);
-		int result = mdao.insertMember(mvo);
-		if(result == 1) session.setAttribute("message", "회원 추가 성공");
-		else session.setAttribute("message", "회원 추가 실패");
-		
-		response.sendRedirect("zootopia.do?command=adminmemberlist");
+		AdminDao adao = AdminDao.getInstance();
+		adao.updateProduct(mvo);
+		response.sendRedirect("zootopia.do?command=adminmemberlist&userid=" + mvo.getUserid());
 		
 	}
 

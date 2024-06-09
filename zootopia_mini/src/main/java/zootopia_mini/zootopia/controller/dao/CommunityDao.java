@@ -4,8 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
+
+import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpServletRequest;
+import zootopia_mini.zootopia.controller.dto.AdminVO;
 import zootopia_mini.zootopia.controller.dto.CommunityVO;
 import zootopia_mini.zootopia.util.DB;
 import zootopia_mini.zootopia.util.Paging;
@@ -297,6 +300,31 @@ public class CommunityDao {
 
 	        return list;
 	    }
+
+	public void admininsertCommunity(CommunityVO cvo, HttpServletRequest request) {
+
+		String sql = "INSERT INTO community (subject, content, kind, userid) VALUES (?, ?, ?, ?)";
+		
+
+        try {
+            con = DB.getConnection();
+            pstmt = con.prepareStatement(sql);
+            
+            HttpSession session = request.getSession(false);
+            AdminVO adminVO = (AdminVO) session.getAttribute("adminUser");
+            String adminId = adminVO.getAdminid();
+            pstmt.setString(1, cvo.getSubject());
+            pstmt.setString(2, cvo.getContent());
+            pstmt.setInt(3, cvo.getKind());
+            pstmt.setString(4, adminId);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DB.close(con, pstmt, rs);
+        }
+		
+	}
 	
 	
 }

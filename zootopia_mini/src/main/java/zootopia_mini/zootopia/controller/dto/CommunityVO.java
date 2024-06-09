@@ -12,6 +12,7 @@ public class CommunityVO {
 	   private int kind;
 	   private Timestamp createdate;
 	   private String nickname;
+	   private String adminid;
 	   
 	   public int getGseq() {
 	      return gseq;
@@ -73,6 +74,12 @@ public class CommunityVO {
 	}
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
+	}
+	public String getAdminid() {
+		return adminid;
+	}
+	public void setAdminid(String adminid) {
+		this.adminid = adminid;
 	}
 	   
 }

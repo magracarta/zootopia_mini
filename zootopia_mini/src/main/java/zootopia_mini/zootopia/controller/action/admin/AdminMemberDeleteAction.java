@@ -6,20 +6,18 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import zootopia_mini.zootopia.controller.action.Action;
-import zootopia_mini.zootopia.controller.dao.MemberDao;
-import zootopia_mini.zootopia.controller.dto.MemberVO;
+import zootopia_mini.zootopia.controller.dao.AdminDao;
 
-public class AdminMemberDetailAction implements Action {
+public class AdminMemberDeleteAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		String userid = request.getParameter("userid");
-		MemberDao mdao = MemberDao.getInstance();
-		MemberVO mvo = mdao.getMember(userid);
-		
-		request.setAttribute("memberVO", mvo);
-		request.getRequestDispatcher("admin/member/memberDetail.jsp").forward(request, response);
+		System.out.println("Deleting user with id: " + userid);
+		AdminDao adao = AdminDao.getInstance();
+		adao.deleteMember(userid);
+		response.sendRedirect("zootopia.do?command=adminmemberlist");
 		
 	}
 

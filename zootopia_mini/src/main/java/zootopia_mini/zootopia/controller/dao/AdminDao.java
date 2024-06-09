@@ -6,9 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
-
 import zootopia_mini.zootopia.controller.dto.AdminVO;
+import zootopia_mini.zootopia.controller.dto.CommunityVO;
 import zootopia_mini.zootopia.controller.dto.MemberVO;
 import zootopia_mini.zootopia.util.DB;
 import zootopia_mini.zootopia.util.Paging;
@@ -111,5 +110,122 @@ public class AdminDao {
 		
 		return list;
 	}
+
+	public void updateProduct(MemberVO mvo) {
+		
+		String sql = "update member set nickname=?, pwd=?, name=?,  phone=?, "
+				+ " email=?, image=?, saveimage=?, kind=?, petname=?, petgender=? where userid=?";
+		con = DB.getConnection();
+		try {			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mvo.getNickname());
+		    pstmt.setString(2, mvo.getPwd());
+		    pstmt.setString(3, mvo.getName());
+		    pstmt.setString(4, mvo.getPhone());
+		    pstmt.setString(5, mvo.getEmail());
+		    pstmt.setString(6, mvo.getImage());
+		    pstmt.setString(7, mvo.getSaveimage());
+		    pstmt.setString(8, mvo.getKind());
+		    pstmt.setString(9, mvo.getPetname());
+		    pstmt.setString(10, mvo.getPetgender() );
+		    pstmt.setString(11, mvo.getUserid());
+		    pstmt.executeUpdate();
+		} catch (SQLException e) {e.printStackTrace();
+		} finally { DB.close(con, pstmt, rs);  }
+		
+	}
+
+	public void deleteMember(String userid) {
+
+		con = DB.getConnection();
+		String sql = "delete from member where userid=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+	}
+
+	public ArrayList<CommunityVO> selectCommunity(Paging paging) {
+
+		ArrayList<CommunityVO> list = new ArrayList<CommunityVO>();
+        String sql = "SELECT c.gseq, c.subject, c.content, c.createdate, c.recommands, c.userid, m.nickname, m.userid AS user_id, c.kind, c.vcount " +
+                     "FROM community c JOIN member m ON c.userid = m.userid " +
+                     "ORDER BY c.gseq DESC LIMIT ? OFFSET ?;";
+        con = DB.getConnection();
+        try {
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, paging.getRecordrow());
+            pstmt.setInt(2, paging.getOffsetnum());
+
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                CommunityVO cvo = new CommunityVO();
+                cvo.setGseq(rs.getInt("gseq"));
+                cvo.setSubject(rs.getString("subject"));
+                cvo.setUserid(rs.getString("userid"));
+                cvo.setContent(rs.getString("content"));
+                cvo.setCreatedate(rs.getTimestamp("createdate"));
+                cvo.setRecommands(rs.getInt("recommands"));
+                cvo.setNicknameFromView(rs.getString("nickname"));
+                cvo.setKind(rs.getInt("kind"));
+                cvo.setVcount(rs.getInt("vcount")); 
+                list.add(cvo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DB.close(con, pstmt, rs);
+        }
+        return list;
+		
+		
+	}
+
+	public void deleteCommunity(String gseq) {
+
+		con = DB.getConnection();
+		String sql = "delete from community where gseq=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, gseq);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+	}
+
+	
+	public String getAdminIdByName(String name) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String adminId = null;
+        try {
+            con = DB.getConnection();
+            String sql = "SELECT adminid FROM admin WHERE username = ?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, name);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                adminId = rs.getString("adminid");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DB.close(con, pstmt, rs);
+        }
+        return adminId;
+    }
+	
+
 	
 }

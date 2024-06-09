@@ -3,13 +3,22 @@ package zootopia_mini.zootopia.controller;
 
 import zootopia_mini.zootopia.controller.action.Action;
 import zootopia_mini.zootopia.controller.action.admin.AdminAction;
+import zootopia_mini.zootopia.controller.action.admin.AdminCommunityDeleteAction;
+import zootopia_mini.zootopia.controller.action.admin.AdminCommunityDetailAction;
+import zootopia_mini.zootopia.controller.action.admin.AdminCommunityListAction;
+import zootopia_mini.zootopia.controller.action.admin.AdminCommunityUpdateAction;
+import zootopia_mini.zootopia.controller.action.admin.AdminCommunityUpdateFormAction;
+import zootopia_mini.zootopia.controller.action.admin.AdminCommunityWriteAction;
+import zootopia_mini.zootopia.controller.action.admin.AdminCommunityWriteFormAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminLoginAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminLogout;
 import zootopia_mini.zootopia.controller.action.admin.AdminMainAction;
+import zootopia_mini.zootopia.controller.action.admin.AdminMemberDeleteAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminMemberDetailAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminMemberInsertAction;
-import zootopia_mini.zootopia.controller.action.admin.AdminMemberInsertActionForm;
+import zootopia_mini.zootopia.controller.action.admin.AdminMemberInsertFormAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminMemberListAction;
+import zootopia_mini.zootopia.controller.action.admin.AdminMemberUpdateAction;
 import zootopia_mini.zootopia.controller.action.community.CommunityBoardAction;
 import zootopia_mini.zootopia.controller.action.community.CommunityDeleteAction;
 import zootopia_mini.zootopia.controller.action.community.CommunityDetailAction;
@@ -143,8 +152,17 @@ public class ActionFactory {
 		else if(command.equals("adminlogout")) ac = new AdminLogout();
 		else if(command.equals("adminmemberlist")) ac = new AdminMemberListAction();
 		else if(command.equals("adminmemberdetail")) ac = new AdminMemberDetailAction();
-		else if(command.equals("adminmemberinsertform")) ac = new AdminMemberInsertActionForm();
+		else if(command.equals("adminmemberinsertform")) ac = new AdminMemberInsertFormAction();
 		else if(command.equals("adminmemberinsert")) ac = new AdminMemberInsertAction();
+		else if(command.equals("adminmemberupdate")) ac = new AdminMemberUpdateAction();
+		else if(command.equals("adminmemberdelete")) ac = new AdminMemberDeleteAction();
+		else if(command.equals("admincommunitylist")) ac = new AdminCommunityListAction();
+		else if(command.equals("admincommunitydetail")) ac = new AdminCommunityDetailAction();
+		else if(command.equals("admincommunityupdateform")) ac = new AdminCommunityUpdateFormAction();
+		else if(command.equals("admincommunityupdate")) ac = new AdminCommunityUpdateAction();
+		else if(command.equals("admincommunitydelete")) ac = new AdminCommunityDeleteAction();
+		else if(command.equals("admincommunitywriteform")) ac = new AdminCommunityWriteFormAction();
+		else if(command.equals("admincommunitywrite")) ac = new AdminCommunityWriteAction();
 		 		
 		return ac;
 	}
