@@ -18,7 +18,6 @@ public class CommunityDeleteAction implements Action {
 
         cdao.deleteCommunity(gseq);
 
-        // 게시판 목록 페이지로 리다이렉트합니다.
         response.sendRedirect("zootopia.do?command=communityBoard");
     }
 

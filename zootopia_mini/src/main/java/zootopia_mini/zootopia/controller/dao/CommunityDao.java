@@ -54,10 +54,8 @@ public class CommunityDao {
     }
    
     public int getAllCount() {
-        Connection con = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
         int count = 0;
+        ResultSet rs = null;
 
         try {
             con = DB.getConnection();
@@ -78,15 +76,11 @@ public class CommunityDao {
     }
 
     public CommunityVO getCommunity(int gseq) {
-        CommunityVO cvo = null; // 결과가 없는 경우에는 null로 초기화
-        
-        Connection con = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
+        CommunityVO cvo = new CommunityVO(); 
+        String sql = "SELECT c.*, n.nickname FROM community c JOIN nickname n ON c.userid = n.userid WHERE c.gseq = ?";
+        con = DB.getConnection();
 
         try {
-            con = DB.getConnection();
-            String sql = "SELECT c.*, n.nickname FROM community c JOIN nickname n ON c.userid = n.userid WHERE c.gseq = ?";
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, gseq);
             rs = pstmt.executeQuery();
@@ -101,7 +95,7 @@ public class CommunityDao {
                 cvo.setRecommands(rs.getInt("recommands"));
                 cvo.setKind(rs.getInt("kind"));
                 cvo.setCreatedate(rs.getTimestamp("createdate"));
-                cvo.setNickname(rs.getString("nickname")); // 닉네임 설정 추가
+                cvo.setNickname(rs.getString("nickname")); 
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -114,9 +108,9 @@ public class CommunityDao {
 
     public void insertCommunity(CommunityVO cvo) {
         String sql = "INSERT INTO community (subject, content, kind, userid) VALUES (?, ?, ?, ?)";
+        con = DB.getConnection();
 
         try {
-            con = DB.getConnection();
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, cvo.getSubject());
             pstmt.setString(2, cvo.getContent());
@@ -148,12 +142,10 @@ public class CommunityDao {
     }
 	
     public void deleteCommunity(int gseq) {
-        Connection con = null;
-        PreparedStatement pstmt = null;
+    	con = DB.getConnection();
+    	String sql = "DELETE FROM community WHERE gseq=?";
 
         try {
-            con = DB.getConnection();
-            String sql = "DELETE FROM community WHERE gseq=?";
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, gseq);
             pstmt.executeUpdate();
@@ -166,10 +158,8 @@ public class CommunityDao {
     
     public void updateRecommendations(int gseq) {
         String sql = "UPDATE community SET recommands = recommands + 1 WHERE gseq = ?";
-        Connection con = null;
-        PreparedStatement pstmt = null;
+        con = DB.getConnection();
         try {           
-            con = DB.getConnection();
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, gseq);
             pstmt.executeUpdate();
@@ -187,8 +177,8 @@ public class CommunityDao {
 
 	public void increaseViewCount(int gseq) {
     String sql = "UPDATE community SET vcount = vcount + 1 WHERE gseq = ?";
+    con = DB.getConnection();
     try {
-        con = DB.getConnection();
         pstmt = con.prepareStatement(sql);
         pstmt.setInt(1, gseq);
         pstmt.executeUpdate();
@@ -202,15 +192,12 @@ public class CommunityDao {
 	
 	public ArrayList<CommunityVO> getTop3Posts() {
 	    ArrayList<CommunityVO> top3Posts = new ArrayList<>();
-	    Connection con = null;
-	    PreparedStatement pstmt = null;
-	    ResultSet rs = null;
+	    con = DB.getConnection();
+	    String sql = "SELECT c.gseq, c.subject, c.content, c.userid, c.recommands, c.kind, m.nickname, c.createdate " +
+	    		"FROM community c JOIN member m ON c.userid = m.userid " +
+	    		"ORDER BY c.recommands DESC LIMIT 3";
 
 	    try {
-	        con = DB.getConnection();
-	        String sql = "SELECT c.gseq, c.subject, c.content, c.userid, c.recommands, c.kind, m.nickname, c.createdate " +
-	                     "FROM community c JOIN member m ON c.userid = m.userid " +
-	                     "ORDER BY c.recommands DESC LIMIT 3";
 	        pstmt = con.prepareStatement(sql);
 	        rs = pstmt.executeQuery();
 
@@ -236,16 +223,14 @@ public class CommunityDao {
 	}
 
 	  public ArrayList<CommunityVO> findcontent(String subject) {
+		  
 	        ArrayList<CommunityVO> list = new ArrayList<CommunityVO>();
-	        Connection con = null;
-	        PreparedStatement pstmt = null;
-	        ResultSet rs = null;
+	        con = DB.getConnection();
+	        String sql = "SELECT c.gseq, c.subject, c.content, c.userid, c.recommands, c.kind, m.nickname, c.createdate " 
+	        		+ "FROM community c JOIN member m ON c.userid = m.userid "
+	        		+ " WHERE c.subject LIKE concat ('%', ? ,'%')";
 
 	        try {
-	            con = DB.getConnection();
-	            String sql = "SELECT c.gseq, c.subject, c.content, c.userid, c.recommands, c.kind, m.nickname, c.createdate " 
-	            				+ "FROM community c JOIN member m ON c.userid = m.userid "
-	            						+ " WHERE c.subject LIKE concat ('%', ? ,'%')";
 
 	            pstmt = con.prepareStatement(sql);
 	            pstmt.setString(1,  subject);

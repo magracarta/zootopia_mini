@@ -49,7 +49,6 @@
 			</div>
         </div>
 		
-    <!-- 댓글 작성 폼 -->
     <h2 class="commenth2">댓글 작성</h2>
     <form class="commentwrite" action="zootopia.do?command=writeCommunityReply" method="post">
         <textarea class="write" name="content"  required></textarea>
@@ -67,7 +66,6 @@
             </div>
             <div class="comment-meta">
                 <span>작성자: ${reply.nickname}[${reply.userid}]</span>
-                <span>댓글번호:${reply.grseq}</span>
                 <c:if test="${loginUser.userid == reply.userid}">
 			   	 <input class="delete" type="button" value="삭제" onclick="deleteCommunityReply('${reply.grseq}', '${communityVO.gseq}')">
 				</c:if>

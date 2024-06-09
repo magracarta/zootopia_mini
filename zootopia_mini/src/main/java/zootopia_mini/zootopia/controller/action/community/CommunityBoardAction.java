@@ -36,7 +36,6 @@ public class CommunityBoardAction implements Action {
             paging.setPagecnt(10);
             paging.setRecordrow(10);
 
-            // 전체 게시글 수 조회
             int count = cdao.getAllCount();
             paging.setRecordAllcount(count);
 
@@ -50,7 +49,6 @@ public class CommunityBoardAction implements Action {
             request.setAttribute("commList", list);
             
             
-            // kind 파라미터 가져오기
             String kindParam = request.getParameter("kind");
             int kind = -1;
             if (kindParam != null) {

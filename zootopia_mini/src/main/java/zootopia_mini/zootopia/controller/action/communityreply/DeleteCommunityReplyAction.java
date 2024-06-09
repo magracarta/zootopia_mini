@@ -22,7 +22,6 @@ public class DeleteCommunityReplyAction implements Action {
         String gseqParam = request.getParameter("gseq");
         int gseq = (gseqParam != null && !gseqParam.isEmpty()) ? Integer.parseInt(gseqParam) : 0;
 
-        // 게시글 상세 페이지로 리다이렉트합니다.
         response.sendRedirect("zootopia.do?command=communityDetail&gseq=" + gseq);
     }
 }

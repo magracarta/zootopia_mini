@@ -26,7 +26,6 @@
         <span class="vcount">조회수</span>			
       </li>
 	
-      <!-- 검색 결과가 있을 경우 해당 블록 표시 -->
       <c:forEach var="post" items="${subjectList}">
     <li>
         <a class="" href="javascript:void(0);" onclick="increaseViewCountAndRedirect(${post.gseq})">

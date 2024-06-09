@@ -7,8 +7,7 @@
 <section>
 
 	<article>
-		<form name="updateForm" action="zootopia.do?command=communityUpdate" method="post" 
-					onsubmit="return updateCommunity()">
+		<form name="updateForm" action="zootopia.do?command=communityUpdate" method="post" >
 			<h2>자유게시판</h2>
 			<div class="field" style="border-top: 2px solid blueviolet;">
 				<label>제목</label>
@@ -26,7 +25,7 @@
 				<option value="3" ${communityVO.kind == 3 ? 'selected' : ''}>잡담</option>
 			</select>
 			<div class="btn">
-				<input type="submit" value="수정완료" >
+				 <input type="button" value="수정완료" onclick="updateCommunity()">
 				<input type="button" value="취소" onClick="location.href='zootopia.do?command=communityDetail&gseq=${communityVO.gseq}'">
 			</div>
 		</form>

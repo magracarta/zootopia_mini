@@ -6,26 +6,26 @@ function deleteCommunity(gseq) {
 
 function updateCommunity() {
     if (confirm("정말로 수정하시겠습니까?")) {
-        return true;
+        var theForm = document.updateForm;
+        theForm.action = "zootopia.do?command=communityUpdate"; 
+        theForm.submit(); 
+        return true; 
     } else {
-        return false;
+        return false; 
     }
 }
 
 
 $(document).ready(function() {
     $(".recommendButton").click(function() {
-        var gseq = $(this).closest('li').find(".gseq").val(); // 게시글 번호를 가져옴
+        var gseq = $(this).closest('li').find(".gseq").val();
 
-        // 확인 창 띄우기
         if (confirm("정말로 추천하시겠습니까?")) {
-            // 사용자가 확인을 눌렀을 경우에만 AJAX 요청 보내기
             $.ajax({
                 url: "http://localhost:8090/zootopia_mini/zootopia.do?command=communityRecommands",
                 type: "POST",
                 data: { gseq: gseq },
                 success: function(data) {
-                    // 서버로부터 받은 JSON 데이터를 파싱하여 추천 수를 화면에 업데이트
                     var recommends = data.recommends;
                     $(".recommands").text("추천 수[" + recommends + "]");
                 },
@@ -38,9 +38,9 @@ $(document).ready(function() {
 });
 
 function cancel() {
-    var confirmed = confirm("작성을 취소하시겠습니까?"); // 사용자에게 확인 메시지 표시
+    var confirmed = confirm("작성을 취소하시겠습니까?");
     if (confirmed) {
-        var href = "http://localhost:8090/zootopia_mini/zootopia.do?command=communityBoard"; // 이동할 페이지의 URL
+        var href = "http://localhost:8090/zootopia_mini/zootopia.do?command=communityBoard"; 
         window.location.href = href;
     } else {
        
@@ -61,10 +61,9 @@ function increaseViewCount(gseq) {
 }
 
 function increaseViewCountAndRedirect(gseq) {
-    // 조회수 증가 함수 호출
     increaseViewCount(gseq);
     
-    // 원하는 페이지로 이동
+
     window.location.href = 'zootopia.do?command=communityDetail&gseq=' + gseq;
 }
 

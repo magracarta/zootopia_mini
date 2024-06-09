@@ -17,7 +17,7 @@ public class WriteCommunityReplyAction implements Action {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("loginUser") == null) {
-            response.sendRedirect("loginform.jsp"); // 로그인 페이지로 리다이렉트
+            response.sendRedirect("loginform.jsp");
             return;
         }
 
@@ -26,7 +26,7 @@ public class WriteCommunityReplyAction implements Action {
 
         CommunityReplyDTO crdto = new CommunityReplyDTO();
         crdto.setContent(request.getParameter("content"));
-        crdto.setUserid(userId); // 수정된 부분
+        crdto.setUserid(userId);
         crdto.setGseq(Integer.parseInt(request.getParameter("gseq")));
 
         CommunityReplyDao crdao = CommunityReplyDao.getInstance();

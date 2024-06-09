@@ -30,7 +30,7 @@ public class CommunityDetailAction implements Action {
         ArrayList<CommunityReplyDTO> replies = crdao.getCommunityReplies(gseq);
 
         request.setAttribute("communityVO", cvo);
-        request.setAttribute("kind", cvo.getKind()); // kind 값 추가
+        request.setAttribute("kind", cvo.getKind()); 
         request.setAttribute("communityReplies", replies);
 
         request.getRequestDispatcher("community/community_detail.jsp").forward(request, response);
