@@ -339,13 +339,15 @@ height: 300px;
 .communityform .btn .button3{
     padding: 20px;
     color: white;
-    background: blue;
+    background: black;
+        border: none;
 }
 
 .communityform .btn .button4{
     padding: 20px;
-    color: white;
-    background: red;
+    color: black;
+    background: lightgray;
+        border: none;
 }
 
 

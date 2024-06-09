@@ -83,3 +83,9 @@ function increaseViewCountAndRedirect(gseq) {
     }
     
     
+function deleteCommunityReply(grseq, gseq) {
+    if (confirm("정말로 삭제하시겠습니까?")) {
+        location.href = 'zootopia.do?command=deleteCommunityReply&grseq=' + grseq + '&gseq=' + gseq;
+    }
+
+}

@@ -84,5 +84,22 @@ public class CommunityReplyDao {
         return list; // 결과 목록 반환
     }
 
+	public void deleteCommunityReply(int grseq) {
+	    Connection con = null;
+	    PreparedStatement pstmt = null;
+
+	    try {
+	        con = DB.getConnection();
+	        String sql = "DELETE FROM community_reply WHERE grseq=?";
+	        pstmt = con.prepareStatement(sql);
+	        pstmt.setInt(1, grseq);
+	        pstmt.executeUpdate();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        DB.close(con, pstmt, rs);
+	    }
+	}
+
 	
 }

@@ -101,6 +101,7 @@ public class CommunityDao {
                 cvo.setRecommands(rs.getInt("recommands"));
                 cvo.setKind(rs.getInt("kind"));
                 cvo.setCreatedate(rs.getTimestamp("createdate"));
+                cvo.setNickname(rs.getString("nickname")); // 닉네임 설정 추가
             }
         } catch (SQLException e) {
             e.printStackTrace();

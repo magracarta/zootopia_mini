@@ -32,7 +32,7 @@
 			<div class="buttondiv">
 				<c:if test="${not empty loginUser.userid}">
 		  		  <c:choose>
-		  	     	 <c:when test="${communityVO.userid eq loginUser.userid}">
+		  	     	 <c:when test="${communityVO.userid == loginUser.userid}">
 		          		  <div class="button_container">
 			                <input class="button1" type="button" value="수정" onclick="location.href='zootopia.do?command=communityUpdateForm&gseq=${communityVO.gseq}'">    
 			                <input class="button2" type="button" value="삭제" onclick="deleteCommunity('${communityVO.gseq}')">
@@ -68,7 +68,10 @@
             <div class="comment-meta">
                 <span>작성자: ${reply.nickname}[${reply.userid}]</span>
                 <span>댓글번호:${reply.grseq}</span>
-            </div>
+                <c:if test="${loginUser.userid == reply.userid}">
+			   	 <input class="delete" type="button" value="삭제" onclick="deleteCommunityReply('${reply.grseq}', '${communityVO.gseq}')">
+				</c:if>
+			</div>
         </div>    
     </c:forEach>
 </div>
