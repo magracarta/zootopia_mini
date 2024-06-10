@@ -196,7 +196,7 @@ public class CommunityDao {
 	public ArrayList<CommunityVO> getTop3Posts() {
 	    ArrayList<CommunityVO> top3Posts = new ArrayList<>();
 	    con = DB.getConnection();
-	    String sql = "SELECT c.gseq, c.subject, c.content, c.userid, c.recommands, c.kind, m.nickname, c.createdate " +
+	    String sql = "SELECT c.gseq, c.subject, c.content, c.userid, c.recommands, c.kind, c.vcount, m.nickname, c.createdate " +
 	    		"FROM community c JOIN member m ON c.userid = m.userid " +
 	    		"ORDER BY c.recommands DESC LIMIT 3";
 
@@ -211,6 +211,7 @@ public class CommunityDao {
 	            cvo.setContent(rs.getString("content"));
 	            cvo.setUserid(rs.getString("userid"));
 	            cvo.setRecommands(rs.getInt("recommands"));
+	            cvo.setVcount(rs.getInt("vcount"));
 	            cvo.setKind(rs.getInt("kind"));
 	            cvo.setNicknameFromView(rs.getString("nickname"));
 	            cvo.setCreatedate(rs.getTimestamp("createdate"));

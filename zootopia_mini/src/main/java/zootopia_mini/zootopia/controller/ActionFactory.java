@@ -95,7 +95,7 @@ public class ActionFactory {
 		else if( command.equals("communityRecommands") ) ac = new CommunityRecommandsAction();
 		else if( command.equals("communityViewCount") ) ac = new CommunityViewCountAction();
 		else if( command.equals("findCommunity") ) ac = new FindCommunityAction();
-		
+
 		//community_reply
 		else if( command.equals("writeCommunityReply") ) ac = new WriteCommunityReplyAction();
 		else if( command.equals("viewCommunityReply") ) ac = new ViewCommunityReplyAction();

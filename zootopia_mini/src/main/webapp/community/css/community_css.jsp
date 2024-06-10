@@ -11,61 +11,84 @@
 align-items: baseline;
 }
 .head .write{
-    background-color: lightgray; /* 버튼 배경색 */
-    color: white; /* 버튼 텍스트 색상 */
-    border: none; /* 테두리 없애기 */
-    padding: 10px 20px; /* 패딩값 */
-    text-align: center; /* 텍스트 가운데 정렬 */
-    text-decoration: none; /* 밑줄 없애기 */
+    background-color: white;
+    color: white;
+    border: 1px solid black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin-left: 10px;
     color: black;
 }
 
+.head .write:hover{
+            background-color: black;
+            color: white;
+            border:1px solid black;
+}
+
 .container .kind0{
-    background: gainsboro;
-    border: none;
+    background: white;
+    border: 1px solid black;
     color: black;
     padding: 5px 6px;
     border-radius: 5px;
 }
 
 .container .kind1{
-    background: gainsboro;
-    border: none;
+    background: white;
+    border: 1px solid black;
     color: black;
     padding: 5px 6px;
     border-radius: 5px;
 }
 
 .container .kind2{
-    background: gainsboro;
-    border: none;
+    background: white;
+    border: 1px solid black;
     color: black;
     padding: 5px 6px;
     border-radius: 5px;
 }
 
 .container .kind3{
-    background: gainsboro;
-    border: none;
+    background: white;
+    border: 1px solid black;
     color: black;
     padding: 5px 6px;
     border-radius: 5px;
 }
 
-.container .kind4{
-    background: gainsboro;
-    border: none;
-    color: black;
-    padding: 5px 6px;
-    border-radius: 5px;
+.container .kind0:hover{
+            background-color: black;
+            color: white;
+            border:1px solid black;
+}
+.container .kind1:hover{
+            background-color: black;
+            color: white;
+            border:1px solid black;
+}
+.container .kind2:hover{
+            background-color: black;
+            color: white;
+            border:1px solid black;
+}
+.container .kind3:hover{
+            background-color: black;
+            color: white;
+            border:1px solid black;
 }
 .communityboard	{  }
 .communityboard ul	{  }
 .communityboard ul li	{ padding: 14px 0; border-bottom: 1px solid #ddd; }
 .communityboard ul li	{ padding: 14px 0; border-bottom: 1px solid #ddd; }
+.communityboard ul .board_head{
+	font-weight: bold;
+  background: #f7f7f7;
+}
 .communityboard ul .hottopic	{ 
  background: lightgray; 
  border-bottom: 1px solid #ddd;
@@ -80,6 +103,7 @@ align-items: baseline;
 .communityboard ul li .vcount	{ width: 5%; text-align: center; }
 
 
+/* community detail*/
 
 .header {
     display: flex;
@@ -143,6 +167,8 @@ padding: 1%;
 
 }
 
+
+
 .detailcontainer input[type="button"] {
     background-color: lightgray;
     color: black;
@@ -169,17 +195,45 @@ padding: 1%;
   color: #fff;
 }
 .button_container .button1 {
-  background-color: black !important; 
-}
+    background: white;
+    border: 1px solid black;
+    color: black;
+    padding: 5px 6px;
+    border-radius: 5px;}
 
 .button_container .button2 {
-  background-color: lightgray;
-  color:black;
+    background: black;
+    color: white;
+    padding: 5px 6px;
+    border-radius: 5px;
+}
+.button_container .button1:hover {
+            background : black;
+            color: white;
+            border:1px solid black;
 }
 
+.button_container .button2:hover {
+            background-color: white;
+            color: black;
+            border: 1px solid black;
+}
 
 .detailcontainer .content	{ width: 100%; }
 
+.detailcontainer .content .button3{
+    background: white;
+    border: 1px solid black;
+    color: black;
+    padding: 5px 6px;
+    border-radius: 5px;
+    }
+    
+.detailcontainer .content .button3:hover{
+            background : black;
+            color: white;
+            border:1px solid black;
+    }
 
 .detailcontainer .content	p { 
 isplay:flex; 
@@ -190,52 +244,171 @@ padding-top: 20px;
 padding-left: 20px;
 }
 
-.comment { margin-top:100px }
-.reply > h2 { font-size:30px; font-weight:700; color:#000; margin-bottom:30px; }
-.reply .submit_reply {  }
-
-.commenth2{
-
+ .comment-section {
+margin: 0 auto;
 }
 
-.commentwrite{
-
+.comment2 {
+font-size: 24px;
+margin-bottom: 10px;
+border-bottom: 2px solid #333;
+padding-bottom: 5px;
+padding-top: 50px;
 }
 
-.commentwrite .write{
-    color: black;
-    font-size: large;
+.commentwrite {
+display: flex;
+flex-direction: column;
+margin-bottom: 20px;
 }
 
-.commentwrite .submit{
-padding: 3px 5px;
-    text-align: center;
-    font-size: larger;
-    font-weight: bold;
+.commentwrite textarea.write {
+width: 100%;
+height: 100px;
+padding: 10px;
+margin-bottom: 10px;
+border-radius: 5px;
+border: 1px solid #ccc;
+font-size: 16px;
 }
 
-.comment-list{
+/* community reply */
+        .commentwrite button.submit {
+            align-self: flex-end;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-}
+        .commentwrite button.submit:hover {
+            background-color: white;
+            color: black;
+            border:1px solid black;
+        }
 
-.commentslist ul li {  padding:40px 0; border-top:1px solid #E3E3E3;  }
+        .commentslist {
+            margin-top: 20px;
+        }
 
-.commentslist ul li .replyUpdateForm { margin-top:30px; }
-.commentslist ul li .replyUpdateForm textarea { height: 60px; border:1px solid #D9D9D9; }
-.commentslist ul li .replyUpdateForm .button_box { display:flex; justify-content: flex-end;
-align-items: center; margin-top:20px;}
+        .commentslist ul {
+            list-style-type: none;
+            padding: 0;
+        }
 
-.commentslist  .replyUpdateForm .image_box{
-width:50px; 
-height:50px; 
-overflow: hidden; 
-border-radius: 50%; 
-}
-.commentslist  .replyUpdateForm .image_box img {
- width:100%; 
- height:100%; 
- object-fit: cover; 
- }
+        .commentslist li {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .comment-content p {
+            margin: 0;
+        }
+
+        .comment-meta {
+display: flex;
+    align-items: flex-end;
+    margin-top: 10px;
+        }
+
+        .comment-meta .image_box {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+        }
+
+        .comment-meta .image_box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .comment-meta .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .comment-meta .user-info span {
+            margin-left: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .comment-meta form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            margin-top: 10px;
+        }
+
+        .comment-meta form textarea {
+            width: 100%;
+            height: 60px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        .comment-meta form button {
+            padding: 5px 10px;
+            font-size: 14px;
+            color: #fff;
+            background-color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .comment-meta form button:hover {
+            background-color: #333;
+        }
+
+		
+        .commentslist form .fin ,
+        .commentslist form .delete {
+            padding: 5px 10px;
+            font-size: 14px;
+            color: #fff;
+            background-color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border: 1px solid #000;
+        }
+        
+        .commentslist form .delete { background:#fff; color:#000; }
+
+		.commentslist form .fin:hover {
+            background-color: white;
+            color: black;
+            border:1px solid black;
+        }
+		
+		.commentslist form .delete:hover {
+            background-color: black;
+            color: white;
+            border:1px solid black;
+        }
+
+        .comment-meta input.delete:hover {
+            background-color: #333;
+        }
 
 
 
@@ -268,6 +441,8 @@ border-radius: 50%;
     border: none;
     border-radius: 4px;
 }
+
+/* CommunityWrite */
 
 .communityform{
 
@@ -314,6 +489,7 @@ border-radius: 50%;
 .communityform .kind .kindlist {
 	width: 10%;
     text-align: center;
+    padding: 0px;
 }
 
 .communityform .kind .kindlist .list1 {
@@ -369,9 +545,134 @@ height: 300px;
 .communityform .btn .button4{
     padding: 20px;
     color: black;
-    background: lightgray;
-        border: none;
+    background: white;
+        border: 1px solid black;
 }
+
+.communityform .btn .button3:hover{
+	background-color: white;
+	color: black;
+}
+
+.communityform .btn .button4:hover{
+		background-color: black;
+	color: white;
+    border:1px solid black;
+}
+
+/* community update */
+
+/* 전체 폼을 대상으로 합니다 */
+.updateForm {
+    /* 폼에 대한 스타일을 여기에 적용하세요 */
+}
+
+/* 섹션 제목을 대상으로 합니다 */
+.updateForm .section-title {
+    font-weight: bold;
+    font-size: larger;
+}
+
+.updateForm .field1{
+    margin-top: 10px;
+}
+
+/* 제목 입력 필드를 대상으로 합니다 */
+.updateForm .field1 label {
+	font-size: large;
+	font-weight: bold
+}
+
+.updateForm .field1 .subject{
+text-align: left;
+    font-size: large;
+    margin-top: 10px;
+}
+
+.updateForm .field2{
+    margin-top: 10px;
+}
+
+/* 제목 입력 필드를 대상으로 합니다 */
+.updateForm .field2 label {
+	font-size: large;
+	font-weight: bold
+}
+
+.updateForm .field2 .subject{
+text-align: left;
+    font-size: large;
+    margin-top: 10px;
+}
+
+.updateForm .field3{
+    margin-top: 10px;
+}
+
+.updateForm .field3 label {
+	font-size: large;
+	font-weight: bold
+}
+
+.updateForm .field3 .kind{
+margin: inherit;
+    margin-bottom: 20px;
+    font-weight: bolder;
+    text-align: center;
+    display: flex;
+    width: 80px;
+	padding: 0;
+}
+
+.updateForm .field3 .kind .1{
+
+}
+
+.updateForm .field3 .kind .2{
+
+}
+
+.updateForm .field3 .kind .3{
+
+}
+
+/* 수정완료 버튼을 대상으로 합니다 */
+.updateForm .btn-group .btn1 {
+    font-size: large;
+    background: black;
+    color: white;
+    padding: 5px;
+    border: none;
+}
+
+/* 취소 버튼을 대상으로 합니다 */
+.updateForm .btn-group .btn2 {
+ font-size: large;
+    background: white;
+    color: black;
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.updateForm .btn-group .btn1:hover {
+	background-color: white;
+	color: black;
+}
+
+.updateForm .btn-group .btn2:hover {
+		background-color: black;
+	color: white;
+    border:1px solid black;
+}
+
+
+
+
+
+
+
+
+
 
 
 

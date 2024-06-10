@@ -46,14 +46,13 @@ public class CommunityReplyDao {
         ResultSet rs = null;
 
         try {
-            con = DB.getConnection(); // 데이터베이스 연결을 가져옵니다.
+            con = DB.getConnection(); 
             String sql = "SELECT r.*, m.nickname FROM community_reply r JOIN member m ON r.userid = m.userid WHERE gseq = ? ORDER BY r.createdate DESC";
 
-            pstmt = con.prepareStatement(sql); // SQL 쿼리를 준비합니다.
-            pstmt.setInt(1, grseq); // SQL 쿼리에 매개변수를 설정합니다.
-            rs = pstmt.executeQuery(); // SQL 쿼리를 실행하고 결과 집합을 가져옵니다.
+            pstmt = con.prepareStatement(sql); 
+            pstmt.setInt(1, grseq); 
+            rs = pstmt.executeQuery();
 
-            // 결과 집합에서 각 레코드를 반복하여 CommunityReplyDTO 객체를 생성하고 목록에 추가합니다.
             while (rs.next()) {
                 CommunityReplyDTO crdto = new CommunityReplyDTO();
                 crdto.setGrseq(rs.getInt("grseq"));
@@ -70,7 +69,7 @@ public class CommunityReplyDao {
             DB.close(con, pstmt, rs);
         }
 
-        return list; // 결과 목록 반환
+        return list;
     }
 
 	public void deleteCommunityReply(int grseq) {
@@ -133,5 +132,6 @@ public class CommunityReplyDao {
             DB.close(con, pstmt, rs);
         }
     }
+
 	
 }
