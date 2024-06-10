@@ -49,6 +49,21 @@ DATE_ADD(NOW(), INTERVAL 3 DAY));
 INSERT INTO contest (userid, useyn, subject, content, lastdate)
 values ('jota','Y','조타 콘테스트 8' , '테스트입니다' ,
 DATE_ADD(NOW(), INTERVAL 3 DAY));
+INSERT INTO contest (userid, useyn, subject, content, lastdate)
+values ('joha','Y','조타 콘테스트 4' , '테스트입니다' ,
+DATE_ADD(NOW(), INTERVAL 3 DAY));
+INSERT INTO contest (userid, useyn, subject, content, lastdate)
+values ('jota','Y','조타 콘테스트 5' , '테스트입니다' ,
+DATE_ADD(NOW(), INTERVAL 3 DAY));
+INSERT INTO contest (userid, useyn, subject, content, lastdate)
+values ('jota','Y','조타 콘테스트 6' , '테스트입니다' ,
+DATE_ADD(NOW(), INTERVAL 3 DAY));
+INSERT INTO contest (userid, useyn, subject, content, lastdate)
+values ('jota','Y','조타 콘테스트 7' , '테스트입니다' ,
+DATE_ADD(NOW(), INTERVAL 3 DAY));
+INSERT INTO contest (userid, useyn, subject, content, lastdate)
+values ('jota','Y','조타 콘테스트 8' , '테스트입니다' ,
+DATE_ADD(NOW(), INTERVAL 3 DAY));
 
 -- 종료된 콘테스트 
 INSERT INTO contest (userid, useyn, subject, content, lastdate)
@@ -79,26 +94,26 @@ select * from contest_reply;
 select * from community;
 
 INSERT INTO community (vcount, userid, subject, content, recommands, kind, createdate) VALUES
-(10, 'joha', '첫 번째 글입니다.', '첫 번째 글의 내용입니다.', 5, 1, NOW()),
-(8, 'joha', '두 번째 글입니다.', '두 번째 글의 내용입니다.', 3, 1, NOW()),
-(15, 'joha', '세 번째 글입니다.', '세 번째 글의 내용입니다.', 7, 2, NOW()),
-(12, 'joha', '네 번째 글입니다.', '네 번째 글의 내용입니다.', 4, 2, NOW()),
-(20, 'joha', '다섯 번째 글입니다.', '다섯 번째 글의 내용입니다.', 8, 2, NOW()),
-(14, 'joha', '여섯 번째 글입니다.', '여섯 번째 글의 내용입니다.', 6, 1, NOW()),
-(18, 'joha', '일곱 번째 글입니다.', '일곱 번째 글의 내용입니다.', 9, 2, NOW()),
-(11, 'joha', '여덟 번째 글입니다.', '여덟 번째 글의 내용입니다.', 7, 1, NOW()),
-(25, 'joha', '아홉 번째 글입니다.', '아홉 번째 글의 내용입니다.', 12, 2, NOW()),
-(10, 'joha', '열 번째 글입니다.', '열 번째 글의 내용입니다.', 5, 1, NOW()),
-(12, 'joha', '열한 번째 글입니다.', '열한 번째 글의 내용입니다.', 8, 2, NOW()),
-(15, 'joha', '열두 번째 글입니다.', '열두 번째 글의 내용입니다.', 10, 1, NOW()),
-(18, 'joha', '열세 번째 글입니다.', '열세 번째 글의 내용입니다.', 6, 2, NOW()),
-(20, 'joha', '열네 번째 글입니다.', '열네 번째 글의 내용입니다.', 9, 1, NOW()),
-(16, 'joha', '열다섯 번째 글입니다.', '열다섯 번째 글의 내용입니다.', 7, 2, NOW()),
-(14, 'joha', '열여섯 번째 글입니다.', '열여섯 번째 글의 내용입니다.', 11, 1, NOW()),
-(17, 'joha', '열일곱 번째 글입니다.', '열일곱 번째 글의 내용입니다.', 8, 2, NOW()),
-(19, 'joha', '열여덟 번째 글입니다.', '열여덟 번째 글의 내용입니다.', 12, 1, NOW()),
-(11, 'joha', '열아홉 번째 글입니다.', '열아홉 번째 글의 내용입니다.', 9, 2, NOW()),
-(13, 'joha', '스무 번째 글입니다.', '스무 번째 글의 내용입니다.', 7, 1, NOW());
+(10, 'jota', '첫 번째 글입니다.', '첫 번째 글의 내용입니다.', 5, 1, NOW()),
+(8, 'jota', '두 번째 글입니다.', '두 번째 글의 내용입니다.', 3, 1, NOW()),
+(15, 'jota', '세 번째 글입니다.', '세 번째 글의 내용입니다.', 7, 2, NOW()),
+(12, 'jota', '네 번째 글입니다.', '네 번째 글의 내용입니다.', 4, 2, NOW()),
+(20, 'jota', '다섯 번째 글입니다.', '다섯 번째 글의 내용입니다.', 8, 2, NOW()),
+(14, 'jota', '여섯 번째 글입니다.', '여섯 번째 글의 내용입니다.', 6, 1, NOW()),
+(18, 'jota', '일곱 번째 글입니다.', '일곱 번째 글의 내용입니다.', 9, 2, NOW()),
+(11, 'jota', '여덟 번째 글입니다.', '여덟 번째 글의 내용입니다.', 7, 1, NOW()),
+(25, 'jota', '아홉 번째 글입니다.', '아홉 번째 글의 내용입니다.', 12, 2, NOW()),
+(10, 'jota', '열 번째 글입니다.', '열 번째 글의 내용입니다.', 5, 1, NOW()),
+(12, 'jota', '열한 번째 글입니다.', '열한 번째 글의 내용입니다.', 8, 2, NOW()),
+(15, 'jota', '열두 번째 글입니다.', '열두 번째 글의 내용입니다.', 10, 1, NOW()),
+(18, 'jota', '열세 번째 글입니다.', '열세 번째 글의 내용입니다.', 6, 2, NOW()),
+(20, 'jota', '열네 번째 글입니다.', '열네 번째 글의 내용입니다.', 9, 1, NOW()),
+(16, 'jota', '열다섯 번째 글입니다.', '열다섯 번째 글의 내용입니다.', 7, 2, NOW()),
+(14, 'jota', '열여섯 번째 글입니다.', '열여섯 번째 글의 내용입니다.', 11, 1, NOW()),
+(17, 'jota', '열일곱 번째 글입니다.', '열일곱 번째 글의 내용입니다.', 8, 2, NOW()),
+(19, 'jota', '열여덟 번째 글입니다.', '열여덟 번째 글의 내용입니다.', 12, 1, NOW()),
+(11, 'jota', '열아홉 번째 글입니다.', '열아홉 번째 글의 내용입니다.', 9, 2, NOW()),
+(13, 'jota', '스무 번째 글입니다.', '스무 번째 글의 내용입니다.', 7, 1, NOW());
 
 
 INSERT INTO community_reply (userid, gseq, content, createdate) 
@@ -279,3 +294,9 @@ VALUES
     (1, '샘플 제목 13', '샘플 내용 13', '샘플 답변 13', 'joha', NOW()),
     (1, '샘플 제목 14', '샘플 내용 14', '샘플 답변 14', 'joha', NOW()),
     (2, '샘플 제목 15', '샘플 내용 15', '샘플 답변 15', 'joha', NOW());
+    
+    
+    
+ select count(*) as cseq from contest_reply where userid = 'jota';
+ select count(*) as gseq from community_reply where userid = 'jota';
+    

@@ -6,22 +6,28 @@
 <%@ include file="section/mypage_info.jsp" %>
 
 
+
 <form class="myWriteform">
 	<div class="container">
 		<h2>내가 쓴 글 (${allcnt})</h2>
 		<div class="communityboard">
-         <ul>
-            <li class="board_head">
-	            <span class="num">no.</span>      
+			<div class="board_head">
+	            <span class="gseq">no.</span>      
 	            <span class="subject">제목</span>                
 	            <span class="createdate">작성일</span>         
 	            <span class="recommands">추천수</span>         
 	            <span class="vcount">조회수</span>         
-            </li>
-            <c:forEach var="post" items="${communityList}">
+           </div>
+         <ul>
+            <c:forEach var="post" items="${communityList}" varStatus="state">
             <li>
-               <a class="" href="javascript:void(0);" onclick="increaseViewCountAndRedirect(${post.gseq})">
-               <span class="num">no.${post.gseq}</span>      
+               <a class="commudetail" href="zootopia.do?command=communityDetail&gseq=${post.gseq}">
+               <c:choose>
+               <c:when test="${empty communityList}">
+               		<p>내가 등록한 글이 없습니다.</p>
+               </c:when>
+               <c:otherwise>
+               <span class="gseq">no. <span class="index"></span></span>      
                <span class="subject">
                   <c:choose>
                         <c:when test="${post.kind == 1}">[고민]</c:when>
@@ -31,9 +37,11 @@
                     </c:choose>
                      ${post.subject}
                   </span>               
-               <span class="createdate">${post.createdate}</span>         
-               <span class="recommands">${post.recommands}</span>         
-               <span class="vcount">${post.vcount}</span>         
+	               <span class="createdate"><fmt:formatDate value="${post.createdate}" pattern="yy/MM/dd hh:mm:ss" /></span>         
+	               <span class="recommands">${post.recommands}</span>         
+	               <span class="vcount">${post.vcount}</span>   
+	               </c:otherwise>  
+               </c:choose>    
             </a>
             </li>
             </c:forEach>
@@ -43,7 +51,7 @@
 		
 	<jsp:include page="writepaging.jsp" flush="true">
 	  	<jsp:param name="url" value="zootopia.do?command=mywrite" />
-	  	<jsp:param name="search" value="${searchResult}" />
+	  	<jsp:param name="search" value="${search}" />
 	</jsp:include>
 		
 		
@@ -51,8 +59,16 @@
 	</div>
 
 </form>
-
-
+											
+ <script>			
+	let begin = ${allcnt - (paging.recordrow*(paging.currentPage-1))-1} +1;
+ 
+	document.querySelectorAll(".communityboard li").forEach((elem,index)=>{
+	 	let indexdate = begin - index;
+	    elem.querySelector(".gseq .index").innerHTML = indexdate;
+	  
+	});
+ </script>
 
 
 

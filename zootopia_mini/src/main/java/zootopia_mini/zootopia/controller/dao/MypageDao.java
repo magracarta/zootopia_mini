@@ -1,19 +1,18 @@
 package zootopia_mini.zootopia.controller.dao;
 
-import java.sql.CallableStatement;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
-
+import zootopia_mini.zootopia.controller.dto.CommunityReplyDTO;
 import zootopia_mini.zootopia.controller.dto.CommunityVO;
 import zootopia_mini.zootopia.controller.dto.ContestDTO;
 import zootopia_mini.zootopia.controller.dto.ContestPetDTO;
+import zootopia_mini.zootopia.controller.dto.Contest_replyDTO;
 import zootopia_mini.zootopia.controller.dto.MemberVO;
-import zootopia_mini.zootopia.controller.dto.MyReplyDTO;
 import zootopia_mini.zootopia.controller.dto.QnaVO;
 import zootopia_mini.zootopia.util.DB;
 import zootopia_mini.zootopia.util.Paging;
@@ -325,61 +324,31 @@ public class MypageDao {
 		return count;
 	}
 
-	public ArrayList<MyReplyDTO> getMyReplyList(String userId) {
-		ArrayList<MyReplyDTO> myReplyList = new ArrayList<>();
+	public ArrayList<Contest_replyDTO> getMyCntReplyList(String userid) {
+		ArrayList<Contest_replyDTO> myCntReplyList = new ArrayList<>();
 		con = DB.getConnection();
 		
-        String sqlCommunity = "SELECT gseq AS post_id, grseq AS reply_id, userid AS user_id, "
-        		+ " NULL AS subject, content AS reply_content, createdate AS reply_date, "
-        		+ " 'community' AS type FROM community_reply WHERE userid = ?" ;
-        
-        
-        String sqlContest = "SELECT cseq AS post_id, crseq AS reply_id, userid AS user_id, "
-        		+ " NULL AS subject, content AS reply_content, createdate AS reply_date, "
-        		+ " 'contest' AS type FROM contest_reply WHERE userid = ?" ;
+        String sql = "select * from contest_reply where userid = ?";
 		
         try {
-            // 커뮤니티 댓글
-            pstmt = con.prepareStatement(sqlCommunity);
-            pstmt.setString(1, userId);
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, userid);
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                MyReplyDTO mrdto = new MyReplyDTO();
-                mrdto.setPostId(rs.getInt("post_id"));
-                mrdto.setReplyId(rs.getInt("reply_id"));
-                mrdto.setUserId(rs.getString("user_id"));
-                mrdto.setSubject(rs.getString("subject"));
-                mrdto.setReplyContent(rs.getString("reply_content"));
-                mrdto.setReplyDate(rs.getString("reply_date"));
-                mrdto.setType(rs.getString("type"));
-                myReplyList.add(mrdto);
+                Contest_replyDTO cntrdto = new Contest_replyDTO();
+                cntrdto.setCrseq(rs.getInt("crseq"));
+                cntrdto.setCseq(rs.getInt("cseq"));
+                cntrdto.setUserid(rs.getString("userid"));
+                cntrdto.setCreatedate(rs.getTimestamp("createdate"));
+                cntrdto.setContent(rs.getString("content"));
+                myCntReplyList.add(cntrdto);
             }
-            rs.close();
-            pstmt.close();
-
-            // 콘테스트 댓글 
-            pstmt = con.prepareStatement(sqlContest);
-            pstmt.setString(1, userId);
-            rs = pstmt.executeQuery();
-            while (rs.next()) {
-                MyReplyDTO mrdto = new MyReplyDTO();
-                mrdto.setPostId(rs.getInt("post_id"));
-                mrdto.setReplyId(rs.getInt("reply_id"));
-                mrdto.setUserId(rs.getString("user_id"));
-                mrdto.setSubject(rs.getString("subject"));
-                mrdto.setReplyContent(rs.getString("reply_content"));
-                mrdto.setReplyDate(rs.getString("reply_date"));
-                mrdto.setType(rs.getString("type"));
-                myReplyList.add(mrdto);
-            }
-            rs.close();
-            pstmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             DB.close(con, pstmt, rs);
         }
-        return myReplyList;
+        return myCntReplyList;
 	}
 
 
@@ -434,35 +403,72 @@ public class MypageDao {
 		return list;
 	}
 
-	
-	public String getPostSubject(String type, int postId) {
-	    String subject = null;
 
-	    try {
-	        con = DB.getConnection();
-	        String sql = null;
-	        
-	        // type에 따라 쿼리를 다르게 작성
-	        if ("community".equals(type)) {
-	            sql = "SELECT subject FROM community WHERE gseq = ?";
-	        } else if ("contest".equals(type)) {
-	            sql = "SELECT subject FROM contest WHERE cseq = ?";
-	        }
-	        
-	        pstmt = con.prepareStatement(sql);
-	        pstmt.setInt(1, postId);
-	        rs = pstmt.executeQuery();
-	        
-	        if (rs.next()) {
-	        	subject = rs.getString("subject");
-	        }
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    } finally {
-	        DB.close(con, pstmt, rs);
-	    }
+	public ArrayList<CommunityReplyDTO> getMyComReplyList(String userid) {
+		ArrayList<CommunityReplyDTO> myComReplyList = new ArrayList<>();
+		con = DB.getConnection();
+		
+        String sql = "select * from community_reply where userid = ?";
+		
+        try {
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, userid);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+            	CommunityReplyDTO comrdto = new CommunityReplyDTO();
+            	comrdto.setGrseq(rs.getInt("grseq"));
+            	comrdto.setGseq(rs.getInt("gseq"));
+            	comrdto.setUserid(rs.getString("userid"));
+            	comrdto.setCreatedate(rs.getTimestamp("createdate"));
+            	comrdto.setContent(rs.getString("content"));
+                myComReplyList.add(comrdto);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DB.close(con, pstmt, rs);
+        }
+        return myComReplyList;
+	}
 
-	    return subject;
+
+	public int getMyContestReplyCount(String table, String userid) {
+		int count = 0;
+		con = DB.getConnection();
+		
+		String sql = "select count(*) as cseq from "+ table + " where userid = ? ";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			rs = pstmt.executeQuery();
+			if(rs.next()) count = rs.getInt("cseq");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		return count;
+	}
+
+
+	public int getMyCommunityReplyCount(String table, String userid) {
+		int count = 0;
+		con = DB.getConnection();
+		
+		String sql = "select count(*) as gseq from "+ table + " where userid = ? ";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			rs = pstmt.executeQuery();
+			if(rs.next()) count = rs.getInt("gseq");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		return count;
 	}
 	
 	

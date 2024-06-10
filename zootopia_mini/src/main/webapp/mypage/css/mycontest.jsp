@@ -8,10 +8,9 @@
 }
 .container {display: flex; justify-content: space-between;margin: 20px;}
 .column {width: 45%;}
-.column h2 {font-size: 1.2em; margin-bottom: 10px;}
+.column h2 { font-weight:bold; padding-top: 30px; font-size: 1.2em; margin-bottom: 10px;}
 .contestlist {
-	
-	padding: 10px; 
+	padding-bottom: 60px; padding-top:30px;
 	margin-bottom: 10px;
 }
 .contestlist h3 {

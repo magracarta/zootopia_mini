@@ -29,7 +29,7 @@
 	</div>
 	
 	<div class="serach-form">
-		<form name="search" method="get">
+		<form name="search" method="get" >
 			<input type="hidden" name="command" value="mywrite">
 			<input type="hidden" name="pagenum" value="1">
 			<input type="text" name="search" value="${search}">

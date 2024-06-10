@@ -37,15 +37,19 @@ public class Paging {
 		 lastnum = firstnum + pagecnt - 1;
 		 if(lastnum > pageAllcount) lastnum = pageAllcount;
 		
-		
-		if(firstnum <= 1) {
-			next = true;
-			prev = false;
-		}	
-		if(lastnum >= pageAllcount) {
-			next = false;
-			prev = true;
-		}
+	
+		if(firstnum <= 1 && lastnum <= pageAllcount) {
+	         prev = false;
+	      }else {
+	         prev = true;
+	      }
+	      
+	      if( lastnum < pageAllcount  ) {
+	         next = true;
+	      }else {
+	         next = false;
+	      }
+	      
 		
 	}
 	private void calPaging() {
@@ -57,10 +61,11 @@ public class Paging {
     	}else{ 	
     		next = true;   
     	}
-    	prev = (beginPage==1)? false : true; 
+    	prev = (beginPage == 1)? false : true; 
     	startNum = (page-1)*displayRow+1;   
         endNum = page*displayRow;                  
         System.out.println(beginPage + " "  + endPage + " "  + startNum + " "  + endNum);
+        
     }
 	
 	

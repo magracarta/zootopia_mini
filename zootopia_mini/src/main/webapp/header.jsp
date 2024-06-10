@@ -51,7 +51,7 @@
 				<a href="zootopia.do?command=joinform">Join</a>
 			</c:when>
 			<c:otherwise>
-				<a href="zootopia.do?command=mypage">${loginUser.nickname}(${loginUser.userid})</a>
+				<a href="zootopia.do?command=mycontest">${loginUser.nickname}(${loginUser.userid})</a>
 				<a href="zootopia.do?command=logout">Logout</a>
 			</c:otherwise>
 		</c:choose>

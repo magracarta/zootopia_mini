@@ -2,15 +2,13 @@
 <style>
 
 .profile-container {
-	border : 1px solid black;
-    background-color: #eee;
+	
+    background-color: #f7f7f7;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 30px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
     margin: auto 0;
     margin-bottom: 20px;
     

@@ -22,6 +22,7 @@ import zootopia_mini.zootopia.controller.action.community.WriteCommunityAction;
 import zootopia_mini.zootopia.controller.action.community.WriteCommunityFormAction;
 import zootopia_mini.zootopia.controller.action.communityreply.ViewCommunityReplyAction;
 import zootopia_mini.zootopia.controller.action.communityreply.WriteCommunityReplyAction;
+import zootopia_mini.zootopia.controller.action.contest.AddReplyAction;
 import zootopia_mini.zootopia.controller.action.contest.ContestBoardAction;
 import zootopia_mini.zootopia.controller.action.contest.ContestDeleteAction;
 import zootopia_mini.zootopia.controller.action.contest.ContestDetailAction;
@@ -37,7 +38,6 @@ import zootopia_mini.zootopia.controller.action.contest.InsertContestPetAction;
 import zootopia_mini.zootopia.controller.action.contest.ReccomnadPetAction;
 import zootopia_mini.zootopia.controller.action.contest.TestProcedureAction;
 import zootopia_mini.zootopia.controller.action.contest.UpdateContestPetAction;
-import zootopia_mini.zootopia.controller.action.contest.AddReplyAction;
 import zootopia_mini.zootopia.controller.action.main.MainAction;
 import zootopia_mini.zootopia.controller.action.member.IdCheckFormAction;
 import zootopia_mini.zootopia.controller.action.member.JoinAction;
@@ -49,10 +49,10 @@ import zootopia_mini.zootopia.controller.action.member.NicknameCheckFormAction;
 import zootopia_mini.zootopia.controller.action.mypage.DeleteMemberAction;
 import zootopia_mini.zootopia.controller.action.mypage.ModifyAction;
 import zootopia_mini.zootopia.controller.action.mypage.ModifyFormAction;
+import zootopia_mini.zootopia.controller.action.mypage.MyReplyAction;
 import zootopia_mini.zootopia.controller.action.mypage.MycontestAction;
 import zootopia_mini.zootopia.controller.action.mypage.MypageAction;
 import zootopia_mini.zootopia.controller.action.mypage.MyqnaAction;
-import zootopia_mini.zootopia.controller.action.mypage.MyreplyAction;
 import zootopia_mini.zootopia.controller.action.mypage.MywriteAction;
 import zootopia_mini.zootopia.controller.action.qna.QnaDeleteAction;
 import zootopia_mini.zootopia.controller.action.qna.QnaListAction;
@@ -100,13 +100,13 @@ public class ActionFactory {
 		
 		
 		
-		// mypage
+		//mypage
 		else if(command.equals("mypage")) ac = new MypageAction();
 		else if(command.equals("modify")) ac = new ModifyAction();
 		else if(command.equals("modifyform")) ac = new ModifyFormAction();
 		else if(command.equals("mycontest")) ac = new MycontestAction();
 		else if(command.equals("mywrite")) ac = new MywriteAction();
-		else if(command.equals("myreply")) ac = new MyreplyAction();
+		else if(command.equals("myreply")) ac = new MyReplyAction();
 		else if(command.equals("myqna")) ac = new MyqnaAction();
 		else if(command.equals("deletemember")) ac = new DeleteMemberAction();
 		

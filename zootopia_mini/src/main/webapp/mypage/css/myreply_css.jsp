@@ -1,77 +1,37 @@
 <style>
 
-
-.comments-container {
-    width : 100%;
-    margin: 0 auto;
-    background-color: #F9F9F9;
-    padding: 20px;
-    
+.myreply-content {
+    background-color: #f0f0f0;
+	padding: 10px; 
+	margin-bottom: 10px;
 }
-
-h2 {
-    font-size: large;
-    margin-bottom: 50px;
+.myreply-container {display: flex; justify-content: space-between;margin: 20px;}
+.column {width: 45%;}
+.column h2 { padding-bottom: 30px; padding-top:30px; font-size: 1.2em; margin-bottom: 10px; font-weight:bold;}
+.myreplylist {
+	margin-bottom: 10px;
 }
-
-.comment-list {
-    list-style: none;
-    padding: 0;
-}
-
-.comment-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 15px 0;
-    border-bottom: 1px solid #ddd;
-}
-
-.comment-number {
+.myreplylist h3 {
+    margin: 0;
+    font-size: 1em;
     font-weight: bold;
-    margin-right: 20px;
+}
+.myreplylist p {
+    margin: 5px 0 0 0;
+    font-size: 0.9em;
 }
 
-.comment-content {
-    flex-grow: 1;
+.scroll {  height: 325px; overflow: auto; padding-right:15px; }
+.scroll::-webkit-scrollbar {
+    width: 5px;  
 }
 
-.comment-content p {
-    margin: 0 0 5px;
+.scroll::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0 , 0.5); 
+    border-radius: 10px; 
 }
 
-.comment-meta {
-    color: #888;
-    font-size: 14px;
+.scroll::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, .1);  
 }
-
-.comment-actions {
-    text-align: right;
-}
-
-.comment-actions span {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 5px;
-}
-
-.comment-actions button {
-    background-color: #000;
-    color: #fff;
-    border: none;
-    padding: 8px 12px;
-    cursor: pointer;
-}
-
-.comment-actions button:hover {
-    background-color: #333;
-}
-
-.userid{font-weight: bold;}
-
-.userid .replyDate{
-font-size: small;
-font-weight : normal;
-}
-
 </style>
