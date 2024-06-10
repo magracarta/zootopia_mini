@@ -8,9 +8,9 @@
 		<div class="view">
 			<a href="zootopia.do?command=adminmemberlist">회원 관리</a><br>
 			<span>회원정보 수정 및 추가/삭제</span><hr>
-			<a href="zootopia.do?command=adminmemberinsert">ㆍ회원 추가</a>
+			<a href="zootopia.do?command=adminmemberinsertform">ㆍ회원 추가</a>
 			<a href="zootopia.do?command=adminmemberlist">ㆍ회원 삭제</a>
-			<a href="zootopia.do?command=adminmemberlistform">ㆍ회원정보 수정</a>
+			<a href="zootopia.do?command=adminmemberlist">ㆍ회원정보 수정</a>
 		</div>
 		<div class="view">
 			<a href="zootopia.do?command=adminmemberlist">콘테스트 관리</a><br>
@@ -23,17 +23,16 @@
 	</div>
 	<div class="admin-menu-right">
 		<div class="view">
-			<a href="zootopia.do?command=adminmemberlist">커뮤니티 관리</a><br>
-			<span>게시판 수정 및 추가/삭제</span><hr>
-			<a href="#">ㆍ게시판 수정</a>
-			<a href="#">ㆍ게시판 추가</a>
-			<a href="#">ㆍ게시판 삭제</a>
+			<a href="zootopia.do?command=admincommunitylist">커뮤니티 관리</a><br>
+			<span>게시판 수정 및 삭제</span><hr>
+			<a href="zootopia.do?command=admincommunitylist">ㆍ게시판 수정</a>
+			<a href="zootopia.do?command=admincommunitylist">ㆍ게시판 삭제</a>
 		</div>
 		<div class="view">
-			<a href="zootopia.do?command=adminmemberlist">회원 관리</a><br>
+			<a href="zootopia.do?command=adminqnalist">Q&A 관리</a><br>
 			<span>Q&A 답글 작성 및 삭제</span><hr>
-			<a href="#">ㆍQ&A 답글 작성</a>
-			<a href="#">ㆍQ&A 삭제</a>
+			<a href="zootopia.do?command=adminqnalist">ㆍQ&A 답글 작성</a>
+			<a href="zootopia.do?command=adminqnalist">ㆍQ&A 삭제</a>
 		</div>
 	</div>
 </div>

@@ -10,13 +10,14 @@ public class QnaVO {
 	private String reply;
 	private String userid;
 	private Integer category;
+	private Timestamp Createdate;
+	
 	public Integer getCategory() {
 		return category;
 	}
 	public void setCategory(Integer category) {
 		this.category = category;
 	}
-	private Timestamp createdate;
 	
 	public Integer getQseq() {
 		return qseq;
@@ -48,13 +49,15 @@ public class QnaVO {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-
 	public Timestamp getCreatedate() {
-		return createdate;
+		return Createdate;
 	}
 	public void setCreatedate(Timestamp createdate) {
-		this.createdate = createdate;
+		Createdate = createdate;
 	}
+
+	
+	
 	
 	
 }

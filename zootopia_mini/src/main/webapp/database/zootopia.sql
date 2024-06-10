@@ -127,6 +127,22 @@ CREATE TABLE qnareply
 
 /* Create Foreign Keys */
 
+ALTER TABLE community
+	ADD FOREIGN KEY (userid)
+	REFERENCES member (userid)
+	ON UPDATE CASCADE
+	ON DELETE CASCADE
+;
+
+
+ALTER TABLE community_reply
+	ADD FOREIGN KEY (userid)
+	REFERENCES member (userid)
+	ON UPDATE CASCADE
+	ON DELETE CASCADE
+;
+
+
 ALTER TABLE community_reply
 	ADD FOREIGN KEY (gseq)
 	REFERENCES community (gseq)
@@ -151,20 +167,6 @@ ALTER TABLE contest_reply
 ;
 
 
-ALTER TABLE community
-	ADD FOREIGN KEY (userid)
-	REFERENCES member (userid)
-	ON UPDATE CASCADE
-	ON DELETE CASCADE
-;
-
-
-ALTER TABLE community_reply
-	ADD FOREIGN KEY (userid)
-	REFERENCES member (userid)
-	ON UPDATE CASCADE
-	ON DELETE CASCADE
-;
 
 
 ALTER TABLE contest

@@ -24,7 +24,7 @@
 <div class="header-container">
 	<div class="logo-menu">
 		<div class="logo">
-			<a href="#">Zootopia Admin</a>
+			<a href="zootopia.do?command=adminmain">Zootopia Admin</a>
 		</div>
 		<nav class="navigation">
 			<ul>

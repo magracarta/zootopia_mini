@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/admin/header.jsp" %>
 
+
+
 <article>
 	<form method="post" name="frm">
 		<div class="tb">
@@ -34,7 +36,7 @@
 					<div class="col" style="flex:2">${memberVO.email}</div>
 					<div class="col" style="flex:2"><fmt:formatDate value="${memberVO.createdate}"/></div>
 					<div class="col" style="flex:1">
-						<img src="admin/images/settings2.png" onClick="location.href='zootopia.do?command=adminmemberdetail'"/> 
+						<img src="admin/images/settings2.png" onClick="go_detail( '${memberVO.userid}')"/> 
 					</div>
 				</div>
 			</c:forEach>
@@ -42,5 +44,8 @@
 	</form>
 </article>
 
+<jsp:include page="/admin/paging/paging.jsp" flush="true">
+	<jsp:param name="url" value="zootopia.do?command=adminmemberlist" />
+</jsp:include>
 
 <%@ include file="/admin/footer.jsp" %>
