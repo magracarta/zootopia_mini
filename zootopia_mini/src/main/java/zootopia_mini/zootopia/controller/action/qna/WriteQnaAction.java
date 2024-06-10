@@ -20,6 +20,7 @@ public class WriteQnaAction implements Action {
 		qvo.setUserid( request.getParameter("userid") );
 		qvo.setSubject( request.getParameter("subject") );
 		qvo.setContent( request.getParameter("content") );
+		qvo.setCategory(Integer.parseInt(request.getParameter("category")));	
 		
 		QnaDao qdao = QnaDao.getInstance();
 		qdao.insertQna( qvo );

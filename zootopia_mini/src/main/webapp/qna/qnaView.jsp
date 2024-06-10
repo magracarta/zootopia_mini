@@ -3,13 +3,19 @@
 	<section>
 	<div class="form-container">
 			<article>
-				<form name="frm">
+				<form name="frm" >
 					<h2 style="font-size: x-large;"> Q & A </h2>
 					<div class="field" style="border-top:1px solid black;">
-						<label>카테고리</label><div>${qnaVO.category}</div>
+						<label>제목</label><div>${qnaVO.subject}</div>
 					</div>
 					<div class="field" style="border-top:1px solid black;">
-						<label>제목</label><div>${qnaVO.subject}</div>
+					<label>카테고리</label>
+					<c:choose >
+	                    <c:when test="${qnaVO.category == 1}">[콘테스트 문의]</c:when>
+	                    <c:when test="${qnaVO.category == 2}">[자유게시판 문의]</c:when>
+	                    <c:when test="${qnaVO.category == 3}">[기타 문의]</c:when>
+	                    <c:otherwise></c:otherwise>
+	                </c:choose>
 					</div>
 					<div class="field" style="border-top:1px solid black;">
 						<label>작성자</label><div>${qnaVO.userid}</div>
@@ -28,13 +34,13 @@
 					</div>
 			
            			<div class="btn">
-                    <button type="button" onclick="location.href='zootopia.do?command=qnaList'">목록으로</button>
+                    <button type="button" onclick="location.href='zootopia.do?command=qnaList'">Q&A 목록</button>
                     
                     <c:if test="${loginUser.userid == qnaVO.userid}">
 	                    <button type="button" onclick="deletePost(${qnaVO.qseq})">삭제</button>
                     </c:if>
                     
-                    <button type="button" onclick="location.href='zootopia.do?command=myqna'">Q&A 목록</button>
+                    <button type="button" onclick="location.href='zootopia.do?command=myqna'">내 Q&A 목록</button>
                     
                 </div>
             
