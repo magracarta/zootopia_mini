@@ -29,7 +29,7 @@
 	</div>
 	
 	<style>
-		.pagenation-container { display:flex; align-items: center; justify-content: center; }
+		.pagenation-container { display:flex; align-items: center; justify-content: center; padding-bottom: 60px; padding-top:30px; }
 		.pagenation-container .nextBtn,
 		.pagenation-container .prevBtn { width:9px; position:relative; top:3px; margin:0 10px; }
 		.pagenation-container .prevBtn img { transform: rotate(-180deg); }

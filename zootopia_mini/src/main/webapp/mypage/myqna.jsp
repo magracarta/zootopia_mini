@@ -7,7 +7,7 @@
 <section>
     <article>
         <form>
-            <ul class="qna-header">Q&A</ul>
+            <ul class="qna-header">Q&A (${allcnt}) </ul>
             <div class="tb">
                 <div class="row">
                     <div class="coltitle">번호</div>
@@ -18,7 +18,7 @@
                     <div class="coltitle">답변여부</div>
                 </div>
                 <c:forEach items="${qnaList}" var="qnaVO">
-                        <div class="row">
+                        <div class="low">
                             <div class="coltitle">${qnaVO.qseq}</div>
                             <div class="coltitle">
 		                    <c:choose >

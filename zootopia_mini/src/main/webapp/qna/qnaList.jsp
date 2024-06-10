@@ -18,7 +18,7 @@
                 </div>
                 <c:if test="${not empty qnaList}">
                     <c:forEach items="${qnaList}" var="qnaVO">
-                        <div class="row">
+                        <div class="low">
                             <div class="coltitle">${qnaVO.qseq}</div>
                             <div class="coltitle">
 		                    <c:choose >

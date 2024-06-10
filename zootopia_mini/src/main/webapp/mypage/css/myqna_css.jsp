@@ -4,13 +4,6 @@
         width: 100%;
         margin-top: 20px;
    }
-    .row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 0;
-        border-bottom: 1px solid #ccc;
-    }
         .pagination {
         display: flex;
         justify-content: center;
@@ -34,9 +27,35 @@
     text-align: center;
     }
     .qna-header {
-        text-align:center;
-        
+    	margin-top:30px;
+    	margin-bottom:30px;
+        margin-left:80px;
+        font-size: large;
+        font-weight:bold;
     }
-    
+    .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        border-bottom: 1px solid #ccc;
+        background-color: #f7f7f7;
+        font-weight:bold;
+    }
+    .low{
+    	display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        border-bottom: 1px solid #ccc;
+    }
+    .tb .low {
+    display: flex;
+    align-items: center;
+    }
+    .tb .low >div {
+    flex: 1; 
+    text-align: center;
+    }
     
 </style>
