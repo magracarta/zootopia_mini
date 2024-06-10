@@ -17,13 +17,10 @@ public class UpdateCommunityReplyAction implements Action {
         int gseq = Integer.parseInt(request.getParameter("gseq")); 
         String content = request.getParameter("content"); 
 
-        // DAO instance
         CommunityReplyDao crdao = CommunityReplyDao.getInstance();
 
-        // Update the reply
         crdao.updateCommunityReply(grseq, content);
 
-        // Redirect to the community detail page
         response.sendRedirect("zootopia.do?command=communityDetail&gseq=" + gseq );
     }
 }
