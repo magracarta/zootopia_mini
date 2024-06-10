@@ -34,13 +34,13 @@
 					</div>
 			
            			<div class="btn">
-                    <button type="button" onclick="location.href='zootopia.do?command=qnaList'">목록으로</button>
+                    <button type="button" onclick="location.href='zootopia.do?command=qnaList'">Q&A 목록</button>
                     
                     <c:if test="${loginUser.userid == qnaVO.userid}">
 	                    <button type="button" onclick="deletePost(${qnaVO.qseq})">삭제</button>
                     </c:if>
                     
-                    <button type="button" onclick="location.href='zootopia.do?command=myqna'">Q&A 목록</button>
+                    <button type="button" onclick="location.href='zootopia.do?command=myqna'">내 Q&A 목록</button>
                     
                 </div>
             

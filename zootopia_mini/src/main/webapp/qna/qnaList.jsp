@@ -46,7 +46,7 @@
                 <div class="pagination">
                 </div>
                 <div class="btn-container" style="text-align: right;">
-                    <input type="button" value="질문하기" onClick="location.href='zootopia.do?command=writeQnaForm'" style="height:40px;"/>
+                    <input type="button" value="질문하기" onClick="location.href='zootopia.do?command=writeQnaForm'" style="height:40px; font-weight:bold;"/>
                 </div>
             </div>
         </form>
