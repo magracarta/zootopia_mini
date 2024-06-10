@@ -45,7 +45,7 @@ public class MyReplyAction implements Action {
             request.getRequestDispatcher("mypage/myreply.jsp").forward(request, response);
         }
 		
-		
+
 	}
 
 }

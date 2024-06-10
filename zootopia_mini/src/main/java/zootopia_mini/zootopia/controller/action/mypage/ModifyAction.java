@@ -83,7 +83,7 @@ public class ModifyAction implements Action {
 			        session.setAttribute("loginUser", mvo1);
 
 			        // 마이페이지로 리디렉션
-			        response.sendRedirect("zootopia.do?command=mypage");
+			        response.sendRedirect("zootopia.do?command=mycontest");
 			        
 				}
 				
