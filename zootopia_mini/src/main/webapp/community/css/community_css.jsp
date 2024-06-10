@@ -111,6 +111,17 @@ padding: 1%;
 .header .namerecomreply {
     display: flex;
 }
+.header .namerecomreply .image_box{
+width:50px; 
+height:50px; 
+overflow: hidden; 
+border-radius: 50%; 
+}
+.header .namerecomreply .image_box img {
+ width:100%; 
+ height:100%; 
+ object-fit: cover; 
+ }
 
 .header .namerecomreply .nickname {
 padding: 1%;
@@ -133,20 +144,20 @@ padding: 1%;
 }
 
 .detailcontainer input[type="button"] {
-    background-color: lightgray; /* 버튼 배경색 */
-    color: black; /* 버튼 텍스트 색상 */
-    border: none; /* 테두리 없애기 */
-    padding: 10px 20px; /* 패딩값 */
-    text-align: center; /* 텍스트 가운데 정렬 */
-    text-decoration: none; /* 밑줄 없애기 */
+    background-color: lightgray;
+    color: black;
+    border: none;
+    padding: 10px 20px; 
+    text-align: center; 
+    text-decoration: none;
     display: inline-block;
     font-size: 16px;
 }
 
 .button_container {
   display: flex;
-  justify-content: space-around; /* 버튼 가운데 정렬 */
-  margin-top: 10px; /* 버튼과 게시물 간격 조정 */
+  justify-content: space-around; 
+  margin-top: 10px;
 }
 
 .button_container .button1,
@@ -158,11 +169,11 @@ padding: 1%;
   color: #fff;
 }
 .button_container .button1 {
-  background-color: black !important; /* 버튼 1 배경색 */
+  background-color: black !important; 
 }
 
 .button_container .button2 {
-  background-color: lightgray; /* 버튼 2 배경색 */
+  background-color: lightgray;
   color:black;
 }
 
@@ -178,6 +189,10 @@ font-size: large;
 padding-top: 20px; 
 padding-left: 20px;
 }
+
+.comment { margin-top:100px }
+.reply > h2 { font-size:30px; font-weight:700; color:#000; margin-bottom:30px; }
+.reply .submit_reply {  }
 
 .commenth2{
 
@@ -203,16 +218,24 @@ padding: 3px 5px;
 
 }
 
-.comment-list .commentbox{
-    border: 1px solid black;
-    padding-top: 5px;
-    /* padding: 5px; */
-    margin-top: 10px;
+.commentslist ul li {  padding:40px 0; border-top:1px solid #E3E3E3;  }
+
+.commentslist ul li .replyUpdateForm { margin-top:30px; }
+.commentslist ul li .replyUpdateForm textarea { height: 60px; border:1px solid #D9D9D9; }
+.commentslist ul li .replyUpdateForm .button_box { display:flex; justify-content: flex-end;
+align-items: center; margin-top:20px;}
+
+.commentslist  .replyUpdateForm .image_box{
+width:50px; 
+height:50px; 
+overflow: hidden; 
+border-radius: 50%; 
 }
-
-
-
-
+.commentslist  .replyUpdateForm .image_box img {
+ width:100%; 
+ height:100%; 
+ object-fit: cover; 
+ }
 
 
 

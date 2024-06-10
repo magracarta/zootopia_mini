@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+
+import zootopia_mini.zootopia.controller.dto.CommunityReplyDTO;
 import zootopia_mini.zootopia.controller.dto.CommunityVO;
 import zootopia_mini.zootopia.util.DB;
 import zootopia_mini.zootopia.util.Paging;
@@ -96,6 +98,7 @@ public class CommunityDao {
                 cvo.setKind(rs.getInt("kind"));
                 cvo.setCreatedate(rs.getTimestamp("createdate"));
                 cvo.setNickname(rs.getString("nickname")); 
+                cvo.setSaveImage(getSaveImage(cvo.getUserid())); 
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -238,15 +241,15 @@ public class CommunityDao {
 
 	            while (rs.next()) {
 	                CommunityVO cvo = new CommunityVO();
-	                cvo.setGseq(rs.getInt("gseq")); // gseq 컬럼 값 설정
-	                cvo.setSubject(rs.getString("subject")); // subject 컬럼 값 설정
-	                cvo.setContent(rs.getString("content")); // content 컬럼 값 설정
-	                cvo.setUserid(rs.getString("userid")); // userid 컬럼 값 설정
-	                cvo.setRecommands(rs.getInt("recommands")); // recommands 컬럼 값 설정
-	                cvo.setKind(rs.getInt("kind")); // kind 컬럼 값 설정
-	                cvo.setNicknameFromView(rs.getString("nickname")); // nickname 컬럼 값 설정
-	                cvo.setNickname(rs.getString("nickname")); // nickname 컬럼 값 설정
-	                cvo.setCreatedate(rs.getTimestamp("createdate")); // createdate 컬럼 값 설정
+	                cvo.setGseq(rs.getInt("gseq")); 
+	                cvo.setSubject(rs.getString("subject"));
+	                cvo.setContent(rs.getString("content")); 
+	                cvo.setUserid(rs.getString("userid")); 
+	                cvo.setRecommands(rs.getInt("recommands"));
+	                cvo.setKind(rs.getInt("kind"));
+	                cvo.setNicknameFromView(rs.getString("nickname"));
+	                cvo.setNickname(rs.getString("nickname")); 
+	                cvo.setCreatedate(rs.getTimestamp("createdate"));
 	                list.add(cvo);
 	            }
 	        } catch (SQLException e) {
@@ -257,6 +260,29 @@ public class CommunityDao {
 
 	        return list;
 	    }
-	
+
+	  public String getSaveImage(String userid) {
+	        String saveImage = null;
+	        Connection con = null;
+	        PreparedStatement pstmt = null;
+	        ResultSet rs = null;
+
+	        try {
+	            con = DB.getConnection();
+	            String sql = "select saveimage from member where userid = ?";
+	            pstmt = con.prepareStatement(sql);
+	            pstmt.setString(1, userid);
+	            rs = pstmt.executeQuery();
+	            if (rs.next()) {
+	                saveImage = rs.getString("saveimage");
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        } finally {
+	            DB.close(con, pstmt, rs);
+	        }
+
+	        return saveImage;
+	    }
 	
 }

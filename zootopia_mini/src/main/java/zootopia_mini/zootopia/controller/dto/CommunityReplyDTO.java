@@ -9,6 +9,7 @@ public class CommunityReplyDTO {
 	private String content;
 	private Timestamp createdate;
 	private String nickname;
+	private String saveImage;
 	
 	public String getNickname() {
 		return nickname;
@@ -45,6 +46,12 @@ public class CommunityReplyDTO {
 	}
 	public void setCreatedate(Timestamp createdate) {
 		this.createdate = createdate;
+	}
+	public String getSaveImage() {
+		return saveImage;
+	}
+	public void setSaveImage(String saveImage) {
+		this.saveImage = saveImage;
 	}
 	
 }

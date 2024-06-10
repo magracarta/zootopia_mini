@@ -37,19 +37,7 @@ public class CommunityReplyDao {
 		
 	}
 
-	/*
-	 * public ArrayList<CommunityReplyDTO> getCommunityReplies(int gseq) {
-	 * ArrayList<CommunityReplyDTO> replies = new ArrayList<>(); String sql =
-	 * "SELECT * FROM community_reply WHERE gseq = ? ORDER BY createdate DESC"; con
-	 * = DB.getConnection(); try { pstmt = con.prepareStatement(sql);
-	 * pstmt.setInt(1, gseq); rs = pstmt.executeQuery(); while (rs.next()) {
-	 * CommunityReplyDTO reply = new CommunityReplyDTO();
-	 * reply.setUserid(rs.getString("Userid")); reply.setGseq(rs.getInt("gseq"));
-	 * reply.setGrseq(rs.getInt("grseq"));
-	 * reply.setContent(rs.getString("content")); replies.add(reply); } } catch
-	 * (SQLException e) { e.printStackTrace(); } finally { DB.close(con, pstmt, rs);
-	 * } return replies; }
-	 */
+
 	
 	public ArrayList<CommunityReplyDTO> getCommunityReplies(int grseq) {
         ArrayList<CommunityReplyDTO> list = new ArrayList<>();
@@ -68,17 +56,18 @@ public class CommunityReplyDao {
             // 결과 집합에서 각 레코드를 반복하여 CommunityReplyDTO 객체를 생성하고 목록에 추가합니다.
             while (rs.next()) {
                 CommunityReplyDTO crdto = new CommunityReplyDTO();
-                crdto.setGrseq(rs.getInt("grseq")); // grseq 설정
-                crdto.setGseq(rs.getInt("gseq")); // gseq 설정
-                crdto.setUserid(rs.getString("userid")); // 사용자 ID 설정
-                crdto.setContent(rs.getString("content")); // 내용 설정
-                crdto.setNickname(rs.getString("nickname")); // 닉네임 추가
-                list.add(crdto); // 목록에 추가
+                crdto.setGrseq(rs.getInt("grseq"));
+                crdto.setGseq(rs.getInt("gseq"));
+                crdto.setUserid(rs.getString("userid"));
+                crdto.setContent(rs.getString("content"));
+                crdto.setNickname(rs.getString("nickname"));
+                crdto.setSaveImage(crdaogetSaveImage(crdto));
+                list.add(crdto);
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // SQL 예외 처리
+            e.printStackTrace(); 
         } finally {
-            DB.close(con, pstmt, rs); // 데이터베이스 연결을 닫습니다.
+            DB.close(con, pstmt, rs);
         }
 
         return list; // 결과 목록 반환
@@ -101,5 +90,48 @@ public class CommunityReplyDao {
 	    }
 	}
 
+
+
+    public String crdaogetSaveImage(CommunityReplyDTO reply) {
+        String saveImage = null;
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        
+        try {
+            con = DB.getConnection();
+            String sql = "select saveimage from member where userid = ?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, reply.getUserid());
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                saveImage = rs.getString("saveimage");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DB.close(con, pstmt, rs);
+        }
+
+        return saveImage;
+    }
+
+
+
+    public void updateCommunityReply(int grseq, String content) {
+    	con = DB.getConnection();
+    	String sql = "update community_reply set content = ? where grseq = ?";
+        try {
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, content);
+            System.out.println("contet:" +content);
+            pstmt.setInt(2, grseq);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DB.close(con, pstmt, rs);
+        }
+    }
 	
 }
