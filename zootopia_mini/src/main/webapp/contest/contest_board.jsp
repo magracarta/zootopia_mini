@@ -150,7 +150,7 @@ document.querySelector("."+category).classList.add("select");
    
    
 
- let begin = ${allcnt - (paging.recordrow*(paging.currentPage-1))-1} +1;
+ let begin =  ${allcnt - (paging.recordrow*(paging.currentPage-1))-1} +1;
  
  document.querySelectorAll(".contest_list li").forEach((elem,index)=>{
 	 	let indexdate = begin - index;

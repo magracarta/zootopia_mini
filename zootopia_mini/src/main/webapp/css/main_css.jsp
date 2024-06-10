@@ -40,7 +40,7 @@ font-weight: 700; }
   
 .communityboard   {  }
 .communityboard ul   {  }
-.communityboard ul li   { padding: 20px 20px; border-bottom: 1px solid #ddd; }
+.communityboard ul li   { padding: 25px 20px; border-bottom: 1px solid #ddd; }
 .communityboard ul li.board_head   { display: flex; justify-content: space-between; font-weight:800; background: #f7f7f7; }
 .communityboard ul li a   { display: flex; justify-content: space-between; }
 .communityboard ul li .num   { width: 5%; }
