@@ -6,9 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
 import zootopia_mini.zootopia.controller.dto.AdminVO;
 import zootopia_mini.zootopia.controller.dto.CommunityVO;
 import zootopia_mini.zootopia.controller.dto.MemberVO;
+import zootopia_mini.zootopia.controller.dto.QnaVO;
 import zootopia_mini.zootopia.util.DB;
 import zootopia_mini.zootopia.util.Paging;
 
@@ -79,8 +81,8 @@ public class AdminDao {
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, key);
-			pstmt.setInt(2, paging.getDisplayRow());
-			pstmt.setInt(3, paging.getStartNum()-1);
+            pstmt.setInt(2, paging.getRecordrow());
+            pstmt.setInt(3, paging.getOffsetnum());
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				MemberVO mvo = new MemberVO();
@@ -111,7 +113,7 @@ public class AdminDao {
 		return list;
 	}
 
-	public void updateProduct(MemberVO mvo) {
+	public void updateMember(MemberVO mvo) {
 		
 		String sql = "update member set nickname=?, pwd=?, name=?,  phone=?, "
 				+ " email=?, image=?, saveimage=?, kind=?, petname=?, petgender=? where userid=?";
@@ -203,28 +205,76 @@ public class AdminDao {
 		
 	}
 
+	public ArrayList<QnaVO> adminQnaList(Paging paging, String key) {
+
+		ArrayList<QnaVO> list = new ArrayList<QnaVO>();
+		con = DB.getConnection();
+		String sql = "select * from qnareply "
+				+ " where subject like concat('%', ?, '%') "
+				+ " order by qseq desc "
+				+ " limit ? offset ?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, key);
+			pstmt.setInt(2, paging.getRecordrow());
+            pstmt.setInt(3, paging.getOffsetnum());
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				QnaVO qvo = new QnaVO();
+				qvo.setQseq(rs.getInt("qseq"));
+				qvo.setCategory(rs.getInt("category"));
+				qvo.setSubject(rs.getString("subject"));
+				qvo.setContent(rs.getString("content"));
+				qvo.setUserid(rs.getString("userid"));
+				qvo.setCreatedate(rs.getTimestamp("createdate"));
+				qvo.setReply(rs.getString("reply"));
+				list.add(qvo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+		return list;
+		
+	}
+
+	public void qnaReplyUpdate(int qseq, String reply) {
+
+		con = DB.getConnection();
+		String sql = "update qnareply set reply=? where qseq=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, reply);
+			pstmt.setInt(2, qseq);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+	}
+
+	public void deleteQna(String qseq) {
+
+		con = DB.getConnection();
+		String sql = "delete from qnareply where qseq=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, qseq);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+	}
+
 	
-	public String getAdminIdByName(String name) {
-        Connection con = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-        String adminId = null;
-        try {
-            con = DB.getConnection();
-            String sql = "SELECT adminid FROM admin WHERE username = ?";
-            pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, name);
-            rs = pstmt.executeQuery();
-            if (rs.next()) {
-                adminId = rs.getString("adminid");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            DB.close(con, pstmt, rs);
-        }
-        return adminId;
-    }
+	
 	
 
 	

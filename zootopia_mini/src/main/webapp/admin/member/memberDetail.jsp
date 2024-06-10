@@ -2,8 +2,8 @@
 <%@ include file="/admin/header.jsp"%>
 
 
-<div class="container-update">
-	<h1 class="title-update">회원 정보 수정</h1>
+<div class="container-detail">
+	<h1 class="title-detail">회원 정보 수정</h1>
     	<form method="post" class="update-form"  action="zootopia.do?command=adminmemberupdate" name="modifyForm" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="username">아이디</label>
@@ -11,11 +11,11 @@
             </div>
             <div class="form-group">
                 <label for="password">비밀번호</label>
-                <input type="password" id="pwd" class="form-control" value="${memberVO.pwd}" name="pwd">
+                <input type="password" style="border:2px solid #ddd;" id="pwd" class="form-control" value="${memberVO.pwd}" name="pwd">
             </div>
             <div class="form-group">
                 <label for="confirm-pwd">비밀번호 확인</label>
-                <input type="password" id="confirm-pwd" class="form-control" name="pwd_check">
+                <input type="password" style="border:2px solid #ddd;">
                 	 <p id="error-text" class="error-text" style="display: none;">비밀번호가 일치하지 않습니다.</p>
             </div>
             <div class="form-group">
@@ -68,38 +68,33 @@
                 	</c:choose>
                 </select>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="display:flex; flex-direction:column;">
         		<label for="pet-photo">사진</label>
-        			<c:if test="${memberVO.saveimage == null}">
-           	 			<img id="preview" src="images/repl-noimg.png" width="100px"/>
-        			</c:if>
-	       			<c:if test="${memberVO.saveimage != null}">
-	            		<img id="preview" src="images/${memberVO.image}" width="100px"/>
-		    		</c:if>
-	       		<input type="file" name="imagefile" id="pet-photo" class="form-control" >
+        			<c:choose>
+						<c:when test="${empty photoview.saveimage}">
+							<img style="width:300px; height:200px;" id="preview" src="images/E2E2E2.png" width="100px;" />
+						</c:when>
+						<c:otherwise>						
+							<img style="width:300px; height:200px;" id="preview" src="images/${photoview.saveimage}" width="100px;" />
+						</c:otherwise>
+					</c:choose>
+	       		<input type="file" id="photoinput" name="image" onClick="show_preview()"/>
+	       		<label for="photoinput"  style="margin-top:15px;"class="custom_photo_upload">이미지 등록</label>
+      			<span id="fileName" class="file_name"></span>
 	    	</div>
-            <div class="btn">
-            	<input type="submit" value="회원정보수정" onclick="return go_updateMember()">
-            </div>
-            <div class="btn">
-            	<input type="button" value="회원 삭제하기" onclick="location.href='zootopia.do?command=adminmemberdelete&userid=${memberVO.userid}'">
-            </div>
+	        <div class="btn" style="display:flex; justify-content:center; align-items:center;">
+	           	<input type="submit" style="background:white; color:black; margin-top:50px; width:100px" value="수정" onclick="return go_updateMember()">
+	        </div>
+	        <div class="btn" style="display:flex; justify-content:center; align-items:center;">
+	            <input type="button" style="float:left; width:100px;"value="삭제" onclick="location.href='zootopia.do?command=adminmemberdelete&userid=${memberVO.userid}'">
+	        </div>
+	        
         </form>
     </div>
     
 <script>
 
-document.getElementById('pet-photo').addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.onload = function(e) {
-        const preview = document.getElementById('preview');
-        preview.src = e.target.result;
-    }
-    if (file) {
-        reader.readAsDataURL(file);
-    }
-});
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const pwd = document.getElementById('pwd');

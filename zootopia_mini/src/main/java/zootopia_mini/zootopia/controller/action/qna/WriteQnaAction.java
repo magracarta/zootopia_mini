@@ -16,6 +16,7 @@ public class WriteQnaAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		QnaVO qvo = new QnaVO();
+		qvo.setCategory( Integer.parseInt(request.getParameter("category")) );
 		qvo.setUserid( request.getParameter("userid") );
 		qvo.setSubject( request.getParameter("subject") );
 		qvo.setContent( request.getParameter("content") );

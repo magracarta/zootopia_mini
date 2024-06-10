@@ -8,8 +8,6 @@ import zootopia_mini.zootopia.controller.action.admin.AdminCommunityDetailAction
 import zootopia_mini.zootopia.controller.action.admin.AdminCommunityListAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminCommunityUpdateAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminCommunityUpdateFormAction;
-import zootopia_mini.zootopia.controller.action.admin.AdminCommunityWriteAction;
-import zootopia_mini.zootopia.controller.action.admin.AdminCommunityWriteFormAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminLoginAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminLogout;
 import zootopia_mini.zootopia.controller.action.admin.AdminMainAction;
@@ -19,6 +17,10 @@ import zootopia_mini.zootopia.controller.action.admin.AdminMemberInsertAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminMemberInsertFormAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminMemberListAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminMemberUpdateAction;
+import zootopia_mini.zootopia.controller.action.admin.AdminQnaDeleteAction;
+import zootopia_mini.zootopia.controller.action.admin.AdminQnaDetailAction;
+import zootopia_mini.zootopia.controller.action.admin.AdminQnaListAction;
+import zootopia_mini.zootopia.controller.action.admin.AdminQnaReplyUpdateAction;
 import zootopia_mini.zootopia.controller.action.community.CommunityBoardAction;
 import zootopia_mini.zootopia.controller.action.community.CommunityDeleteAction;
 import zootopia_mini.zootopia.controller.action.community.CommunityDetailAction;
@@ -161,8 +163,11 @@ public class ActionFactory {
 		else if(command.equals("admincommunityupdateform")) ac = new AdminCommunityUpdateFormAction();
 		else if(command.equals("admincommunityupdate")) ac = new AdminCommunityUpdateAction();
 		else if(command.equals("admincommunitydelete")) ac = new AdminCommunityDeleteAction();
-		else if(command.equals("admincommunitywriteform")) ac = new AdminCommunityWriteFormAction();
-		else if(command.equals("admincommunitywrite")) ac = new AdminCommunityWriteAction();
+		else if(command.equals("adminqnalist")) ac = new AdminQnaListAction();
+		else if(command.equals("adminqnadetail")) ac = new AdminQnaDetailAction();
+		else if(command.equals("adminqnareplyupdate")) ac = new AdminQnaReplyUpdateAction();
+		else if(command.equals("adminqnadelete")) ac = new AdminQnaDeleteAction();
+		
 		 		
 		return ac;
 	}

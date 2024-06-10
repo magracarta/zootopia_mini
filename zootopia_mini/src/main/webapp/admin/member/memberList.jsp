@@ -44,5 +44,8 @@
 	</form>
 </article>
 
+<jsp:include page="/admin/paging/paging.jsp" flush="true">
+	<jsp:param name="url" value="zootopia.do?command=adminmemberlist" />
+</jsp:include>
 
 <%@ include file="/admin/footer.jsp" %>

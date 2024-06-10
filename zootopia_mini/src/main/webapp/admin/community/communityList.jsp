@@ -7,7 +7,6 @@
 <div class="comlist">
 	<div class="head" style="margin-bottom:50px;">
 	  <h1 class="title" style="font-size:32px;">커뮤니티 관리</h1>
-	  <button class="write" onclick="location.href='zootopia.do?command=admincommunitywriteform'">글 작성하기</button>
   	</div>
   <div class="communityboard">
     <ul>
@@ -21,7 +20,7 @@
       </li>
 
       <!-- 검색 결과가 있을 경우 해당 블록 표시 -->
-      <c:forEach var="post" items="${subjectList}">
+<c:forEach var="post" items="${subjectList}">
     <li>
         <a class="" href="javascript:void(0);" onclick="increaseViewCountAndRedirect(${post.gseq})">
             <span class="num">no.${post.gseq}</span>   

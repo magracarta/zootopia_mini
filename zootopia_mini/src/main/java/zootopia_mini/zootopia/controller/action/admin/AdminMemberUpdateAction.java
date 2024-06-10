@@ -62,7 +62,7 @@ public class AdminMemberUpdateAction implements Action {
 			}
 		}
 		AdminDao adao = AdminDao.getInstance();
-		adao.updateProduct(mvo);
+		adao.updateMember(mvo);
 		response.sendRedirect("zootopia.do?command=adminmemberlist&userid=" + mvo.getUserid());
 		
 	}

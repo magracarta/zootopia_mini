@@ -303,7 +303,7 @@ public class CommunityDao {
 
 	public void admininsertCommunity(CommunityVO cvo, HttpServletRequest request) {
 
-		String sql = "INSERT INTO community (subject, content, kind, userid) VALUES (?, ?, ?, ?)";
+		String sql = "INSERT INTO community (subject, content, kind, adminid) VALUES (?, ?, ?, ?)";
 		
 
         try {
