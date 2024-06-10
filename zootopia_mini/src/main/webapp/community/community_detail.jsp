@@ -19,6 +19,11 @@
 	                ${communityVO.subject}
 	                </div>
 	                <div class="namerecomreply">
+	                	<c:if test="${not empty communityVO.saveImage}">
+                    		<div class="image_box">           
+                        		<img src="images/${communityVO.saveImage}">
+                  		 	</div>
+               			</c:if>
 	                	<ul class="nickname">${communityVO.nickname}[${communityVO.userid}]</ul>
 	                	<li class="recommands">추천 수[${communityVO.recommands}]<button class="recommendButton">추천</button>
 			                <div class="content" >
@@ -32,7 +37,7 @@
 			<div class="buttondiv">
 				<c:if test="${not empty loginUser.userid}">
 		  		  <c:choose>
-		  	     	 <c:when test="${communityVO.userid eq loginUser.userid}">
+		  	     	 <c:when test="${communityVO.userid == loginUser.userid}">
 		          		  <div class="button_container">
 			                <input class="button1" type="button" value="수정" onclick="location.href='zootopia.do?command=communityUpdateForm&gseq=${communityVO.gseq}'">    
 			                <input class="button2" type="button" value="삭제" onclick="deleteCommunity('${communityVO.gseq}')">
@@ -49,8 +54,46 @@
 			</div>
         </div>
 		
-			
+  <div class="comment-section">
+        <h2 class="comment2">댓글 작성</h2>
+        <form class="commentwrite" action="zootopia.do?command=writeCommunityReply" method="post">
+            <textarea class="write" name="content" required></textarea>
+            <input type="hidden" name="gseq" value="${communityVO.gseq}">
+            <button class="submit" type="submit">작성하기</button>
+        </form>
 
+        <h2>댓글 목록</h2>
+        <div class="commentslist">
+            <ul>
+                <c:forEach var="reply" items="${communityReplies}">
+                <li>
+                    <div class="comment-content">
+                        <p>${reply.content}</p>
+                    </div>
+                    <div class="comment-meta">
+                        <c:if test="${not empty reply.saveImage}">
+                            <div class="image_box">           
+                                <img src="images/${reply.saveImage}" alt="User Image">
+                            </div>
+                        </c:if>
+                        <span>작성자: ${reply.nickname}[${reply.userid}]</span>
+                    </div>
+                        <c:if test="${loginUser.userid == reply.userid}">         
+                    	<h2>수정칸</h2>
+                            <form action="zootopia.do?command=updateCommunityReply" method="post">
+                                <input type="hidden" name="grseq" value="${reply.grseq}">
+                                <input type="hidden" name="gseq" value="${communityVO.gseq}">
+                                <textarea name="content" id="edit-content-${reply.grseq}"></textarea>
+                                <input class="fin" type="submit" value="수정 완료">
+                            	<input class="delete" type="button" value="삭제" onclick="deleteCommunityReply('${reply.grseq}', '${communityVO.gseq}')">
+                            </form>       
+                        </c:if>
+                </li>
+                </c:forEach>
+            </ul>
+        </div>
+    </div>
+    
 </section>
 
 <%@ include file="/community/css/community_css.jsp" %>

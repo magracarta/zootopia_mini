@@ -17,13 +17,7 @@ public class CommunityBoardAction implements Action {
 	@Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        MemberVO mvo = (MemberVO) session.getAttribute("loginUser");
-       
         
-        
-        if (mvo == null) {
-            response.sendRedirect("zootopia.do?command=loginform");
-        } else {
             CommunityDao cdao = CommunityDao.getInstance();
         
             ArrayList<CommunityVO> list;
@@ -42,7 +36,6 @@ public class CommunityBoardAction implements Action {
             paging.setPagecnt(10);
             paging.setRecordrow(10);
 
-            // 전체 게시글 수 조회
             int count = cdao.getAllCount();
             paging.setRecordAllcount(count);
 
@@ -54,7 +47,16 @@ public class CommunityBoardAction implements Action {
 
             request.setAttribute("paging", paging);
             request.setAttribute("commList", list);
+            
+            
+            String kindParam = request.getParameter("kind");
+            int kind = -1;
+            if (kindParam != null) {
+                kind = Integer.parseInt(kindParam);
+            }
+            request.setAttribute("kind", kind);
+
             request.getRequestDispatcher("community/community_board.jsp").forward(request, response);
         }
-    }
+            
 }

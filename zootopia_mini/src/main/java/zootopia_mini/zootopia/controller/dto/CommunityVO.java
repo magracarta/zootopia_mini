@@ -12,9 +12,10 @@ public class CommunityVO {
 	   private int kind;
 	   private Timestamp createdate;
 	   private String nickname;
-	   private String adminid;
+	   private String saveImage;
 	   
-	   public int getGseq() {
+	
+	public int getGseq() {
 	      return gseq;
 	   }
 	   public void setGseq(int gseq) {
@@ -75,11 +76,12 @@ public class CommunityVO {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	public String getAdminid() {
-		return adminid;
+	public String getSaveImage() {
+		return saveImage;
 	}
-	public void setAdminid(String adminid) {
-		this.adminid = adminid;
+	public void setSaveImage(String saveImage) {
+		this.saveImage = saveImage;
 	}
+
 	   
 }

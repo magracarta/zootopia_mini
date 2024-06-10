@@ -152,7 +152,7 @@
 									<img src="images/repl-noimg.png">
 								</c:if>
 								
-							</div>
+								
 							<div class="text-box">
 								<span>@ ${replylist.mvo.nickname }</span>
 								<pre>${replylist.content }</pre>
