@@ -71,8 +71,11 @@ public class ContestDao {
 		}else if(category.equals("all")) {
 			useyn = "  ";
 			
+		}else if(category.equals("playing")) {
+			useyn = "and now() < lastdate  and useyn ='Y' ";
+			
 		}else if(category.equals("accomplished")) {
-			useyn = " and now() > lastdate ";
+			useyn = " and now() > lastdate and useyn ='Y'";
 		}
 		String sql = "select * from contestpet_view  where subject like concat('%',?,'%')"
 				+ useyn
@@ -139,11 +142,14 @@ public class ContestDao {
 		}else if(category.equals("all")) {
 			useyn = "  ";
 			
+		}else if(category.equals("playing")) {
+			useyn = "and now() < lastdate  and useyn ='Y' ";
+			
 		}else if(category.equals("accomplished")) {
-			useyn = " and now() > lastdate ";
+			useyn = " and now() > lastdate and useyn ='Y'";
 		}
 		con = DB.getConnection();
-		String sql = "select count(*) as cnt from "+table+ " where subject like concat('%',?,'%') "
+		String sql = "select count(*) as cnt from "+table+ " where subject like concat('%',?,'%') and useyn !='N' "
 				+ useyn;
 		
 		try {
@@ -538,7 +544,7 @@ public class ContestDao {
 		ArrayList<ContestDTO> lsit = new ArrayList<ContestDTO>();
 		con = DB.getConnection();
 		String sql =  "select * from contestpet_view where lastdate > now() "
-				+ "and createdate > DATE_SUB(NOW(), INTERVAL 7 DAY) and  useyn = 'Y' order by cnt desc limit 3;";
+				+ "and lastdate > now() and  useyn = 'Y' order by cnt desc limit 3;";
 		
 		try {
 			pstmt = con.prepareStatement(sql);

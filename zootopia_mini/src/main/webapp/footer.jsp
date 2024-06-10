@@ -7,7 +7,7 @@
 	<div class="wrapper">
 		<div class="left">
 			<div class="logo-wrapper">
-				<a href="zootopia.do?command=main">Zootopia</a>
+				<a href="zootopia.do?command=main"><img src="images/logo.svg"></a>
 				<p>대한민국 최고의 반려동물 커뮤니티</p>
 			</div>
 			<div class="admin-info">

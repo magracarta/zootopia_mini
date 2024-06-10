@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import zootopia_mini.zootopia.controller.action.Action;
+import zootopia_mini.zootopia.controller.dao.AdminContestDao;
 import zootopia_mini.zootopia.controller.dao.ContestDao;
 import zootopia_mini.zootopia.controller.dto.ContestDTO;
 import zootopia_mini.zootopia.util.Paging;
@@ -53,6 +54,15 @@ public class ContestBoardAction implements Action {
         Timestamp timestamp = new Timestamp(date.getTime());
         for(ContestDTO cdto : list ) cdto.setCpdList(cdao.getCpdList(cdto.getCseq()));
         
+
+		AdminContestDao acdao = AdminContestDao.getInstance();
+        ContestAdminEnum all = ContestAdminEnum.CONESTVIEW;
+
+		request.setAttribute("realallcount", acdao.mysqlAllcount(all.getAllcount("", "and useyn != 'N' ")));
+		request.setAttribute("playingcount", acdao.mysqlAllcount(all.getAllcount("", "and useyn = 'Y' and lastdate > now() ")));
+		request.setAttribute("waitingcount", acdao.mysqlAllcount(all.getAllcount("", "and useyn = 'W' ")));
+		request.setAttribute("rejectcount", acdao.mysqlAllcount(all.getAllcount("", "and useyn = 'N' ")));
+		request.setAttribute("Completecount", acdao.mysqlAllcount(all.getAllcount("", "and useyn = 'Y' and lastdate < now()")));
         
 
         request.setAttribute("category", category);

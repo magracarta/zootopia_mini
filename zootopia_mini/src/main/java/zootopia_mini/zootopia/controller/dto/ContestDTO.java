@@ -2,6 +2,7 @@ package zootopia_mini.zootopia.controller.dto;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class ContestDTO {
 	private int cseq;
@@ -16,6 +17,7 @@ public class ContestDTO {
 	private int allpcnt;
 	private String nickname;
 	private ArrayList<ContestPetDTO> cpdList = null;
+	private long plusdays;
 	
 	
 
@@ -47,6 +49,8 @@ public class ContestDTO {
 		this.allpcnt = allpcnt;
 		this.nickname = nickname;
 		this.lastdate = lastdate;
+		this.setPlusdays(Math.abs(TimeUnit.MILLISECONDS.toDays((Long)lastdate.getTime() - createdate.getTime())));
+		
 	}
 
 
@@ -187,6 +191,15 @@ public class ContestDTO {
 
 	public void setLastdate(Timestamp lastdate) {
 	    this.lastdate = lastdate;
+	}
+
+	public long getPlusdays() {
+		
+		return plusdays;
+	}
+
+	public void setPlusdays(long plusdays) {
+		this.plusdays = plusdays;
 	}
 
 

@@ -51,6 +51,13 @@ public class Paging {
 	      }
 	      
 		
+		
+		
+		
+		System.out.println((firstnum <= 1) + " : "+ prev);
+		System.out.println((lastnum >= pageAllcount) + " : "+ next);
+		System.out.println(pageAllcount	);
+		
 	}
 	private void calPaging() {
     	endPage = ( (int)( Math.ceil( page/(double)displayPage ) ) )*displayPage;

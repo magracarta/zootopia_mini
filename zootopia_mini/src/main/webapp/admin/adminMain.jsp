@@ -13,12 +13,13 @@
 			<a href="zootopia.do?command=adminmemberlist">ㆍ회원정보 수정</a>
 		</div>
 		<div class="view">
-			<a href="zootopia.do?command=adminmemberlist">콘테스트 관리</a><br>
+			<a href="zootopia.do?command=admincontestlist&category=all&pagenum=1&search=">콘테스트 관리</a><br>
 			<span>콘테스트 허가 및 관리</span><hr>
-			<a href="#">ㆍ콘테스트 허가</a>
-			<a href="#">ㆍ콘테스트 추가</a> 
-			<a href="#">ㆍ콘테스트 삭제</a>
-			<a href="#">ㆍ콘테스트 수정</a>
+			<a href="zootopia.do?command=admincontestlist&category=all&pagenum=1&search=">ㆍ모든 콘테스트</a>
+			<a href="zootopia.do?command=admincontestlist&category=playing&pagenum=1&search=">ㆍ진행중인 콘테스트</a> 
+			<a href="zootopia.do?command=admincontestlist&category=completed&pagenum=1&search=">ㆍ완료된 콘테스트</a>
+			<a href="zootopia.do?command=admincontestlist&category=waiting&pagenum=1&search=">ㆍ대기중인 콘테스트</a>
+			<a href="zootopia.do?command=admincontestlist&category=rejected&pagenum=1&search=">ㆍ거절된 콘테스트</a>
 		</div>
 	</div>
 	<div class="admin-menu-right">

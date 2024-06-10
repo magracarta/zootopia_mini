@@ -2,12 +2,16 @@ package zootopia_mini.zootopia.controller;
 
 
 import zootopia_mini.zootopia.controller.action.Action;
+
 import zootopia_mini.zootopia.controller.action.admin.AdminAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminCommunityDeleteAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminCommunityDetailAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminCommunityListAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminCommunityUpdateAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminCommunityUpdateFormAction;
+import zootopia_mini.zootopia.controller.action.admin.AdminContestDetialAction;
+import zootopia_mini.zootopia.controller.action.admin.AdminContestFunctionAction;
+import zootopia_mini.zootopia.controller.action.admin.AdminContestUpdateFormAllAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminLoginAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminLogout;
 import zootopia_mini.zootopia.controller.action.admin.AdminMainAction;
@@ -21,6 +25,7 @@ import zootopia_mini.zootopia.controller.action.admin.AdminQnaDeleteAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminQnaDetailAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminQnaListAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminQnaReplyUpdateAction;
+import zootopia_mini.zootopia.controller.action.admin.AdmincontestlistAction;
 import zootopia_mini.zootopia.controller.action.community.CommunityBoardAction;
 import zootopia_mini.zootopia.controller.action.community.CommunityDeleteAction;
 import zootopia_mini.zootopia.controller.action.community.CommunityDetailAction;
@@ -49,6 +54,9 @@ import zootopia_mini.zootopia.controller.action.contest.InsertContestPetAction;
 import zootopia_mini.zootopia.controller.action.contest.ReccomnadPetAction;
 import zootopia_mini.zootopia.controller.action.contest.TestProcedureAction;
 import zootopia_mini.zootopia.controller.action.contest.UpdateContestPetAction;
+import zootopia_mini.zootopia.controller.action.contest.AddReplyAction;
+import zootopia_mini.zootopia.controller.action.contest.AdminContestPetandReplyremoveDeleteAllAction;
+import zootopia_mini.zootopia.controller.action.contest.AdminContestupdateAllAction;
 import zootopia_mini.zootopia.controller.action.main.MainAction;
 import zootopia_mini.zootopia.controller.action.member.IdCheckFormAction;
 import zootopia_mini.zootopia.controller.action.member.JoinAction;
@@ -168,6 +176,15 @@ public class ActionFactory {
 		else if(command.equals("adminqnareplyupdate")) ac = new AdminQnaReplyUpdateAction();
 		else if(command.equals("adminqnadelete")) ac = new AdminQnaDeleteAction();
 		
+		
+		//admincontest
+		else if(command.equals("admincontestlist")) ac = new AdmincontestlistAction();
+		//콘테스트 삭제, 대기, 거절 , 수락 컨트롤
+		else if(command.equals("functionAction")) ac = new AdminContestFunctionAction();
+		else if(command.equals("adminContestDetial")) ac = new AdminContestDetialAction();
+		else if(command.equals("adminContestPetandReplyremoveDeleteAll")) ac = new AdminContestPetandReplyremoveDeleteAllAction();
+		else if(command.equals("adminContestUpdateForm")) ac = new AdminContestUpdateFormAllAction();
+		else if(command.equals("adminContestupdate")) ac = new AdminContestupdateAllAction();
 		 		
 		return ac;
 	}

@@ -18,17 +18,22 @@
 .contest-category ul li a { padding: 15px 15px; position:relative; top:2px; width:auto; font-size:18px; }
 .contest-category ul li a.select { border-bottom:2px solid #000; font-weight: 800; color: #000; }
 
-
 .contest_container {  }
 .contest_container .contest_list {  }
 .contest_container .contest_list ul {  }
 .contest_container .contest_list ul li { padding:50px 45px; border:1px solid #CCCCCC; border-radius:5px; margin-bottom:50px; }
-.contest_container .contest_list ul li {  }
+.contest_container .contest_list ul li.end { background:#f9f9f9; }
+.contest_container .contest_list ul li.wating { background:#ffe2e2; }
+.contest_container .contest_list ul li.end .listcpist .no_pet { background:#fff; }
+.contest_container .contest_list ul li.rejected { background:#e0e9ed; }
 
 .contest_container .contest_list ul li .date_num { font-size:15px; display:flex; justify-content: space-between; margin-bottom:0px; }
-.contest_container .contest_list ul li .date_num .cseq { color:#999; font-weight:600; }
+.contest_container .contest_list ul li .date_num .cseq { margin-left:15px; color:#999; font-weight:600; font-size:18px; }
 .contest_container .contest_list ul li .date_num .lastdate { color:#FF4646; }
 
+.contest_container .contest_list ul li .wating { padding:5px 20px; color:#fff; background:red; padding: 5px 20px; color: #fff; background: red;display: inline-block;
+    margin-bottom: 14px; border-radius: 50px; font-size: 18px;}
+.contest_container .contest_list ul li .left { display:flex; margin-bottom:20px; align-items: center; }
 
 .contest_container .contest_list ul li .title-box {  }
 .contest_container .contest_list .left-box { margin-top:-5px; text-align:right; }
@@ -50,9 +55,9 @@
 .contest_container .contest_list {  }
 .contest_container .contest_list .button-wrapper { text-align:right;  }
 .contest_container .contest_list .button-wrapper p { color:#999999; font-size:15px; font-weight:600; }
-.contest_container .contest_list .button-wrapper p.complete { color:#ddd; }
-.contest_container .contest_list .button-wrapper span {  }
-.contest_container .contest_list .button-wrapper a { border-radius:5px;
+.contest_container .contest_list .button-wrapper p.complete { color:#000; font-size: 18px; margin-bottom: 20px; }
+.contest_container .contest_list .button-wrapper span { font-size: 18px;  }
+.contest_container .contest_list .button-wrapper a { border-radius:5px; text-align:center;
 margin-top:26px; width:auto; font-size:15px; color:#fff; background:#000; padding:11px 42px; }
 
 
@@ -86,7 +91,7 @@ border:1px solid #D9D9D9; border-radius: 3px; width:362px; position:absolute; ba
 
 .button_wrap {  }
 .button_wrap input { background:#000; color:#fff; padding:15px 80px; border:none; border-radius: 5px; }
-.button_wrap input:last-child { margin-left:20px; background:#fff; color:#000; border:1px solid #000; }
+.button_wrap input:nth-child(2) { margin-left:20px; background:#fff; color:#000; border:1px solid #000; }
 
 
 
@@ -211,11 +216,34 @@ align-items: center; margin-top:20px;}
 border-radius: 5px; margin:0 5px;
 }
 .reply_list ul li .replyUpdateForm .button_box .delete { display:inline-block; width:auto; background: #fff; color:#000; }
+input[type='checkbox'] { width:25px; height:25px; padding:0; }
+input[type='checkbox']:checked {
+	background-image:url("images/checked.svg");
+	background-size: cover; background-position:center;
+	border-color: #000;
+}
 
-.searchinfo { display: block; font-size: 20px; padding-bottom: 20px; color: #999; font-weight: 700;}
-.contest_container .contest_list ul li.end { background:#f9f9f9; }
-.contest_container .contest_list ul li.wating { background:#ffe2e2; }
-.contest_container .contest_list ul li.end .listcpist .no_pet { background:#fff; }
-.contest_container .contest_list ul li.rejected { background:#e0e9ed; }
+.button-container { display: flex; justify-content: space-between; align-items: center; position: fixed; bottom: 0;
+    z-index: 10; background: #fff; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); padding: 20px 50px; left:50%;
+    transform: translate(-50%, 0px); margin-bottom: 50px; border-radius: 50px; }
+.button-container .allcheckbox { display:flex; align-items: center; }
+.button-container .allcheckbox label { font-size: 18px; margin-left: 15px; margin-right: 30px; cursor:pointer; }
+.button-container .allcheckbox input[type="checkbox"] {  }
+.button-container .button-box { display:flex; }
+.button-container .button-box input[type="button"] { background:#fff; color:#000; padding:8px 35px; font-size:16px; border-radius:5px; margin-left:10px; }
+.button-container .button-box input[type="button"]:hover { background:#000; color:#fff;  }
 
+.contest_container .serach-form input[type="submit"] { padding:0 30px; }
+.searchinfo { display: block; font-size: 20px; padding-bottom: 50px; color: #999; font-weight: 700;}
+
+input[name="crseq"] { margin-right:15px;  }
+
+
+.buttonbox { display: flex; justify-content: space-between; align-items: center; padding: 20px 0 50px;}
+.buttonbox .allcheckbox { display: flex; align-items: center;  }
+.buttonbox .allcheckbox label { font-size:16px; margin-left:15px; }
+.buttonbox .button-box {  }
+.buttonbox .button-box input { padding:10px 30px; border-radius:5px; font-size:15px; margin:0; }
+.contest_pet_list li { position:relative; }
+.contest_pet_list input[name="cpseq"] { position:absolute; top:10px; right:10px; z-index: 2; }
 </style>

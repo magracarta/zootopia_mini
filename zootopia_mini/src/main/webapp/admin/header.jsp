@@ -15,6 +15,12 @@
 
 <link rel="stylesheet" href="admin/css/admin.css">
 
+
+<!-- 슬라이드 api -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
 <script src="admin/script/admin.js"></script>
 
 </head>
@@ -30,7 +36,7 @@
 			<ul>
 				<li><a href="zootopia.do?command=adminmemberlist">회원 관리</a></li>
 				<li><a href="zootopia.do?command=admincommunitylist">커뮤니티 관리</a></li>
-				<li><a href="zootopia.do?command=admincontestList">콘테스트 관리</a></li>
+				<li><a href="zootopia.do?command=admincontestlist&category=all&pagenum=1&search=">콘테스트 관리</a></li>
 				<li><a href="zootopia.do?command=adminqnalist">Q&A 관리</a></li>
 			</ul>
 		</nav>

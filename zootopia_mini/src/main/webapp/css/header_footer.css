@@ -10,7 +10,8 @@ header { width:100%; box-shadow: 15px 15px 18px rgba(0, 0, 0, 0.04);  position: 
 .header-container { display:flex; justify-content: space-between; align-items: center; max-width:1300px; margin:0 auto; height:65px;  }
 .header-container .logo-menu { display:flex; align-items: center; }
 .header-container .logo {  }
-.header-container .logo a { color:#000; font-size:25px; font-weight:600; }
+.header-container .logo a { color:#000; font-size:25px; font-weight:600; position: relative; top: -7px; }
+.header-container .logo a img { width:150px; }
 .header-container .navigation { margin-left:101px; }
 .header-container .navigation ul { display:flex; }
 .header-container .navigation ul li {  }
@@ -29,13 +30,14 @@ footer { background:#EEEEEE; padding:60px 0;  }
 footer .wrapper { display:flex; justify-content: space-between; }
 footer .wrapper .left {  }
 footer .wrapper .left .logo-wrapper {  }
-footer .wrapper .left .logo-wrapper a { font-size:40px; color:#000; font-weight:700; }
+footer .wrapper .left .logo-wrapper a { font-size:40px; color:#000; font-weight:700; margin-bottom:8px; }
+footer .wrapper .left .logo-wrapper a img { width:250px; }
 footer .wrapper .left .logo-wrapper p { font-size:15px; color:#333; margin-top:12px; display:block; }
 
 
 footer .wrapper .left .admin-info { margin-top:36px; }
 footer .wrapper .left .admin-info p {  }
-footer .wrapper .left .admin-info span { display:block; margin-top:8px; }
+footer .wrapper .left .admin-info span { display:block; margin-top:8px; color:#000; }
 footer .wrapper .left .admin-info a { display:inline-block; border-bottom:1px solid #555; position:relative; margin-top:13px; }
 footer .wrapper .left .admin-info a img { position:relative; top:6px; margin-left: 9px; width:9px !important; height:7px !important; }
 
