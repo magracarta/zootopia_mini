@@ -6,33 +6,40 @@
 	<div class="swiper mySwiper">
 	    <div class="swiper-wrapper">
 	      <div class="swiper-slide">
+	       <a href="http://localhost:8090/zootopia_mini/zootopia.do?command=contestBoard&category=all&pagenum=1&search=">
 	      	<div class="banner-01 banner">
-	      		<img src="images/banner01.jpg">
+	      		<img src="images/banner_1.png">
 	      		<div class="title">
-	      			<h1>타이틀1</h1>
-		      		<span>부재입니다 부재입니다 부재입니다. 부재입니다.</span>
+	      			<h1>우리 동물 이쁘죠? 자랑합니다!</h1>
+		      		<span>다함께 즐기는 우리만의 콘테스트를 지금 열어보아요.</span>
 	      		</div>
 	      	</div>
+	      	</a>
+	      </div>
+	       <div class="swiper-slide">
+	       <a href="http://localhost:8090/zootopia_mini/zootopia.do?command=communityBoard">
+	      	<div class="banner-03 banner">
+	      		<img src="images/banner_3.png">
+	      		<div class="title">
+	      			<h1>우리집 멍뭉이가 걱정입니다.</h1>
+		      		<span>자유게시판에서 우리집 동물의 자랑, 고민, 잡담을 함께 나눠보아요!</span>
+	      		</div>
+	      	</div>
+	      	</a>
 	      </div>
 	      <div class="swiper-slide">
-	      	<div class="banner-01 banner">
-	      		<img src="images/banner01.jpg">
+	      <a href="http://localhost:8090/zootopia_mini/zootopia.do?command=qnaList">
+	      	<div class="banner-02 banner">
+	      		<img src="images/banner_2.png">
 	      		<div class="title">
-	      			<h1>타이틀2</h1>
-		      		<span>부재입니다 부재입니다 부재입니다. 부재입니다.</span>
+	      			<h1>QNA</h1>
+		      		<span>관리자에게 궁금한 부분들을 질문에 보아요!</span>
 	      		</div>
 	      	</div>
+	      	</a>
 	      </div>
 	      
-	      <div class="swiper-slide">
-	      	<div class="banner-01 banner">
-	      		<img src="images/banner01.jpg">
-	      		<div class="title">
-	      			<h1>타이틀2</h1>
-		      		<span>부재입니다 부재입니다 부재입니다. 부재입니다.</span>
-	      		</div>
-	      	</div>
-	      </div>
+	     
 	    </div>
 	     <div class="swiper-button-next"></div>
 	    <div class="swiper-button-prev"></div>

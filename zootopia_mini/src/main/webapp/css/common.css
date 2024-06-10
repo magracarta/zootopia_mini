@@ -23,7 +23,7 @@ background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)); color: #fff; 
 
 
 #mainslide .swiper-button-prev ,
-#mainslide .swiper-button-next { color: #999; padding:30px; margin-top:-30px; }
+#mainslide .swiper-button-next { color: #fff; padding:30px; margin-top:-30px; }
 #mainslide .swiper-pagination { color:#fff; padding-bottom:30px; }
 
 pre { font-size: inherit; font-weight: inherit; font-family: inherit; color: inherit; line-height: 1.3em;  }

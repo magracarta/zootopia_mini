@@ -32,7 +32,7 @@
 <div class="header-container">
 	<div class="logo-menu">
 		<div class="logo">
-			<a href="zootopia.do?command=main">Zootopia</a>
+			<a href="zootopia.do?command=main"><img src="images/logo.svg"></a>
 		</div>
 		<nav class="navigation">
 			<ul>

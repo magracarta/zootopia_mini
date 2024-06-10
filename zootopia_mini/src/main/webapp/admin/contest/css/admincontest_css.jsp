@@ -229,7 +229,7 @@ input[type='checkbox']:checked {
 .button-container .allcheckbox { display:flex; align-items: center; }
 .button-container .allcheckbox label { font-size: 18px; margin-left: 15px; margin-right: 30px; cursor:pointer; }
 .button-container .allcheckbox input[type="checkbox"] {  }
-.button-container .button-box { }
+.button-container .button-box { display:flex; }
 .button-container .button-box input[type="button"] { background:#fff; color:#000; padding:8px 35px; font-size:16px; border-radius:5px; margin-left:10px; }
 .button-container .button-box input[type="button"]:hover { background:#000; color:#fff;  }
 
