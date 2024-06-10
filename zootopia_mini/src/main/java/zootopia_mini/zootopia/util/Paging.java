@@ -38,14 +38,22 @@ public class Paging {
 		 if(lastnum > pageAllcount) lastnum = pageAllcount;
 		
 		
-		if(firstnum <= 1) {
-			next = true;
+		if(firstnum <= 1 && lastnum <= pageAllcount) {
 			prev = false;
-		}	
-		if(lastnum >= pageAllcount) {
-			next = false;
+		}else {
 			prev = true;
 		}
+		
+		if( lastnum < pageAllcount  ) {
+			next = true;
+		}else {
+			next = false;
+		}
+		
+		
+		System.out.println((firstnum <= 1) + " : "+ prev);
+		System.out.println((lastnum >= pageAllcount) + " : "+ next);
+		System.out.println(pageAllcount	);
 		
 	}
 	private void calPaging() {
