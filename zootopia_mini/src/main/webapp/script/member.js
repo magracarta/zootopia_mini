@@ -87,18 +87,6 @@ function go_save() {
 	}else if(document.joinForm.phone.value == ""){
 		alert("전화번호를 입력해 주세요");
 		document.joinForm.phone.focus();	
-	}else if(document.joinForm.image.value == ""){
-		alert("사진을 등록해 주세요");
-		document.joinForm.phone.focus();
-	}else if(document.joinForm.petname.value == ""){
-		alert("반려동물 이름을 입력해 주세요");
-		document.joinForm.phone.focus();
-	}else if(document.joinForm.kind.value == "" || document.joinForm.kind.value == "선택"){
-		alert("종류를 선택해 주세요");
-		document.joinForm.phone.focus();
-	}else if(document.joinForm.petgender.value == "" || document.joinForm.petgender.value == "선택"){
-		alert("반려동물 성별을 선택해 주세요");
-		document.joinForm.phone.focus();
 	}else {
 		document.joinForm.submit();
 	}

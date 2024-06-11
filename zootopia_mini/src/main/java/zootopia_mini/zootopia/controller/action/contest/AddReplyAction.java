@@ -17,7 +17,7 @@ public class AddReplyAction implements Action {
 		String userid = request.getParameter("userid");
 		String content = request.getParameter("content");
 		int cseq = Integer.parseInt(request.getParameter("cseq"));
-		int index = Integer.parseInt(request.getParameter("index"));
+		String index = request.getParameter("index");
 
 		
 		ContestDao cdao = ContestDao.getInstance();

@@ -84,7 +84,7 @@
 			</c:forEach>
 			<c:if test='${contest_detail.cpdList.size() <  contest_detail.pcnt && contest_detail.lastdate > now}'>
 			<c:choose>
-				<c:when test="${loginUser.petname != null }">
+				<c:when test="${loginUser.petname != '' }">
 					<li class="more_pet">
 						<a href="javascript:0" class="morePetBtn" >
 							<span class="plus"><img src="images/plus.png"></span>
@@ -151,7 +151,7 @@
 								<c:if test ="${replylist.mvo.saveimage == null}">
 									<img src="images/repl-noimg.png">
 								</c:if>
-								
+							</div>
 								
 							<div class="text-box">
 								<span>@ ${replylist.mvo.nickname }</span>

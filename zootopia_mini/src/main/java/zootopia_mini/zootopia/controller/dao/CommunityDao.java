@@ -24,11 +24,16 @@ public class CommunityDao {
     PreparedStatement pstmt = null;
     ResultSet rs = null;
 
-    public ArrayList<CommunityVO> selectCommunity(Paging paging) {
+    public ArrayList<CommunityVO> selectCommunity(Paging paging, int categorynum) {
         ArrayList<CommunityVO> list = new ArrayList<CommunityVO>();
+        String whereadd = "  ";
+        if(categorynum != 0) {
+        	whereadd = " where c.kind = "+ categorynum;
+        }
+        
         String sql = "SELECT c.gseq, c.subject, c.content, c.createdate, c.recommands, c.userid, m.nickname, m.userid AS user_id, c.kind, c.vcount " +
-                     "FROM community c JOIN member m ON c.userid = m.userid " +
-                     "ORDER BY c.gseq DESC LIMIT ? OFFSET ?;";
+                     "FROM community c JOIN member m ON c.userid = m.userid " + whereadd +
+                     " ORDER BY c.gseq DESC LIMIT ? OFFSET ?;";
         con = DB.getConnection();
         try {
             pstmt = con.prepareStatement(sql);
@@ -121,7 +126,8 @@ public class CommunityDao {
             pstmt.setString(2, cvo.getContent());
             pstmt.setInt(3, cvo.getKind());
             pstmt.setString(4, cvo.getUserid());
-            pstmt.executeUpdate();
+            int f = pstmt.executeUpdate();
+            System.out.println(f);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -228,18 +234,24 @@ public class CommunityDao {
 	    return top3Posts;
 	}
 
-	  public ArrayList<CommunityVO> findcontent(String subject) {
+	  public ArrayList<CommunityVO> findcontent(String subject, Paging paging, int categorynum) {
 		  
 	        ArrayList<CommunityVO> list = new ArrayList<CommunityVO>();
 	        con = DB.getConnection();
+	        String whereadd = "  ";
+	        if(categorynum != 0) {
+	        	whereadd = " and c.kind = "+ categorynum ;
+	        }
 	        String sql = "SELECT c.gseq, c.subject, c.content, c.userid, c.recommands, c.kind, m.nickname, c.createdate " 
-	        		+ "FROM community c JOIN member m ON c.userid = m.userid "
-	        		+ " WHERE c.subject LIKE concat ('%', ? ,'%')";
+	        		+ "FROM community c JOIN member m ON c.userid = m.userid "+
+                    " WHERE c.subject LIKE concat ('%', ? ,'%')" + whereadd +" ORDER BY c.gseq DESC LIMIT ? OFFSET ?";
 
 	        try {
 
 	            pstmt = con.prepareStatement(sql);
 	            pstmt.setString(1,  subject);
+	            pstmt.setInt(2, paging.getRecordrow());
+	            pstmt.setInt(3, paging.getOffsetnum());
 	            rs = pstmt.executeQuery();
 
 	            while (rs.next()) {
@@ -312,5 +324,31 @@ public class CommunityDao {
 
 	        return saveImage;
 	    }
+
+	public int getAllCount(String subject , int categorynum) {
+		int count = 0;
+        ResultSet rs = null;
+        String whereadd = "  ";
+        if(categorynum != 0) {
+        	whereadd = " and c.kind = "+ categorynum ;
+        }
+        try {
+            con = DB.getConnection();
+            String sql = "SELECT COUNT(*) AS cnt FROM community"+
+                    " WHERE c.subject LIKE concat ('%', ? ,'%')" + whereadd;
+            pstmt = con.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                count = rs.getInt("cnt");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DB.close(con, pstmt, rs);
+        }
+     
+        return count;
+	}
 	
 }

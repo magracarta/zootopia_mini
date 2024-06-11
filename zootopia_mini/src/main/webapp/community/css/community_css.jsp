@@ -3,14 +3,15 @@
 <style>
 	
 .container {     margin-bottom: 60px; }
-.container .title { line-height: 3; font-size: large;}
+.container .title { font-size: 30px; font-weight: 600; }
 
 .head{
     display: flex;
     justify-content: space-between;
 align-items: baseline;
+ margin-bottom: 60px;
 }
-.head .write{
+/* .head .write{
     background-color: white;
     color: white;
     border: 1px solid black;
@@ -21,81 +22,33 @@ align-items: baseline;
     font-size: 16px;
     margin-left: 10px;
     color: black;
-}
+} */
+ 
+.head .write{  font-size: 15px; text-decoration: underline; background: none; border: none; color: #555; cursor: pointer;   }
 
-.head .write:hover{
+/* .head .write:hover{
             background-color: black;
             color: white;
             border:1px solid black;
-}
+} */
 
-.container .kind0{
-    background: white;
-    border: 1px solid black;
-    color: black;
-    padding: 5px 6px;
-    border-radius: 5px;
-}
 
-.container .kind1{
-    background: white;
-    border: 1px solid black;
-    color: black;
-    padding: 5px 6px;
-    border-radius: 5px;
-}
 
-.container .kind2{
-    background: white;
-    border: 1px solid black;
-    color: black;
-    padding: 5px 6px;
-    border-radius: 5px;
-}
-
-.container .kind3{
-    background: white;
-    border: 1px solid black;
-    color: black;
-    padding: 5px 6px;
-    border-radius: 5px;
-}
-
-.container .kind0:hover{
-            background-color: black;
-            color: white;
-            border:1px solid black;
-}
-.container .kind1:hover{
-            background-color: black;
-            color: white;
-            border:1px solid black;
-}
-.container .kind2:hover{
-            background-color: black;
-            color: white;
-            border:1px solid black;
-}
-.container .kind3:hover{
-            background-color: black;
-            color: white;
-            border:1px solid black;
-}
 .communityboard	{  }
 .communityboard ul	{  }
-.communityboard ul li	{ padding: 14px 0; border-bottom: 1px solid #ddd; }
-.communityboard ul li	{ padding: 14px 0; border-bottom: 1px solid #ddd; }
-.communityboard ul .board_head{
-	font-weight: bold;
-  background: #f7f7f7;
-}
+.communityboard ul li	{ padding: 22px 15px; border-bottom: 1px solid #ddd; }
+.communityboard ul .board_head{ font-weight: bold; color:#000; }
 .communityboard ul .hottopic	{ 
  background: lightgray; 
  border-bottom: 1px solid #ddd;
+     background: #f3f3f3;
+    border-bottom: 1px solid #ddd;
+    border-left: 5px solid #0198;
  }
 .communityboard ul li.board_head	{ display: flex; justify-content: space-between; }
 .communityboard ul li a	{ display: flex; justify-content: space-between; }
-.communityboard ul li .num	{ width: 5%; }
+.communityboard ul li .num	{ width: 6%; margin-right: 20px; text-align: center; }
+.communityboard ul li .num > span { background: #0198; color: #fff; padding: 5px 8px; border-radius: 50px; font-size: 12px; }
 .communityboard ul li .subject	{ width: 60%; text-align: left; }
 .communityboard ul li .userid	{ width: 15%; text-align: center; }
 .communityboard ul li .createdate	{ width: 20%; text-align: left; }
@@ -109,15 +62,19 @@ align-items: baseline;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 3px solid #ddd;
+    border-bottom: 1px solid #ddd;
+   
 }
+
 
 .header .text{
     width: 100%;
 }
 
 .header .num {
-padding: 1%;
+margin-bottom:30px;
+font-weight:bold;
+color:#999; display:block;
 }
 
 .header .top {
@@ -126,14 +83,16 @@ padding: 1%;
 
 .header .title{
     display: flex;
-    font-size: x-large;
+    font-size: 25px;
     font-weight: bold;
-    padding: 10px;
+    padding: 0 0 40px 0;
     text-align: left;
 }
 
 .header .namerecomreply {
     display: flex;
+    margin-bottom: 30px;
+    color: #999;
 }
 .header .namerecomreply .image_box{
 width:50px; 
@@ -148,15 +107,27 @@ border-radius: 50%;
  }
 
 .header .namerecomreply .nickname {
-padding: 1%;
 }
 
 .header .namerecomreply .recommands {
-    padding: 1%;
 }
+.header .namerecomreply .recommands button { 
+	padding:5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid black;
+    color: #fff;
+    margin-left: 9px;
+    background:#000;
+ }
 
-.header .namerecomreply .vcount {
-    padding: 1%;
+.header .namerecomreply > * {
+ display: flex;
+  display: flex;
+ align-content: center;
+ align-items: center;
+ margin-right:20px;
 }
 
 .header .buttondiv{
@@ -186,26 +157,22 @@ padding: 1%;
   margin-top: 10px;
 }
 
-.button_container .button1,
+.button_container .button1 ,
 .button_container .button2 {
   padding: 10px 20px;
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  color: #fff;
+   border: 1px solid black;
+   color: black;
+    margin-left: 9px;
+    font-size: 15px;
 }
-.button_container .button1 {
-    background: white;
-    border: 1px solid black;
-    color: black;
-    padding: 5px 6px;
-    border-radius: 5px;}
+
 
 .button_container .button2 {
     background: black;
     color: white;
-    padding: 5px 6px;
-    border-radius: 5px;
 }
 .button_container .button1:hover {
             background : black;
@@ -225,23 +192,27 @@ padding: 1%;
     background: white;
     border: 1px solid black;
     color: black;
-    padding: 5px 6px;
+    padding: 15px 29px;
     border-radius: 5px;
     }
+.detailcontainer .content .buttonWrap { display:flex;  }
+.detailcontainer .content .button3.recommendButton  {
+	background:#000; color:#fff; cursor: pointer; margin-right:13px;
+}
     
 .detailcontainer .content .button3:hover{
             background : black;
             color: white;
             border:1px solid black;
     }
-
-.detailcontainer .content	p { 
-isplay:flex; 
+.detailcontainer .content .button3.recommendButton:hover{
+	background:#fff; color:#000; 
+}
+.detailcontainer .content pre { 
+display:flex; 
 text-align:left; 
-padding:30%;
+padding:30px 0 100px;
 font-size: large;
-padding-top: 20px; 
-padding-left: 20px;
 }
 
  .comment-section {
@@ -250,10 +221,11 @@ margin: 0 auto;
 
 .comment2 {
 font-size: 24px;
-margin-bottom: 10px;
-border-bottom: 2px solid #333;
-padding-bottom: 5px;
-padding-top: 50px;
+margin-top:60px;
+margin-bottom: 30px;
+padding-top: 30px;
+
+    border-top: 1px solid #ddd;
 }
 
 .commentwrite {
@@ -273,44 +245,44 @@ font-size: 16px;
 }
 
 /* community reply */
-        .commentwrite button.submit {
-            align-self: flex-end;
-            padding: 10px 20px;
-            font-size: 16px;
-            color: #fff;
-            background-color: black;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+.commentwrite button.submit {
+    align-self: flex-end;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
 
-        .commentwrite button.submit:hover {
-            background-color: white;
-            color: black;
-            border:1px solid black;
-        }
+.commentwrite button.submit:hover {
+    background-color: white;
+    color: black;
+    border:1px solid black;
+}
 
-        .commentslist {
-            margin-top: 20px;
-        }
+.commentslist {
+    margin-top: 80px;
+}
 
-        .commentslist ul {
-            list-style-type: none;
-            padding: 0;
-        }
+.commentslist ul {
+    list-style-type: none;
+    padding: 0;
+}
 
-        .commentslist li {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 10px;
-            margin-bottom: 10px;
-            background-color: #f9f9f9;
-        }
+.commentslist li {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
 
-        .comment-content p {
-            margin: 0;
-        }
+.comment-content p {
+    margin: 0;
+}
 
         .comment-meta {
 display: flex;
@@ -447,10 +419,12 @@ display: flex;
 .communityform{
 
 }
-
+.communityform > *{
+	padding-bottom:35px;
+}
 .communityform .form {
     display: flex;
-    padding: 10px;
+    padding-bottom: 30px;
     text-align: center;
     font-size: xx-large;
     font-weight: bold;
@@ -487,9 +461,11 @@ display: flex;
 }
 
 .communityform .kind .kindlist {
-	width: 10%;
+	    width: 7%;
     text-align: center;
     padding: 0px;
+    height: 37px;
+    margin-left: 20px;
 }
 
 .communityform .kind .kindlist .list1 {
@@ -509,9 +485,12 @@ display: flex;
 }
 .communityform .class {
 }
+.communityform .content label,
 .communityform .class label {
 	font-size: larger;
-    font-weight: bold;	
+    font-weight: bold;
+    padding-bottom:20px;
+    display: block;	
 }
 
 .communityform .class .text{
@@ -539,7 +518,7 @@ height: 300px;
     padding: 20px;
     color: white;
     background: black;
-        border: none;
+    border:1px solid #000;
 }
 
 .communityform .btn .button4{
@@ -667,9 +646,42 @@ margin: inherit;
 
 
 
+/* 카테고리 리스트 */
+
+.contest-category { padding-bottom: 60px; margin-top: -21px; }
+.contest-category ul { display:flex;  }
+.contest-category ul li { border-bottom:2px solid #F3F3F3; }
+.contest-category ul li a { padding: 15px 15px; position:relative; top:2px; width:auto; font-size:18px; }
+.contest-category ul li a.select { border-bottom:2px solid #000; font-weight: 800; color: #000; }
 
 
 
+
+
+
+.reply_list {  }
+.reply_list ul { margin-bottom:30px; }
+.reply_list ul li {  padding:40px 0; border-top:1px solid #E3E3E3;  }
+.reply_list ul li:last-child {  border-bottom:1px solid #E3E3E3;   }
+.reply_list ul li .top { display:flex; align-items: center; }
+.reply_list ul li .image_box { width:80px; height:80px; overflow: hidden; border-radius: 50%; margin-right:36px;  }
+.reply_list ul li .image_box img { width:100%; height:100%; object-fit: cover; }
+.reply_list ul li .text-box { width:calc(85% - 80px); }
+.reply_list ul li .text-box span { display: block; }
+.reply_list ul li .text-box span:first-child { margin-bottom:10px;font-weight: 800; }
+.reply_list ul li .button-box { width:calc(25% - 80px);  text-align: right; }
+
+.reply_list ul li .button-box p { font-size: 15px; color:#959595; font-weight: 500; }
+
+.reply_list ul li .replyUpdateForm { margin-top:30px; }
+.reply_list ul li .replyUpdateForm textarea { height: 60px; border:1px solid #D9D9D9; }
+.reply_list ul li .replyUpdateForm .button_box { display:flex; justify-content: flex-end;
+align-items: center; margin-top:20px;}
+
+.reply_list ul li .replyUpdateForm .button_box input { padding:5px 15px; background:#000; color:#fff; border:1px solid #000; box-sizing: border-box; 
+border-radius: 5px; margin:0 5px;
+}
+.reply_list ul li .replyUpdateForm .button_box .delete { display:inline-block; width:auto; background: #fff; color:#000; }
 
 
 

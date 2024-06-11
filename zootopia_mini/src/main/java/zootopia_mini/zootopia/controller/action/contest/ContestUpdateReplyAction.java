@@ -14,7 +14,9 @@ public class ContestUpdateReplyAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int crseq = Integer.parseInt(request.getParameter("crseq"));
 		int cseq = Integer.parseInt(request.getParameter("cseq"));
-		int index = Integer.parseInt(request.getParameter("index"));
+		
+		String index = null;
+		if(request.getParameter("index") != null)index = (request.getParameter("index"));
 		String content = request.getParameter("content");
 		String pagenum = request.getParameter("pagenum");
 		

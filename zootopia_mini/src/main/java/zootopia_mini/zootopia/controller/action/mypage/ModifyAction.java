@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 import zootopia_mini.zootopia.controller.action.Action;
+import zootopia_mini.zootopia.controller.dao.MemberDao;
 import zootopia_mini.zootopia.controller.dao.MypageDao;
 import zootopia_mini.zootopia.controller.dto.MemberVO;
 
@@ -25,8 +26,11 @@ public class ModifyAction implements Action {
 				if(mvo == null) {
 					response.sendRedirect("zootopia.do?command=loginform");
 				}else {
-					MemberVO mvo1 = new MemberVO();
-					mvo1.setUserid(request.getParameter("userid"));
+					MemberDao mdao = MemberDao.getInstance();
+					//회원 정보 조회
+					MemberVO mvo1 = mdao.getMember(request.getParameter("userid"));
+					
+					//회원 정보 조회 후 세팅
 					mvo1.setPwd(request.getParameter("pwd"));
 					mvo1.setName(request.getParameter("name"));
 					mvo1.setEmail(request.getParameter("email"));
@@ -35,8 +39,7 @@ public class ModifyAction implements Action {
 					mvo1.setPetname(request.getParameter("petname"));
 					mvo1.setKind(request.getParameter("kind"));
 					mvo1.setPetgender(request.getParameter("petgender"));
-					mvo1.setImage(request.getParameter("image"));
-					mvo1.setSaveimage(request.getParameter("saveimage"));
+					
 					
 					 ServletContext context = session.getServletContext();
 			         String uploadFilePath = context.getRealPath("images"); // 디렉토리명
@@ -49,8 +52,7 @@ public class ModifyAction implements Action {
 			            for (Part p : request.getParts()) {
 			                fileName = "";
 			                for (String content : p.getHeader("content-disposition").split(";")) {
-			                	System.out.println(content);
-			                    if (content.trim().startsWith("filename")) {
+			                	if (content.trim().startsWith("filename")) {
 			                        fileName = content.substring(content.indexOf("=") + 2, content.length() - 1);
 			                        System.out.println("Extracted filename: " + fileName);
 			                        if (!fileName.equals("")) {
@@ -61,20 +63,19 @@ public class ModifyAction implements Action {
 			                            saveFilename = fn1 + dt + fn2;
 			                            p.write(uploadFilePath + File.separator + saveFilename); // 파일 저장
 			                            System.out.println("Saved filename: " + saveFilename);
+			                            
+			                            //이전이미지 삭제
+			                            File removeFile = new File(uploadFilePath+ File.separator + mvo1.getSaveimage());
+			                            
+			                            //이미지가 변경 되었을시에만 세팅 해야함! >-<
 			                            mvo1.setImage(fileName);
 			                            mvo1.setSaveimage(saveFilename);
-			                        } else {
-			                        	mvo1.setImage(request.getParameter("image"));
-			                            mvo1.setSaveimage(request.getParameter("saveimage"));
 			                        }
 			                    }
 			                }
 			            }
 					
-					// 디버그 로그를 통해 확인
-			        System.out.println("업로드된 파일명: " + mvo1.getImage());
-			        System.out.println("저장된 파일명: " + mvo1.getSaveimage());
-
+				
 			        // DAO를 통해 회원 정보를 업데이트
 			        MypageDao mpdao = MypageDao.getInstance();
 			        mpdao.updateMember(mvo1);

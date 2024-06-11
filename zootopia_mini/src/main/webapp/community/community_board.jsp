@@ -7,14 +7,22 @@
 <div class="container">
 	<div class="head">
 	  <h1 class="title">자유게시판</h1>
-	  <button class="write" onclick="location.href='zootopia.do?command=writeCommunityForm'">글 작성하기</button>
+	  <button class="write" onclick="location.href='zootopia.do?command=writeCommunityForm'">글 작성하기 ></button>
   	</div>
-	<div class="kind-buttons">
-        <button class="kind0" onclick="location.href='zootopia.do?command=communityBoard'">모든 게시글</button>
-        <button class="kind1" onclick="location.href='zootopia.do?command=communityBoard&kind=1'">고민</button>
-        <button class="kind2" onclick="location.href='zootopia.do?command=communityBoard&kind=2'">자랑</button>
-        <button class="kind3" onclick="location.href='zootopia.do?command=communityBoard&kind=3'">잡담</button>
-    </div>
+  	
+  	<div class="contest-category">
+	<ul>
+		<li><a class="kind0" href="zootopia.do?command=communityBoard&pagenum=1">모든 게시글</a></li>
+		<li><a class="kind1" href="zootopia.do?command=communityBoard&kind=1&pagenum=1">고민</a></li>
+		<li><a class="kind2" href="zootopia.do?command=communityBoard&kind=2&pagenum=1">자랑</a></li>
+		<li><a class="kind3" href="zootopia.do?command=communityBoard&kind=3&pagenum=1">잡담</a></li>
+	</ul>
+</div>
+<script>
+let kind = location.href.split("kind=")[1] ?  location.href.split("kind=")[1].split("&")[0] : 0;
+document.querySelector(".kind"+kind).classList.add("select");
+</script>
+ 
   <div class="communityboard">
     <ul>
       <li class="board_head">
@@ -29,7 +37,7 @@
       <c:forEach var="post" items="${subjectList}">
     <li>
         <a class="" href="javascript:void(0);" onclick="increaseViewCountAndRedirect(${post.gseq})">
-            <span class="num">no.${post.gseq}</span>   
+            <span class="num">${post.gseq}</span>   
             <span class="subject">
                 <c:choose>
                     <c:when test="${post.kind == 1}">[고민]</c:when>
@@ -45,19 +53,14 @@
             <span class="vcount">${post.vcount}</span>         
         </a>
     </li>
-    <div class="detailcontainer">
-			<div class="content" >
-				<p>${communityVO.content}</p> 
-				<input class="button3" type="button" value="목록으로" onclick="location.href='zootopia.do?command=communityBoard'">
-			</div>
-        </div>
+   
 </c:forEach>
 
       <c:if test="${empty subjectList}">
         <c:forEach var="post" items="${top3Posts}">
           <li class="hottopic">
             <a class="" href="javascript:void(0);" onclick="increaseViewCountAndRedirect(${post.gseq})">
-              <span class="num">no.${post.gseq}</span>   	
+              <span class="num"><span>인기글</span></span>   	
               <span class="subject">
                 <c:choose>
                   <c:when test="${post.kind == 1}">[고민]</c:when>
@@ -75,26 +78,26 @@
           </li>
         </c:forEach>
         <c:forEach var="post" items="${commList}">
-                <c:if test="${kind == -1 || post.kind == kind}">
-                    <li>
-                        <a class="" href="javascript:void(0);" onclick="increaseViewCountAndRedirect(${post.gseq})">
-                            <span class="num">no.${post.gseq}</span>   
-                            <span class="subject">
-                                <c:choose>
-                                    <c:when test="${post.kind == 1}">[고민]</c:when>
-                                    <c:when test="${post.kind == 2}">[자랑]</c:when>
-                                    <c:when test="${post.kind == 3}">[잡담]</c:when>
-                                    <c:otherwise></c:otherwise>
-                                </c:choose>
-                                ${post.subject}
-                            </span>            
-                            <span class="userid">${post.nickname}[${post.userid}]</span>         
-                            <span class="createdate">${post.createdate}</span>         
-                            <span class="recommands">${post.recommands}</span>        
-                            <span class="vcount">${post.vcount}</span>         
-                        </a>
-                    </li>
-                </c:if>
+               
+                  <li>
+                      <a class="" href="javascript:void(0);" onclick="increaseViewCountAndRedirect(${post.gseq})">
+                          <span class="num">${post.gseq}.</span>   
+                          <span class="subject">
+                              <c:choose>
+                                  <c:when test="${post.kind == 1}">[고민]</c:when>
+                                  <c:when test="${post.kind == 2}">[자랑]</c:when>
+                                  <c:when test="${post.kind == 3}">[잡담]</c:when>
+                                  <c:otherwise></c:otherwise>
+                              </c:choose>
+                              ${post.subject}
+                          </span>            
+                          <span class="userid">${post.nickname}[${post.userid}]</span>         
+                          <span class="createdate">${post.createdate}</span>         
+                          <span class="recommands">${post.recommands}</span>        
+                          <span class="vcount">${post.vcount}</span>         
+                      </a>
+                  </li>
+               
             </c:forEach>
       </c:if>
     </ul>
@@ -102,7 +105,7 @@
 </div>
 
 <jsp:include page="paging.jsp" flush="true">
-  <jsp:param name="url" value="zootopia.do?command=communityBoard" />
+  <jsp:param name="url" value="zootopia.do?command=communityBoard&kind=${kind}" />
   <jsp:param name="searchurl" value="findCommunity" />
   <jsp:param name="search" value="${search}" />
 </jsp:include>

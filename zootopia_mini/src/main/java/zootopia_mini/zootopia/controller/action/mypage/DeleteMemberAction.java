@@ -22,11 +22,9 @@ public class DeleteMemberAction implements Action {
 			MypageDao mpdao = MypageDao.getInstance();
 			
 			mpdao.deleteMember(mvo.getUserid());
-			
 			session.removeAttribute("loginUser");
-			
-			//session.setAttribute("message", "회원탈퇴가 완료되었습니다");
-			response.sendRedirect("zootopia.do?command=loginForm");
+			request.setAttribute("message", "회원탈퇴가 완료되었습니다");
+			request.getRequestDispatcher("zootopia.do?command=loginform").forward(request, response);
 		}
 	}
 

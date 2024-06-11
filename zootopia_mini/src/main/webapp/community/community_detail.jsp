@@ -24,13 +24,14 @@
                         		<img src="images/${communityVO.saveImage}">
                   		 	</div>
                			</c:if>
-	                	<ul class="nickname">${communityVO.nickname}[${communityVO.userid}]</ul>
-	                	<li class="recommands">추천 수[${communityVO.recommands}]<button class="recommendButton">추천</button>
-			                <div class="content" >
-			                    <input type="hidden" class="gseq" value="${communityVO.gseq}">
-			                </div>
-		         	   </li>
-	                	<ul class="vcount">조회수:${communityVO.vcount}</ul>
+               			<c:if test="${empty communityVO.saveImage}">
+                    		<div class="image_box">           
+                        		<img src="images/repl-noimg.png">
+                  		 	</div>
+               			</c:if>
+	                	<div class="nickname">${communityVO.nickname}[${communityVO.userid}]</div>
+	                	<div class="recommandWrap">추천 수[${communityVO.recommands}]</div>
+	                	<div class="vcount">조회수:${communityVO.vcount}</div>
 	                </div>
 			    </div>
 			</div>
@@ -49,44 +50,57 @@
 		</div>
 		<div class="detailcontainer">
 			<div class="content" >
-				<p>${communityVO.content}</p> 
-				<input class="button3" type="button" value="목록으로" onclick="location.href='zootopia.do?command=communityBoard'">
+				<pre>${communityVO.content}</pre> 
+				
+				<div class="buttonWrap">
+					<button class="recommendButton button3" data-gesq = "${communityVO.gseq}" >추천</button>
+					<input class="button3" type="button" value="목록으로" onclick="location.href='zootopia.do?command=communityBoard'">
+				</div>
 			</div>
         </div>
 		
   <div class="comment-section">
-        <h2 class="comment2">댓글 작성</h2>
+        <h2 class="comment2">댓글 ${replyAllcount}개</h2>
         <form class="commentwrite" action="zootopia.do?command=writeCommunityReply" method="post">
             <textarea class="write" name="content" required></textarea>
             <input type="hidden" name="gseq" value="${communityVO.gseq}">
             <button class="submit" type="submit">작성하기</button>
         </form>
 
-        <h2>댓글 목록</h2>
-        <div class="commentslist">
+        <div class="reply_list ">
             <ul>
                 <c:forEach var="reply" items="${communityReplies}">
                 <li>
-                    <div class="comment-content">
-                        <p>${reply.content}</p>
-                    </div>
-                    <div class="comment-meta">
-                        <c:if test="${not empty reply.saveImage}">
-                            <div class="image_box">           
-                                <img src="images/${reply.saveImage}" alt="User Image">
-                            </div>
-                        </c:if>
-                        <span>작성자: ${reply.nickname}[${reply.userid}]</span>
-                    </div>
-                        <c:if test="${loginUser.userid == reply.userid}">         
-                    	<h2>수정칸</h2>
+                    <div class="top">
+							<div class="image_box">
+								<c:if test ="${reply.saveImage != null}">
+									<img src="images/${reply.saveImage}">
+								</c:if>
+								<c:if test ="${reply.saveImage == null}">
+									<img src="images/repl-noimg.png">
+								</c:if>
+							</div>
+								
+							<div class="text-box">
+								<span>@ ${reply.nickname }</span>
+								<pre>${reply.content }</pre>
+							</div>
+							<div class="button-box">
+								<p>${reply.createdate}</p>
+							</div>
+					</div>
+                        <c:if test="${loginUser.userid == reply.userid}">  
+                          <div class="replyUpdateForm">
                             <form action="zootopia.do?command=updateCommunityReply" method="post">
                                 <input type="hidden" name="grseq" value="${reply.grseq}">
                                 <input type="hidden" name="gseq" value="${communityVO.gseq}">
                                 <textarea name="content" id="edit-content-${reply.grseq}"></textarea>
-                                <input class="fin" type="submit" value="수정 완료">
-                            	<input class="delete" type="button" value="삭제" onclick="deleteCommunityReply('${reply.grseq}', '${communityVO.gseq}')">
-                            </form>       
+                                <div class="button_box">
+	                                <input class="fin" type="submit" value="수정 완료">
+	                            	<input class="delete" type="button" value="삭제" onclick="deleteCommunityReply('${reply.grseq}', '${communityVO.gseq}')">
+                            	</div>
+                            </form> 
+                          </div>
                         </c:if>
                 </li>
                 </c:forEach>

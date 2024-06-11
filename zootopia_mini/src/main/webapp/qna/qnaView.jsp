@@ -4,11 +4,11 @@
 	<div class="form-container">
 			<article>
 				<form name="frm" >
-					<h2 style="font-size: x-large;"> Q & A </h2>
-					<div class="field" style="border-top:1px solid black;">
+					<h2> Q & A </h2>
+					<div class="field" >
 						<label>제목</label><div>${qnaVO.subject}</div>
 					</div>
-					<div class="field" style="border-top:1px solid black;">
+					<div class="field" >
 					<label>카테고리</label>
 					<c:choose >
 	                    <c:when test="${qnaVO.category == 1}">[콘테스트 문의]</c:when>
@@ -17,18 +17,18 @@
 	                    <c:otherwise></c:otherwise>
 	                </c:choose>
 					</div>
-					<div class="field" style="border-top:1px solid black;">
+					<div class="field" >
 						<label>작성자</label><div>${qnaVO.userid}</div>
 					</div>
 					
-					<div class="field" style="border-top:1px solid black; ">
+					<div class="field" >
 						<label>등록일</label><div><fmt:formatDate value="${qnaVO.createdate}" type="date"/></div>
 					</div>
-					 <div class="field" style="border-top:1px solid black; min-height: 100px;">
+					 <div class="field" >
                     <label>질문내용</label>
                     <div class="content-box">${qnaVO.content}</div>
                 	</div>
-					<div class="field" style="border-bottom:1px solid black;border-top:1px solid black; min-height: 100px;">
+					<div class="field">
 						<label>답변내용</label>
 						<div class="content-box">${qnaVO.reply}</div>
 					</div>

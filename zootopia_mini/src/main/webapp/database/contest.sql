@@ -2,12 +2,14 @@
 select * from contest;
 
 select * from member;
+select * from community;
 
 -- ALTER TABLE contest RENAME COLUMN count TO cnt;
 
 SELECT DATE_ADD(NOW(), INTERVAL 1 DAY);
 
 update contest set useyn = 'Y' where useyn = 'W';
+update member set useyn = 'Y' where userid = 'user1';
 
 INSERT INTO contest (userid , subject, content, lastdate)
 values ('user1', '누가 더 이쁜 발바닥을 가지고 있는가!' , '세상에서 제일이쁜 우리 강아지의 발바닥을 자랑해보세요! 1등하신분껜 무한 칭찬을 !' ,
@@ -254,3 +256,23 @@ select * from admins;
 insert into admins (adminid , pwd , name , phone) values ('admin' , '0000' , '관리자' , '010-0000-0000' );
 
 
+
+INSERT INTO qnareply (category, subject, content, reply, userid, createdate)
+VALUES 
+    (1,'샘플 제목 1', '샘플 내용 1', '샘플 답변 1', 'user1', NOW()),
+    (2,'샘플 제목 2', '샘플 내용 2', '샘플 답변 2', 'user4', NOW()),
+    (3,'샘플 제목 3', '샘플 내용 3', '샘플 답변 3', 'user3', NOW()),
+    (1,'샘플 제목 4', '샘플 내용 4', '샘플 답변 4', 'user4', NOW()),
+    (2,'샘플 제목 5', '샘플 내용 5', '샘플 답변 5', 'user2', NOW()),
+    (3,'샘플 제목 6', '샘플 내용 6', '샘플 답변 6', 'user2', NOW()),
+    (1,'샘플 제목 7', '샘플 내용 7', '샘플 답변 7', 'user5', NOW()),
+    (2,'샘플 제목 8', '샘플 내용 8', '샘플 답변 8', 'user2', NOW()),
+    (3,'샘플 제목 9', '샘플 내용 9', '샘플 답변 9', 'user1', NOW()),
+    (1, '샘플 제목 10', '샘플 내용 10', '샘플 답변 10', 'user1', NOW()),
+    (2, '샘플 제목 11', '샘플 내용 11', '샘플 답변 11', 'user1', NOW()),
+    (3, '샘플 제목 12', '샘플 내용 12', '샘플 답변 12', 'user1', NOW()),
+    (1, '샘플 제목 13', '샘플 내용 13', '샘플 답변 13', 'user1', NOW()),
+    (1, '샘플 제목 14', '샘플 내용 14', '샘플 답변 14', 'user1', NOW()),
+    (2, '샘플 제목 15', '샘플 내용 15', '샘플 답변 15', 'user1', NOW());
+    
+SELECT * FROM qnareply;

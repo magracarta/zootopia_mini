@@ -1,3 +1,5 @@
+
+
 function deleteCommunity(gseq) {
     if (confirm("정말로 삭제하시겠습니까?")) {
         location.href = 'zootopia.do?command=communityDelete&gseq=' + gseq;
@@ -5,7 +7,16 @@ function deleteCommunity(gseq) {
 }
 
 function updateCommunity() {
-    if (confirm("정말로 수정하시겠습니까?")) {
+	let formDate = document.updateForm;
+	if(formDate.subject.value == ""){
+		alert("제목을 작성해 주세요.");
+		formDate.subject.focus();
+		 return false; 
+	}else if(formDate.content.value == ""){
+		alert("내용을 작성해 주세요.");
+		formDate.content.focus();
+		 return false; 
+	}else if (confirm("정말로 수정하시겠습니까?")) {
         var theForm = document.updateForm;
         theForm.action = "zootopia.do?command=communityUpdate"; 
         theForm.submit(); 
@@ -13,12 +24,13 @@ function updateCommunity() {
     } else {
         return false; 
     }
+    
 }
 
 
 $(document).ready(function() {
     $(".recommendButton").click(function() {
-        var gseq = $(this).closest('li').find(".gseq").val();
+        var gseq = document.querySelector(".recommendButton").dataset.gesq;
 
         if (confirm("정말로 추천하시겠습니까?")) {
             $.ajax({
@@ -27,7 +39,7 @@ $(document).ready(function() {
                 data: { gseq: gseq },
                 success: function(data) {
                     var recommends = data.recommends;
-                    $(".recommands").text("추천 수[" + recommends + "]");
+                    $(".recommandWrap").text("추천 수[" + recommends + "]");
                 },
                 error: function(xhr, status, error) {
                     console.error("AJAX request failed: " + error);
@@ -87,4 +99,19 @@ function deleteCommunityReply(grseq, gseq) {
         location.href = 'zootopia.do?command=deleteCommunityReply&grseq=' + grseq + '&gseq=' + gseq;
     }
 
+}
+
+
+function communityCreate(){
+	let formDate = document.communityForm;
+	if(formDate.subject.value == ""){
+		alert("제목을 작성해 주세요.");
+		formDate.subject.focus();
+		 return false; 
+	}else if(formDate.content.value == ""){
+		alert("내용을 작성해 주세요.");
+		formDate.content.focus();
+		 return false; 
+	}
+	return true; 
 }

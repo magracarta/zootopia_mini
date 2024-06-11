@@ -8,7 +8,7 @@
         <form method="post" class="update-form"  action="zootopia.do?command=modify" name="modifyForm" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="username">아이디</label>
-                <input type="text" id="userid" class="form-control" value="${loginUser.userid}" name="userid">
+                <input type="text" id="userid" class="form-control" value="${loginUser.userid}" name="userid" readonly >
             </div>
             <div class="form-group">
                 <label for="password">비밀번호</label>

@@ -7,8 +7,8 @@
 <section>
 
 <article>
-    <form class="updateForm" name="updateForm" action="zootopia.do?command=communityUpdate" method="post">
-        <h2 class="section-title">자유게시판</h2>
+    <form class="updateForm communityform" name="updateForm" action="zootopia.do?command=communityUpdate" method="post">
+        <h2 class="section-title">자유게시판 수정</h2>
         <div class="field1">
             <label  for="subject">제목</label>
             <input class="subject" type="text" id="subject" name="subject" value="${communityVO.subject}">

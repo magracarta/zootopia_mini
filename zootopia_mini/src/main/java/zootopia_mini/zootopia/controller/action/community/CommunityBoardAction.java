@@ -16,8 +16,12 @@ public class CommunityBoardAction implements Action {
 
 	@Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        
+			HttpSession session = request.getSession();
+			int categorynum = 0;
+			if(request.getParameter("kind") != null) {
+				categorynum = Integer.parseInt(request.getParameter("kind"));
+			}
+			
             CommunityDao cdao = CommunityDao.getInstance();
         
             ArrayList<CommunityVO> list;
@@ -39,7 +43,7 @@ public class CommunityBoardAction implements Action {
             int count = cdao.getAllCount();
             paging.setRecordAllcount(count);
 
-            list = cdao.selectCommunity(paging);
+            list = cdao.selectCommunity(paging , categorynum);
         
 
             ArrayList<CommunityVO> top3Posts = cdao.getTop3Posts();
@@ -54,7 +58,7 @@ public class CommunityBoardAction implements Action {
             if (kindParam != null) {
                 kind = Integer.parseInt(kindParam);
             }
-            request.setAttribute("kind", kind);
+            request.setAttribute("kind", categorynum);
 
             request.getRequestDispatcher("community/community_board.jsp").forward(request, response);
         }

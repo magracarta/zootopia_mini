@@ -101,7 +101,7 @@ public class ActionFactory {
 		else if(command.equals("join")) ac = new JoinAction();
 		else if(command.equals("idcheckform")) ac = new IdCheckFormAction();
 		else if(command.equals("nicknamecheckform")) ac = new NicknameCheckFormAction();
-		
+		else if(command.equals("deletemember")) ac = new DeleteMemberAction();
 		
 		//community
 		else if(command.equals("communityBoard")) ac = new CommunityBoardAction();
@@ -131,7 +131,6 @@ public class ActionFactory {
 		else if(command.equals("mywrite")) ac = new MywriteAction();
 		else if(command.equals("myreply")) ac = new MyReplyAction();
 		else if(command.equals("myqna")) ac = new MyqnaAction();
-		else if(command.equals("deletemember")) ac = new DeleteMemberAction();
 		
 
 		//contest

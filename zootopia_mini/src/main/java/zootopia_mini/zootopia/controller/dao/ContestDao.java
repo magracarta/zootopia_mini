@@ -134,6 +134,25 @@ public class ContestDao {
 		return count;
 	}
 	
+	public int getAllCount(String table, int gseq) {
+		int count = 0;
+		con = DB.getConnection();
+		String sql = "select count(*) as cnt from "+table+ " where gseq = ?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, gseq);
+			rs = pstmt.executeQuery();
+			if(rs.next()) count = rs.getInt("cnt");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+		return count;
+	}
+	
 	public int getAllCount(String table, String search, String category) {
 		int count = 0;
 		String useyn = " and useyn ='Y' ";

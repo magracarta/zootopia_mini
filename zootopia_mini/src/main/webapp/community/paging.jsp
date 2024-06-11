@@ -17,6 +17,8 @@
 				<c:when test="${idx == paging.currentPage}">
 					<span>${idx}</span>
 				</c:when>
+				<c:when test="${idx == 0}">
+				</c:when>
 				<c:otherwise>
 					<a href="<%=url%>&pagenum=${idx}">${idx}</a>
 				</c:otherwise>
@@ -32,6 +34,7 @@
 <div class="serach-form">
     <form name="search" method="get" action="zootopia.do">
         <input type="hidden" name="command" value="<%=searchurl%>">
+        <input type="hidden" name="kind" value="${kind}">
         <input type="text" name="search" value="${search}">
         <input type="submit" value="검색">
     </form>

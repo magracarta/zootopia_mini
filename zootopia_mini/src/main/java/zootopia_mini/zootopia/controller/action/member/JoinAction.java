@@ -29,8 +29,8 @@ public class JoinAction implements Action {
 		mvo.setPhone(request.getParameter("phone"));
 		mvo.setEmail(request.getParameter("email"));
 		mvo.setKind(request.getParameter("kind"));
-		mvo.setPetname(request.getParameter("petname"));
-		mvo.setPetgender(request.getParameter("petgender"));
+		if(!request.getParameter("petname").equals("선택") )mvo.setPetname(request.getParameter("petname"));
+		if(!request.getParameter("petgender").equals("선택") )mvo.setPetgender(request.getParameter("petgender"));
 		
 		
 		HttpSession session = request.getSession();
