@@ -35,6 +35,12 @@ public class CommunityBoardAction implements Action {
             } else if (session.getAttribute("pagenum") != null) {
                 page = (Integer) session.getAttribute("pagenum");
             }
+            
+            String kindParam = request.getParameter("kind");
+            int kind = -1;
+            if (kindParam != null) {
+                kind = Integer.parseInt(kindParam);
+            }
 
             paging.setCurrentPage(page);
             paging.setPagecnt(10);
@@ -53,11 +59,7 @@ public class CommunityBoardAction implements Action {
             request.setAttribute("commList", list);
             
             
-            String kindParam = request.getParameter("kind");
-            int kind = -1;
-            if (kindParam != null) {
-                kind = Integer.parseInt(kindParam);
-            }
+           
             request.setAttribute("kind", categorynum);
 
             request.getRequestDispatcher("community/community_board.jsp").forward(request, response);

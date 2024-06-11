@@ -350,5 +350,31 @@ public class CommunityDao {
      
         return count;
 	}
+
+	public int getAllCount(int kind) {
+		 String where = "";
+        if (kind > -1) {
+        	where = " where kind ="+kind;
+        } 
+        int count = 0;
+        ResultSet rs = null;
+
+        try {
+            con = DB.getConnection();
+            String sql = "SELECT COUNT(*) AS cnt FROM community" + where;
+            pstmt = con.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                count = rs.getInt("cnt");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DB.close(con, pstmt, rs);
+        }
+     
+        return count;
+	}
 	
 }
