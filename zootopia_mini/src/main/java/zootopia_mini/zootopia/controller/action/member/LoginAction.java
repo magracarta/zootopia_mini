@@ -14,7 +14,8 @@ public class LoginAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		String referrer = request.getParameter("referrer");
+		String command = request.getParameter("command");
 		String userid = request.getParameter("userid");
 		String pwd = request.getParameter("pwd");
 		
@@ -22,6 +23,7 @@ public class LoginAction implements Action {
 		MemberVO mvo = mdao.getMember(userid);
 		
 		String url = "member/loginForm.jsp";
+		System.out.println("referrer :"+referrer);
 		if(mvo==null) {
 			request.setAttribute("message", "아이디가 없습니다");
 		}else if(!mvo.getPwd().equals(pwd)) {
@@ -32,10 +34,14 @@ public class LoginAction implements Action {
 			url = "zootopia.do?command=main";
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", mvo);
+			if( referrer != null && !referrer.contains("logout") && !referrer.contains("login")) url =(referrer);
 		}else {
 			request.setAttribute("message", "관리자에게 문의하세요");
 		}
-		request.getRequestDispatcher(url).forward(request, response);
+		
+	
+		 request.getRequestDispatcher(url).forward(request, response);
+	
 		
 	}
 

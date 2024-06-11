@@ -16,7 +16,7 @@ public class LogoutAction implements Action {
 		HttpSession session = request.getSession();
 		session.removeAttribute("loginUser");
 		session.removeAttribute("message");
-		request.getRequestDispatcher("member/loginForm.jsp").forward(request, response);
+		request.getRequestDispatcher("zootopia.do?command=loginform").forward(request, response);
 		
 	}
 

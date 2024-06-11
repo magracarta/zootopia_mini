@@ -36,8 +36,27 @@
 		</div>
 		<nav class="navigation">
 			<ul>
-				<li><a href="zootopia.do?command=contestBoard&category=all&pagenum=1&search=">콘테스트</a></li>
-				<li><a href="zootopia.do?command=communityBoard">자유게시판</a></li>
+				<li>
+				<a href="zootopia.do?command=contestBoard&category=all&pagenum=1&search=">콘테스트</a>
+				<div class="submenuContainer">
+					<ul>
+						<li><a href="zootopia.do?command=contestBoard&category=all&pagenum=1&search=">All</a></li>
+						<li><a href="zootopia.do?command=contestBoard&category=playing&pagenum=1&search=">진행중인 콘테스트</a></li>
+						<li><a href="zootopia.do?command=contestBoard&category=accomplished&pagenum=1&search=">완료된 콘테스트</a></li>
+						<li><a href="zootopia.do?command=contestBoard&category=wating&pagenum=1&search=">대기중인 콘테스트</a></li>
+					</ul>
+				</div>
+				</li>
+				<li><a href="zootopia.do?command=communityBoard">자유게시판</a>
+					<div class="submenuContainer">
+					<ul>
+						<li><a href="zootopia.do?command=communityBoard&pagenum=1">All</a></li>
+						<li><a href="zootopia.do?command=communityBoard&kind=1&pagenum=1">고민</a></li>
+						<li><a href="zootopia.do?command=communityBoard&kind=2&pagenum=1">자랑</a></li>
+						<li><a href="zootopia.do?command=communityBoard&kind=3&pagenum=1">잡담</a></li>
+					</ul>
+				</div>
+				</li>
 				<li><a href="zootopia.do?command=qnaList">Q&A</a></li>
 			</ul>
 		</nav>

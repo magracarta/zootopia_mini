@@ -17,39 +17,45 @@ public class CommunityBoardAction implements Action {
 	@Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			HttpSession session = request.getSession();
+			String search = request.getParameter("search");
+			if(request.getParameter("search") == null) search = "";
 			int categorynum = 0;
-			if(request.getParameter("kind") != null) {
+			
+			if(request.getParameter("kind") != null ) {
 				categorynum = Integer.parseInt(request.getParameter("kind"));
 			}
-			
             CommunityDao cdao = CommunityDao.getInstance();
         
             ArrayList<CommunityVO> list;
             Paging paging = new Paging();
 
         
-            int page = 1;
-            if (request.getParameter("pagenum") != null) {
-                page = Integer.parseInt(request.getParameter("pagenum"));
-                session.setAttribute("pagenum", page);
-            } else if (session.getAttribute("pagenum") != null) {
-                page = (Integer) session.getAttribute("pagenum");
-            }
+            
             
             String kindParam = request.getParameter("kind");
             int kind = -1;
             if (kindParam != null) {
                 kind = Integer.parseInt(kindParam);
             }
-
+            int count = cdao.getAllCount(kind , search);
+            
+            
+            int page = 1;
+            int setpagerowcnt = 10;
+            if (request.getParameter("pagenum") != null) {
+                page = Integer.parseInt(request.getParameter("pagenum"));
+                session.setAttribute("pagenum", page);
+            } else if (session.getAttribute("pagenum") != null && count > setpagerowcnt ) {
+                page = (Integer) session.getAttribute("pagenum");
+            }
+            
             paging.setCurrentPage(page);
-            paging.setPagecnt(10);
-            paging.setRecordrow(10);
-
-            int count = cdao.getAllCount();
+            paging.setPagecnt(setpagerowcnt);
+            paging.setRecordrow(setpagerowcnt);
             paging.setRecordAllcount(count);
 
-            list = cdao.selectCommunity(paging , categorynum);
+
+            list = cdao.selectCommunity(paging , categorynum , search);
         
 
             ArrayList<CommunityVO> top3Posts = cdao.getTop3Posts();
@@ -58,8 +64,7 @@ public class CommunityBoardAction implements Action {
             request.setAttribute("paging", paging);
             request.setAttribute("commList", list);
             
-            
-           
+           request.setAttribute("search", search);
             request.setAttribute("kind", categorynum);
 
             request.getRequestDispatcher("community/community_board.jsp").forward(request, response);

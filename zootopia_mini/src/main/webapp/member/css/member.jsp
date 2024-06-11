@@ -194,8 +194,11 @@ img{
 </style>
 
 <script>
+if(document.getElementById('photoinput')){
 	document.getElementById('photoinput').addEventListener('change', function() {
     	var fileName = this.value.split('\\').pop(); 
     	document.getElementById('photoinput').textContent = fileName;
 	});
+	
+}
 </script>

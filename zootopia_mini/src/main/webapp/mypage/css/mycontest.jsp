@@ -6,7 +6,7 @@
 	margin-bottom: 10px;
 	background-color: #eee;
 }
-.container {display: flex; justify-content: space-between;margin: 20px;}
+.container {display: flex; justify-content: space-between;margin: 20px 0;}
 .column {width: 45%;}
 .column h2 { font-weight:bold; padding-top: 30px; font-size: 1.2em; margin-bottom: 10px;}
 .contestlist {
