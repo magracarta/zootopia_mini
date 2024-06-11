@@ -13,13 +13,17 @@ public class FindCommunityAction implements Action {
 
 	@Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String subject = request.getParameter("search");
-        if(subject != null && !subject.isEmpty()) {
+
+	
+	String subject = request.getParameter("search");
+	if( subject != null ) {
+		if( subject.equals("") == false ) {
             CommunityDao cdao = CommunityDao.getInstance();
             ArrayList<CommunityVO> list = cdao.findcontent(subject);
-            request.setAttribute("search", subject);
             request.setAttribute("subjectList", list);
-        }
-        request.getRequestDispatcher("community/community_board.jsp").forward(request, response);
-    }
+		}
+	}
+    request.getRequestDispatcher("community/community_board.jsp").forward(request, response);
+
+}
 }

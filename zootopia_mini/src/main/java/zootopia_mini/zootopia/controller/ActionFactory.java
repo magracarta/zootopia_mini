@@ -8,7 +8,6 @@ import zootopia_mini.zootopia.controller.action.admin.AdminLogout;
 import zootopia_mini.zootopia.controller.action.admin.AdminMainAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminMemberDetailAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminMemberInsertAction;
-import zootopia_mini.zootopia.controller.action.admin.AdminMemberInsertActionForm;
 import zootopia_mini.zootopia.controller.action.admin.AdminMemberListAction;
 import zootopia_mini.zootopia.controller.action.community.CommunityBoardAction;
 import zootopia_mini.zootopia.controller.action.community.CommunityDeleteAction;
@@ -147,7 +146,6 @@ public class ActionFactory {
 		else if(command.equals("adminlogout")) ac = new AdminLogout();
 		else if(command.equals("adminmemberlist")) ac = new AdminMemberListAction();
 		else if(command.equals("adminmemberdetail")) ac = new AdminMemberDetailAction();
-		else if(command.equals("adminmemberinsertform")) ac = new AdminMemberInsertActionForm();
 		else if(command.equals("adminmemberinsert")) ac = new AdminMemberInsertAction();
 		 		
 		return ac;

@@ -230,9 +230,7 @@ public class CommunityDao {
 		  
 	        ArrayList<CommunityVO> list = new ArrayList<CommunityVO>();
 	        con = DB.getConnection();
-	        String sql = "SELECT c.gseq, c.subject, c.content, c.userid, c.recommands, c.kind, m.nickname, c.createdate " 
-	        		+ "FROM community c JOIN member m ON c.userid = m.userid "
-	        		+ " WHERE c.subject LIKE concat ('%', ? ,'%')";
+	        String sql = "select * from community where subject like concat('%', ?, '%') ";
 
 	        try {
 
