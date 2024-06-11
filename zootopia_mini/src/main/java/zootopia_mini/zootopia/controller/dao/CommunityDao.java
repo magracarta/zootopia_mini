@@ -92,14 +92,14 @@ public class CommunityDao {
 
     public CommunityVO getCommunity(int gseq) {
         CommunityVO cvo = new CommunityVO(); 
-        String sql = "SELECT c.*, n.nickname FROM community c JOIN nickname n ON c.userid = n.userid WHERE c.gseq = ?";
+        String sql = "SELECT c.* , n.nickname FROM community c JOIN member n ON c.userid = n.userid WHERE c.gseq = ?";
         con = DB.getConnection();
 
         try {
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, gseq);
             rs = pstmt.executeQuery();
-
+            
             if (rs.next()) {
                 cvo = new CommunityVO(); 
                 cvo.setGseq(gseq);

@@ -200,5 +200,5 @@ ALTER TABLE qnareply
 	ON DELETE CASCADE
 ;
 
-select*from qnareply; 
+select*from community; 
 
