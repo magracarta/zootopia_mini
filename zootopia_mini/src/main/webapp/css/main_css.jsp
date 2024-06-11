@@ -58,6 +58,8 @@ font-weight: 700; }
 
   <script>
   var swiper = new Swiper(".mySwiper", {
+	  autoplay : true, //자동 재생 여부
+	  loop:true,
       pagination: {
         el: ".swiper-pagination",
         type: "fraction",
@@ -69,19 +71,5 @@ font-weight: 700; }
     });
   
   
-  setTimeout(()=>{
-	  resize();
-	  
-  },100);
-  
  
-  //반응형 
-  function resize(){
-	  let imgs = document.querySelectorAll(".img-box img");
-	  let width = imgs[0].width;
-	  
-	  for(img of imgs){
-		  img.style.height = width+'px';
-	  }
-  }
   </script>
