@@ -5,12 +5,12 @@
 <%@ include file="/community/css/community_css.jsp" %>
 
 <article>
-    <form class="communityform" name="updateForm" action="zootopia.do?command=communityUpdate" method="post">
+    <form class="communityform" name="updateForm" action="zootopia.do?command=admincommunityupdate" method="post">
         <div class="form">자유게시판 수정</div>
         <div class="detail">
            <label class="writer">작성자</label>
-           <span class="nickname" name="nickname">${loginUser.nickname}</span>
-           <span class="userid" name="userid">[${loginUser.userid}]</span>
+           <span class="nickname" name="nickname">${communityVO.nickname}</span>
+           <span class="userid" name="userid">[${communityVO.userid}]</span>
       </div>
         <div class="kind">
             <label for="kind">카테고리 선택</label>
@@ -29,13 +29,38 @@
             <textarea class="content" name="content" rows="10" cols="85">${communityVO.content}</textarea>
         </div>
         <input type="hidden" name="gseq" value="${communityVO.gseq}">
-        <div class="btn" style="display:flex; flex-direction:row;">   
-            <input type="button" style="width:100px; padding-top:20px;" class="button3" value="수정완료" onclick="updateCommunity()">
-            <input type="button" style="width:100px; padding-top:20px; border-radius: 30px 30px 30px 30px; padding-left:35px;" class="button4" value="취소" onClick="location.href='zootopia.do?command=communityDetail&gseq=${communityVO.gseq}'">
+        <div class="btn" style="display:flex; align-items: center; flex-direction:row;">   
+            <input type="submit" style="" class="button3" value="수정완료" onclick="return updateCommunity()">
+            <input type="button" style="" class="button4" value="취소" onClick="location.href='zootopia.do?command=admincommunitydetail&gseq=${communityVO.gseq}'">
         </div>
     </form>
 
 </article>
+<script>
+
+function updateCommunity(){
+	let communityform = document.updateForm;
+	if(communityform.subject.value == ""){
+		alert("제목을 입력해주세요.");
+		communityform.subject.focus();
+		return false;
+	}else if(communityform.content.value == ""){
+		alert("내용을 입력해주세요.");
+		communityform.content.focus();
+		return false;
+		
+	}else{
+		return true;
+	}
+
+}
+</script>
 
 
 <%@ include file="/admin/footer.jsp" %>
+
+<style>
+.communityform .btn { margin-left:0; }
+.communityform .btn * { padding:10px 20px !important; font-size: 15px; line-height: 1.3em; margin-top:0;  }
+.communityform .btn .button4 {  margin:0 0 0 10px !important;}
+</style>

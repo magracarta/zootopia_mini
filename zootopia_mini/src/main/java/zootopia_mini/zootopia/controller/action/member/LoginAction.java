@@ -18,7 +18,7 @@ public class LoginAction implements Action {
 		String command = request.getParameter("command");
 		String userid = request.getParameter("userid");
 		String pwd = request.getParameter("pwd");
-		
+		HttpSession session = request.getSession();
 		MemberDao mdao = MemberDao.getInstance();
 		MemberVO mvo = mdao.getMember(userid);
 		
@@ -32,15 +32,19 @@ public class LoginAction implements Action {
 			request.setAttribute("message", "해당 계정은 휴면상태이거나 탈퇴상태입니다. 관리자에게 문의하세요");
 		}else if(mvo.getPwd().equals(pwd)) {
 			url = "zootopia.do?command=main";
-			HttpSession session = request.getSession();
+			
 			session.setAttribute("loginUser", mvo);
 			if( referrer != null && !referrer.contains("logout") && !referrer.contains("login")) url =(referrer);
 		}else {
 			request.setAttribute("message", "관리자에게 문의하세요");
 		}
 		
-	
-		 request.getRequestDispatcher(url).forward(request, response);
+		if( referrer != null && !referrer.contains("logout") && !referrer.contains("login")) response.sendRedirect(referrer);
+		else {
+			session.removeAttribute("loginUser");
+			request.getRequestDispatcher(url).forward(request, response);
+			
+		}
 	
 		
 	}

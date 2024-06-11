@@ -22,7 +22,7 @@
 
 			<c:if test="${contest_detail.lastdate < now}"><span style="display:block; margin-bottom:20px;">완료된 콘테스트</span></c:if>
 			<a style="margin:15px 0;" href="zootopia.do?command=adminContestUpdateForm&cseq=${contest_detail.cseq}&category=${category}&pagenum=${beforePageNum}">콘테스트 수정하기</a>
-			<a style="margin-bottom:15px; margin-left:10px;" href="zootopia.do?command=admincontestlist&category=${category}&currentPage=${beforePageNum}">목록으로 ></a>
+			<a style="margin-bottom:15px; margin-left:10px;" href="zootopia.do?command=admincontestlist&category=${category}&pagenum=${beforePageNum}">목록으로 ></a>
 		</div>
 	</div>
 	<form name="petdeleteForm">

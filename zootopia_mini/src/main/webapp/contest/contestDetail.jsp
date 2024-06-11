@@ -63,8 +63,10 @@
 				 			
 					 		</div>
 					 		<c:if test="${contest_detail.lastdate > now}">
+					 		<c:if test="${loginUser != null}">					 		
 						 		<a class="recommnadButton"
 					 		 href="zootopia.do?command=reccomnadPet&cpseq=${plist.cpseq}&cseq=${contest_detail.cseq}&index=${index}">추천하기</a>					 		
+					 		</c:if>
 					 		
 					 		 <c:if test ="${plist.userid == loginUser.userid}">
 					 		 	<div class="loginButton_ud">
@@ -84,7 +86,7 @@
 			</c:forEach>
 			<c:if test='${contest_detail.cpdList.size() <  contest_detail.pcnt && contest_detail.lastdate > now}'>
 			<c:choose>
-				<c:when test="${loginUser.petname != '' }">
+				<c:when test="${loginUser.petname != '' and loginUser != null }">
 					<li class="more_pet">
 						<a href="javascript:0" class="morePetBtn" >
 							<span class="plus"><img src="images/plus.png"></span>

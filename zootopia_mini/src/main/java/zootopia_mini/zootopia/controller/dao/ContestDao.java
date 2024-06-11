@@ -629,7 +629,7 @@ public class ContestDao {
 		ArrayList<CommunityVO> list = new ArrayList<CommunityVO>();
 		String sql = "SELECT c.gseq, c.subject, c.content, c.createdate, c.recommands, c.userid, m.nickname, m.userid AS user_id, c.kind " +
                 "FROM community c JOIN member m ON c.userid = m.userid " +
-                "where c.createdate > DATE_SUB(NOW(), INTERVAL 7 DAY) ORDER BY c.recommands DESC , c.vcount DESC LIMIT 4;";
+                "where c.createdate > DATE_SUB(NOW(), INTERVAL 7 DAY) ORDER BY c.recommands DESC , c.vcount DESC LIMIT 5;";
 		   con = DB.getConnection();
 		   try {
 		       pstmt = con.prepareStatement(sql);

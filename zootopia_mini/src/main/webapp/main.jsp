@@ -84,7 +84,7 @@
 							</li>
 							<c:if test="${list.cpdList[2].saveimage != null}">
 							<li>
-								<div class="ts_img-box"><img src="images/pet_image2.jpg"></div>
+								<div class="ts_img-box"><img src="images/${list.cpdList[2].saveimage}"></div>
 								<div class="ts_text-box">
 									<span class="petname">${list.cpdList[2].petname}</span>
 									<span class="content skiptext">${list.cpdList[2].content}</span>
