@@ -61,11 +61,19 @@ public class AdminCommunityListAction implements Action {
             int count = adao.getAllCount("community", "subject", key);
             paging.setRecordAllcount(count);
 
-            list = adao.selectCommunity(paging);
+            list = adao.selectCommunity(paging, key);
         
 
             request.setAttribute("paging", paging);
             request.setAttribute("commList", list);
+            
+            String kindParam = request.getParameter("kind");
+            int kind = -1;
+            if (kindParam != null) {
+            	kind = Integer.parseInt(kindParam);
+            }
+            request.setAttribute("kind", kind);
+            
             request.getRequestDispatcher("admin/community/communityList.jsp").forward(request, response);
         }
 	}

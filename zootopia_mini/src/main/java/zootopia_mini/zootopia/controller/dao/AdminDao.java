@@ -153,17 +153,19 @@ public class AdminDao {
 		
 	}
 
-	public ArrayList<CommunityVO> selectCommunity(Paging paging) {
+	public ArrayList<CommunityVO> selectCommunity(Paging paging, String key) {
 
 		ArrayList<CommunityVO> list = new ArrayList<CommunityVO>();
         String sql = "SELECT c.gseq, c.subject, c.content, c.createdate, c.recommands, c.userid, m.nickname, m.userid AS user_id, c.kind, c.vcount " +
-                     "FROM community c JOIN member m ON c.userid = m.userid " +
-                     "ORDER BY c.gseq DESC LIMIT ? OFFSET ?;";
+                     " FROM community c JOIN member m ON c.userid = m.userid " +
+                     " where subject like concat('%', ?, '%') " +
+                     " ORDER BY c.gseq DESC LIMIT ? OFFSET ?;";
         con = DB.getConnection();
         try {
             pstmt = con.prepareStatement(sql);
-            pstmt.setInt(1, paging.getRecordrow());
-            pstmt.setInt(2, paging.getOffsetnum());
+            pstmt.setString(1, key);
+            pstmt.setInt(2, paging.getRecordrow());
+            pstmt.setInt(3, paging.getOffsetnum());
 
             rs = pstmt.executeQuery();
             while (rs.next()) {
@@ -264,6 +266,22 @@ public class AdminDao {
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, qseq);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+	}
+
+	public void deleteCommunityReply(String grseq) {
+
+		con = DB.getConnection();
+		String sql = "delete from community_reply where grseq=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, grseq);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

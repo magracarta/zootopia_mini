@@ -236,7 +236,7 @@ padding: 1%;
     }
 
 .detailcontainer .content	p { 
-isplay:flex; 
+display:flex; 
 text-align:left; 
 padding:30%;
 font-size: large;
