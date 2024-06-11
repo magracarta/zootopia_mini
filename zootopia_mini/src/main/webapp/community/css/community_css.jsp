@@ -208,7 +208,9 @@ border-radius: 50%;
 .detailcontainer .content .button3.recommendButton:hover{
 	background:#fff; color:#000; 
 }
-.detailcontainer .content pre { 
+.detailcontainer .content pre {}
+
+.detailcontainer .content	p { 
 display:flex; 
 text-align:left; 
 padding:30px 0 100px;

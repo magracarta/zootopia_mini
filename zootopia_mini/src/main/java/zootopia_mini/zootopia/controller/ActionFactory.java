@@ -7,6 +7,7 @@ import zootopia_mini.zootopia.controller.action.admin.AdminAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminCommunityDeleteAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminCommunityDetailAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminCommunityListAction;
+import zootopia_mini.zootopia.controller.action.admin.AdminCommunityReplyDeleteAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminCommunityUpdateAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminCommunityUpdateFormAction;
 import zootopia_mini.zootopia.controller.action.admin.AdminContestDetialAction;
@@ -178,6 +179,7 @@ public class ActionFactory {
 		else if(command.equals("adminqnadetail")) ac = new AdminQnaDetailAction();
 		else if(command.equals("adminqnareplyupdate")) ac = new AdminQnaReplyUpdateAction();
 		else if(command.equals("adminqnadelete")) ac = new AdminQnaDeleteAction();
+		else if(command.equals("admincommunityreplydelete")) ac = new AdminCommunityReplyDeleteAction();
 		
 		
 		//admincontest

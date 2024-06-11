@@ -35,8 +35,7 @@ values ('user1' ,'누가 더 이쁜 발바닥을 가지고 있는가!' , '세상
 DATE_ADD(NOW(), INTERVAL 1 DAY));
 
 
-ALTER TABLE contest RENAME COLUMN count TO cnt;
-ALTER TABLE contest add COLUMN pcnt int default 6;
+
 
 select * from contest_pet;
 select * from contest;

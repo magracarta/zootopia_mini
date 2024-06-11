@@ -183,7 +183,7 @@ input[type="text"]:focus, input[type="password"]:focus {
 .admin-menu .admin-menu-right{ display:flex; flex-direction:column; }
 
 article form .tb hr{ margin-top:20px; margin-bottom:20px; }
-article form .tb .row-subject {display:flex; text-align:center;}
+article form .tb .row-subject {display:flex; text-align:center; font-weight:bold;}
 article form .tb .row .col-search{ display:flex; flex-direction:row; justify-content:flex-end; margin-bottom:80px; }
 article form .tb .row .col-search img:hover{cursor:pointer;}
 article form .tb .row .col-search input[type='text'] { width:200px; height:40px; border-top:0; border-left:0; border-right:0; border-bottom:1px solid #C9C9C9;}
@@ -429,4 +429,24 @@ article form .tb .row-list img:hover{cursor:pointer;}
 .form-group label{
 	margin-bottom:5px;
 }
+.col-search{ display:flex; flex-direction:row; justify-content:flex-end; margin-bottom:80px; }
+.col-search img:hover{cursor:pointer;}
+.col-search input[type='text'] { width:200px; height:40px; border-top:0; border-left:0; border-right:0; border-bottom:1px solid #C9C9C9;}
+
+.container-btn .buttondiv{
+	display:flex;
+	justify-content:flex-end;
+}
+.container-btn .buttondiv input[type='button'] {
+	width:auto;
+	height:40px;
+	margin-left:15px;
+	background:white;
+	border:1px solid black;
+	color:black;
+	line-height:normal;
+	border-radius:15px 15px 15px 15px;
+}
+
+
 pre { font-size: inherit; font-weight: inherit; font-family: inherit; color: inherit; line-height: 1.3em; }

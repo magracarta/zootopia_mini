@@ -7,6 +7,7 @@ VALUES
 
 select * from member;
 select * from community;
+select * from community_reply;
 INSERT INTO member (nickname, userid, pwd, name, phone, email, petname, petgender, kind) VALUES
 ('닉네임1', 'user1', '0000', '홍길동', '010-1234-5678', 'user1@example.com', 'ALEX', 'F' ,'강아지'),
 ('닉네임2', 'user2', '0000', '김철수', '010-9876-5432', 'user2@example.com', '카미', 'F', '고양이'),
