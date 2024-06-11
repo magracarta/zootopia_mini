@@ -6,7 +6,7 @@
 	<div class="swiper mySwiper">
 	    <div class="swiper-wrapper">
 	      <div class="swiper-slide">
-	       <a href="http://localhost:8090/zootopia_mini/zootopia.do?command=contestBoard&category=all&pagenum=1&search=">
+	       <a href="zootopia.do?command=contestBoard&category=all&pagenum=1&search=">
 	      	<div class="banner-01 banner">
 	      		<img src="images/banner_1.png">
 	      		<div class="title">
@@ -17,7 +17,7 @@
 	      	</a>
 	      </div>
 	       <div class="swiper-slide">
-	       <a href="http://localhost:8090/zootopia_mini/zootopia.do?command=communityBoard">
+	       <a href="zootopia.do?command=communityBoard">
 	      	<div class="banner-03 banner">
 	      		<img src="images/banner_3.png">
 	      		<div class="title">
@@ -28,7 +28,7 @@
 	      	</a>
 	      </div>
 	      <div class="swiper-slide">
-	      <a href="http://localhost:8090/zootopia_mini/zootopia.do?command=qnaList">
+	      <a href="zootopia_mini/zootopia.do?command=qnaList">
 	      	<div class="banner-02 banner">
 	      		<img src="images/banner_2.png">
 	      		<div class="title">
