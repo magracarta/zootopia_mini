@@ -5,7 +5,7 @@
 
 <section>
     <article>
-        <form>
+        <form method="post" name="frm">
             <ul class="qna-header" style="text-align:left;">Q & A </ul>
             <div class="tb">
             	<div class="col-search">

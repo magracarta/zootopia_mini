@@ -27,7 +27,7 @@ public class AdminQnaListAction implements Action {
 			Paging paging = new Paging();
 			
 			
-			String key="";
+			
 			int page = 1;
             if (request.getParameter("pagenum") != null) {
                 page = Integer.parseInt(request.getParameter("pagenum"));
@@ -35,6 +35,17 @@ public class AdminQnaListAction implements Action {
             } else if (session.getAttribute("pagenum") != null) {
                 page = (Integer) session.getAttribute("pagenum");
             }
+            
+            String key="";
+			if(request.getParameter("key") != null) {
+				key = request.getParameter("key");
+				session.setAttribute("key", key);
+			}else if(session.getAttribute("key") != null) {
+				key = (String)session.getAttribute("key");
+			}else {
+				key="";
+				session.removeAttribute("key");
+			}
             
 			AdminDao adao = AdminDao.getInstance();
 			

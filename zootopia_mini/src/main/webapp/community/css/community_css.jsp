@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <style>
-	
+   
 .container {     margin-bottom: 60px; }
 .container .title { font-size: 30px; font-weight: 600; }
 
@@ -34,26 +34,26 @@ align-items: baseline;
 
 
 
-.communityboard	{  }
-.communityboard ul	{  }
-.communityboard ul li	{ padding: 22px 15px; border-bottom: 1px solid #ddd; }
+.communityboard   {  }
+.communityboard ul   {  }
+.communityboard ul li   { padding: 22px 15px; border-bottom: 1px solid #ddd; }
 .communityboard ul .board_head{ font-weight: bold; color:#000; }
-.communityboard ul .hottopic	{ 
+.communityboard ul .hottopic   { 
  background: lightgray; 
  border-bottom: 1px solid #ddd;
      background: #f3f3f3;
     border-bottom: 1px solid #ddd;
     border-left: 5px solid #0198;
  }
-.communityboard ul li.board_head	{ display: flex; justify-content: space-between; }
-.communityboard ul li a	{ display: flex; justify-content: space-between; }
-.communityboard ul li .num	{ width: 6%; margin-right: 20px; text-align: center; }
+.communityboard ul li.board_head   { display: flex; justify-content: space-between; }
+.communityboard ul li a   { display: flex; justify-content: space-between; }
+.communityboard ul li .num   { width: 6%; margin-right: 20px; text-align: center; }
 .communityboard ul li .num > span { background: #0198; color: #fff; padding: 5px 8px; border-radius: 50px; font-size: 12px; }
-.communityboard ul li .subject	{ width: 60%; text-align: left; }
-.communityboard ul li .userid	{ width: 15%; text-align: center; }
-.communityboard ul li .createdate	{ width: 20%; text-align: left; }
-.communityboard ul li .recommands	{ width: 5%; text-align: center; }
-.communityboard ul li .vcount	{ width: 5%; text-align: center; }
+.communityboard ul li .subject   { width: 60%; text-align: left; }
+.communityboard ul li .userid   { width: 15%; text-align: center; }
+.communityboard ul li .createdate   { width: 20%; text-align: left; }
+.communityboard ul li .recommands   { width: 5%; text-align: center; }
+.communityboard ul li .vcount   { width: 5%; text-align: center; }
 
 
 /* community detail*/
@@ -112,7 +112,7 @@ border-radius: 50%;
 .header .namerecomreply .recommands {
 }
 .header .namerecomreply .recommands button { 
-	padding:5px 10px;
+   padding:5px 10px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
@@ -186,7 +186,7 @@ border-radius: 50%;
             border: 1px solid black;
 }
 
-.detailcontainer .content	{ width: 100%; }
+.detailcontainer .content   { width: 100%; }
 
 .detailcontainer .content .button3{
     background: white;
@@ -197,7 +197,7 @@ border-radius: 50%;
     }
 .detailcontainer .content .buttonWrap { display:flex;  }
 .detailcontainer .content .button3.recommendButton  {
-	background:#000; color:#fff; cursor: pointer; margin-right:13px;
+   background:#000; color:#fff; cursor: pointer; margin-right:13px;
 }
     
 .detailcontainer .content .button3:hover{
@@ -206,11 +206,16 @@ border-radius: 50%;
             border:1px solid black;
     }
 .detailcontainer .content .button3.recommendButton:hover{
-	background:#fff; color:#000; 
+   background:#fff; color:#000; 
 }
-.detailcontainer .content pre {}
+.detailcontainer .content pre {
+display:flex; 
+text-align:left; 
+padding:30px 0 100px;
+font-size: large;
+}
 
-.detailcontainer .content	p { 
+.detailcontainer .content   p { 
 display:flex; 
 text-align:left; 
 padding:30px 0 100px;
@@ -352,7 +357,7 @@ display: flex;
             background-color: #333;
         }
 
-		
+      
         .commentslist form .fin ,
         .commentslist form .delete {
             padding: 5px 10px;
@@ -368,13 +373,13 @@ display: flex;
         
         .commentslist form .delete { background:#fff; color:#000; }
 
-		.commentslist form .fin:hover {
+      .commentslist form .fin:hover {
             background-color: white;
             color: black;
             border:1px solid black;
         }
-		
-		.commentslist form .delete:hover {
+      
+      .commentslist form .delete:hover {
             background-color: black;
             color: white;
             border:1px solid black;
@@ -422,7 +427,7 @@ display: flex;
 
 }
 .communityform > *{
-	padding-bottom:35px;
+   padding-bottom:35px;
 }
 .communityform .form {
     display: flex;
@@ -441,7 +446,7 @@ display: flex;
 }
 
 .communityform .detail .writer{
-	width: 80px;
+   width: 80px;
     text-align: left;
     padding: 15px 0;
     font-weight: bold;
@@ -459,11 +464,11 @@ display: flex;
 
 .communityform .kind label {
     font-size: large;
-    font-weight: bold;	
+    font-weight: bold;   
 }
 
 .communityform .kind .kindlist {
-	    width: 7%;
+       width: 7%;
     text-align: center;
     padding: 0px;
     height: 37px;
@@ -471,28 +476,28 @@ display: flex;
 }
 
 .communityform .kind .kindlist .list1 {
-	width: 10%;
+   width: 10%;
     text-align: center;
     
 }
  
  .communityform .kind .kindlist .list1 {
-	width: 10%;
+   width: 10%;
     text-align: center;
 }
 
 .communityform .kind .kindlist .list1 {
-	width: 10%;
+   width: 10%;
     text-align: center;
 }
 .communityform .class {
 }
 .communityform .content label,
 .communityform .class label {
-	font-size: larger;
+   font-size: larger;
     font-weight: bold;
     padding-bottom:20px;
-    display: block;	
+    display: block;   
 }
 
 .communityform .class .text{
@@ -531,13 +536,13 @@ height: 300px;
 }
 
 .communityform .btn .button3:hover{
-	background-color: white;
-	color: black;
+   background-color: white;
+   color: black;
 }
 
 .communityform .btn .button4:hover{
-		background-color: black;
-	color: white;
+      background-color: black;
+   color: white;
     border:1px solid black;
 }
 
@@ -560,8 +565,8 @@ height: 300px;
 
 /* 제목 입력 필드를 대상으로 합니다 */
 .updateForm .field1 label {
-	font-size: large;
-	font-weight: bold
+   font-size: large;
+   font-weight: bold
 }
 
 .updateForm .field1 .subject{
@@ -576,8 +581,8 @@ text-align: left;
 
 /* 제목 입력 필드를 대상으로 합니다 */
 .updateForm .field2 label {
-	font-size: large;
-	font-weight: bold
+   font-size: large;
+   font-weight: bold
 }
 
 .updateForm .field2 .subject{
@@ -591,8 +596,8 @@ text-align: left;
 }
 
 .updateForm .field3 label {
-	font-size: large;
-	font-weight: bold
+   font-size: large;
+   font-weight: bold
 }
 
 .updateForm .field3 .kind{
@@ -602,7 +607,7 @@ margin: inherit;
     text-align: center;
     display: flex;
     width: 80px;
-	padding: 0;
+   padding: 0;
 }
 
 .updateForm .field3 .kind .1{
@@ -636,13 +641,13 @@ margin: inherit;
 }
 
 .updateForm .btn-group .btn1:hover {
-	background-color: white;
-	color: black;
+   background-color: white;
+   color: black;
 }
 
 .updateForm .btn-group .btn2:hover {
-		background-color: black;
-	color: white;
+      background-color: black;
+   color: white;
     border:1px solid black;
 }
 
@@ -663,7 +668,7 @@ margin: inherit;
 
 .reply_list {  }
 .reply_list ul { margin-bottom:30px; }
-.reply_list ul li {  padding:40px 0; border-top:1px solid #E3E3E3;  }
+.reply_list ul li {  padding:20px 0; border-top:1px solid #E3E3E3;  }
 .reply_list ul li:last-child {  border-bottom:1px solid #E3E3E3;   }
 .reply_list ul li .top { display:flex; align-items: center; }
 .reply_list ul li .image_box { width:80px; height:80px; overflow: hidden; border-radius: 50%; margin-right:36px;  }

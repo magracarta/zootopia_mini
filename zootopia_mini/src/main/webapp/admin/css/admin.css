@@ -114,7 +114,7 @@ h1,h2,h3,h4,h5,h6 , p , span , a ,input , textarea { line-height:1.3em; }
 
 
 
-.container{
+.container-member{
    	margin:0 auto;
    	margin-top:50px;
    	width:471px;
@@ -126,24 +126,24 @@ h1,h2,h3,h4,h5,h6 , p , span , a ,input , textarea { line-height:1.3em; }
    	align-items:center;
    	box-sizing:border-box;
 }
-.container a:hover{
+.container-member a:hover{
 	text-decoration:underline;
 }
-.container h2{
+.container-member h2{
 	margin-top: 50px;
 	font-size:30px;
 	font-weight:bold;
 	text-align:center;
 	margin-bottom:50px;
 }
-.container form{
+.container-member form{
 	width:300px;
 	height:auto;
 	box-sizing:border-box;
 	margin-bottom:30px;
 	
 }
-.container .field input[type='text'],input[type='password']{
+.container-member .field input[type='text'],input[type='password']{
 	border-top:0;
 	border-left:0;
 	border-right:0;
@@ -192,7 +192,7 @@ article form .tb .row-list img:hover{cursor:pointer;}
 
 -------------------------------------------------------------------------
 
-.container{
+.container-member{
    	margin:0 auto;
    	margin-top:50px;
    	width:471px;
@@ -204,21 +204,21 @@ article form .tb .row-list img:hover{cursor:pointer;}
    	align-items:center;
    	box-sizing:border-box;
 }
-.container h2{
+.container-member h2{
 	margin-top: 50px;
 	font-size:30px;
 	font-weight:bold;
 	text-align:center;
 	margin-bottom:50px;
 }
-.container form{
+.container-member form{
 	width:300px;
 	height:auto;
 	box-sizing:border-box;
 	margin-bottom:30px;
 	
 }
-.container .field input[type='text'],input[type='password']{
+.container-member .field input[type='text'],input[type='password']{
 	border-top:0;
 	border-left:0;
 	border-right:0;
@@ -226,10 +226,10 @@ article form .tb .row-list img:hover{cursor:pointer;}
 	padding:0px;
 	margin-bottom:5px;
 }
-.container .field input[type="text"]:focus, input[type="password"]:focus {
+.container-member .field input[type="text"]:focus, input[type="password"]:focus {
     outline: none;
 }
-.container .field_idcheck input[type='text']{
+.container-member .field_idcheck input[type='text']{
 	border-top:0;
 	border-left:0;
 	border-right:0;
@@ -237,7 +237,7 @@ article form .tb .row-list img:hover{cursor:pointer;}
 	padding:0px;
 	margin-bottom:5px;
 }
-.container .field_idcheck input[type='button']{
+.container-member .field_idcheck input[type='button']{
 	border:1px solid black;
 	background:black;
 	color:white;
@@ -250,7 +250,7 @@ article form .tb .row-list img:hover{cursor:pointer;}
 	height:37px;
 	margin-top:10px;
 }
-.container .field_nicknamecheck input[type='text']{
+.container-member .field_nicknamecheck input[type='text']{
 	border-top:0;
 	border-left:0;
 	border-right:0;
@@ -258,7 +258,7 @@ article form .tb .row-list img:hover{cursor:pointer;}
 	padding:0px;
 	margin-bottom:5px;
 }
-.container .field_nicknamecheck input[type='button']{
+.container-member .field_nicknamecheck input[type='button']{
 	border:1px solid black;
 	background:black;
 	color:white;
@@ -303,16 +303,16 @@ article form .tb .row-list img:hover{cursor:pointer;}
 	flex-direction:row;
 }
 
-.container .field_pet{
+.container-member .field_pet{
 	display:flex;
 	justify-content:space-between;
 	margin-top:50px;
 }
-.container .field_pet .field_left{
+.container-member .field_pet .field_left{
 	display:flex;
 	flex-direction:column;
 }
-.container .field_pet .field_right{
+.container-member .field_pet .field_right{
 	display:flex;
 	flex-direction:column;
 	margin-left:20px;
@@ -320,7 +320,7 @@ article form .tb .row-list img:hover{cursor:pointer;}
 	justify-content:space-between;
 	
 }
-.container .field_pet .field_right select{
+.container-member .field_pet .field_right select{
 	border-top:0;
 	border-left:0;
 	border-right:0;
@@ -329,11 +329,11 @@ article form .tb .row-list img:hover{cursor:pointer;}
 	margin-bottom:5px;
 }
 
-.container .field_pet .field_left img{
+.container-member .field_pet .field_left img{
 	width:138px;
 	height:138px;
 }
-.container .field_pet .field_left input[type='file']{
+.container-member .field_pet .field_left input[type='file']{
 	display:none;
 }
 .custom_photo_upload {
@@ -448,5 +448,12 @@ article form .tb .row-list img:hover{cursor:pointer;}
 	border-radius:15px 15px 15px 15px;
 }
 
-
+.reply_list .top .button-box img:hover {
+	cursor:pointer;
+}
+.communityform .btn input[type='button'] {
+	display:flex;
+	flex-direction:row;
+	padding-bottom:30px;
+}
 pre { font-size: inherit; font-weight: inherit; font-family: inherit; color: inherit; line-height: 1.3em; }

@@ -7,7 +7,7 @@
 <article>
 	<form method="post" name="frm">
 		<div class="tb">
-			<div class="row" style="margin-bottom:20px; font-size:32px;">회원 관리</div>
+			<div class="row" style="margin-bottom:20px; font-size:32px; font-weight:bold;">회원 관리</div>
 			<div class="row">
 				<div class="col-search">
 					<img style="width:40px; height:39px; border-bottom:1px solid #C9C9C9; 

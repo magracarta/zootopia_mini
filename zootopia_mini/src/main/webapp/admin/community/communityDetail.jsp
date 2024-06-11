@@ -20,7 +20,7 @@
 	                </div>
 	                <div class="namerecomreply">
 	                	<ul class="nickname">${communityVO.nickname}[${communityVO.userid}]</ul>
-	                	<li class="recommands">추천 수[${communityVO.recommands}]<button class="recommendButton">추천</button>
+	                	<li class="recommands">추천 수[${communityVO.recommands}]
 			                <div class="content" >
 			                    <input type="hidden" class="gseq" value="${communityVO.gseq}">
 			                </div>
@@ -48,36 +48,43 @@
 		</div>
 		
 		<div class="comment-section">
+        <h2 class="comment2" style="font-size:22px;">댓글 ${replyAllcount}개</h2>
         
-        <hr style="margin-top:50px; margin-bottom:30px;">
 
-        <h2 style="font-size:24px;">댓글 목록</h2>
-	        <div class="commentslist">
-	            <ul>
-	                <c:forEach var="reply" items="${communityReplies}">
-	                <li>
-	                    <div class="comment-meta">
-	                        <c:if test="${not empty reply.saveImage}">
-	                            <div class="image_box">           
-	                                <img src="images/${reply.saveImage}" alt="User Image">
-	                            </div>
-	                        </c:if>
-	                        <span>작성자: ${reply.nickname}[${reply.userid}]</span>
-	                    </div>
-	                    <div class="comment-content">
-	                        <p>${reply.content}</p>
-	                    </div>
-	                    <div class="comment-delete">
-	                    	<img src="admin/images/deleteicon.png" onclick="location.href='zootopia.do?command=admincommunityreplydelete&grseq=${reply.grseq}'"/>
-	                    </div>   
-	                </li>
-	                </c:forEach>
-	            </ul>
-	        </div>
-    	</div>
+        <div class="reply_list ">
+            <ul>
+                <c:forEach var="reply" items="${communityReplies}">
+                <li>
+                    <div class="top">
+							<div class="image_box">
+								<c:if test ="${reply.saveImage != null}">
+									<img src="images/${reply.saveImage}">
+								</c:if>
+								<c:if test ="${reply.saveImage == null}">
+									<img src="images/repl-noimg.png">
+								</c:if>
+							</div>
+								
+							<div class="text-box">
+								<span>@ ${reply.nickname }</span>
+								<pre style="font-size:16px;">${reply.content }</pre>
+							</div>
+							<div class="button-box">
+								<img src="admin/images/deleteicon.png" style="width:15px;" onclick="location.href='zootopia.do?command=admincommunityreplydelete&grseq=${reply.grseq}'"/>
+							</div>
+					</div>
+                        
+                </li>
+                </c:forEach>
+            </ul>
+        </div>
+    </div>
 
 </section>
 
+<style>
+
+</style>
 <%@ include file="/community/css/community_css.jsp" %>
 <%@ include file="/admin/footer.jsp" %>
 

@@ -7,7 +7,7 @@
 	
 
 <div class="title-wrapper">
-	<h2 class="title">콘테스트 <c:if test="${ search.equals('') }">(${Allcount})</c:if></h2>
+	<h2 class="title">콘테스트 관리</h2>
 </div>
 <div class="contest-category" data-category="">
 	<ul data-category ="${category}">

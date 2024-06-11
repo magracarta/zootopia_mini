@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import zootopia_mini.zootopia.controller.action.Action;
 import zootopia_mini.zootopia.controller.dao.AdminDao;
-
+import zootopia_mini.zootopia.controller.dao.ContestDao;
 import zootopia_mini.zootopia.controller.dto.AdminVO;
 import zootopia_mini.zootopia.controller.dto.CommunityVO;
 
@@ -22,14 +22,12 @@ public class AdminCommunityListAction implements Action {
 
 		HttpSession session = request.getSession();
         AdminVO mvo = (AdminVO) session.getAttribute("adminUser");
-       
-        
         
         if (mvo == null) {
             response.sendRedirect("zootopia.do?command=admin");
         } else {
             AdminDao adao = AdminDao.getInstance();
-        
+            
             ArrayList<CommunityVO> list;
             Paging paging = new Paging();
 
@@ -67,12 +65,7 @@ public class AdminCommunityListAction implements Action {
             request.setAttribute("paging", paging);
             request.setAttribute("commList", list);
             
-            String kindParam = request.getParameter("kind");
-            int kind = -1;
-            if (kindParam != null) {
-            	kind = Integer.parseInt(kindParam);
-            }
-            request.setAttribute("kind", kind);
+            
             
             request.getRequestDispatcher("admin/community/communityList.jsp").forward(request, response);
         }

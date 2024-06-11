@@ -13,11 +13,22 @@ public class AdminCommunityReplyDeleteAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		
 		String grseq = request.getParameter("grseq");
 		AdminDao adao = AdminDao.getInstance();
+		int gseq = adao.getGseqByGrseq(grseq);
+		
 		adao.deleteCommunityReply(grseq);
-		response.sendRedirect("zootopia.do?command=admincommunitydetail");
+		
+		
+		response.sendRedirect("zootopia.do?command=admincommunitydetail&gseq=" + gseq);
+		
+		
+        
+        
 		
 	}
+
+	
 
 }

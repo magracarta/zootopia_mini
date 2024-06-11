@@ -8,7 +8,7 @@
     	document.getElementById('photoinput').textContent = fileName;
 	});
 </script>
-<div class="container">
+<div class="container-member">
 	<form method="post" action="zootopia.do?command=adminmemberinsertform" name="joinForm" enctype="multipart/form-data">
     	<h2>회원 추가</h2>
       	<div class="field_idcheck">

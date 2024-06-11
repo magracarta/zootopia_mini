@@ -17,7 +17,7 @@
 </head>
 <body
 	style="display: flex; justify-content: center; align-items: center;">
-	<div class="container">
+	<div class="container-member">
 		<form method="post" action="zootopia.do?command=adminlogin"
 			name="adminloginForm">
 			<h2>Zootopia Admin</h2>

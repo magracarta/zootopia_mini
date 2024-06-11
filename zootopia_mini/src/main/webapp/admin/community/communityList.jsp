@@ -7,7 +7,7 @@
 <form method="post" name="frm">
 	<div class="comlist">
 		<div class="head" style="margin-bottom:50px;">
-		  <h1 class="title" style="font-size:32px;">커뮤니티 관리</h1>
+		  <h1 class="title" style="font-size:32px; font-weight:bold;">커뮤니티 관리</h1>
 	  	</div>
 	  	<div class="col-search">
 		 <img style="width:40px; height:38px; border-bottom:1px solid #C9C9C9; 
@@ -16,19 +16,12 @@
 		  onClick="go_search('admincommunitylist')"/>
 		 <input type="text" name="key" value="${key}" placeholder="글 제목"/>
 		</div>
-		<div class="kind-buttons">
-   			<ul>
-   				<li><a class="kind0" href="zootopia.do?command=admincommunitylist&pagenum=1">모든 게시글</a></li>
-			    <li><a class="kind1" href="zootopia.do?command=admincommunitylist&kind=1&pagenum=1">고민</a></li>
-			    <li><a class="kind2" href="zootopia.do?command=admincommunitylist&kind=2&pagenum=1">자랑</a></li>
-			    <li><a class="kind3" href="zootopia.do?command=admincommunitylist&kind=3&pagenum=1">잡담</a></li>
-   			</ul>
-   		</div>
+		
 	   <div class="communityboard">
 	    <ul>
 	      <li class="board_head" style="background:white; border-bottom:1px solid #676767; font-weight:bold;">
-	        <span class="num" style="text-align:center; width:15%;">no.</span>   	
-	        <span class="subject" style="width:50%">[분류]제목</span>			
+	        <span class="num" style="text-align:center; width:6%;">no.</span>   	
+	        <span class="subject" style="width:60%">[분류]제목</span>			
 	        <span class="userid">닉네임[작성자]</span>			
 	        <span class="createdate">작성일</span>			
 	        <span class="recommands">추천수</span>			

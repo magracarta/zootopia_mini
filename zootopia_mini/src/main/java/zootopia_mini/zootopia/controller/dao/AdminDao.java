@@ -291,6 +291,27 @@ public class AdminDao {
 		
 	}
 
+	public int getGseqByGrseq(String grseq) {
+		
+		int gseq = -1;
+		con = DB.getConnection();
+		String sql = "SELECT gseq FROM community_reply WHERE grseq = ?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, grseq);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				gseq = rs.getInt("gseq");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DB.close(con, pstmt, rs);
+		}
+		
+		return gseq;
+	}
+
 	
 	
 	
