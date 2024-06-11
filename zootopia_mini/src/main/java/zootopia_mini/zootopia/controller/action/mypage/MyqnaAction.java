@@ -47,6 +47,7 @@ public class MyqnaAction implements Action {
 			
 			request.getRequestDispatcher("mypage/myqna.jsp").forward(request, response);
 		}
+
 	}
 
 }
