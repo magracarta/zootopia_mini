@@ -16,9 +16,16 @@ public class FindCommunityAction implements Action {
 	@Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String subject = request.getParameter("search");
+        System.out.println(subject);
         HttpSession session = request.getSession();
-        int categorynum = 0;
-		if(request.getParameter("kind") != null) {
+        
+        System.out.println("subject :"+(subject.isBlank()));
+        
+        if(request.getParameter("search") != null ) subject ="";
+        
+        int categorynum = 1;
+		if(request.getParameter("kind") != null && !request.getParameter("kind").equals("")) {
+			System.out.println(request.getParameter("kind"));
 			categorynum = Integer.parseInt(request.getParameter("kind"));
 		}
         
@@ -34,12 +41,13 @@ public class FindCommunityAction implements Action {
                 page = (Integer) session.getAttribute("pagenum");
             }
 
+            int count = cdao.getAllCount(subject , categorynum);
+            paging.setRecordAllcount(count);
+            
             paging.setCurrentPage(page);
             paging.setPagecnt(10);
             paging.setRecordrow(10);
             
-            int count = cdao.getAllCount(subject , categorynum);
-            paging.setRecordAllcount(count);
 
 
             ArrayList<CommunityVO> list = cdao.findcontent(subject , paging , categorynum);

@@ -29,7 +29,6 @@ public class MypageDao {
 	
 	public void updateMember(MemberVO mvo1) {
 		
-		System.out.println("DB에 저장되는 파일명: " + mvo1.getSaveimage());
 		con = DB.getConnection();
 		String sql = "update member set pwd=?, name=?, email=? , "
 				+ " phone=?, petname=?, kind=? , petgender=?, "
@@ -85,8 +84,6 @@ public class MypageDao {
 				cdto.setSubject(rs.getString("subject"));
 				cdto.setContent(rs.getString("content"));
 				
-				System.out.println(cdto.getSubject());
-				System.out.println(cdto.getContent());
 				contestList.add(cdto);
 			}
 		} catch (SQLException e) {

@@ -275,3 +275,6 @@ VALUES
     (2, '샘플 제목 15', '샘플 내용 15', '샘플 답변 15', 'user1', NOW());
     
 SELECT * FROM qnareply;
+
+
+SELECT COUNT(*) AS cnt FROM community where kind = 2

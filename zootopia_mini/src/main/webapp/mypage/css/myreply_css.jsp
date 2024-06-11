@@ -5,7 +5,7 @@
 	padding: 10px; 
 	margin-bottom: 10px;
 }
-.myreply-container {display: flex; justify-content: space-between;margin: 20px;}
+.myreply-container {display: flex; justify-content: space-between;margin: 20px 0;}
 .column {width: 45%;}
 .column h2 { padding-bottom: 30px; padding-top:30px; font-size: 1.2em; margin-bottom: 10px; font-weight:bold;}
 .myreplylist {

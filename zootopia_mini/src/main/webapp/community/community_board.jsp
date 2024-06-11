@@ -12,7 +12,7 @@
   	
   	<div class="contest-category">
 	<ul>
-		<li><a class="kind0" href="zootopia.do?command=communityBoard&pagenum=1">모든 게시글</a></li>
+		<li><a class="kind0" href="zootopia.do?command=communityBoard&pagenum=1">All</a></li>
 		<li><a class="kind1" href="zootopia.do?command=communityBoard&kind=1&pagenum=1">고민</a></li>
 		<li><a class="kind2" href="zootopia.do?command=communityBoard&kind=2&pagenum=1">자랑</a></li>
 		<li><a class="kind3" href="zootopia.do?command=communityBoard&kind=3&pagenum=1">잡담</a></li>
@@ -105,8 +105,8 @@ document.querySelector(".kind"+kind).classList.add("select");
 </div>
 
 <jsp:include page="paging.jsp" flush="true">
-  <jsp:param name="url" value="zootopia.do?command=communityBoard&kind=${kind}" />
-  <jsp:param name="searchurl" value="findCommunity" />
+  <jsp:param name="url" value="zootopia.do?command=communityBoard&kind=${kind}&search=${search}" />
+  <jsp:param name="searchurl" value="communityBoard" />
   <jsp:param name="search" value="${search}" />
 </jsp:include>
 

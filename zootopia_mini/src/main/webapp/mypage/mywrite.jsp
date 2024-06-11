@@ -69,7 +69,9 @@
 	  
 	});
  </script>
-
+<style>
+.serach-form { display:none !important; }
+</style>
 
 
 <%@ include file="css/mywrite_css.jsp" %>

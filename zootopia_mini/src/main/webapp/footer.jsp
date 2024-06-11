@@ -20,11 +20,11 @@
 		<div class="right">
 			<div class="menu-wrapper">
 				<ul>
-					<li><a href="zootopia.do?command=contest">콘테스트</a></li>
+					<li><a href="zootopia.do?command=contestBoard&category=all&pagenum=1&search=">콘테스트</a></li>
 					<li><span></span></li>
-					<li><a href="zootopia.do?command=free">자유게시판</a></li>
+					<li><a href="zootopia.do?command=communityBoard">자유게시판</a></li>
 					<li><span></span></li>
-					<li><a href="zootopia.do?command=qnaList">Q&A</a></li>
+					<li><a href="zootopia.do?command=qnaList&pagenum=1">Q&A</a></li>
 				</ul>
 			</div>
 			<div class="text-wrapper">

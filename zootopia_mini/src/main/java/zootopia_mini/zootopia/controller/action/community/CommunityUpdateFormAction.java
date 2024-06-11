@@ -15,11 +15,11 @@ public class CommunityUpdateFormAction implements Action {
 
 	 @Override
 	    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 HttpSession session = request.getSession();
+		 	HttpSession session = request.getSession();
 			MemberVO mvo = (MemberVO) session.getAttribute("loginUser");
 	        
 	        if (mvo == null) {
-	            response.sendRedirect("zootopia.do?command=loginForm");
+	            response.sendRedirect("zootopia.do?command=loginform");
 	            return;
 	        }
 	        

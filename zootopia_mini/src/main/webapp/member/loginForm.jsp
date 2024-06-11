@@ -13,6 +13,7 @@
       </div>         
 	  <span style="float:right;">*&nbsp;${message}</span>
       <div class="btn">
+      	 <input type="hidden" value="" name="referrer" class="referrer">
          <input type="submit" value="Login" onClick="return loginCheck()" >
          <input type="button" value="Join" onClick="location.href='zootopia.do?command=joinform'">
       </div>
@@ -21,3 +22,9 @@
 
 <%@ include file="css/member.jsp" %>
 <%@ include file="../footer.jsp" %>
+
+<script>
+let referrer =  document.referrer.split("/");
+document.querySelector(".referrer").value=referrer[referrer.length-1];
+
+</script>

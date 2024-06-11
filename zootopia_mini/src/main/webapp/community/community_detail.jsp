@@ -61,11 +61,13 @@
 		
   <div class="comment-section">
         <h2 class="comment2">댓글 ${replyAllcount}개</h2>
-        <form class="commentwrite" action="zootopia.do?command=writeCommunityReply" method="post">
+        <c:if test="${not empty loginUser.userid}">
+        	<form class="commentwrite" action="zootopia.do?command=writeCommunityReply" method="post">
             <textarea class="write" name="content" required></textarea>
             <input type="hidden" name="gseq" value="${communityVO.gseq}">
             <button class="submit" type="submit">작성하기</button>
         </form>
+        </c:if>
 
         <div class="reply_list ">
             <ul>

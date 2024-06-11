@@ -24,21 +24,22 @@ public class CommunityDao {
     PreparedStatement pstmt = null;
     ResultSet rs = null;
 
-    public ArrayList<CommunityVO> selectCommunity(Paging paging, int categorynum) {
+    public ArrayList<CommunityVO> selectCommunity(Paging paging, int categorynum, String search) {
         ArrayList<CommunityVO> list = new ArrayList<CommunityVO>();
         String whereadd = "  ";
         if(categorynum != 0) {
-        	whereadd = " where c.kind = "+ categorynum;
+        	whereadd = " and c.kind = "+ categorynum;
         }
         
         String sql = "SELECT c.gseq, c.subject, c.content, c.createdate, c.recommands, c.userid, m.nickname, m.userid AS user_id, c.kind, c.vcount " +
-                     "FROM community c JOIN member m ON c.userid = m.userid " + whereadd +
+                     "FROM community c JOIN member m ON c.userid = m.userid where c.subject like concat('%',?,'%')" + whereadd +
                      " ORDER BY c.gseq DESC LIMIT ? OFFSET ?;";
         con = DB.getConnection();
         try {
             pstmt = con.prepareStatement(sql);
-            pstmt.setInt(1, paging.getRecordrow());
-            pstmt.setInt(2, paging.getOffsetnum());
+            pstmt.setString(1, search);
+            pstmt.setInt(2, paging.getRecordrow());
+            pstmt.setInt(3, paging.getOffsetnum());
 
             rs = pstmt.executeQuery();
             while (rs.next()) {
@@ -62,14 +63,19 @@ public class CommunityDao {
         return list;
     }
    
-    public int getAllCount() {
+    public int getAllCount(int kind, String search) {
         int count = 0;
         ResultSet rs = null;
-
+        String kindwhere = " ";
+        if(kind > 0 ) {
+        	kindwhere = " and kind = "+kind;
+        }
+        
         try {
             con = DB.getConnection();
-            String sql = "SELECT COUNT(*) AS cnt FROM community";
+            String sql = "SELECT COUNT(*) AS cnt FROM community where subject like concat('%',?,'%') " + kindwhere;
             pstmt = con.prepareStatement(sql);
+            pstmt.setString(1,search);
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
@@ -127,7 +133,6 @@ public class CommunityDao {
             pstmt.setInt(3, cvo.getKind());
             pstmt.setString(4, cvo.getUserid());
             int f = pstmt.executeUpdate();
-            System.out.println(f);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -235,7 +240,7 @@ public class CommunityDao {
 	}
 
 	  public ArrayList<CommunityVO> findcontent(String subject, Paging paging, int categorynum) {
-		  
+		  	
 	        ArrayList<CommunityVO> list = new ArrayList<CommunityVO>();
 	        con = DB.getConnection();
 	        String whereadd = "  ";
@@ -335,7 +340,35 @@ public class CommunityDao {
         try {
             con = DB.getConnection();
             String sql = "SELECT COUNT(*) AS cnt FROM community"+
-                    " WHERE c.subject LIKE concat ('%', ? ,'%')" + whereadd;
+                    " WHERE subject LIKE concat ('%', ? ,'%')" + whereadd;
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, subject);
+            
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                count = rs.getInt("cnt");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DB.close(con, pstmt, rs);
+        }
+     
+        return count;
+	}
+
+	public int getAllCount(int kind) {
+		 String where = "";
+        if (kind > 0) {
+        	where = " where kind ="+ kind;
+        } 
+        int count = 0;
+        ResultSet rs = null;
+
+        try {
+            con = DB.getConnection();
+            String sql = "SELECT COUNT(*) AS cnt FROM community" + where;
             pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
 
