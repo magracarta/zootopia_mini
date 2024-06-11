@@ -34,7 +34,7 @@ $(document).ready(function() {
 
         if (confirm("정말로 추천하시겠습니까?")) {
             $.ajax({
-                url: "http://localhost:8090/zootopia_mini/zootopia.do?command=communityRecommands",
+                url: "zootopia.do?command=communityRecommands",
                 type: "POST",
                 data: { gseq: gseq },
                 success: function(data) {

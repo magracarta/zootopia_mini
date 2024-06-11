@@ -627,7 +627,7 @@ public class ContestDao {
 	}
 	public ArrayList<CommunityVO> getCommunityMainList() {
 		ArrayList<CommunityVO> list = new ArrayList<CommunityVO>();
-		String sql = "SELECT c.gseq, c.subject, c.content, c.createdate, c.recommands, c.userid, m.nickname, m.userid AS user_id, c.kind " +
+		String sql = "SELECT c.gseq, c.subject, c.content, c.createdate, c.vcount  , c.recommands, c.userid, m.nickname, m.userid AS user_id, c.kind " +
                 "FROM community c JOIN member m ON c.userid = m.userid " +
                 "where c.createdate > DATE_SUB(NOW(), INTERVAL 7 DAY) ORDER BY c.recommands DESC , c.vcount DESC LIMIT 5;";
 		   con = DB.getConnection();
@@ -644,6 +644,7 @@ public class ContestDao {
 		           cvo.setRecommands(rs.getInt("recommands"));
 		           cvo.setNicknameFromView(rs.getString("nickname"));
 		           cvo.setKind(rs.getInt("kind")); // kind 추가
+		           cvo.setVcount(rs.getInt("vcount")); // kind 추가
 		           list.add(cvo);
 		       }
 		   } catch (SQLException e) {
