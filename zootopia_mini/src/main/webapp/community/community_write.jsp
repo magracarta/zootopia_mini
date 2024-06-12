@@ -30,7 +30,8 @@
 	    </div>
 	    <div class="btn">
 	        <input class="button3" type="submit" onclick="return communityCreate()" value="작성완료">
-	        <input class="button4" type="reset" value="작성취소">
+            <input class="button4" type="reset" value="작성취소" onclick="location.href='zootopia.do?command=communityBoard'">
+
 	    </div>
 	</form>
 </article>
