@@ -5,7 +5,8 @@
 
 <section>
     <article>
-        <form method="post" name="frm">
+        <form method="get" name="frm">
+        <input type="hidden" name="command" value="adminqnalist">
             <ul class="qna-header" style="text-align:left;">Q & A </ul>
             <div class="tb">
             	<div class="col-search">

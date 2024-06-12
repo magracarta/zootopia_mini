@@ -5,7 +5,8 @@
 
 
 <article>
-	<form method="post" name="frm">
+	<form method="get" name="frm">
+	<input type="hidden" name="command" value="adminmemberlist">
 		<div class="tb">
 			<div class="row" style="margin-bottom:20px; font-size:32px; font-weight:bold;">회원 관리</div>
 			<div class="row">

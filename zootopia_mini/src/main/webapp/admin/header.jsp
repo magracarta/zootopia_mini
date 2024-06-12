@@ -34,10 +34,10 @@
 		</div>
 		<nav class="navigation">
 			<ul>
-				<li><a href="zootopia.do?command=adminmemberlist">회원 관리</a></li>
-				<li><a href="zootopia.do?command=admincommunitylist">커뮤니티 관리</a></li>
+				<li><a href="zootopia.do?command=adminmemberlist&pagenum=1&key=">회원 관리</a></li>
+				<li><a href="zootopia.do?command=admincommunitylist&pagenum=1&key=">커뮤니티 관리</a></li>
 				<li><a href="zootopia.do?command=admincontestlist&category=all&pagenum=1&search=">콘테스트 관리</a></li>
-				<li><a href="zootopia.do?command=adminqnalist">Q&A 관리</a></li>
+				<li><a href="zootopia.do?command=adminqnalist&pagenum=1&key=">Q&A 관리</a></li>
 			</ul>
 		</nav>
 	
