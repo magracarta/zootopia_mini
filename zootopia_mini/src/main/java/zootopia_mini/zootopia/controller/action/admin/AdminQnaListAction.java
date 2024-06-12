@@ -21,7 +21,7 @@ public class AdminQnaListAction implements Action {
 		HttpSession session = request.getSession();
 		AdminVO avo = (AdminVO)session.getAttribute("adminUser");
 		if(avo == null) {
-			response.sendRedirect("shop.do?command=admin");
+			response.sendRedirect("zootopia.do?command=admin");
 		}else {
 			
 			Paging paging = new Paging();
