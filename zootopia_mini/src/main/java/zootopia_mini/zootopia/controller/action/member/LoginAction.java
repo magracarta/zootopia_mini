@@ -39,12 +39,9 @@ public class LoginAction implements Action {
 			request.setAttribute("message", "관리자에게 문의하세요");
 		}
 		
-		if( referrer != null && !referrer.contains("logout") && !referrer.contains("login")) response.sendRedirect(referrer);
-		else {
-			
+		
 			request.getRequestDispatcher(url).forward(request, response);
-			
-		}
+		
 	
 		
 	}
