@@ -44,7 +44,7 @@ public class AdminQnaListAction implements Action {
 				key = (String)session.getAttribute("key");
 			}else {
 				key="";
-				session.removeAttribute("key");
+				//session.removeAttribute("key");
 			}
             
 			AdminDao adao = AdminDao.getInstance();

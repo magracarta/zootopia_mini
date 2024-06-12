@@ -41,7 +41,7 @@
 										<input type="hidden" name="command" value="adminqnareplyupdate">
                                     	<input type="hidden" name="qseq" value="${qnaVO.qseq}">
                                     	<textarea name="reply" rows="3" style="flex:3"></textarea>
-                                    	<input type="submit" class="btn" value="저장">
+                                    	<input type="submit" style="width:50px; padding-left:10px;"class="btn" value="저장">
                                     </form>
 								</c:when>
 								<c:otherwise>

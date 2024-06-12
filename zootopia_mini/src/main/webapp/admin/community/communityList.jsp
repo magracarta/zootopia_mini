@@ -4,7 +4,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/admin/header.jsp" %>
 
-<form method="post" name="frm">
+<form method="get" name="frm">
+<input type="hidden" name="command" value="admincommunitylist">
 	<div class="comlist">
 		<div class="head" style="margin-bottom:50px;">
 		  <h1 class="title" style="font-size:32px; font-weight:bold;">커뮤니티 관리</h1>

@@ -70,12 +70,13 @@
             </div>
             <div class="form-group" style="display:flex; flex-direction:column;">
         		<label for="pet-photo">사진</label>
+        		
         			<c:choose>
-						<c:when test="${empty photoview.saveimage}">
+						<c:when test="${memberVO.saveimage == null}">
 							<img style="width:300px; height:200px;" id="preview" src="images/E2E2E2.png" width="100px;" />
 						</c:when>
 						<c:otherwise>						
-							<img style="width:300px; height:200px;" id="preview" src="images/${photoview.image}" width="100px;" />
+							<img style="width:300px; height:200px;" id="preview" src="images/${memberVO.saveimage}" width="100px;" />
 						</c:otherwise>
 					</c:choose>
 	       		<input type="file" id="photoinput" name="image" onClick="show_preview()"/>
