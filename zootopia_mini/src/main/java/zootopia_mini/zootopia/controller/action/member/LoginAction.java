@@ -41,7 +41,7 @@ public class LoginAction implements Action {
 		
 		if( referrer != null && !referrer.contains("logout") && !referrer.contains("login")) response.sendRedirect(referrer);
 		else {
-			session.removeAttribute("loginUser");
+			
 			request.getRequestDispatcher(url).forward(request, response);
 			
 		}
