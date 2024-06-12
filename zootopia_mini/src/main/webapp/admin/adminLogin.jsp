@@ -27,7 +27,7 @@
 			<div class="field">
 				<input name="pwd" type="password" placeholder="비밀번호" />
 			</div>
-			<span style="float: right;">*&nbsp;${message}</span>
+			<span style="float: right; color:red;">*&nbsp;${message1}</span>
 			<div class="btn">
 				<input type="submit" value="Login"
 					onClick="return adminloginCheck()">

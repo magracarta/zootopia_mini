@@ -23,9 +23,9 @@ public class AdminLoginAction implements Action {
 		
 		String url = "admin/adminLogin.jsp";
 		if(avo == null)
-			request.setAttribute("message", "존재하지 않는 아이디입니다");
+			request.setAttribute("message1", "존재하지 않는 아이디입니다");
 		else if(!avo.getPwd().equals(pwd))
-			request.setAttribute("message", "패스워드가 일치하지 않습니다");
+			request.setAttribute("message1", "패스워드가 일치하지 않습니다");
 		else if(avo.getPwd().equals(pwd)) {
 			HttpSession session = request.getSession();
 			session.setAttribute("adminUser", avo);
