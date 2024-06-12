@@ -75,7 +75,7 @@
 							<img style="width:300px; height:200px;" id="preview" src="images/E2E2E2.png" width="100px;" />
 						</c:when>
 						<c:otherwise>						
-							<img style="width:300px; height:200px;" id="preview" src="images/${photoview.saveimage}" width="100px;" />
+							<img style="width:300px; height:200px;" id="preview" src="images/${photoview.image}" width="100px;" />
 						</c:otherwise>
 					</c:choose>
 	       		<input type="file" id="photoinput" name="image" onClick="show_preview()"/>
