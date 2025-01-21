@@ -21,6 +21,7 @@
 	        </select>
 	    </div>
 	    <div class="class">    
+
 	        <label>제목</label>
 	        <input type="text" name="subject" />
 	    </div>
