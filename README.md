@@ -72,7 +72,7 @@
  
 
 
-## 4. 페이지 주요기능
+## 5. 페이지 주요기능
 ### 1. 메인 페이지<br/>
 <img src="https://github.com/user-attachments/assets/14ee4036-f1e7-4f40-b0d5-c28960212e33" width="400px"/><br/>
 - 현재시간 기준으로 7일간 제일 인기있는 대회와 게시글 가져오기
